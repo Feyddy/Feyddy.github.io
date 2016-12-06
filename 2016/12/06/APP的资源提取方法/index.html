@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Swift代码风格，新手指导," />
+  <meta name="keywords" content="app资源提取，Assets.car文件解压，cartool," />
 
 
 
@@ -84,25 +84,39 @@
 
 
 
-<meta name="description" content="新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
-省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
-注：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。
-12345//tableVi">
+<meta name="description" content="APP的资源提取方法打开iTunes,找到应用。(前提是你已经买过了)
+将app拖到桌面上，然后将.api格式转换成.zip格式。
+解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。
+注：有时候你会发现图片较少，这时候你可以找到一个文件叫Assets.car。这个里面很多资源压缩在里面。但是不能像之前一样使用.zip的格式解压。
+这时，我们需要一个工具cartool。
+
+下载完成">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新手写swift应该注意什么">
-<meta property="og:url" content="http://yoursite.com/2016/12/06/新手写swift应该注意什么/index.html">
+<meta property="og:title" content="APP的资源提取方法">
+<meta property="og:url" content="http://yoursite.com/2016/12/06/APP的资源提取方法/index.html">
 <meta property="og:site_name" content="清风明心">
-<meta property="og:description" content="新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
-省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
-注：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。
-12345//tableVi">
-<meta property="og:updated_time" content="2016-12-06T13:28:56.000Z">
+<meta property="og:description" content="APP的资源提取方法打开iTunes,找到应用。(前提是你已经买过了)
+将app拖到桌面上，然后将.api格式转换成.zip格式。
+解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。
+注：有时候你会发现图片较少，这时候你可以找到一个文件叫Assets.car。这个里面很多资源压缩在里面。但是不能像之前一样使用.zip的格式解压。
+这时，我们需要一个工具cartool。
+
+下载完成">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/e3aca1a1jw1fah3utwpxxj20o0071dgj.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fah3ybmk2ej208o03cjre.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/e3aca1a1jw1fah461q2afj20bp042wep.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fah5aounmzj207p06amxl.jpg">
+<meta property="og:updated_time" content="2016-12-06T13:35:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新手写swift应该注意什么">
-<meta name="twitter:description" content="新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
-省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
-注：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。
-12345//tableVi">
+<meta name="twitter:title" content="APP的资源提取方法">
+<meta name="twitter:description" content="APP的资源提取方法打开iTunes,找到应用。(前提是你已经买过了)
+将app拖到桌面上，然后将.api格式转换成.zip格式。
+解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。
+注：有时候你会发现图片较少，这时候你可以找到一个文件叫Assets.car。这个里面很多资源压缩在里面。但是不能像之前一样使用.zip的格式解压。
+这时，我们需要一个工具cartool。
+
+下载完成">
+<meta name="twitter:image" content="http://ww2.sinaimg.cn/large/e3aca1a1jw1fah3utwpxxj20o0071dgj.jpg">
 
 
 
@@ -130,13 +144,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/06/APP的资源提取方法/"/>
 
 
 
 
 
-  <title> 新手写swift应该注意什么 | 清风明心 </title>
+  <title> APP的资源提取方法 | 清风明心 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -265,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/06/APP的资源提取方法/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Feyddy">
@@ -289,7 +303,7 @@
             
             
               
-                新手写swift应该注意什么
+                APP的资源提取方法
               
             
           </h1>
@@ -302,7 +316,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-06T21:08:55+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-06T21:33:51+08:00">
                 2016-12-06
               </time>
             
@@ -321,8 +335,8 @@
               <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -336,8 +350,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/06/新手写swift应该注意什么/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/" itemprop="commentCount">0</span> comments
+                <a href="/2016/12/06/APP的资源提取方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/06/APP的资源提取方法/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -347,7 +361,7 @@
 
           
           
-             <span id="/2016/12/06/新手写swift应该注意什么/" class="leancloud_visitors" data-flag-title="新手写swift应该注意什么">
+             <span id="/2016/12/06/APP的资源提取方法/" class="leancloud_visitors" data-flag-title="APP的资源提取方法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -377,21 +391,25 @@
       
 
       
-        <h1 id="新手写Swift应该注意什么（Style）"><a href="#新手写Swift应该注意什么（Style）" class="headerlink" title="新手写Swift应该注意什么（Style）"></a>新手写Swift应该注意什么（Style）</h1><p>每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。</p>
-<h3 id="省略句末的分号"><a href="#省略句末的分号" class="headerlink" title="省略句末的分号"></a>省略句末的分号</h3><p>Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。</p>
-<p><strong>注</strong>：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//tableView设置</span></div><div class="line">        tableView.estimatedRowHeight = <span class="number">200</span></div><div class="line">        tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></div><div class="line">        tableView.delegate = <span class="keyword">self</span></div><div class="line">        tableView.dataSource = <span class="keyword">self</span></div></pre></td></tr></table></figure>
-<h3 id="省略self"><a href="#省略self" class="headerlink" title="省略self."></a>省略self.</h3><p>不在闭包里面的时候，如果要调用自身的属性或者方法时省略self.。这是苹果强烈建议的，因为这样可以使得代码变得简介。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//2.执行动画</span></div><div class="line">       <span class="type">UIView</span>.animateWithDuration(<span class="number">1.0</span>, animations: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">           <span class="keyword">self</span>.tipLabel.transform = <span class="type">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, <span class="number">44</span>)</div><div class="line">           &#125;) &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">               <span class="type">UIView</span>.animateWithDuration(<span class="number">1.0</span>, delay: <span class="number">2.0</span>, options: <span class="type">UIViewAnimationOptions</span>(rawValue: <span class="number">0</span>), animations: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                   <span class="keyword">self</span>.tipLabel.transform = <span class="type">CGAffineTransformIdentity</span></div><div class="line">                   &#125;, completion: &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                        <span class="keyword">self</span>.tipLabel.hidden = <span class="literal">true</span></div><div class="line">               &#125;)</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<h3 id="类型声明的一些注意点"><a href="#类型声明的一些注意点" class="headerlink" title="类型声明的一些注意点"></a>类型声明的一些注意点</h3><p>在声明变量的时候，<code>:</code>要紧跟变量名后面，但是类型与冒号之间需要一个空格。另外，字典类型的声明也是需要遵守这样的规则的。(可以使用<a href="https://github.com/realm/SwiftLint" target="_blank" rel="external">SwiftLint</a>来帮你检查)</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a: <span class="type">String</span> </div><div class="line"><span class="keyword">var</span> dict: [<span class="type">String</span>: <span class="type">AnyObject</span>]</div></pre></td></tr></table></figure>
-<h3 id="函数名的后面与-之间需要一个空格"><a href="#函数名的后面与-之间需要一个空格" class="headerlink" title="函数名的后面与{ }之间需要一个空格"></a>函数名的后面与{ }之间需要一个空格</h3><p>下面是标准的函数与法：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注</strong>： 二元操作符（+、-、*、/、%）的前后都有空格的，包含返回类型符号（-&gt;）。</p>
-<h3 id="对象初始化的时候不要调用init方法"><a href="#对象初始化的时候不要调用init方法" class="headerlink" title="对象初始化的时候不要调用init方法"></a>对象初始化的时候不要调用init方法</h3><p>Swift语言通过()就已经调用对象的初始化方法了，因此不需要在调用init()。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>()<span class="comment">//正确</span></div><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>.<span class="keyword">init</span>()<span class="comment">//错误</span></div></pre></td></tr></table></figure>
-<h3 id="函数参数命名规则"><a href="#函数参数命名规则" class="headerlink" title="函数参数命名规则"></a>函数参数命名规则</h3><p>因为OC的第一个参数名是省略的所以会把第一个参数名直接带到方法名上。但是Swift3.0之后，在方法调用时，第一个参数名也是会展现出来的。所以函数命名的时候要注意命名的简洁性，比如不需要再加什么：with、and等连接词了。</p>
-<h6 id="其他的相关风格可以参考："><a href="#其他的相关风格可以参考：" class="headerlink" title="其他的相关风格可以参考："></a>其他的相关风格可以参考：</h6><p><a href="https://github.com/Artwalk/swift-style-guide/blob/master/README_CN.md" target="_blank" rel="external">swift-style-guide</a></p>
+        <h1 id="APP的资源提取方法"><a href="#APP的资源提取方法" class="headerlink" title="APP的资源提取方法"></a>APP的资源提取方法</h1><h4 id="打开iTunes-找到应用。-前提是你已经买过了"><a href="#打开iTunes-找到应用。-前提是你已经买过了" class="headerlink" title="打开iTunes,找到应用。(前提是你已经买过了)"></a>打开iTunes,找到应用。(前提是你已经买过了)</h4><p><img src="http://ww2.sinaimg.cn/large/e3aca1a1jw1fah3utwpxxj20o0071dgj.jpg" alt="应用图片演示"></p>
+<h4 id="将app拖到桌面上，然后将-api格式转换成-zip格式。"><a href="#将app拖到桌面上，然后将-api格式转换成-zip格式。" class="headerlink" title="将app拖到桌面上，然后将.api格式转换成.zip格式。"></a>将app拖到桌面上，然后将.api格式转换成.zip格式。</h4><p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fah3ybmk2ej208o03cjre.jpg" alt="应用图片演示"></p>
+<h4 id="解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。"><a href="#解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。" class="headerlink" title="解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。"></a>解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。</h4><p><img src="http://ww1.sinaimg.cn/large/e3aca1a1jw1fah461q2afj20bp042wep.jpg" alt="应用图片演示"></p>
+<p><strong>注</strong>：有时候你会发现图片较少，这时候你可以找到一个文件叫<code>Assets.car</code>。这个里面很多资源压缩在里面。但是不能像之前一样使用.zip的格式解压。</p>
+<p>这时，我们需要一个工具<a href="https://github.com/steventroughtonsmith/cartool" target="_blank" rel="external">cartool</a>。</p>
+<ul>
+<li>下载完成后打开直接运行生成cartool</li>
+</ul>
+<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fah5aounmzj207p06amxl.jpg" alt="生成cartool图片"></p>
+<ul>
+<li>Finder打开cartool所在目录。</li>
+<li>打开终端，cd到cartool所在目录。</li>
+<li>创建一个接受解压后的图片的文件夹。（outputDirectory）</li>
+<li><p>在终端中执行以下命令：</p>
+<figure class="highlight plain"><figcaption><span>/xxx/Assets.car</span><a href="/xxx/outputDirectory">link</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"> </div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>注</strong>：第一个<code>xxx</code>是<code>Assets.car</code>的路径，第二个<code>xxx</code>是图片接受文件夹的路径，二者缺一不可。</p>
+<p>执行完成后，便可以显示出<code>Assets.car</code>里面的资源了。</p>
 
       
     </div>
@@ -415,7 +433,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift代码风格，新手指导/" rel="tag"># Swift代码风格，新手指导</a>
+            <a href="/tags/app资源提取，Assets-car文件解压，cartool/" rel="tag"># app资源提取，Assets.car文件解压，cartool</a>
           
         </div>
       
@@ -424,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/05/Markdown新手教程/" rel="next" title="Markdown新手教程">
-                <i class="fa fa-chevron-left"></i> Markdown新手教程
+              <a href="/2016/12/06/新手写swift应该注意什么/" rel="next" title="新手写swift应该注意什么">
+                <i class="fa fa-chevron-left"></i> 新手写swift应该注意什么
               </a>
             
           </div>
@@ -433,10 +451,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/06/APP的资源提取方法/" rel="prev" title="APP的资源提取方法">
-                APP的资源提取方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -463,7 +477,7 @@
   <div class="comments" id="comments">
     
       <div class="fb-comments"
-           data-href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/"
+           data-href="http://yoursite.com/2016/12/06/APP的资源提取方法/"
            data-numposts="10"
            data-width="100%"
            data-colorscheme="light">
@@ -563,7 +577,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新手写Swift应该注意什么（Style）"><span class="nav-number">1.</span> <span class="nav-text">新手写Swift应该注意什么（Style）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#省略句末的分号"><span class="nav-number">1.0.1.</span> <span class="nav-text">省略句末的分号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#省略self"><span class="nav-number">1.0.2.</span> <span class="nav-text">省略self.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型声明的一些注意点"><span class="nav-number">1.0.3.</span> <span class="nav-text">类型声明的一些注意点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数名的后面与-之间需要一个空格"><span class="nav-number">1.0.4.</span> <span class="nav-text">函数名的后面与{ }之间需要一个空格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象初始化的时候不要调用init方法"><span class="nav-number">1.0.5.</span> <span class="nav-text">对象初始化的时候不要调用init方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数命名规则"><span class="nav-number">1.0.6.</span> <span class="nav-text">函数参数命名规则</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#其他的相关风格可以参考："><span class="nav-number">1.0.6.0.0.1.</span> <span class="nav-text">其他的相关风格可以参考：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#APP的资源提取方法"><span class="nav-number">1.</span> <span class="nav-text">APP的资源提取方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#打开iTunes-找到应用。-前提是你已经买过了"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">打开iTunes,找到应用。(前提是你已经买过了)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将app拖到桌面上，然后将-api格式转换成-zip格式。"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">将app拖到桌面上，然后将.api格式转换成.zip格式。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
