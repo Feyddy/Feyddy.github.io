@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Swift代码风格，新手指导," />
+  <meta name="keywords" content="iOS，appearence，UITabBarItem等对象统一设置," />
 
 
 
@@ -84,25 +84,19 @@
 
 
 
-<meta name="description" content="新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
-省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
-注：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。
-12345//tableVi">
+<meta name="description" content="在开发过程中，有时候需要对一些对象进行统一的属性设置，例如，对UITabBarItem的显示的文字属性进行统一设置。这样的话，我们就可以使用appearence来做，而不是一个一个UITabBarItem设置。
+通过UITabBarItem的appearance对象统一设置：1234567891011/**** 设置所有UITabBarItem的文字属性 ****/UITabBarItem *it">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新手写swift应该注意什么">
-<meta property="og:url" content="http://yoursite.com/2016/12/06/新手写swift应该注意什么/index.html">
+<meta property="og:title" content="iOS中appearence的特殊用法">
+<meta property="og:url" content="http://yoursite.com/2016/12/06/iOS中appearence的特殊用法/index.html">
 <meta property="og:site_name" content="清风明心">
-<meta property="og:description" content="新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
-省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
-注：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。
-12345//tableVi">
-<meta property="og:updated_time" content="2016-12-06T13:28:56.000Z">
+<meta property="og:description" content="在开发过程中，有时候需要对一些对象进行统一的属性设置，例如，对UITabBarItem的显示的文字属性进行统一设置。这样的话，我们就可以使用appearence来做，而不是一个一个UITabBarItem设置。
+通过UITabBarItem的appearance对象统一设置：1234567891011/**** 设置所有UITabBarItem的文字属性 ****/UITabBarItem *it">
+<meta property="og:updated_time" content="2016-12-06T16:07:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新手写swift应该注意什么">
-<meta name="twitter:description" content="新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
-省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
-注：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。
-12345//tableVi">
+<meta name="twitter:title" content="iOS中appearence的特殊用法">
+<meta name="twitter:description" content="在开发过程中，有时候需要对一些对象进行统一的属性设置，例如，对UITabBarItem的显示的文字属性进行统一设置。这样的话，我们就可以使用appearence来做，而不是一个一个UITabBarItem设置。
+通过UITabBarItem的appearance对象统一设置：1234567891011/**** 设置所有UITabBarItem的文字属性 ****/UITabBarItem *it">
 
 
 
@@ -130,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/06/iOS中appearence的特殊用法/"/>
 
 
 
 
 
-  <title> 新手写swift应该注意什么 | 清风明心 </title>
+  <title> iOS中appearence的特殊用法 | 清风明心 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -285,7 +279,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/06/iOS中appearence的特殊用法/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Feyddy">
@@ -309,7 +303,7 @@
             
             
               
-                新手写swift应该注意什么
+                iOS中appearence的特殊用法
               
             
           </h1>
@@ -322,7 +316,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-06T21:08:55+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-06T23:54:55+08:00">
                 2016-12-06
               </time>
             
@@ -341,8 +335,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -356,8 +350,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/06/新手写swift应该注意什么/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/" itemprop="commentCount">0</span> comments
+                <a href="/2016/12/06/iOS中appearence的特殊用法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/06/iOS中appearence的特殊用法/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -367,7 +361,7 @@
 
           
           
-             <span id="/2016/12/06/新手写swift应该注意什么/" class="leancloud_visitors" data-flag-title="新手写swift应该注意什么">
+             <span id="/2016/12/06/iOS中appearence的特殊用法/" class="leancloud_visitors" data-flag-title="iOS中appearence的特殊用法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,21 +391,12 @@
       
 
       
-        <h1 id="新手写Swift应该注意什么（Style）"><a href="#新手写Swift应该注意什么（Style）" class="headerlink" title="新手写Swift应该注意什么（Style）"></a>新手写Swift应该注意什么（Style）</h1><p>每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。</p>
-<h3 id="省略句末的分号"><a href="#省略句末的分号" class="headerlink" title="省略句末的分号"></a>省略句末的分号</h3><p>Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。</p>
-<p><strong>注</strong>：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//tableView设置</span></div><div class="line">        tableView.estimatedRowHeight = <span class="number">200</span></div><div class="line">        tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></div><div class="line">        tableView.delegate = <span class="keyword">self</span></div><div class="line">        tableView.dataSource = <span class="keyword">self</span></div></pre></td></tr></table></figure>
-<h3 id="省略self"><a href="#省略self" class="headerlink" title="省略self."></a>省略self.</h3><p>不在闭包里面的时候，如果要调用自身的属性或者方法时省略self.。这是苹果强烈建议的，因为这样可以使得代码变得简介。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//2.执行动画</span></div><div class="line">       <span class="type">UIView</span>.animateWithDuration(<span class="number">1.0</span>, animations: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">           <span class="keyword">self</span>.tipLabel.transform = <span class="type">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, <span class="number">44</span>)</div><div class="line">           &#125;) &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">               <span class="type">UIView</span>.animateWithDuration(<span class="number">1.0</span>, delay: <span class="number">2.0</span>, options: <span class="type">UIViewAnimationOptions</span>(rawValue: <span class="number">0</span>), animations: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                   <span class="keyword">self</span>.tipLabel.transform = <span class="type">CGAffineTransformIdentity</span></div><div class="line">                   &#125;, completion: &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                        <span class="keyword">self</span>.tipLabel.hidden = <span class="literal">true</span></div><div class="line">               &#125;)</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<h3 id="类型声明的一些注意点"><a href="#类型声明的一些注意点" class="headerlink" title="类型声明的一些注意点"></a>类型声明的一些注意点</h3><p>在声明变量的时候，<code>:</code>要紧跟变量名后面，但是类型与冒号之间需要一个空格。另外，字典类型的声明也是需要遵守这样的规则的。(可以使用<a href="https://github.com/realm/SwiftLint" target="_blank" rel="external">SwiftLint</a>来帮你检查)</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a: <span class="type">String</span> </div><div class="line"><span class="keyword">var</span> dict: [<span class="type">String</span>: <span class="type">AnyObject</span>]</div></pre></td></tr></table></figure>
-<h3 id="函数名的后面与-之间需要一个空格"><a href="#函数名的后面与-之间需要一个空格" class="headerlink" title="函数名的后面与{ }之间需要一个空格"></a>函数名的后面与{ }之间需要一个空格</h3><p>下面是标准的函数与法：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注</strong>： 二元操作符（+、-、*、/、%）的前后都有空格的，包含返回类型符号（-&gt;）。</p>
-<h3 id="对象初始化的时候不要调用init方法"><a href="#对象初始化的时候不要调用init方法" class="headerlink" title="对象初始化的时候不要调用init方法"></a>对象初始化的时候不要调用init方法</h3><p>Swift语言通过()就已经调用对象的初始化方法了，因此不需要在调用init()。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>()<span class="comment">//正确</span></div><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>.<span class="keyword">init</span>()<span class="comment">//错误</span></div></pre></td></tr></table></figure>
-<h3 id="函数参数命名规则"><a href="#函数参数命名规则" class="headerlink" title="函数参数命名规则"></a>函数参数命名规则</h3><p>因为OC的第一个参数名是省略的所以会把第一个参数名直接带到方法名上。但是Swift3.0之后，在方法调用时，第一个参数名也是会展现出来的。所以函数命名的时候要注意命名的简洁性，比如不需要再加什么：with、and等连接词了。</p>
-<h6 id="其他的相关风格可以参考："><a href="#其他的相关风格可以参考：" class="headerlink" title="其他的相关风格可以参考："></a>其他的相关风格可以参考：</h6><p><a href="https://github.com/Artwalk/swift-style-guide/blob/master/README_CN.md" target="_blank" rel="external">swift-style-guide</a></p>
+        <p>在开发过程中，有时候需要对一些对象进行统一的属性设置，例如，对UITabBarItem的显示的文字属性进行统一设置。这样的话，我们就可以使用appearence来做，而不是一个一个UITabBarItem设置。</p>
+<h6 id="通过UITabBarItem的appearance对象统一设置："><a href="#通过UITabBarItem的appearance对象统一设置：" class="headerlink" title="通过UITabBarItem的appearance对象统一设置："></a>通过UITabBarItem的appearance对象统一设置：</h6><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**** 设置所有UITabBarItem的文字属性 ****/</span></div><div class="line"><span class="built_in">UITabBarItem</span> *item = [<span class="built_in">UITabBarItem</span> appearance];</div><div class="line"><span class="comment">// 普通状态下的文字属性</span></div><div class="line"><span class="built_in">NSMutableDictionary</span> *normalAttrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">normalAttrs[<span class="built_in">NSFontAttributeName</span>] = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">14</span>];</div><div class="line">normalAttrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> grayColor];</div><div class="line">[item setTitleTextAttributes:normalAttrs forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line"><span class="comment">// 选中状态下的文字属性</span></div><div class="line"><span class="built_in">NSMutableDictionary</span> *selectedAttrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">selectedAttrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> darkGrayColor];</div><div class="line">[item setTitleTextAttributes:normalAttrs forState:<span class="built_in">UIControlStateSelected</span>];</div></pre></td></tr></table></figure>
+<p>当然不仅仅是UITabBarItem对象可以使用，凡是在对象属性后面有UI_APPEARANCE_SELECTOR的字样的，都是可以通过appearence来统一设置。</p>
+<p><strong>注</strong>：必须在创建每个对象之前进行统一的设置。</p>
+<p>如果在对象创建完成后还想通过appearence来设置属性，就必须先将视图移除，然后在添加上去。如下：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">\<span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="built_in">UISwitch</span> *s1 = [[<span class="built_in">UISwitch</span> alloc] init];</div><div class="line">    s1.center = <span class="built_in">CGPointMake</span>(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    s1.on = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.view addSubview:s1];</div><div class="line">    <span class="built_in">UISwitch</span> *s2 = [[<span class="built_in">UISwitch</span> alloc] init];</div><div class="line">    s2.center = <span class="built_in">CGPointMake</span>(<span class="number">200</span>, <span class="number">100</span>);</div><div class="line">    s2.on = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.view addSubview:s2];</div><div class="line">    <span class="built_in">UISwitch</span> *s3 = [[<span class="built_in">UISwitch</span> alloc] init];</div><div class="line">    s3.center = <span class="built_in">CGPointMake</span>(<span class="number">300</span>, <span class="number">100</span>);</div><div class="line">    s3.on = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.view addSubview:s3];</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">IBAction</span>)changeColor:(<span class="built_in">UISegmentedControl</span> *)sender &#123;</div><div class="line">    <span class="keyword">switch</span> (sender.selectedSegmentIndex) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">            [<span class="built_in">UISwitch</span> appearance].onTintColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            [<span class="built_in">UISwitch</span> appearance].onTintColor = [<span class="built_in">UIColor</span> blueColor];</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">            [<span class="built_in">UISwitch</span> appearance].onTintColor = [<span class="built_in">UIColor</span> orangeColor];</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//重新添加控件，如果不重新添加控件就不会刷新设置。</span></div><div class="line">    [<span class="keyword">self</span>.view removeFromSuperview];<span class="comment">//因为控制器的view都是强引用的，所以移除之后没有被销毁掉</span></div><div class="line">    [[<span class="built_in">UIApplication</span> sharedApplication].keyWindow addSubview:<span class="keyword">self</span>.view];</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -435,7 +420,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift代码风格，新手指导/" rel="tag"># Swift代码风格，新手指导</a>
+            <a href="/tags/iOS，appearence，UITabBarItem等对象统一设置/" rel="tag"># iOS，appearence，UITabBarItem等对象统一设置</a>
           
         </div>
       
@@ -444,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/05/Markdown新手教程/" rel="next" title="Markdown新手教程">
-                <i class="fa fa-chevron-left"></i> Markdown新手教程
+              <a href="/2016/12/06/新建控制器时自动加上一个前缀/" rel="next" title="新建控制器时自动加上一个前缀">
+                <i class="fa fa-chevron-left"></i> 新建控制器时自动加上一个前缀
               </a>
             
           </div>
@@ -453,10 +438,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/06/APP的资源提取方法/" rel="prev" title="APP的资源提取方法">
-                APP的资源提取方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -483,7 +464,7 @@
   <div class="comments" id="comments">
     
       <div class="fb-comments"
-           data-href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/"
+           data-href="http://yoursite.com/2016/12/06/iOS中appearence的特殊用法/"
            data-numposts="10"
            data-width="100%"
            data-colorscheme="light">
@@ -603,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新手写Swift应该注意什么（Style）"><span class="nav-number">1.</span> <span class="nav-text">新手写Swift应该注意什么（Style）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#省略句末的分号"><span class="nav-number">1.0.1.</span> <span class="nav-text">省略句末的分号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#省略self"><span class="nav-number">1.0.2.</span> <span class="nav-text">省略self.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型声明的一些注意点"><span class="nav-number">1.0.3.</span> <span class="nav-text">类型声明的一些注意点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数名的后面与-之间需要一个空格"><span class="nav-number">1.0.4.</span> <span class="nav-text">函数名的后面与{ }之间需要一个空格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象初始化的时候不要调用init方法"><span class="nav-number">1.0.5.</span> <span class="nav-text">对象初始化的时候不要调用init方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数命名规则"><span class="nav-number">1.0.6.</span> <span class="nav-text">函数参数命名规则</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#其他的相关风格可以参考："><span class="nav-number">1.0.6.0.0.1.</span> <span class="nav-text">其他的相关风格可以参考：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#通过UITabBarItem的appearance对象统一设置："><span class="nav-number">1.</span> <span class="nav-text">通过UITabBarItem的appearance对象统一设置：</span></a></li></ol></div>
             
 
           </div>
