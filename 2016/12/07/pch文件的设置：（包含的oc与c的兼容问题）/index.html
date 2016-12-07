@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Swift代码风格，新手指导," />
+  <meta name="keywords" content="pch文件，宏定义," />
 
 
 
@@ -84,25 +84,43 @@
 
 
 
-<meta name="description" content="新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
-省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
-注：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。
-12345//tableVi">
+<meta name="description" content="首先我们先建立一个pch文件，然后与项目进行配置。如下：
+
+
+这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为$(SRCROOT)+项目名+pch文件名。如下：
+
+到这里我们的pch文件就和项目关联上了。
+
+接下来如果在项目中需要兼容C语言文件的时候，就需要设置一下#ifdef __OBJC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新手写swift应该注意什么">
-<meta property="og:url" content="http://yoursite.com/2016/12/06/新手写swift应该注意什么/index.html">
+<meta property="og:title" content="pch文件的设置以及宏定义的注意事项：（包含的oc与c的兼容问题）">
+<meta property="og:url" content="http://yoursite.com/2016/12/07/pch文件的设置：（包含的oc与c的兼容问题）/index.html">
 <meta property="og:site_name" content="清风明心">
-<meta property="og:description" content="新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
-省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
-注：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。
-12345//tableVi">
-<meta property="og:updated_time" content="2016-12-06T13:28:56.000Z">
+<meta property="og:description" content="首先我们先建立一个pch文件，然后与项目进行配置。如下：
+
+
+这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为$(SRCROOT)+项目名+pch文件名。如下：
+
+到这里我们的pch文件就和项目关联上了。
+
+接下来如果在项目中需要兼容C语言文件的时候，就需要设置一下#ifdef __OBJC">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2mxk4g5j20uz0i8whm.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2sgsfwij20jl05g3z7.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/e3aca1a1jw1fai3952o3oj208l0ktgn9.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/e3aca1a1jw1fai382ve8xj20vf0clacj.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/e3aca1a1jw1fai3952o3oj208l0ktgn9.jpg">
+<meta property="og:updated_time" content="2016-12-07T13:05:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新手写swift应该注意什么">
-<meta name="twitter:description" content="新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
-省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
-注：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。
-12345//tableVi">
+<meta name="twitter:title" content="pch文件的设置以及宏定义的注意事项：（包含的oc与c的兼容问题）">
+<meta name="twitter:description" content="首先我们先建立一个pch文件，然后与项目进行配置。如下：
+
+
+这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为$(SRCROOT)+项目名+pch文件名。如下：
+
+到这里我们的pch文件就和项目关联上了。
+
+接下来如果在项目中需要兼容C语言文件的时候，就需要设置一下#ifdef __OBJC">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2mxk4g5j20uz0i8whm.jpg">
 
 
 
@@ -130,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/07/pch文件的设置：（包含的oc与c的兼容问题）/"/>
 
 
 
 
 
-  <title> 新手写swift应该注意什么 | 清风明心 </title>
+  <title> pch文件的设置以及宏定义的注意事项：（包含的oc与c的兼容问题） | 清风明心 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -285,7 +303,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/07/pch文件的设置：（包含的oc与c的兼容问题）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Feyddy">
@@ -309,7 +327,7 @@
             
             
               
-                新手写swift应该注意什么
+                pch文件的设置以及宏定义的注意事项：（包含的oc与c的兼容问题）
               
             
           </h1>
@@ -322,8 +340,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-06T21:08:55+08:00">
-                2016-12-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-07T21:03:41+08:00">
+                2016-12-07
               </time>
             
 
@@ -341,8 +359,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Swift/" itemprop="url" rel="index">
-                    <span itemprop="name">Swift</span>
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
                   </a>
                 </span>
 
@@ -356,8 +374,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/06/新手写swift应该注意什么/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/" itemprop="commentCount">0</span> comments
+                <a href="/2016/12/07/pch文件的设置：（包含的oc与c的兼容问题）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/07/pch文件的设置：（包含的oc与c的兼容问题）/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -367,7 +385,7 @@
 
           
           
-             <span id="/2016/12/06/新手写swift应该注意什么/" class="leancloud_visitors" data-flag-title="新手写swift应该注意什么">
+             <span id="/2016/12/07/pch文件的设置：（包含的oc与c的兼容问题）/" class="leancloud_visitors" data-flag-title="pch文件的设置以及宏定义的注意事项：（包含的oc与c的兼容问题）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -397,21 +415,39 @@
       
 
       
-        <h1 id="新手写Swift应该注意什么（Style）"><a href="#新手写Swift应该注意什么（Style）" class="headerlink" title="新手写Swift应该注意什么（Style）"></a>新手写Swift应该注意什么（Style）</h1><p>每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。</p>
-<h3 id="省略句末的分号"><a href="#省略句末的分号" class="headerlink" title="省略句末的分号"></a>省略句末的分号</h3><p>Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。</p>
-<p><strong>注</strong>：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//tableView设置</span></div><div class="line">        tableView.estimatedRowHeight = <span class="number">200</span></div><div class="line">        tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></div><div class="line">        tableView.delegate = <span class="keyword">self</span></div><div class="line">        tableView.dataSource = <span class="keyword">self</span></div></pre></td></tr></table></figure>
-<h3 id="省略self"><a href="#省略self" class="headerlink" title="省略self."></a>省略self.</h3><p>不在闭包里面的时候，如果要调用自身的属性或者方法时省略self.。这是苹果强烈建议的，因为这样可以使得代码变得简介。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//2.执行动画</span></div><div class="line">       <span class="type">UIView</span>.animateWithDuration(<span class="number">1.0</span>, animations: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">           <span class="keyword">self</span>.tipLabel.transform = <span class="type">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, <span class="number">44</span>)</div><div class="line">           &#125;) &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">               <span class="type">UIView</span>.animateWithDuration(<span class="number">1.0</span>, delay: <span class="number">2.0</span>, options: <span class="type">UIViewAnimationOptions</span>(rawValue: <span class="number">0</span>), animations: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                   <span class="keyword">self</span>.tipLabel.transform = <span class="type">CGAffineTransformIdentity</span></div><div class="line">                   &#125;, completion: &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                        <span class="keyword">self</span>.tipLabel.hidden = <span class="literal">true</span></div><div class="line">               &#125;)</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<h3 id="类型声明的一些注意点"><a href="#类型声明的一些注意点" class="headerlink" title="类型声明的一些注意点"></a>类型声明的一些注意点</h3><p>在声明变量的时候，<code>:</code>要紧跟变量名后面，但是类型与冒号之间需要一个空格。另外，字典类型的声明也是需要遵守这样的规则的。(可以使用<a href="https://github.com/realm/SwiftLint" target="_blank" rel="external">SwiftLint</a>来帮你检查)</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a: <span class="type">String</span> </div><div class="line"><span class="keyword">var</span> dict: [<span class="type">String</span>: <span class="type">AnyObject</span>]</div></pre></td></tr></table></figure>
-<h3 id="函数名的后面与-之间需要一个空格"><a href="#函数名的后面与-之间需要一个空格" class="headerlink" title="函数名的后面与{ }之间需要一个空格"></a>函数名的后面与{ }之间需要一个空格</h3><p>下面是标准的函数与法：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注</strong>： 二元操作符（+、-、*、/、%）的前后都有空格的，包含返回类型符号（-&gt;）。</p>
-<h3 id="对象初始化的时候不要调用init方法"><a href="#对象初始化的时候不要调用init方法" class="headerlink" title="对象初始化的时候不要调用init方法"></a>对象初始化的时候不要调用init方法</h3><p>Swift语言通过()就已经调用对象的初始化方法了，因此不需要在调用init()。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>()<span class="comment">//正确</span></div><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>.<span class="keyword">init</span>()<span class="comment">//错误</span></div></pre></td></tr></table></figure>
-<h3 id="函数参数命名规则"><a href="#函数参数命名规则" class="headerlink" title="函数参数命名规则"></a>函数参数命名规则</h3><p>因为OC的第一个参数名是省略的所以会把第一个参数名直接带到方法名上。但是Swift3.0之后，在方法调用时，第一个参数名也是会展现出来的。所以函数命名的时候要注意命名的简洁性，比如不需要再加什么：with、and等连接词了。</p>
-<h6 id="其他的相关风格可以参考："><a href="#其他的相关风格可以参考：" class="headerlink" title="其他的相关风格可以参考："></a>其他的相关风格可以参考：</h6><p><a href="https://github.com/Artwalk/swift-style-guide/blob/master/README_CN.md" target="_blank" rel="external">swift-style-guide</a></p>
+        <ul>
+<li>首先我们先建立一个pch文件，然后与项目进行配置。如下：</li>
+</ul>
+<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2mxk4g5j20uz0i8whm.jpg" alt="image"></p>
+<p>这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为<strong>$(SRCROOT)</strong>+<strong>项目名</strong>+<strong>pch文件名</strong>。如下：</p>
+<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2sgsfwij20jl05g3z7.jpg" alt="image"></p>
+<p>到这里我们的pch文件就和项目关联上了。</p>
+<ul>
+<li>接下来如果在项目中需要兼容C语言文件的时候，就需要设置一下<code>#ifdef __OBJC__</code>。</li>
+</ul>
+<p>否则会出现以下的错误提示：</p>
+<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fai3952o3oj208l0ktgn9.jpg" alt="image"></p>
+<p>具体实现方案：</p>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/</span></div><div class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></div><div class="line">\<span class="meta">#ifdef __OBJC__</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  日志</div><div class="line"> *  在Debug模式下，输出内容</div><div class="line"> */</div><div class="line">\<span class="meta">#ifdef DEBUG</span></div><div class="line">\<span class="meta">#define DLOG(...)   NSLog(__VA_ARGS__)</span></div><div class="line">\<span class="meta">#endif</span></div><div class="line">\<span class="meta">#endif</span></div><div class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>配置宏有两种方式</p>
+<ol>
+<li>在pch文件中或者在每个类文件中创建代码来设置宏定义。</li>
+<li><p>在<strong>Build Setting</strong>中配置宏。</p>
+<ul>
+<li><p>如果项目中有些宏找不到, 可能是配置在Build Setting中</p>
+<p><img src="http://ww2.sinaimg.cn/large/e3aca1a1jw1fai382ve8xj20vf0clacj.jpg" alt="image"></p>
+</li>
+<li><p>注意点:宏的名字不能全部是小写字母</p>
+</li>
+<li><p>如果宏的名字全部是小写, 会出现以下错误</p>
+<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fai3952o3oj208l0ktgn9.jpg" alt="image"></p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
 
       
     </div>
@@ -435,7 +471,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Swift代码风格，新手指导/" rel="tag"># Swift代码风格，新手指导</a>
+            <a href="/tags/pch文件，宏定义/" rel="tag"># pch文件，宏定义</a>
           
         </div>
       
@@ -444,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/05/Markdown新手教程/" rel="next" title="Markdown新手教程">
-                <i class="fa fa-chevron-left"></i> Markdown新手教程
+              <a href="/2016/12/06/iOS中appearence的特殊用法/" rel="next" title="iOS中appearence的特殊用法">
+                <i class="fa fa-chevron-left"></i> iOS中appearence的特殊用法
               </a>
             
           </div>
@@ -453,10 +489,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/06/APP的资源提取方法/" rel="prev" title="APP的资源提取方法">
-                APP的资源提取方法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -483,7 +515,7 @@
   <div class="comments" id="comments">
     
       <div class="fb-comments"
-           data-href="http://yoursite.com/2016/12/06/新手写swift应该注意什么/"
+           data-href="http://yoursite.com/2016/12/07/pch文件的设置：（包含的oc与c的兼容问题）/"
            data-numposts="10"
            data-width="100%"
            data-colorscheme="light">
@@ -510,17 +542,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
@@ -593,22 +616,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#新手写Swift应该注意什么（Style）"><span class="nav-number">1.</span> <span class="nav-text">新手写Swift应该注意什么（Style）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#省略句末的分号"><span class="nav-number">1.0.1.</span> <span class="nav-text">省略句末的分号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#省略self"><span class="nav-number">1.0.2.</span> <span class="nav-text">省略self.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型声明的一些注意点"><span class="nav-number">1.0.3.</span> <span class="nav-text">类型声明的一些注意点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数名的后面与-之间需要一个空格"><span class="nav-number">1.0.4.</span> <span class="nav-text">函数名的后面与{ }之间需要一个空格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象初始化的时候不要调用init方法"><span class="nav-number">1.0.5.</span> <span class="nav-text">对象初始化的时候不要调用init方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数参数命名规则"><span class="nav-number">1.0.6.</span> <span class="nav-text">函数参数命名规则</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#其他的相关风格可以参考："><span class="nav-number">1.0.6.0.0.1.</span> <span class="nav-text">其他的相关风格可以参考：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
