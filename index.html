@@ -389,22 +389,24 @@
       
         
           
-            <h4 id="比如"><a href="#比如" class="headerlink" title="比如"></a>比如</h4><ul>
-<li>设置tabBarItem的选中图片</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vc.tabBarItem.selectedImage = image;</div></pre></td></tr></table></figure>
-<p>我使用的图片都是灰色的，但是选中之后出现下面的效果</p>
-<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai1ix7xu6j20a90j3q33.jpg" alt="image"></p>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
-<li>再次产生一张不会进行渲染的图片</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 加载图片</span></div><div class="line"><span class="built_in">UIImage</span> *tempImage = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"tabBar_essence_click_icon"</span>];</div><div class="line"><span class="comment">// 产生一张不会进行自动渲染的图片</span></div><div class="line"><span class="built_in">UIImage</span> *selectedImage = [tempImage imageWithRenderingMode:<span class="built_in">UIImageRenderingModeAlwaysOriginal</span>];</div><div class="line">vc.tabBarItem.selectedImage = selectedImage;</div></pre></td></tr></table></figure>
-<ul>
-<li>直接在<code>Assets.xcassets</code>中设置（推荐）</li>
-</ul>
-<p><img src="http://ww1.sinaimg.cn/large/e3aca1a1jw1fai1nq2yy8j211f0cytbb.jpg" alt="image"></p>
+          比如
+设置tabBarItem的选中图片
 
-          
+1vc.tabBarItem.selectedImage = image;
+我使用的图片都是灰色的，但是选中之后出现下面的效果
+
+解决方案
+再次产生一张不会进行渲染的图片
+
+12345// 加载图片UIImage *tempImage = [UIImage
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/07/在设置一些控件的图片时，有些图片显示出来会自动渲染成蓝色/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -553,41 +555,21 @@
       
         
           
-            <ul>
-<li>首先我们先建立一个pch文件，然后与项目进行配置。如下：</li>
-</ul>
-<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2mxk4g5j20uz0i8whm.jpg" alt="image"></p>
-<p>这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为<strong>$(SRCROOT)</strong>+<strong>项目名</strong>+<strong>pch文件名</strong>。如下：</p>
-<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2sgsfwij20jl05g3z7.jpg" alt="image"></p>
-<p>到这里我们的pch文件就和项目关联上了。</p>
-<ul>
-<li>接下来如果在项目中需要兼容C语言文件的时候，就需要设置一下<code>#ifdef __OBJC__</code>。</li>
-</ul>
-<p>否则会出现以下的错误提示：</p>
-<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fai3952o3oj208l0ktgn9.jpg" alt="image"></p>
-<p>具体实现方案：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/</span></div><div class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></div><div class="line">\<span class="meta">#ifdef __OBJC__</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  日志</div><div class="line"> *  在Debug模式下，输出内容</div><div class="line"> */</div><div class="line">\<span class="meta">#ifdef DEBUG</span></div><div class="line">\<span class="meta">#define DLOG(...)   NSLog(__VA_ARGS__)</span></div><div class="line">\<span class="meta">#endif</span></div><div class="line">\<span class="meta">#endif</span></div><div class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></div></pre></td></tr></table></figure>
-<ul>
-<li><p>配置宏有两种方式</p>
-<ol>
-<li>在pch文件中或者在每个类文件中创建代码来设置宏定义。</li>
-<li><p>在<strong>Build Setting</strong>中配置宏。</p>
-<ul>
-<li><p>如果项目中有些宏找不到, 可能是配置在Build Setting中</p>
-<p><img src="http://ww2.sinaimg.cn/large/e3aca1a1jw1fai382ve8xj20vf0clacj.jpg" alt="image"></p>
-</li>
-<li><p>注意点:宏的名字不能全部是小写字母</p>
-</li>
-<li><p>如果宏的名字全部是小写, 会出现以下错误</p>
-<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fai3952o3oj208l0ktgn9.jpg" alt="image"></p>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-
           
+首先我们先建立一个pch文件，然后与项目进行配置。如下：
+
+
+这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为$(SRCROOT)+项目名+pch文件名。如下：
+
+到这里我们的pch文件就和项
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/07/pch文件的设置：（包含的oc与c的兼容问题）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -736,14 +718,16 @@
       
         
           
-            <p>在开发过程中，有时候需要对一些对象进行统一的属性设置，例如，对UITabBarItem的显示的文字属性进行统一设置。这样的话，我们就可以使用appearence来做，而不是一个一个UITabBarItem设置。</p>
-<h6 id="通过UITabBarItem的appearance对象统一设置："><a href="#通过UITabBarItem的appearance对象统一设置：" class="headerlink" title="通过UITabBarItem的appearance对象统一设置："></a>通过UITabBarItem的appearance对象统一设置：</h6><figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**** 设置所有UITabBarItem的文字属性 ****/</span></div><div class="line"><span class="built_in">UITabBarItem</span> *item = [<span class="built_in">UITabBarItem</span> appearance];</div><div class="line"><span class="comment">// 普通状态下的文字属性</span></div><div class="line"><span class="built_in">NSMutableDictionary</span> *normalAttrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">normalAttrs[<span class="built_in">NSFontAttributeName</span>] = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">14</span>];</div><div class="line">normalAttrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> grayColor];</div><div class="line">[item setTitleTextAttributes:normalAttrs forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line"><span class="comment">// 选中状态下的文字属性</span></div><div class="line"><span class="built_in">NSMutableDictionary</span> *selectedAttrs = [<span class="built_in">NSMutableDictionary</span> dictionary];</div><div class="line">selectedAttrs[<span class="built_in">NSForegroundColorAttributeName</span>] = [<span class="built_in">UIColor</span> darkGrayColor];</div><div class="line">[item setTitleTextAttributes:normalAttrs forState:<span class="built_in">UIControlStateSelected</span>];</div></pre></td></tr></table></figure>
-<p>当然不仅仅是UITabBarItem对象可以使用，凡是在对象属性后面有UI_APPEARANCE_SELECTOR的字样的，都是可以通过appearence来统一设置。</p>
-<p><strong>注</strong>：必须在创建每个对象之前进行统一的设置。</p>
-<p>如果在对象创建完成后还想通过appearence来设置属性，就必须先将视图移除，然后在添加上去。如下：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">\<span class="meta">#import <span class="meta-string">"ViewController.h"</span></span></div><div class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">ViewController</span> ()</span></div><div class="line"><span class="keyword">@end</span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">ViewController</span></span></div><div class="line">- (<span class="keyword">void</span>)viewDidLoad &#123;</div><div class="line">    [<span class="keyword">super</span> viewDidLoad];</div><div class="line">    <span class="built_in">UISwitch</span> *s1 = [[<span class="built_in">UISwitch</span> alloc] init];</div><div class="line">    s1.center = <span class="built_in">CGPointMake</span>(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">    s1.on = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.view addSubview:s1];</div><div class="line">    <span class="built_in">UISwitch</span> *s2 = [[<span class="built_in">UISwitch</span> alloc] init];</div><div class="line">    s2.center = <span class="built_in">CGPointMake</span>(<span class="number">200</span>, <span class="number">100</span>);</div><div class="line">    s2.on = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.view addSubview:s2];</div><div class="line">    <span class="built_in">UISwitch</span> *s3 = [[<span class="built_in">UISwitch</span> alloc] init];</div><div class="line">    s3.center = <span class="built_in">CGPointMake</span>(<span class="number">300</span>, <span class="number">100</span>);</div><div class="line">    s3.on = <span class="literal">YES</span>;</div><div class="line">    [<span class="keyword">self</span>.view addSubview:s3];</div><div class="line">&#125;</div><div class="line">- (<span class="keyword">IBAction</span>)changeColor:(<span class="built_in">UISegmentedControl</span> *)sender &#123;</div><div class="line">    <span class="keyword">switch</span> (sender.selectedSegmentIndex) &#123;</div><div class="line">        <span class="keyword">case</span> <span class="number">0</span>:</div><div class="line">            [<span class="built_in">UISwitch</span> appearance].onTintColor = [<span class="built_in">UIColor</span> redColor];</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">            [<span class="built_in">UISwitch</span> appearance].onTintColor = [<span class="built_in">UIColor</span> blueColor];</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">            [<span class="built_in">UISwitch</span> appearance].onTintColor = [<span class="built_in">UIColor</span> orangeColor];</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//重新添加控件，如果不重新添加控件就不会刷新设置。</span></div><div class="line">    [<span class="keyword">self</span>.view removeFromSuperview];<span class="comment">//因为控制器的view都是强引用的，所以移除之后没有被销毁掉</span></div><div class="line">    [[<span class="built_in">UIApplication</span> sharedApplication].keyWindow addSubview:<span class="keyword">self</span>.view];</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
-
-          
+          在开发过程中，有时候需要对一些对象进行统一的属性设置，例如，对UITabBarItem的显示的文字属性进行统一设置。这样的话，我们就可以使用appearence来做，而不是一个一个UITabBarItem设置。
+通过UITabBarItem的appearance对象统一设置：123456789101
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/06/iOS中appearence的特殊用法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -892,11 +876,18 @@
       
         
           
-            <p>当我们在公司中开发项目的时候，一般每个公司都会在自己的项目代码类中加上一个前缀，来表明这是本公司创建的。那么怎么才能在我们创建类的时候就自动加上前缀呢？</p>
-<p>其实很简单，只需要按照下面图片展示的三步就可以轻松实现了。</p>
-<p><img src="http://ww1.sinaimg.cn/large/e3aca1a1jw1fahi7x1933j20d302odfy.jpg" alt="图片展示"></p>
+          当我们在公司中开发项目的时候，一般每个公司都会在自己的项目代码类中加上一个前缀，来表明这是本公司创建的。那么怎么才能在我们创建类的时候就自动加上前缀呢？
+其实很简单，只需要按照下面图片展示的三步就可以轻松实现了。
+
 
           
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/06/新建控制器时自动加上一个前缀/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1045,27 +1036,18 @@
       
         
           
-            <h1 id="APP的资源提取方法"><a href="#APP的资源提取方法" class="headerlink" title="APP的资源提取方法"></a>APP的资源提取方法</h1><h4 id="打开iTunes-找到应用。-前提是你已经买过了"><a href="#打开iTunes-找到应用。-前提是你已经买过了" class="headerlink" title="打开iTunes,找到应用。(前提是你已经买过了)"></a>打开iTunes,找到应用。(前提是你已经买过了)</h4><p><img src="http://ww2.sinaimg.cn/large/e3aca1a1jw1fah3utwpxxj20o0071dgj.jpg" alt="应用图片演示"></p>
-<h4 id="将app拖到桌面上，然后将-api格式转换成-zip格式。"><a href="#将app拖到桌面上，然后将-api格式转换成-zip格式。" class="headerlink" title="将app拖到桌面上，然后将.api格式转换成.zip格式。"></a>将app拖到桌面上，然后将.api格式转换成.zip格式。</h4><p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fah3ybmk2ej208o03cjre.jpg" alt="应用图片演示"></p>
-<h4 id="解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。"><a href="#解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。" class="headerlink" title="解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。"></a>解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。</h4><p><img src="http://ww1.sinaimg.cn/large/e3aca1a1jw1fah461q2afj20bp042wep.jpg" alt="应用图片演示"></p>
-<p><strong>注</strong>：有时候你会发现图片较少，这时候你可以找到一个文件叫<code>Assets.car</code>。这个里面很多资源压缩在里面。但是不能像之前一样使用.zip的格式解压。</p>
-<p>这时，我们需要一个工具<a href="https://github.com/steventroughtonsmith/cartool" target="_blank" rel="external">cartool</a>。</p>
-<ul>
-<li>下载完成后打开直接运行生成cartool</li>
-</ul>
-<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fah5aounmzj207p06amxl.jpg" alt="生成cartool图片"></p>
-<ul>
-<li>Finder打开cartool所在目录。</li>
-<li>打开终端，cd到cartool所在目录。</li>
-<li>创建一个接受解压后的图片的文件夹。（outputDirectory）</li>
-<li><p>在终端中执行以下命令：</p>
-<p>./cartool /xxx/Assets.car /xxx/outputDirectory</p>
-</li>
-</ul>
-<p><strong>注</strong>：第一个<code>xxx</code>是<code>Assets.car</code>的路径，第二个<code>xxx</code>是图片接受文件夹的路径，二者缺一不可。</p>
-<p>执行完成后，便可以显示出<code>Assets.car</code>里面的资源了。</p>
-
-          
+          APP的资源提取方法打开iTunes,找到应用。(前提是你已经买过了)
+将app拖到桌面上，然后将.api格式转换成.zip格式。
+解压后打开文件，找到Payload文件夹里面的项目，右击显示包内容。
+注：有时候你会发现图片较少，这时候你可以找到一个文件叫Assets.car。这个里面很多资源压缩在
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/06/APP的资源提取方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1214,23 +1196,16 @@
       
         
           
-            <h1 id="新手写Swift应该注意什么（Style）"><a href="#新手写Swift应该注意什么（Style）" class="headerlink" title="新手写Swift应该注意什么（Style）"></a>新手写Swift应该注意什么（Style）</h1><p>每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。</p>
-<h3 id="省略句末的分号"><a href="#省略句末的分号" class="headerlink" title="省略句末的分号"></a>省略句末的分号</h3><p>Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。</p>
-<p><strong>注</strong>：不写代码的情况只限于一行里面只有一句代码，其他情况建议直接换行。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//tableView设置</span></div><div class="line">        tableView.estimatedRowHeight = <span class="number">200</span></div><div class="line">        tableView.rowHeight = <span class="type">UITableViewAutomaticDimension</span></div><div class="line">        tableView.delegate = <span class="keyword">self</span></div><div class="line">        tableView.dataSource = <span class="keyword">self</span></div></pre></td></tr></table></figure>
-<h3 id="省略self"><a href="#省略self" class="headerlink" title="省略self."></a>省略self.</h3><p>不在闭包里面的时候，如果要调用自身的属性或者方法时省略self.。这是苹果强烈建议的，因为这样可以使得代码变得简介。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//2.执行动画</span></div><div class="line">       <span class="type">UIView</span>.animateWithDuration(<span class="number">1.0</span>, animations: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">           <span class="keyword">self</span>.tipLabel.transform = <span class="type">CGAffineTransformMakeTranslation</span>(<span class="number">0</span>, <span class="number">44</span>)</div><div class="line">           &#125;) &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">               <span class="type">UIView</span>.animateWithDuration(<span class="number">1.0</span>, delay: <span class="number">2.0</span>, options: <span class="type">UIViewAnimationOptions</span>(rawValue: <span class="number">0</span>), animations: &#123; () -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                   <span class="keyword">self</span>.tipLabel.transform = <span class="type">CGAffineTransformIdentity</span></div><div class="line">                   &#125;, completion: &#123; (<span class="number">_</span>) -&gt; <span class="type">Void</span> <span class="keyword">in</span></div><div class="line">                        <span class="keyword">self</span>.tipLabel.hidden = <span class="literal">true</span></div><div class="line">               &#125;)</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
-<h3 id="类型声明的一些注意点"><a href="#类型声明的一些注意点" class="headerlink" title="类型声明的一些注意点"></a>类型声明的一些注意点</h3><p>在声明变量的时候，<code>:</code>要紧跟变量名后面，但是类型与冒号之间需要一个空格。另外，字典类型的声明也是需要遵守这样的规则的。(可以使用<a href="https://github.com/realm/SwiftLint" target="_blank" rel="external">SwiftLint</a>来帮你检查)</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a: <span class="type">String</span> </div><div class="line"><span class="keyword">var</span> dict: [<span class="type">String</span>: <span class="type">AnyObject</span>]</div></pre></td></tr></table></figure>
-<h3 id="函数名的后面与-之间需要一个空格"><a href="#函数名的后面与-之间需要一个空格" class="headerlink" title="函数名的后面与{ }之间需要一个空格"></a>函数名的后面与{ }之间需要一个空格</h3><p>下面是标准的函数与法：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注</strong>： 二元操作符（+、-、*、/、%）的前后都有空格的，包含返回类型符号（-&gt;）。</p>
-<h3 id="对象初始化的时候不要调用init方法"><a href="#对象初始化的时候不要调用init方法" class="headerlink" title="对象初始化的时候不要调用init方法"></a>对象初始化的时候不要调用init方法</h3><p>Swift语言通过()就已经调用对象的初始化方法了，因此不需要在调用init()。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>()<span class="comment">//正确</span></div><div class="line"><span class="keyword">let</span> btn = <span class="type">UIButton</span>.<span class="keyword">init</span>()<span class="comment">//错误</span></div></pre></td></tr></table></figure>
-<h3 id="函数参数命名规则"><a href="#函数参数命名规则" class="headerlink" title="函数参数命名规则"></a>函数参数命名规则</h3><p>因为OC的第一个参数名是省略的所以会把第一个参数名直接带到方法名上。但是Swift3.0之后，在方法调用时，第一个参数名也是会展现出来的。所以函数命名的时候要注意命名的简洁性，比如不需要再加什么：with、and等连接词了。</p>
-<h6 id="其他的相关风格可以参考："><a href="#其他的相关风格可以参考：" class="headerlink" title="其他的相关风格可以参考："></a>其他的相关风格可以参考：</h6><p><a href="https://github.com/Artwalk/swift-style-guide/blob/master/README_CN.md" target="_blank" rel="external">swift-style-guide</a></p>
-
-          
+          新手写Swift应该注意什么（Style）每个语言都有自己的推荐风格。显然OC与Swift有着不同的风格。但我们书写Swift代码的时候一定要用Swift的代码风格，而不是沿用OC的风格。
+省略句末的分号Swift的语言风格就是越简洁越好。如果一行里面只有一句代码的话，代码的末尾就不需要写上分号了。
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/06/新手写swift应该注意什么/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1379,246 +1354,20 @@
       
         
           
-            <h1 id="Markdown新手指南"><a href="#Markdown新手指南" class="headerlink" title="Markdown新手指南"></a>Markdown新手指南</h1><p>Markdown是一中电子邮件风格的标记语言，通常为程序员群体所用。为什么？在此，我们总结Markdown的优点如下：</p>
-<ul>
-<li>纯文本，所以兼容性极强，可以用所有文本编辑器打开。</li>
-<li>让你专注于文字而不是排版。</li>
-<li>格式转换方便，Markdown的文本你可以轻松转换为html、电子书等。</li>
-<li>Markdown的标记语法有极好的可读性。</li>
-</ul>
-<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>标题分为多级标题，你只需要在标题文本前加上<code>#</code>，便可显示标题文本本格式。当然你还可以增加二级标题、三级标题等一共六级，只需要增加<code>#</code>的个数即可，标题的字号变相应的降低。</p>
-<pre><code># 一级标题
-## 二级标题
-### 三级标题
-#### 四级标题
-##### 五级标题
-###### 六级标题
-</code></pre><p><strong>注</strong>：<code>#</code>和一级标题之间建议保留一个字符的空格，这是最标准的Markdown写法。</p>
-<p>效果图如下：</p>
-<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fafwom6hvrj20cb06hglo.jpg" alt="Markdown标题效果图"></p>
-<center><u>一级到六级标题</u></center>
+          Markdown新手指南Markdown是一中电子邮件风格的标记语言，通常为程序员群体所用。为什么？在此，我们总结Markdown的优点如下：
 
-<p><br></p>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>说到列表，一般都会分为两种情况：有序列表和无序列表。但是对于<br>Markdown来说都是同等的简单。</p>
-<h5 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h5><p>只需要在文字的前面加上<code>1.</code> <code>2.</code> <code>3.</code>就行了。例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. 文本</div><div class="line">2. 文本</div><div class="line">3. 文本</div></pre></td></tr></table></figure>
-<h5 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h5><p>同样只要在文字前面加上<code>-</code>或者<code>*</code>即可，例如：</p>
-<pre><code>-文本
--文本
--文本
-</code></pre><p><strong>注</strong>：<code>-</code>、<code>*</code>、<code>1.</code>和文本之间要保留一个字符的空格。<br>列表案例截图如下：</p>
-<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fafxebh284j20c7068weg.jpg" alt="Markdown列表"></p>
-<p><br></p>
-<h3 id="邮箱、连接和图片"><a href="#邮箱、连接和图片" class="headerlink" title="邮箱、连接和图片"></a>邮箱、连接和图片</h3><p>当我们需要显示一串文字为邮箱或者链接地址的时候，可以使用<code>&lt;example@example.com&gt;</code><br>在Markdown中插入连接不需要其他的按钮，只需要<code>[显示的文本](连接的地址 &quot;鼠标放到链接上弹出的文字提示&quot;)</code>这样的语法即可。例如：</p>
-<pre><code>[百度](http://www.baidu.com)
-</code></pre><p>同样插入图片也不需要其他的按钮，只需要<code>![图片的简介](图片的链接地址 &quot;鼠标放到链接上弹出的文字提示&quot;)</code>这样写即可。例如：</p>
-<pre><code>![赵丽颖的图片](http://ww2.sinaimg.cn/large/e3aca1a1jw1fafxl66dmyj20sg0lcgnf.jpg)
-</code></pre><p>插入链接和插入图片的效果图如下：</p>
-<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fafxs3eg17j20c30er75a.jpg" alt="插入链接和插入图片的效果图"></p>
-<p><strong>注</strong>：当我们页面的连接比较多的时候，可以统一写在页面的最下面。然后通过：</p>
-<p><a href="http://resizesafari.com/favicon.ico" title="鼠标停下显示的文字" target="_blank" rel="external">链接显示的文本</a></p>
-<p> <img src="http://resizesafari.com/favicon.ico" alt="图片简介" title="鼠标停下显示的文字"></p>
-<p><br></p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>在我们写作的时候经常会应用到其他人的文字，这个时候加上引用就是必须的了，这个语法只需要在文字前加上<code>&gt;</code>即可，例如：</p>
-<pre><code>&gt; 黑云压城城欲摧，甲光向日金鳞开。
-</code></pre><p><strong>注</strong>：<code>&gt;</code>和文本之间要保留一个字符的空格。<br>最终的现实就是：</p>
-<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fafxygh3ukj20c701zdfq.jpg" alt="引用的图片"></p>
-<p><br></p>
-<h3 id="粗体和斜体"><a href="#粗体和斜体" class="headerlink" title="粗体和斜体"></a>粗体和斜体</h3><p>Markdown的粗体和斜体都是比较简单的，用两个<code>*</code>包含一段文字就是粗体，用一个<code>*</code>包含的一段文字就是斜体，例如：</p>
-<pre><code>*黑云压城城欲摧*,**甲光向日金鳞开**
-</code></pre><p>最终显示的就是前面一句话为斜体，后面一句话为粗体。</p>
-<p>案例截图：</p>
-<p><img src="http://ww2.sinaimg.cn/large/e3aca1a1jw1fafy4w14acj20ch00pa9v.jpg" alt="粗体和斜体的图片"></p>
-<p><strong>注</strong>：当然你也可以使用标记<code>_</code>来替换<code>*</code>,效果是一样的。<br>快捷键：斜体-Cmd + B ， 粗体-Cmd + I  </p>
-<p><br></p>
-<h3 id="代码引用"><a href="#代码引用" class="headerlink" title="代码引用"></a>代码引用</h3><p>需要引用代码的时候，如果你引用的代码不分行的话，可以使用``将其包起来。</p>
-<p>但是如果有好几行的话就不行了。这时候你就可以用```放在代码行的首行和末行这样的方式。当然还有最简单的一种方法，那就是按Tab键。</p>
-<p><strong>效果图如下</strong>：</p>
-<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fafymxnw9aj20ce04kt8q.jpg" alt="代码引用的图片"></p>
-<p><strong>注</strong>：在使用```这种方法时，里面面的代码不要出现空行，否则是不会显示的。</p>
-<p><strong>扩展</strong>：标记代码的时候可以在```后面加上是哪种语言，这样代码显示的时候会根据不同的语言自动识别代码关键词，看上去十分美观，简洁易懂。具体可以参考：<a href="http://highlightjs.readthedocs.io/en/latest/css-classes-reference.html" target="_blank" rel="external">代码识别语言汇总</a></p>
-<h3 id="强制换行"><a href="#强制换行" class="headerlink" title="强制换行"></a>强制换行</h3><p>换行使用HTML里面的 <code>&lt;br /&gt;</code>。</p>
-<h3 id="水平分割线的使用"><a href="#水平分割线的使用" class="headerlink" title="水平分割线的使用"></a>水平分割线的使用</h3><p>我们可以使用三种方式创建水平分割线<code>***</code>、<code>---</code>、<code>- - - -</code>,他们都是显示在文字下面。</p>
-<h3 id="Headers头部"><a href="#Headers头部" class="headerlink" title="Headers头部"></a>Headers头部</h3><p>Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。</p>
-<p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题），例如：</p>
-<h1 id="This-is-an-H1"><a href="#This-is-an-H1" class="headerlink" title="This is an H1"></a>This is an H1</h1><h2 id="This-is-an-H2"><a href="#This-is-an-H2" class="headerlink" title="This is an H2"></a>This is an H2</h2><p>任何数量的 = 和 - 都可以有效果。</p>
-<p>类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶，例如：</p>
-<h1 id="这是-H1"><a href="#这是-H1" class="headerlink" title="这是 H1"></a>这是 H1</h1><h2 id="这是-H2"><a href="#这是-H2" class="headerlink" title="这是 H2"></a>这是 H2</h2><h6 id="这是-H6"><a href="#这是-H6" class="headerlink" title="这是 H6"></a>这是 H6</h6><p>你可以选择性地「闭合」类 atx 样式的标题，这纯粹只是美观用的，若是觉得这样看起来比较舒适，你就可以在行尾加上 #，而行尾的 # 数量也不用和开头一样（行首的井字符数量决定标题的阶数）：</p>
-<h1 id="这是-H1-1"><a href="#这是-H1-1" class="headerlink" title="这是 H1"></a>这是 H1</h1><h2 id="这是-H2-1"><a href="#这是-H2-1" class="headerlink" title="这是 H2"></a>这是 H2</h2><h3 id="这是-H3"><a href="#这是-H3" class="headerlink" title="这是 H3"></a>这是 H3</h3><p><br></p>
-<h3 id="角标"><a href="#角标" class="headerlink" title="角标"></a>角标</h3><p>一般在一片论文中会有很多其他论文观点的支持，因此在有些结论之后会加上引用论文的角标号。如下：</p>
-<p>爱因斯坦相对论原理.<a href="《相对论》.">^1</a></p>
-<p><strong>注</strong>：<code>爱因斯坦相对论原理.[^1]</code>这个是放在文章中的。<br><code>[^1]:《相对论》.</code>这个则会显示在文章的最底部。类似于参考文献</p>
-<p><br></p>
-<h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3><p>为一段文字填上删除的横线，我们使用~~将文字前后包含即可。如下：</p>
-<p><code>~~Strikethrough~~</code></p>
-<p>显示的效果：</p>
-<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fag02m0qh1j203500odfl.jpg" alt="删除"></p>
-<p><br></p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p>下面是创建的一个简单的表格:</p>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-<th>Third Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-</tbody>
-</table>
-<p>或者：</p>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-<th>Third Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-</tbody>
-</table>
-<p>效果如下：</p>
-<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fag01kz6j8j209e02igln.jpg" alt="表格"></p>
-<p>通过添加冒号来设置内容的对齐方式：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">First Header</th>
-<th style="text-align:center">Second Header</th>
-<th style="text-align:right">Third Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Left</td>
-<td style="text-align:center">Center</td>
-<td style="text-align:right">Right</td>
-</tr>
-<tr>
-<td style="text-align:left">Left</td>
-<td style="text-align:center">Center</td>
-<td style="text-align:right">Right</td>
-</tr>
-</tbody>
-</table>
-<p>效果如下：</p>
-<p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fag04e91w3j209802it8o.jpg" alt="表格对齐方式"><br><br></p>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>用html的注释，好像只有这样？</p>
-<!-- 注释 -->
-<h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><p>Markdown中的转义字符为\，转义的有：</p>
-<p>\ 反斜杠</p>
-<p>` 反引号</p>
-<p>* 星号</p>
-<p>_ 下划线</p>
-<p>{} 大括号</p>
-<p>[] 中括号</p>
-<p>() 小括号</p>
-<p># 井号</p>
-<p>+ 加号</p>
-<p>- 减号</p>
-<p>. 英文句号</p>
-<p>! 感叹号</p>
-<p><br></p>
-<h3 id="段落缩进（空格）"><a href="#段落缩进（空格）" class="headerlink" title="段落缩进（空格）"></a>段落缩进（空格）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">半方大的空白`&amp;ensp;`或`&amp;#8194;`看，飞碟</div><div class="line">全方大的空白`&amp;emsp;`或`&amp;#8195;`看，飞碟</div><div class="line">不断行的空白格`&amp;nbsp;`或`&amp;#160;`看，飞碟</div><div class="line">`&amp;emsp;&amp;emsp;`段落从此开始。</div></pre></td></tr></table></figure>
-<p><strong>效果如下</strong>：</p>
-<p>半方大的空白 或 看，飞碟 </p>
-<p>全方大的空白 或 看，飞碟 </p>
-<p>不断行的空白格 或 看，飞碟 </p>
-<p>  段落从此开始。<br><br></p>
-<h3 id="字体、字号、颜色"><a href="#字体、字号、颜色" class="headerlink" title="字体、字号、颜色"></a>字体、字号、颜色</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;font face=&quot;黑体&quot;&gt;我是黑体字&lt;/font&gt;</div><div class="line">&lt;font face=&quot;微软雅黑&quot;&gt;我是微软雅黑&lt;/font&gt;</div><div class="line">&lt;font face=&quot;STCAIYUN&quot;&gt;我是华文彩云&lt;/font&gt;</div><div class="line">&lt;font color=#0099ff size=12 face=&quot;黑体&quot;&gt;黑体&lt;/font&gt;</div><div class="line">&lt;font color=#00ffff size=3&gt;null&lt;/font&gt;</div><div class="line">&lt;font color=gray size=5&gt;gray&lt;/font&gt;</div></pre></td></tr></table></figure>
-<p><strong>效果如下</strong>：</p>
-<p>我是黑体字 </p>
-<p>我是微软雅黑 </p>
-<p>我是华文彩云 </p>
-<p>黑体 </p>
-<p>null </p>
-<p>gray</p>
-<p><br></p>
-<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h4><ul>
-<li>切换是否显示预览窗口: Shift + Cmd + I</li>
-<li>切换是否显示文本单词数量: Shift + Cmd + W</li>
-<li>切换透明度: Shift + Cmd + T</li>
-<li>切换浮动效果: Shift + Cmd + F</li>
-<li>左边大小/右边大小 = 1/1: Cmd + 0</li>
-<li>左边大小/右边大小 = 3/1: Cmd + +</li>
-<li>左边大小/右边大小 = 1/3: Cmd + -</li>
-<li>切换文本书写的方向: Cmd + L</li>
-<li>全屏: Control + Cmd + F</li>
-</ul>
-<h4 id="行为"><a href="#行为" class="headerlink" title="行为"></a>行为</h4><ul>
-<li>Copy HTML: Option + Cmd + C</li>
-<li>Strong: Select text, Cmd + B</li>
-<li>Emphasize: Select text, Cmd + I</li>
-<li>Inline Code: Select text, Cmd + K</li>
-<li>Strikethrough: Select text, Cmd + U</li>
-<li>Link: Select text, Control + Shift + L</li>
-<li>Image: Select text, Control + Shift + I</li>
-<li>Select Word: Control + Option + W</li>
-<li>Select Line: Shift + Cmd + L</li>
-<li>Select All: Cmd + A</li>
-<li>Deselect All: Cmd + D</li>
-<li>Convert to Uppercase: Select text, Control + U</li>
-<li>Convert to Lowercase: Select text, Control + Shift + U</li>
-<li>Convert to Titlecase: Select text, Control + Option + U</li>
-<li>Convert to List: Select lines, Control + L</li>
-<li>Convert to Blockquote: Select lines, Control + Q</li>
-<li>Convert to H1: Cmd + 1</li>
-<li>Convert to H2: Cmd + 2</li>
-<li>Convert to H3: Cmd + 3</li>
-<li>Convert to H4: Cmd + 4</li>
-<li>Convert to H5: Cmd + 5</li>
-<li>Convert to H6: Cmd + 6</li>
-<li>Convert Spaces to Tabs: Control + [</li>
-<li>Convert Tabs to Spaces: Control + ]</li>
-<li>Insert Current Date: Control + Shift + 1</li>
-<li>Insert Current Time: Control + Shift + 2</li>
-<li>Insert entity &lt;: Control + Shift + ,</li>
-<li>Insert entity &gt;: Control + Shift + .</li>
-<li>Insert entity &amp;: Control + Shift + 7</li>
-<li>Insert entity Space: Control + Shift + Space</li>
-<li>Insert Scriptogr.am Header: Control + Shift + G</li>
-<li>Shift Line Left: Select lines, Cmd + [</li>
-<li>Shift Line Right: Select lines, Cmd + ]</li>
-<li>New Line: Cmd + Return</li>
-<li>Comment: Cmd + /</li>
-<li>Hard Linebreak: Control + Return</li>
-</ul>
-<h4 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h4><ul>
-<li>Auto complete current word: Esc</li>
-<li>Find: Cmd + F</li>
-<li>Close find bar: Esc</li>
-</ul>
-<h4 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h4><ul>
-<li>Post on Scriptogr.am: Control + Shift + S</li>
-<li>Post on Tumblr: Control + Shift + T</li>
-</ul>
-<h4 id="导出"><a href="#导出" class="headerlink" title="导出"></a>导出</h4><ul>
-<li>Export HTML: Option + Cmd + E</li>
-<li>Export PDF:  Option + Cmd + P</li>
-</ul>
+纯文本，所以兼容性极强，可以用所有文本编辑器打开。
+让你专注于文字而不是排版。
+格式转换方便，Markdown的文本你可以轻松转换为html、电子书等。
 
-          
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/05/Markdown新手教程/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
