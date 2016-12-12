@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="navigationItem，导航栏的设置，隐藏tabbar,导航栏返回按钮的设置," />
+  <meta name="keywords" content="frame,bounds,contentOffset,contentInset," />
 
 
 
@@ -84,34 +84,66 @@
 
 
 
-<meta name="description" content="设置导航栏标题
+<meta name="description" content="frame和bounds的重新认识
+frame
+以父控件 内容的左上角为坐标原点, 计算出的控件自己 矩形框的位置和尺寸
 
-self.navigationItem.title = @&amp;quot;首页&amp;quot;;// 标题(不建议使用self.title属性)
 
-给导航栏的标题添加一个图片
+bounds
+以控件自己 内容的左上角为坐标原点, 计算出的控件自己 矩形框的位置和尺寸
 
-self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&amp;quot;MainTitle&amp;q">
+
+概括
+frame.size == bounds.size
+scrollView.bounds.origin == scrollView.contentOffset
+
+
+
+bound">
 <meta property="og:type" content="article">
-<meta property="og:title" content="导航栏内容的相关设置">
-<meta property="og:url" content="http://yoursite.com/2016/12/09/导航栏内容的相关设置/index.html">
+<meta property="og:title" content="frame、bounds、contentOffset以及contentInset的认识">
+<meta property="og:url" content="http://yoursite.com/2016/12/12/frame、bounds、contentOffset以及contentInset的认识/index.html">
 <meta property="og:site_name" content="清风明心">
-<meta property="og:description" content="设置导航栏标题
+<meta property="og:description" content="frame和bounds的重新认识
+frame
+以父控件 内容的左上角为坐标原点, 计算出的控件自己 矩形框的位置和尺寸
 
-self.navigationItem.title = @&amp;quot;首页&amp;quot;;// 标题(不建议使用self.title属性)
 
-给导航栏的标题添加一个图片
+bounds
+以控件自己 内容的左上角为坐标原点, 计算出的控件自己 矩形框的位置和尺寸
 
-self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&amp;quot;MainTitle&amp;q">
-<meta property="og:updated_time" content="2016-12-11T03:44:26.000Z">
+
+概括
+frame.size == bounds.size
+scrollView.bounds.origin == scrollView.contentOffset
+
+
+
+bound">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/e3aca1a1jw1falg9mc7ywj21170va0uq.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/e3aca1a1jw1falga4z2z7j20ny09y75i.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/e3aca1a1jw1falga8qzemj20i207n0tv.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1falgabupcxj20k809yq3y.jpg">
+<meta property="og:updated_time" content="2016-12-12T13:29:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="导航栏内容的相关设置">
-<meta name="twitter:description" content="设置导航栏标题
+<meta name="twitter:title" content="frame、bounds、contentOffset以及contentInset的认识">
+<meta name="twitter:description" content="frame和bounds的重新认识
+frame
+以父控件 内容的左上角为坐标原点, 计算出的控件自己 矩形框的位置和尺寸
 
-self.navigationItem.title = @&amp;quot;首页&amp;quot;;// 标题(不建议使用self.title属性)
 
-给导航栏的标题添加一个图片
+bounds
+以控件自己 内容的左上角为坐标原点, 计算出的控件自己 矩形框的位置和尺寸
 
-self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&amp;quot;MainTitle&amp;q">
+
+概括
+frame.size == bounds.size
+scrollView.bounds.origin == scrollView.contentOffset
+
+
+
+bound">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/e3aca1a1jw1falg9mc7ywj21170va0uq.jpg">
 
 
 
@@ -139,13 +171,13 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/09/导航栏内容的相关设置/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/12/frame、bounds、contentOffset以及contentInset的认识/"/>
 
 
 
 
 
-  <title> 导航栏内容的相关设置 | 清风明心 </title>
+  <title> frame、bounds、contentOffset以及contentInset的认识 | 清风明心 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -294,7 +326,7 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/09/导航栏内容的相关设置/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/12/frame、bounds、contentOffset以及contentInset的认识/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Feyddy">
@@ -318,7 +350,7 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
             
             
               
-                导航栏内容的相关设置
+                frame、bounds、contentOffset以及contentInset的认识
               
             
           </h1>
@@ -331,8 +363,8 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T23:16:25+08:00">
-                2016-12-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T21:27:59+08:00">
+                2016-12-12
               </time>
             
 
@@ -365,8 +397,8 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2016/12/09/导航栏内容的相关设置/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/09/导航栏内容的相关设置/" itemprop="commentCount">0</span> comments
+                <a href="/2016/12/12/frame、bounds、contentOffset以及contentInset的认识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/12/frame、bounds、contentOffset以及contentInset的认识/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -376,7 +408,7 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
 
           
           
-             <span id="/2016/12/09/导航栏内容的相关设置/" class="leancloud_visitors" data-flag-title="导航栏内容的相关设置">
+             <span id="/2016/12/12/frame、bounds、contentOffset以及contentInset的认识/" class="leancloud_visitors" data-flag-title="frame、bounds、contentOffset以及contentInset的认识">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -406,51 +438,60 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
       
 
       
-        <ul>
-<li>设置导航栏标题</li>
+        <h3 id="frame和bounds的重新认识"><a href="#frame和bounds的重新认识" class="headerlink" title="frame和bounds的重新认识"></a>frame和bounds的重新认识</h3><ul>
+<li>frame<ul>
+<li>以<code>父控件</code> <code>内容</code>的左上角为坐标原点, 计算出的<code>控件自己</code> <code>矩形框</code>的位置和尺寸</li>
 </ul>
-<p><code>self.navigationItem.title = @&quot;首页&quot;;// 标题(不建议使用self.title属性)</code></p>
-<ul>
-<li>给导航栏的标题添加一个图片</li>
+</li>
+<li>bounds<ul>
+<li>以<code>控件自己</code> <code>内容</code>的左上角为坐标原点, 计算出的<code>控件自己</code> <code>矩形框</code>的位置和尺寸</li>
 </ul>
-<p><code>self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&quot;MainTitle&quot;]];</code></p>
-<ul>
-<li>导航栏左侧按钮图片设置两种状态：normal和highlight。创建一个<strong>button</strong></li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line">    [button setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"MainTagSubIcon"</span>] forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [button setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"MainTagSubIconClick"</span>] forState:<span class="built_in">UIControlStateHighlighted</span>];</div><div class="line">    [button addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(tagClick) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</div><div class="line">    [button sizeToFit];</div><div class="line">    <span class="keyword">self</span>.navigationItem.leftBarButtonItem = [[<span class="built_in">UIBarButtonItem</span> alloc] initWithCustomView:button];</div></pre></td></tr></table></figure>
-<p>   <strong>注</strong>：其中的按钮的设置有很多种方法：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[button imageForState:<span class="built_in">UIControlStateNormal</span>].size;</div><div class="line">button.currentImage.size;</div><div class="line">[button backgroundImageForState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">button.currentBackgroundImage;</div><div class="line">[button titleForState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">button.currentTitle;</div><div class="line">[button titleColorForState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">button.currentTitleColor;</div></pre></td></tr></table></figure>
-<ul>
-<li>导航栏右侧设置两个按钮</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 右边1</span></div><div class="line">    <span class="built_in">UIButton</span> *settingButton = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line">    [settingButton setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"mine-setting-icon"</span>] forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [settingButton setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"mine-setting-icon-click"</span>] forState:<span class="built_in">UIControlStateHighlighted</span>];</div><div class="line">    [settingButton addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(settingClick) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</div><div class="line">    [settingButton sizeToFit];</div><div class="line">    <span class="built_in">UIBarButtonItem</span> *settingItem = [[<span class="built_in">UIBarButtonItem</span> alloc] initWithCustomView:settingButton];</div><div class="line">    <span class="comment">// 右边2</span></div><div class="line">    <span class="built_in">UIButton</span> *moonButton = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line">    [moonButton setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"mine-moon-icon"</span>] forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [moonButton setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"mine-moon-icon-click"</span>] forState:<span class="built_in">UIControlStateHighlighted</span>];</div><div class="line">    [moonButton addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(moonClick) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</div><div class="line">    [moonButton sizeToFit];</div><div class="line">    <span class="built_in">UIBarButtonItem</span> *moonItem = [[<span class="built_in">UIBarButtonItem</span> alloc] initWithCustomView:moonButton];</div><div class="line">    <span class="keyword">self</span>.navigationItem.rightBarButtonItems = @[settingItem, moonItem];</div></pre></td></tr></table></figure>
-<p>看到这里，很多有经验的人肯定认为我的水平不高，为什么呢？因为在创建<code>button</code>时很多重复代码。下面我就为<strong>UIBarButtonItem</strong>创建一个分类，来自定义UIBarButtonItem。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">+ (<span class="keyword">instancetype</span>)itemWithImage:(<span class="built_in">NSString</span> *)image highImage:(<span class="built_in">NSString</span> *)highImage target:(<span class="keyword">id</span>)target action:(SEL)action</div><div class="line">&#123;</div><div class="line">    <span class="built_in">UIButton</span> *button = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line">    [button setImage:[<span class="built_in">UIImage</span> imageNamed:image] forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [button setImage:[<span class="built_in">UIImage</span> imageNamed:highImage] forState:<span class="built_in">UIControlStateHighlighted</span>];</div><div class="line">    [button addTarget:target action:action forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</div><div class="line">    [button sizeToFit];</div><div class="line">    <span class="keyword">return</span> [[<span class="keyword">self</span> alloc] initWithCustomView:button];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>分类里面只需要实现上面的代码就行了。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.navigationItem.leftBarButtonItem = [<span class="built_in">UIBarButtonItem</span> itemWithImage:<span class="string">@"MainTagSubIcon"</span> highImage:<span class="string">@"MainTagSubIconClick"</span> target:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(tagClick)];</div></pre></td></tr></table></figure>
-<p>调用只需要一个方法。这样是不是就方便了很多呢！！！</p>
-<ul>
-<li>设置导航栏的返回键</li>
-</ul>
-<p><strong>注</strong>：在push的时候记得设置<code>vc.hidesBottomBarWhenPushed = YES;</code>，这样就能隐藏<strong>vc</strong>的<strong>tabbar</strong>了。</p>
-<p>返回按钮如果不设置，系统是会自动提供的。但是系统的一般无法满足我们的需求。而且返回按钮的文字是和前一个控制器的<strong>title</strong>一样的。如果文字太长，系统就会显示为<strong>Back</strong>。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//返回按钮</span></div><div class="line">    <span class="built_in">UIButton</span> *backButton = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line">    [backButton setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"navigationButtonReturn"</span>] forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [backButton setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"navigationButtonReturnClick"</span>] forState:<span class="built_in">UIControlStateHighlighted</span>];</div><div class="line">    [backButton setTitle:<span class="string">@"返回"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [backButton setTitleColor:[<span class="built_in">UIColor</span> blackColor] forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">    [backButton setTitleColor:[<span class="built_in">UIColor</span> redColor] forState:<span class="built_in">UIControlStateHighlighted</span>];</div><div class="line">    [backButton sizeToFit];</div><div class="line">    [backButton addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(backAction) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</div><div class="line">    <span class="comment">//这句代码一定要放在sizeToFit后面</span></div><div class="line">    backButton.contentEdgeInsets = <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">0</span>, <span class="number">-20</span>, <span class="number">0</span>, <span class="number">0</span>);<span class="comment">//设置整个按钮向左偏移20个单位</span></div><div class="line">    <span class="keyword">self</span>.navigationItem.leftBarButtonItem = [[<span class="built_in">UIBarButtonItem</span> alloc] initWithCustomView:backButton];</div></pre></td></tr></table></figure>
-<p>这里涉及到<strong>设置按钮的内边距</strong>。他可以设置<strong>button</strong>的文字、图片以及两者共同的偏移量。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">UIEdgeInsets</span> contentEdgeInsets <span class="built_in">UI_APPEARANCE_SELECTOR</span>;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">UIEdgeInsets</span> titleEdgeInsets;</div><div class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">UIEdgeInsets</span> imageEdgeInsets;</div></pre></td></tr></table></figure>
-<p>做到这里，肯定有人会问，如果我每一次<strong>push</strong>之后都要在新的控制器里面重复写上上面设置返回键的代码，那不是很繁琐吗？答案是肯定的。下面有两种方式来解决这个问题。</p>
-<ul>
-<li><p>方法一：自定义<strong>BaseViewController</strong></p>
-<ul>
-<li>只需要在<strong>BaseViewController</strong>里面设置一次就行了，后面所有的控制器都继承自它即可。但是这种方式不建议使用。<ul>
-<li>这样子比较麻烦，每一次创建控制器都必须继承<strong>BaseViewController</strong></li>
-<li>有些控制器无法继承<strong>BaseViewController</strong>。例如：<strong>UITableViewController</strong>，<strong>UICollectionViewController</strong>。如果这两个继承了，他们很多的方法都必须自己手动添加书写，比较麻烦。</li>
+</li>
+<li>概括<ul>
+<li>frame.size == bounds.size</li>
+<li>scrollView.bounds.origin == scrollView.contentOffset</li>
 </ul>
 </li>
 </ul>
+<h3 id="bounds和frame的区别"><a href="#bounds和frame的区别" class="headerlink" title="bounds和frame的区别"></a>bounds和frame的区别</h3><p><img src="http://ww1.sinaimg.cn/large/e3aca1a1jw1falg9mc7ywj21170va0uq.jpg" alt=""></p>
+<h3 id="矩形框和内容的理解"><a href="#矩形框和内容的理解" class="headerlink" title="矩形框和内容的理解"></a>矩形框和内容的理解</h3><ul>
+<li>矩形框<ul>
+<li>控件自己的显示位置和尺寸</li>
+</ul>
 </li>
-<li><p>方法二：自定义导航栏控制器（推荐）。具体实现参考我的下一篇博客。</p>
+<li>内容<ul>
+<li>控件内部的东西,比如它的子控件</li>
+</ul>
 </li>
 </ul>
+<h3 id="contentInset的调整"><a href="#contentInset的调整" class="headerlink" title="contentInset的调整"></a>contentInset的调整</h3><ul>
+<li>默认情况下, 如果一个控制器A处在导航控制器管理中, 并且控制器A的第一个子控件是UIScrollView, 那么就会自动调整这个UIScrollView的contentInset<ul>
+<li>UIEdgeInsetsMake(64, 0, 0, 0) // 有导航栏</li>
+<li>UIEdgeInsetsMake(20, 0, 0, 0) // 没有导航栏</li>
+</ul>
+</li>
+<li>默认情况下, 如果一个控制器A处在导航控制器管理中, 并且导航控制器又处在UITabBarController管理中, 并且控制器A的第一个子控件是UIScrollView, 那么就会自动调整这个UIScrollView的contentInset<ul>
+<li>UIEdgeInsetsMake(64, 0, 49, 0)</li>
+</ul>
+</li>
+<li>如何禁止上述的默认问题?</li>
+</ul>
+<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">控制器A.automaticallyAdjustsScrollViewInsets = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
+<p><strong>注</strong>：如果只有UITabBarController在管理而没有导航栏在管理的话，只能手动设置内容偏移量了</p>
+<pre><code>- UIEdgeInsetsMake(0, 0, 49, 0)
+</code></pre><h3 id="在使用UITableViewController过程中-可能会出现的错误"><a href="#在使用UITableViewController过程中-可能会出现的错误" class="headerlink" title="在使用UITableViewController过程中,可能会出现的错误"></a>在使用UITableViewController过程中,可能会出现的错误</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface TestTableViewController : UITableViewController</div><div class="line">@end</div><div class="line">&apos;-[UITableViewController loadView] instantiated view controller with identifier &quot;UIViewController-BYZ-38-t0r&quot; from storyboard &quot;Main&quot;, but didn&apos;t get a UITableView.&apos;</div></pre></td></tr></table></figure>
+<ul>
+<li>造成这个错误的原因<ul>
+<li>错误地将一个UIViewController当做UITableViewController来用</li>
+</ul>
+</li>
+<li>错误做法</li>
+</ul>
+<p><img src="http://ww2.sinaimg.cn/large/e3aca1a1jw1falga4z2z7j20ny09y75i.jpg" alt=""></p>
+<ul>
+<li>正确做法</li>
+</ul>
+<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1falga8qzemj20i207n0tv.jpg" alt=""><br><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1falgabupcxj20k809yq3y.jpg" alt=""></p>
 
       
     </div>
@@ -474,7 +515,7 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
       
         <div class="post-tags">
           
-            <a href="/tags/navigationItem，导航栏的设置，隐藏tabbar-导航栏返回按钮的设置/" rel="tag"># navigationItem，导航栏的设置，隐藏tabbar,导航栏返回按钮的设置</a>
+            <a href="/tags/frame-bounds-contentOffset-contentInset/" rel="tag"># frame,bounds,contentOffset,contentInset</a>
           
         </div>
       
@@ -483,8 +524,8 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/08/如何给tabbar的中间添加一个不同于其他tabbarbuttond的发布按钮/" rel="next" title="如何给tabbar的中间添加一个不同于其他UITabBarItem的发布按钮">
-                <i class="fa fa-chevron-left"></i> 如何给tabbar的中间添加一个不同于其他UITabBarItem的发布按钮
+              <a href="/2016/12/11/抽取uiview的分类来实现设置frame的简单操作/" rel="next" title="抽取uiview的分类来实现设置frame的简单操作">
+                <i class="fa fa-chevron-left"></i> 抽取uiview的分类来实现设置frame的简单操作
               </a>
             
           </div>
@@ -492,10 +533,6 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/10/自定义导航控制器，以及解决自定义导航控制器后右滑pop手势失效问题/" rel="prev" title="自定义导航控制器，以及解决自定义导航控制器后右滑pop手势失效问题">
-                自定义导航控制器，以及解决自定义导航控制器后右滑pop手势失效问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -522,7 +559,7 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
   <div class="comments" id="comments">
     
       <div class="fb-comments"
-           data-href="http://yoursite.com/2016/12/09/导航栏内容的相关设置/"
+           data-href="http://yoursite.com/2016/12/12/frame、bounds、contentOffset以及contentInset的认识/"
            data-numposts="10"
            data-width="100%"
            data-colorscheme="light">
@@ -549,8 +586,17 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
@@ -623,6 +669,22 @@ self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imag
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#frame和bounds的重新认识"><span class="nav-number">1.</span> <span class="nav-text">frame和bounds的重新认识</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bounds和frame的区别"><span class="nav-number">2.</span> <span class="nav-text">bounds和frame的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩形框和内容的理解"><span class="nav-number">3.</span> <span class="nav-text">矩形框和内容的理解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#contentInset的调整"><span class="nav-number">4.</span> <span class="nav-text">contentInset的调整</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在使用UITableViewController过程中-可能会出现的错误"><span class="nav-number">5.</span> <span class="nav-text">在使用UITableViewController过程中,可能会出现的错误</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
