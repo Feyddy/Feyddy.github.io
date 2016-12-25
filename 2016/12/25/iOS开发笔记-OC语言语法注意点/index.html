@@ -88,9 +88,10 @@
 self
 
 self的定义：
+
 （1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。
 （2）self出现在对象方法中，其指向了调用当前方法的实例对象。
-（3）self出现在类方法中，其指向了">
+（3）self出现在类方法中，其指向">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发笔记-OC语言语法注意点">
 <meta property="og:url" content="http://yoursite.com/2016/12/25/iOS开发笔记-OC语言语法注意点/index.html">
@@ -99,19 +100,21 @@ self的定义：
 self
 
 self的定义：
+
 （1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。
 （2）self出现在对象方法中，其指向了调用当前方法的实例对象。
-（3）self出现在类方法中，其指向了">
-<meta property="og:updated_time" content="2016-12-25T00:25:57.000Z">
+（3）self出现在类方法中，其指向">
+<meta property="og:updated_time" content="2016-12-25T00:30:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发笔记-OC语言语法注意点">
 <meta name="twitter:description" content="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。
 self
 
 self的定义：
+
 （1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。
 （2）self出现在对象方法中，其指向了调用当前方法的实例对象。
-（3）self出现在类方法中，其指向了">
+（3）self出现在类方法中，其指向">
 
 
 
@@ -408,52 +411,57 @@ self的定义：
       
         <h4 id="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。"><a href="#Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。" class="headerlink" title="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。"></a>Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。</h4><ul>
 <li><p>self</p>
-<ol>
-<li><p>self的定义：</p>
+<ul>
+<li>self的定义：</li>
+</ul>
 <p>（1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。</p>
 <p>（2）self出现在对象方法中，其指向了调用当前方法的实例对象。</p>
 <p>（3）self出现在类方法中，其指向了当前类。</p>
-</li>
-<li><p>self的作用</p>
+<ul>
+<li>self的作用</li>
+</ul>
 <p>（1）当方法中的局部变量和实例变量重名时，使用Self可以进行区分。</p>
 <p>（2） 在方法中使用[self 方法名]来调用其它的方法，实现代码的复用。</p>
-</li>
-<li><p>self使用注意的要点</p>
+<ul>
+<li>self使用注意的要点</li>
+</ul>
 <p>（1）不能在方法中使用Self来调用当前方法，会引发死循环。</p>
 <p>（2）类方法不能使用self来调用对象方法，对象方法中不能使用Self来调用类方法。</p>
 <p>（3）在类方法和对象方法中都不能使用self来调用普通函数。</p>
 <p>（4）self只能出现在方法（类方法和对象方法）中。</p>
 <p>​</p>
 </li>
-</ol>
-</li>
 <li><p>property和synthesize</p>
-<ol>
-<li><p>Xcode4.4之前</p>
+<ul>
+<li>Xcode4.4之前</li>
+</ul>
 <p>（1）@property自动生成set和get方法的声明</p>
 <p>​           <code>@propterty NSInteger age;</code></p>
 <p>（2）@synthesize自动生成Set和get方法的实现</p>
 <p>​            <code>@synthesize age = _age;</code></p>
 <p>​            左边的age表示Set和get方法名这里的age。</p>
 <p>​            右边的_age表示要在set方法中对_age这个成员进行设置，在get方法中获取_age这个成员变量。</p>
-</li>
+<ul>
 <li><p>Xcode4.4之后</p>
-<p> @property可以自动生成Set方法和get方法的声明和实现</p>
-<p> （2）自动生成成员变量_age</p>
-<p> （2）自动生成get和set方法的声明</p>
-<p> （3）自动生成get和set方法的实现</p>
-</li>
-<li><p>规则：</p>
-<pre><code>(1）如果手动实现了set方法，则编译器只会自动生成get方法。
-</code></pre><p> （2）反之也相同。</p>
-<p> （3）如果手动实现了set方法和get方法，此时编译器不会自动生成成员变量。</p>
-</li>
+<pre><code>@property可以自动生成Set方法和get方法的声明和实现
+</code></pre></li>
+</ul>
+<p>​         （1）自动生成成员变量_age</p>
+<p>​         （2）自动生成get和set方法的声明</p>
+<p>​         （3）自动生成get和set方法的实现</p>
+<ul>
+<li>规则：</li>
+</ul>
+<p>​     （1）如果手动实现了set方法，则编译器只会自动生成get方法。</p>
+<p>​     （2）反之也相同。</p>
+<p>​     （3）如果手动实现了set方法和get方法，此时编译器不会自动生成成员变量。</p>
+<ul>
 <li><p>利用@property的最佳方法</p>
-<p> （1）声明带下划线的成员变量</p>
-<p> （2）利用@property生成set和get方法的声明和实现。</p>
-<p>​</p>
+<p>   （1）声明带下划线的成员变量</p>
+<p>   （2）利用@property生成set和get方法的声明和实现。</p>
 </li>
-</ol>
+</ul>
+<p>​</p>
 </li>
 </ul>
 
