@@ -102,7 +102,7 @@ self的定义：
 （1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。
 （2）self出现在对象方法中，其指向了调用当前方法的实例对象。
 （3）self出现在类方法中，其指向了">
-<meta property="og:updated_time" content="2016-12-25T00:11:55.000Z">
+<meta property="og:updated_time" content="2016-12-25T00:15:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发笔记-OC语言语法注意点">
 <meta name="twitter:description" content="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。
@@ -419,10 +419,10 @@ self的定义：
 <p>（2） 在方法中使用[self 方法名]来调用其它的方法，实现代码的复用。</p>
 </li>
 <li><p>self使用注意的要点</p>
-<p> (1)不能在方法中使用Self来调用当前方法，会引发死循环。</p>
-<p> (2)类方法不能使用self来调用对象方法，对象方法中不能使用Self来调用类方法。</p>
-<p> (3)在类方法和对象方法中都不能使用self来调用普通函数。</p>
-<p> (4)self只能出现在方法（类方法和对象方法）中。</p>
+<p>（1）不能在方法中使用Self来调用当前方法，会引发死循环。</p>
+<p>（2）类方法不能使用self来调用对象方法，对象方法中不能使用Self来调用类方法。</p>
+<p>（3）在类方法和对象方法中都不能使用self来调用普通函数。</p>
+<p>（4）self只能出现在方法（类方法和对象方法）中。</p>
 <p>​</p>
 </li>
 </ol>
