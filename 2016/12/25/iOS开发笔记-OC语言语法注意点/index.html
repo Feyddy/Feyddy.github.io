@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="self,property,synthesize," />
+  <meta name="keywords" content="self,property,synthesize,继承,多态,@class,#import,," />
 
 
 
@@ -104,7 +104,7 @@ self的定义：
 （1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。
 （2）self出现在对象方法中，其指向了调用当前方法的实例对象。
 （3）self出现在类方法中，其指向">
-<meta property="og:updated_time" content="2016-12-25T11:01:26.000Z">
+<meta property="og:updated_time" content="2016-12-25T11:09:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发笔记-OC语言语法注意点">
 <meta name="twitter:description" content="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。
@@ -552,14 +552,14 @@ self的定义：
 </li>
 <li><p>import</p>
 <ul>
-<li><p>/#import和#include的区别</p>
+<li><p>#import和#include的区别</p>
 <ol>
-<li><p>/#include多次导入同一文件，会导致重复包含。</p>
+<li><p>#include多次导入同一文件，会导致重复包含。</p>
 <ol>
-<li>/#import多次导入，在第二次导入时，会自动判断之前此文件是否已被导入过，如果已经导入则不做导入操作。</li>
+<li>#import多次导入，在第二次导入时，会自动判断之前此文件是否已被导入过，如果已经导入则不做导入操作。</li>
 </ol>
 </li>
-<li><p>/#import可以确保头文件只被导入一次。</p>
+<li><p>#import可以确保头文件只被导入一次。</p>
 </li>
 </ol>
 </li>
@@ -573,6 +573,8 @@ self的定义：
 <p> （2）如果一个工程中有多个文件#import了同一个头文件，当头文件需要修改时，所有包含了此头文件的文件都需要重新进行编译，编译效率较低，而@class不需要重新编译。</p>
 </li>
 </ul>
+</li>
+<li><p>id类型</p>
 </li>
 </ul>
 
@@ -598,7 +600,7 @@ self的定义：
       
         <div class="post-tags">
           
-            <a href="/tags/self-property-synthesize/" rel="tag"># self,property,synthesize</a>
+            <a href="/tags/self-property-synthesize-继承-多态-class-import/" rel="tag"># self,property,synthesize,继承,多态,@class,#import,</a>
           
         </div>
       
