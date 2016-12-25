@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="self," />
+  <meta name="keywords" content="self,property,synthesize," />
 
 
 
@@ -102,7 +102,7 @@ self的定义：
 （1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。
 （2）self出现在对象方法中，其指向了调用当前方法的实例对象。
 （3）self出现在类方法中，其指向了">
-<meta property="og:updated_time" content="2016-12-25T00:15:54.000Z">
+<meta property="og:updated_time" content="2016-12-25T00:25:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发笔记-OC语言语法注意点">
 <meta name="twitter:description" content="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。
@@ -427,6 +427,34 @@ self的定义：
 </li>
 </ol>
 </li>
+<li><p>property和synthesize</p>
+<ol>
+<li><p>Xcode4.4之前</p>
+<p>（1）@property自动生成set和get方法的声明</p>
+<p>​           <code>@propterty NSInteger age;</code></p>
+<p>（2）@synthesize自动生成Set和get方法的实现</p>
+<p>​            <code>@synthesize age = _age;</code></p>
+<p>​            左边的age表示Set和get方法名这里的age。</p>
+<p>​            右边的_age表示要在set方法中对_age这个成员进行设置，在get方法中获取_age这个成员变量。</p>
+</li>
+<li><p>Xcode4.4之后</p>
+<p> @property可以自动生成Set方法和get方法的声明和实现</p>
+<p> （2）自动生成成员变量_age</p>
+<p> （2）自动生成get和set方法的声明</p>
+<p> （3）自动生成get和set方法的实现</p>
+</li>
+<li><p>规则：</p>
+<pre><code>(1）如果手动实现了set方法，则编译器只会自动生成get方法。
+</code></pre><p> （2）反之也相同。</p>
+<p> （3）如果手动实现了set方法和get方法，此时编译器不会自动生成成员变量。</p>
+</li>
+<li><p>利用@property的最佳方法</p>
+<p> （1）声明带下划线的成员变量</p>
+<p> （2）利用@property生成set和get方法的声明和实现。</p>
+<p>​</p>
+</li>
+</ol>
+</li>
 </ul>
 
       
@@ -451,7 +479,7 @@ self的定义：
       
         <div class="post-tags">
           
-            <a href="/tags/self/" rel="tag"># self</a>
+            <a href="/tags/self-property-synthesize/" rel="tag"># self,property,synthesize</a>
           
         </div>
       
