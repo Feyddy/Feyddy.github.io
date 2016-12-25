@@ -104,7 +104,7 @@ self的定义：
 （1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。
 （2）self出现在对象方法中，其指向了调用当前方法的实例对象。
 （3）self出现在类方法中，其指向">
-<meta property="og:updated_time" content="2016-12-25T11:18:52.000Z">
+<meta property="og:updated_time" content="2016-12-25T12:00:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发笔记-OC语言语法注意点">
 <meta name="twitter:description" content="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。
@@ -574,7 +574,100 @@ self的定义：
 </li>
 </ul>
 </li>
-<li><p>id类型</p>
+<li><p>构造方法</p>
+<ul>
+<li><p>子类重写构造方法的规则：</p>
+<ol>
+<li>一定要调用父类的init方法，初始化从父类继承过来的成员变量。</li>
+<li>判断父类成员是否初始化成功，如果成功才有必要去初始化子类新增的成员变量</li>
+<li>返回经过了初始后的当前实例对象self</li>
+</ol>
+</li>
+<li><p>自定义的构造方法的规范：</p>
+<ol>
+<li>一定是对象方法。</li>
+<li>返回值类型必须为id类型。</li>
+<li>方法名以init开头，如果传参数,init后接With。</li>
+</ol>
+</li>
+<li><p>子类对象的初始化过程：</p>
+<p>首选调用NSObject类的init方法–》Person类（Student父类）的init方法–》Student类的init方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">      Student *s = [[Student alloc] init];</div></pre></td></tr></table></figure>
+<p>alloc init组合：alloc:分配存储空间；init:初始化。初始化方法以init开头，如果初始化失败返回nil。</p>
+</li>
+</ul>
+</li>
+<li><p>类的本质</p>
+<ul>
+<li><p>类也是对象，类型为Class,也叫类对象，Person对象叫实例对象。</p>
+</li>
+<li><p>类就是类对象，因此可以直接用类对象来调用类方法。</p>
+</li>
+<li><p>获取类方法的方法</p>
+<p> 1、对象方法：[p class];</p>
+<p> 2、类方法：[Person class];</p>
+</li>
+<li><p>类的加载和初始化过程</p>
+<p> 1、+ load:类对象加载后调用的方法</p>
+<p> 当程序开始运行时，会加载当前项目中所有的类，加载完成后自动调用+load方法，只调用一次。</p>
+<p>2、 + initialize：类对象初始化的方法。</p>
+<p> 当程序中第一次使用某个类时，会调用+ initialize方法，只调用一次。</p>
+</li>
+<li><p>类对象加载和初始化的规则：</p>
+<p>（1）先加载父类，再加载子类。</p>
+<p>（2）如果使用子类实例对象，则先初始化父类对象，再初始化子类对象。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//通过对象获取类对象</div><div class="line">    Class c1 = [p1 class];//类对象在内存中只有一个，一个类对应一个类对象</div><div class="line"></div><div class="line">//通过类方法获取类对象</div><div class="line">    Class c4 = [Person class];</div><div class="line"></div><div class="line">//类就是类对象，类名就是类对象</div><div class="line">    Person *p = [[Person alloc] init];</div><div class="line">    Class c = [p class];</div></pre></td></tr></table></figure>
+</li>
+<li><p>description方法</p>
+<ul>
+<li><p>需求：想直接输出实例对象，把对象的所有成员变量的值全部一一输出。</p>
+</li>
+<li><p>-description方法–》决定了以%@输出一个实例对象的结果</p>
+<p>（1）方法的返回值是NSString *，把这个字符串输出到屏幕上。</p>
+<p>（2）NSObject类的-description方法默认返回的是&lt;类名：实例对象的内存地址&gt;</p>
+<p>（3）如果想根据需求进行处理，则在当前类中重写-description方法，把所有的实例变量按照格式拼接成一个字符串输出，方便用户进行查看。</p>
+</li>
+<li><p>+description方法–》决定了以%@输出一个类对象的结果</p>
+<p>（1）方法的返回值是NSString *，把这个字符串输出到屏幕上。</p>
+<p>（2）NSObject类的+description方法默认返回的是类名。</p>
+<p>（3）如果想输出其它内容，则重写类方法。</p>
+</li>
+</ul>
+<p><strong>直接在类里面书写下面的代码，然后再输出该累的对象，然后会自动执行对象方法；同时类方法也是同样的使用方法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (NSString *)description &#123;</div><div class="line">    return [NSString stringWithFormat:@&quot;age=%li,name=%@&quot;,_age,_name];</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (NSString *)description &#123;</div><div class="line">    return @&quot;helloworld&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Person *p = [[Person alloc] initWithAge:10 andName:@</div><div class="line">                &quot;kathy&quot;];    </div><div class="line">NSLog(@&quot;%@&quot;, p);</div><div class="line">Class c = [p class];</div><div class="line">NSLog(@&quot;%@&quot;, c);</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2016-12-25 19:54:50.340 06-description方法[10195:373710] age=10,name=kathy</div><div class="line">2016-12-25 19:54:50.341 06-description方法[10195:373710] helloworld</div></pre></td></tr></table></figure>
+</li>
+<li><p>SEL类型</p>
+<ol>
+<li><p>封装成SEL类型的目的，可以通过两种方式来调用方法</p>
+<p>（1）方法名直接调用</p>
+<p>（2）传SEL类型的数据去找到方法的入口地址，间接调用方法。</p>
+<ol>
+<li>包装成selector的语法</li>
+</ol>
+<p>（1）无参</p>
+</li>
+</ol>
+<p>​       [p performSelector:@selector(demo)];</p>
+<p> （2）带参数的</p>
+<p>​       [p performSelector:s3 withObject:@”kathy” withObject:@”13588099765”];</p>
+<ol>
+<li><p>OC中的私有方法：在.m在定义的方法，在.h没有声明。</p>
+<p> 可以包装成selector来调用私有方法。</p>
+</li>
+<li><p>字符串对象转换成selector的函数</p>
+<p>  SEL s = NSSelectorFromString(name);</p>
+</li>
+<li><p>selector的作用： </p>
+<p>  本质类似于C语言的回调函数，主要用于两个对象之间的通信。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//方法名包装成一个selector数据,进行方法调用</div><div class="line">    SEL s1 = @selector(demo);</div><div class="line">    SEL s2 = @selector(demo:);</div><div class="line">    SEL s3 = @selector(setName:andTel:);</div><div class="line"></div><div class="line">//调用私有方法</div><div class="line">    [p performSelector:@selector(showInfo)];</div><div class="line">    </div><div class="line">//只知道方法名，而方法名是一个字符串，可以把字符串对象转换为一个SEL类型的数据</div><div class="line">    NSString *name = @&quot;showInfo&quot;;</div><div class="line">    SEL s = NSSelectorFromString(name);</div><div class="line">    [p performSelector:s];</div></pre></td></tr></table></figure>
+<p>​</p>
 </li>
 </ul>
 
