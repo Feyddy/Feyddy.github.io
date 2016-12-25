@@ -104,7 +104,7 @@ self的定义：
 （1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。
 （2）self出现在对象方法中，其指向了调用当前方法的实例对象。
 （3）self出现在类方法中，其指向">
-<meta property="og:updated_time" content="2016-12-25T00:30:35.000Z">
+<meta property="og:updated_time" content="2016-12-25T11:01:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发笔记-OC语言语法注意点">
 <meta name="twitter:description" content="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。
@@ -461,7 +461,118 @@ self的定义：
 <p>   （2）利用@property生成set和get方法的声明和实现。</p>
 </li>
 </ul>
+</li>
+<li><p>继承</p>
+<ul>
+<li><p>我们为什么要使用继承呢？</p>
+<ol>
+<li>建立类与类之间关联。</li>
+<li>子类继承父类的所有实例变量和方法，避免了重复代码的出现，实现代码复用。</li>
+</ol>
+</li>
+<li><p>NSObject类：基类</p>
+<ol>
+<li><p>OC中所有的类都必须直接或者间接的继承自NSObject，因为NSObject这个类中定义了很多常用的方法。如new, init，alloc</p>
+</li>
+<li><p>每个实例对象中的isa指针也是继承自NSObject.</p>
+</li>
+</ol>
+</li>
+<li><p>继承使用注意要点</p>
+<ol>
+<li>子类中不能定义和父类相同名称的实例变量</li>
+<li>子类可以重写父类的方法，子类的方法必须和父类方法的原型完全一致，通过子类实例对象去调用该方法时，优先调用子类重写的方法，如果子类中没有重写则调用父类的方法。</li>
+</ol>
+</li>
+<li><p>继承关系的缺点</p>
+<p>父类和子类的关系紧密，耦合性强，如果删除父类，则子类不能单独存在。</p>
+</li>
+<li><p>self在继承关系中的使用</p>
+<p> 在子类方法中使用Self调用其它方法时，如果子类重写了方法，则调用子类的方法，如果没重写，则调用父类的方法。</p>
+</li>
+<li><p>super关键字</p>
+<ol>
+<li><p>当子类想保留父类的一些行为时，要强制使用super关键字来调用父类方法。</p>
+</li>
+<li><p>当super出现在对象方法中，会强制调用父类的对象方法。</p>
+</li>
+<li><p>当super出现在类方法中，会强制调用父类的类方法。</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>多态</p>
+<ul>
+<li><p>什么是多态</p>
+<ol>
+<li><p>一种类型，多种形态</p>
+</li>
+<li><p>在OC中表现为父类指针可以指向父类对象，也可以指向子类对象</p>
+</li>
+<li><p>直到运行期，才能根据父类指针实际指向的对象来确定调用哪个一类的方法，父类方法还是子类重写的方法。</p>
+</li>
+</ol>
+</li>
+<li><p>多态产生的条件</p>
+<ol>
+<li><p>必须有继承关系</p>
+</li>
+<li><p>子类要重写父类的方法</p>
+</li>
+<li><p>父类指针指向子类对象</p>
+</li>
+</ol>
+</li>
+<li><p>多态的好处</p>
+<p> 使用多态后，可以用父类指针操纵所有的子类对象，程序的可扩展性就会增强。</p>
+</li>
+<li><p>多态使用的限制</p>
+<p> 父类指针不能调用子类新增的方法。</p>
+<p><strong>下面使用最简单的打印机的例子</strong></p>
+<ol>
+<li><p>父类：Printer</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)print &#123;</div><div class="line">    NSLog(@&quot;打印机在打印&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>彩色打印子类：ColorPrinter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//重写父类的print方法</div><div class="line">- (void)print &#123;</div><div class="line">    NSLog(@&quot;彩色打印机打印彩色效果&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>黑白打印子类：BlackPrinter</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//重写父类的print方法</div><div class="line">- (void)print &#123;</div><div class="line">    NSLog(@&quot;黑白打印机打印黑白效果&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来见证奇迹的时刻到了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Printer *printer = [BlackPrinter new];</div><div class="line">[printer print];</div></pre></td></tr></table></figure>
+<p>虽然创建的对象是父类，但是初始化的时候是其中一个子类的，所以运行之后打印出来的就是子类的方法（前提是重写父类的方法，然后调用的方法也是重写的这个方法名）</p>
+<p><strong>打印结果如下：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">黑白打印机打印黑白效果</div></pre></td></tr></table></figure>
 <p>​</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>import</p>
+<ul>
+<li><p>/#import和#include的区别</p>
+<ol>
+<li><p>/#include多次导入同一文件，会导致重复包含。</p>
+<ol>
+<li>/#import多次导入，在第二次导入时，会自动判断之前此文件是否已被导入过，如果已经导入则不做导入操作。</li>
+</ol>
+</li>
+<li><p>/#import可以确保头文件只被导入一次。</p>
+</li>
+</ol>
+</li>
+<li><p>@class和#import的区别</p>
+<p>@class告诉编译器该类是一个类名，但是这个类具体有什么样的实例变量和方法无法确定。</p>
+<p> #import XXX.h是一个预处理命令，把包含的文件的全部内容插入当前文件中来。</p>
+<p> 尽量在头文件中使用@class,在源文件一般使用#import。</p>
+</li>
+<li><p>@class的优点</p>
+<p> （1）可以避免循环引用引起的嵌套包含</p>
+<p> （2）如果一个工程中有多个文件#import了同一个头文件，当头文件需要修改时，所有包含了此头文件的文件都需要重新进行编译，编译效率较低，而@class不需要重新编译。</p>
+</li>
+</ul>
 </li>
 </ul>
 
