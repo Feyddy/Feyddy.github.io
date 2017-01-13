@@ -1,0 +1,1021 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Quartz 2D," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="什么是Quartz2D?Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统
+
+Quartz 2D能完成的工作
+绘制图形 : 线条\三角形\矩形\圆\弧\贝塞尔曲线等
+绘制文字
+绘制\生成图片(图像)
+读取\生成PDF
+截图\裁剪图片
+自定义UI控件
+
+
+
+Quartz2D在iOS开发中的价值:
+绘制一些系统UIKit框架中不好展示的内容，例如饼图
+自定义一些控件
+不添加UI控件的情况">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quartz 2D的基本使用">
+<meta property="og:url" content="http://yoursite.com/2017/01/13/Quartz-2D的基本使用/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="什么是Quartz2D?Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统
+
+Quartz 2D能完成的工作
+绘制图形 : 线条\三角形\矩形\圆\弧\贝塞尔曲线等
+绘制文字
+绘制\生成图片(图像)
+读取\生成PDF
+截图\裁剪图片
+自定义UI控件
+
+
+
+Quartz2D在iOS开发中的价值:
+绘制一些系统UIKit框架中不好展示的内容，例如饼图
+自定义一些控件
+不添加UI控件的情况">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcjw1fbozfmu0u4g3097049dfm.gif">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcjw1fbp6pzowv2g30cu057mwz.gif">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcjw1fbp6so1lv1j309u08sgll.jpg">
+<meta property="og:image" content="http://img.blog.csdn.net/20160113092306928">
+<meta property="og:updated_time" content="2017-01-13T15:12:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Quartz 2D的基本使用">
+<meta name="twitter:description" content="什么是Quartz2D?Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统
+
+Quartz 2D能完成的工作
+绘制图形 : 线条\三角形\矩形\圆\弧\贝塞尔曲线等
+绘制文字
+绘制\生成图片(图像)
+读取\生成PDF
+截图\裁剪图片
+自定义UI控件
+
+
+
+Quartz2D在iOS开发中的价值:
+绘制一些系统UIKit框架中不好展示的内容，例如饼图
+自定义一些控件
+不添加UI控件的情况">
+<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/006tKfTcjw1fbozfmu0u4g3097049dfm.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/13/Quartz-2D的基本使用/"/>
+
+
+
+
+
+  <title> Quartz 2D的基本使用 | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/13/Quartz-2D的基本使用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Quartz 2D的基本使用
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-13T14:03:21+08:00">
+                2017-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/13/Quartz-2D的基本使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/13/Quartz-2D的基本使用/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/13/Quartz-2D的基本使用/" class="leancloud_visitors" data-flag-title="Quartz 2D的基本使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="什么是Quartz2D"><a href="#什么是Quartz2D" class="headerlink" title="什么是Quartz2D?"></a>什么是Quartz2D?</h4><p>Quartz 2D是一个二维绘图引擎，同时支持iOS和Mac系统</p>
+<ul>
+<li>Quartz 2D能完成的工作<ul>
+<li>绘制图形 : 线条\三角形\矩形\圆\弧\贝塞尔曲线等</li>
+<li>绘制文字</li>
+<li>绘制\生成图片(图像)</li>
+<li>读取\生成PDF</li>
+<li>截图\裁剪图片</li>
+<li>自定义UI控件</li>
+</ul>
+</li>
+</ul>
+<h4 id="Quartz2D在iOS开发中的价值"><a href="#Quartz2D在iOS开发中的价值" class="headerlink" title="Quartz2D在iOS开发中的价值:"></a>Quartz2D在iOS开发中的价值:</h4><ul>
+<li>绘制一些系统UIKit框架中不好展示的内容，例如饼图</li>
+<li>自定义一些控件</li>
+<li>不添加UI控件的情况下，使UI内容更丰富</li>
+<li>……</li>
+</ul>
+<p><strong>iOS中，大部分控件都是Quartz2D绘制出来的</strong></p>
+<h4 id="图形上下文"><a href="#图形上下文" class="headerlink" title="图形上下文"></a>图形上下文</h4><p><strong>图形上下文就相当于画布，不同类型的画布就是决定着画得内容将展示在哪里</strong></p>
+<ul>
+<li>Quartz2D提供了以下几种类型的Graphics Context：<br>◦ Bitmap Graphics Context 位图上下文，在这个上下文上绘制或者渲染的内容，可以获取成图片（需要主动创建一个位图上下文来使用，使用完毕，一定要销毁）<br>◦ PDF Graphics Context<br>◦ Window Graphics Context<br>◦ Layer Graphics Context 图层上下文，针对UI控件的上下文<br>◦ Printer Graphics Context</li>
+</ul>
+<h4 id="drawRect"><a href="#drawRect" class="headerlink" title="drawRect:"></a>drawRect:</h4><p>为什么要实现drawRect:方法才能绘图到view上？<br>因为在drawRect:方法中才能取得跟view相关联的图形上下文</p>
+<p>drawRect:中取得的上下文，然后就可以绘制东西到view上</p>
+<p>View内部有个layer（图层）属性，drawRect:方法中取得的是一个Layer Graphics Context，因此，绘制的东西其实是绘制到view的layer上去了</p>
+<p><strong>View之所以能显示东西，完全是因为它内部的layer</strong></p>
+<h4 id="drawRect-方法的调用？"><a href="#drawRect-方法的调用？" class="headerlink" title="drawRect:方法的调用？"></a>drawRect:方法的调用？</h4><p>• 当view第一次显示到屏幕上时，系统会创建好一个跟当前view相关的Layer上下文<br>• 系统会通过此上下文，在drawRect:方法中绘制好当前view的内容<br>• 主动让view重绘内容的时候，调用setNeedsDisplay或者setNeedsDisplayInRect:。我们主动调用drawRect:方法是无效的。<br>• 调用view的setNeedsDisplay或者setNeedsDisplayInRect:时。<br>• 注意：setNeedsDisplay和setNeedsDisplayInRect:方法调用后，屏幕并不是立即刷新，而是会在下一次刷新屏幕的时候把绘制的内容显示出来。</p>
+<p>也正是系统会在调用这个方法之前创建一个与该view相关的上下文，才让我们可以在drawRect:方法中绘制。注意：在其他地方拿不到view相关的上下文，所以不能实现绘制。</p>
+<h4 id="自定义view"><a href="#自定义view" class="headerlink" title="自定义view"></a>自定义view</h4><p>如何利用Quartz2D绘制东西到view上？<br>• 首先，得有图形上下文，因为它能保存绘图信息，并且决定着绘制到什么地方去<br>• 其次，那个图形上下文必须跟view相关联，才能将内容绘制到view上面</p>
+<h5 id="自定义view的步骤"><a href="#自定义view的步骤" class="headerlink" title="自定义view的步骤:"></a>自定义view的步骤:</h5><p>1   新建一个类，继承自UIView<br>2   实现- (void)drawRect:(CGRect)rect方法，然后在这个方法中<br>3   取得跟当前view相关联的图形上下文<br>4   绘制相应的图形内容<br>5   利用图形上下文将绘制的所有内容渲染显示到view上面</p>
+<h4 id="常用拼接路径函数"><a href="#常用拼接路径函数" class="headerlink" title="常用拼接路径函数"></a>常用拼接路径函数</h4><p>• 新建一个起点<br><code>void CGContextMoveToPoint(CGContextRef c, CGFloat x, CGFloat y)</code><br>• 添加新的线段到某个点<br><code>void CGContextAddLineToPoint(CGContextRef c, CGFloat x, CGFloat y)</code><br>• 添加一个矩形<br><code>void CGContextAddRect(CGContextRef c, CGRect rect)</code><br>• 添加一个椭圆<br><code>void CGContextAddEllipseInRect(CGContextRef context, CGRect rect)</code><br>• 添加一个圆弧<br><code>void CGContextAddArc(CGContextRef c, CGFloat x, CGFloat y, CGFloat radius, CGFloat startAngle, CGFloat endAngle, int clockwise)</code></p>
+<h4 id="常用绘制路径函数"><a href="#常用绘制路径函数" class="headerlink" title="常用绘制路径函数"></a>常用绘制路径函数</h4><p>• Mode参数决定绘制的模式<br><code>void CGContextDrawPath(CGContextRef c, CGPathDrawingMode mode)</code><br>• 绘制空心路径<br><code>void CGContextStrokePath(CGContextRef c)</code><br>• 绘制实心路径<br><code>void CGContextFillPath(CGContextRef c)</code><br><strong>提示：一般以CGContextDraw、CGContextStroke、CGContextFill开头的函数，都是用来绘制路径的</strong></p>
+<h4 id="图形上下文栈的操作"><a href="#图形上下文栈的操作" class="headerlink" title="图形上下文栈的操作"></a>图形上下文栈的操作</h4><p>• 将当前的上下文copy一份,保存到栈顶(那个栈叫做”图形上下文栈”)<br><code>void CGContextSaveGState(CGContextRef c)</code><br>• 将栈顶的上下文出栈,替换掉当前的上下文<br><code>void CGContextRestoreGState(CGContextRef c)</code></p>
+<h3 id="矩阵操作"><a href="#矩阵操作" class="headerlink" title="矩阵操作"></a>矩阵操作</h3><p>利用矩阵操作，能让绘制到上下文中的所有路径一起发生变化<br>• 缩放<br><code>void CGContextScaleCTM(CGContextRef c, CGFloat sx, CGFloat sy)</code><br>• 旋转<br><code>void CGContextRotateCTM(CGContextRef c, CGFloat angle)</code><br>• 平移<br><code>void CGContextTranslateCTM(CGContextRef c, CGFloat tx, CGFloat ty)</code></p>
+<h3 id="绘图的核心步骤："><a href="#绘图的核心步骤：" class="headerlink" title="绘图的核心步骤："></a>绘图的核心步骤：</h3><p>1   获得上下文<br>2   绘制/拼接绘图路径<br>3   将路径添加到上下文<br>4   渲染上下文<br><strong>记住：所有的绘图，都是这个步骤，即使使用贝塞尔路径，也只是对这个步骤进行了封装。对于绘图而言，拿到上下文很关键。</strong></p>
+<h4 id="贝塞尔路径"><a href="#贝塞尔路径" class="headerlink" title="贝塞尔路径"></a>贝塞尔路径</h4><p>就是UIKit框架中，对绘图的封装。实际操作起来，使用贝塞尔路径，更为方便。<br>• 用法与CGContextRef类似，但是oc对其进行了封装，更加面向对象。<br>• 常用的方法：<br>◦ 返回一个描述椭圆的路径:<br><code>+ (UIBezierPath *)bezierPathWithOvalInRect:(CGRect)rect;</code><br>◦ 设置起始点:<br><code>- (void)moveToPoint:(CGPoint)point;</code><br>◦ 添加直线到一点:<br><code>- (void)addLineToPoint:(CGPoint)point;</code><br>◦ 三次贝塞尔曲线：<br><code>- (void)addCurveToPoint:(CGPoint)endPoint controlPoint1:(CGPoint)controlPoint1 controlPoint2:(CGPoint)controlPoint2;</code></p>
+<p><img src="https://ww1.sinaimg.cn/large/006tKfTcjw1fbozfmu0u4g3097049dfm.gif" alt=""></p>
+<ul>
+<li>贝塞尔曲线:<br><code>- (void)addQuadCurveToPoint:(CGPoint)endPoint controlPoint:(CGPoint)controlPoint;</code></li>
+</ul>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcjw1fbp6pzowv2g30cu057mwz.gif" alt=""></p>
+<ul>
+<li><p>绘制圆弧:<br><code>- (void)addArcWithCenter:(CGPoint)center radius:(CGFloat)radius startAngle:(CGFloat)startAngle endAngle:(CGFloat)endAngle clockwise:(BOOL)clockwise;</code><br><img src="https://ww1.sinaimg.cn/large/006tKfTcjw1fbp6so1lv1j309u08sgll.jpg" alt=""></p>
+</li>
+<li><p>封闭闭路径:<code>- (void)closePath;</code></p>
+</li>
+</ul>
+<h3 id="接下来针对上面讲的一些内容，我们来做几个小demo。上代码："><a href="#接下来针对上面讲的一些内容，我们来做几个小demo。上代码：" class="headerlink" title="接下来针对上面讲的一些内容，我们来做几个小demo。上代码："></a>接下来针对上面讲的一些内容，我们来做几个小demo。上代码：</h3><p>下面的都是在drawRect方法里面实现的。</p>
+<ul>
+<li><p>绘制线条</p>
+</li>
+<li><p>绘制线条的第一种方式：创建路径，将线条添加到路径上，再把路径添加到图形上下文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">//1.获取当前的图形上下文</div><div class="line"></div><div class="line">CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line"></div><div class="line">// .创建一条绘制的路径，此路径为可变的路径</div><div class="line"></div><div class="line">CGMutablePathRef path = CGPathCreateMutable();</div><div class="line"></div><div class="line">//3.起始点</div><div class="line"></div><div class="line">CGPathMoveToPoint(path, NULL, 50, 50);</div><div class="line"></div><div class="line">CGPathAddLineToPoint(path, NULL, 100, 100);</div><div class="line"></div><div class="line">CGPathAddLineToPoint(path, NULL, 50, 100);</div><div class="line"></div><div class="line">//4.关闭路径</div><div class="line"></div><div class="line">CGPathCloseSubpath(path); </div><div class="line"></div><div class="line">//5.把路径添加到图形上下文，才能显示在界面上。  </div><div class="line"></div><div class="line">CGContextAddPath(context, path);</div><div class="line"></div><div class="line">//6.设置图形上下文的属性（如线条的颜色宽度等）</div><div class="line"></div><div class="line">CGContextSetRGBStrokeColor(context, 254/255.0, 201/255.0, 22/255.0, 1);</div><div class="line"></div><div class="line">CGContextSetRGBFillColor(context, 1, 0, 0, 1);</div><div class="line"></div><div class="line">CGContextSetLineWidth(context, 3.0);</div><div class="line"></div><div class="line">//7.绘制</div><div class="line"></div><div class="line">CGContextDrawPath(context, kCGPathFillStroke);  </div><div class="line"></div><div class="line">//8.释放路径</div><div class="line"></div><div class="line">CGPathRelease(path);</div></pre></td></tr></table></figure>
+</li>
+<li><p>绘制线条的第二种方式：直接将线条绘制到图形上下文上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//获取当前的图形上下文</div><div class="line"></div><div class="line">CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line"></div><div class="line">CGPoint points[] = &#123;&#123;50,50&#125;, &#123;200,200&#125;, &#123;50,200&#125;, &#123;50,50&#125;&#125;;</div><div class="line"></div><div class="line">//直接将线条添加到图形上下文</div><div class="line">CGContextAddLines(context, points, 4);</div><div class="line"></div><div class="line">//设置图形上下文的属性</div><div class="line">[[UIColor redColor] setStroke];</div><div class="line">[[UIColor blueColor] setFill];</div><div class="line"></div><div class="line">//[[UIColor orangeColor] set]; //一起设置线条和填充颜色</div><div class="line"></div><div class="line">CGContextSetLineWidth(context, 5);</div><div class="line"></div><div class="line">//绘制</div><div class="line">CGContextDrawPath(context, kCGPathFillStroke);</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>绘制矩形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//获取当前的图形上下文</div><div class="line"></div><div class="line">CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line"></div><div class="line">CGContextAddRect(context, CGRectMake(10, 10, 200, 200));</div><div class="line">[[UIColor orangeColor] set];</div><div class="line">CGContextSetLineWidth(context, 5);</div><div class="line">//绘制</div><div class="line">CGContextDrawPath(context, kCGPathFillStroke);</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>绘制圆形</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">//获取当前的图形上下文</div><div class="line"></div><div class="line">CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line"></div><div class="line">CGContextAddArc(context, 100, 100, 100, 0, M_PI * 2, 0);</div><div class="line">[[UIColor redColor] set];</div><div class="line">CGContextDrawPath(context, kCGPathFillStroke);</div></pre></td></tr></table></figure>
+</li>
+<li><p>绘制Bezier曲线</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">//获取当前的图形上下文</div><div class="line"></div><div class="line">CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line"></div><div class="line">CGContextMoveToPoint(context, 20, 200);</div><div class="line">CGContextAddCurveToPoint(context, 100, 220, 200, 300, 300, 50);</div><div class="line">[[UIColor redColor] set];</div><div class="line">CGContextDrawPath(context, kCGPathFillStroke);</div></pre></td></tr></table></figure>
+</li>
+<li><p>绘制文本:轻量级，不需要创建一个UI控件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">NSString *str = @&quot;I am a teacher and you are a student&quot;;</div><div class="line">UIFont *font = [UIFont systemFontOfSize:18];</div><div class="line">UIColor *color = [UIColor redColor];</div><div class="line"></div><div class="line">NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];</div><div class="line">style.alignment = NSTextAlignmentCenter;</div><div class="line"></div><div class="line">NSDictionary *attributes = @&#123;</div><div class="line">                             NSFontAttributeName : font,</div><div class="line">                             NSForegroundColorAttributeName : color,</div><div class="line">                             NSParagraphStyleAttributeName : style</div><div class="line">                             &#125;;</div><div class="line">[str drawInRect:CGRectMake(50, 50, 200, 400) withAttributes:attributes];</div></pre></td></tr></table></figure>
+</li>
+<li><p>绘制图片：轻量级，不需要创建UIIMageView就能显示图片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//获取当前的图形上下文</div><div class="line"></div><div class="line">CGContextRef context = UIGraphicsGetCurrentContext();</div><div class="line"></div><div class="line">//1.创建UIImage</div><div class="line">UIImage *image = [UIImage imageNamed:@&quot;ali.jpg&quot;];</div><div class="line"></div><div class="line">//2.坐标系统的转换 UIKit(左上）--&gt;Quarz2D（左下）</div><div class="line">//(1)保存UIKitContex</div><div class="line">CGContextSaveGState(context);</div><div class="line"></div><div class="line">//(2)把y缩放为原来的-1倍</div><div class="line">CGContextScaleCTM(context, 1, -1);</div><div class="line"></div><div class="line">//(3)把y平移图片高度</div><div class="line">CGContextTranslateCTM(context, 0, -image.size.height);</div><div class="line"></div><div class="line">CGContextDrawImage(context, CGRectMake(0, 0, image.size.width, image.size.height), image.CGImage);</div><div class="line"></div><div class="line">//(4）恢复contex</div><div class="line">CGContextRestoreGState(context);</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>这里是我的一个关于自定义水印的demo:<a href="https://github.com/Feyddy/FDWaterImage.git" title="FDWaterImage" target="_blank" rel="external">FDWaterImage</a></p>
+</li>
+<li><p>我们在做一个自定义的UILabel好了：<br>FDLabel.h里面自定义两个开放的属性:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">@interface MyLabel : UIView</div><div class="line"></div><div class="line">@property(nonatomic, copy)NSString *text;</div><div class="line"></div><div class="line">@property(nonatomic, strong)UIFont *font;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>FDLabel.m 里面实现drawRect方法：</p>
+<p>  #import “FDLabel.h”<br>  @implementation FDLabel</p>
+<ul>
+<li><p>(instancetype)initWithFrame:(CGRect)frame {<br>  if (self = [super initWithFrame:frame]) {</p>
+<pre><code>self.font = [UIFont systemFontOfSize:14];
+self.text = @&quot;Label&quot;;
+</code></pre><p>  }</p>
+<p>  return self;<br>}</p>
+</li>
+<li><p>(void)drawRect:(CGRect)rect {<br>  // Drawing code<br>  //绘制文本<br>  NSMutableParagraphStyle <em>style = [[NSMutableParagraphStyle alloc] init];<br>  style.alignment = NSTextAlignmentCenter;<br>  UIColor </em>color = [UIColor greenColor];<br>  [self.text drawInRect:rect withAttributes:@{NSFontAttributeName : self.font,</p>
+<pre><code>NSForegroundColorAttributeName : color,
+NSParagraphStyleAttributeName : style
+
+}];
+</code></pre><p>}</p>
+</li>
+<li><p>(void)setFont:(UIFont *)font {<br>  if (_font != font) {</p>
+<pre><code>_font = font;
+//刷新Label,要发送setNeedsDisplay方法来让系统自动调用drawRect:刷新
+[self setNeedsDisplay];
+</code></pre><p>  }<br>}</p>
+</li>
+<li><p>(void)setText:(NSString *)text {<br>  if (_text != text) {</p>
+<pre><code>_text = text;
+[self setNeedsDisplay];
+</code></pre><p>  }<br>}</p>
+<p>@end</p>
+</li>
+</ul>
+</li>
+<li><p>读取生成PDF<br>首先创建一个工程，导入CoreText.framework框架。在ViewController.h文件中引入CoreText文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">-(void)drawText</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line"> //在沙盒目录下创建PDF文件，并命名为Invoice.pdf</div><div class="line"></div><div class="line">NSString* fileName = @&quot;Invoice.PDF&quot;;</div><div class="line">NSArray *arrayPaths =</div><div class="line">NSSearchPathForDirectoriesInDomains(</div><div class="line">                                    NSDocumentDirectory,</div><div class="line">                                    NSUserDomainMask,</div><div class="line">                                    YES);</div><div class="line">NSString *path = [arrayPaths objectAtIndex:0];</div><div class="line">NSString* pdfFileName = [path stringByAppendingPathComponent:fileName];</div><div class="line"></div><div class="line">//创建一个已“Hello，world”为内容的PDF，将string转换为CFStringRef格式</div><div class="line">NSString* textToDraw = @&quot;Hello World&quot;;</div><div class="line">CFStringRef stringRef = (__bridge CFStringRef)textToDraw;</div><div class="line"></div><div class="line">// 使用 Core Text Framesetter.</div><div class="line">CFAttributedStringRef currentText = CFAttributedStringCreate(NULL, stringRef, NULL);</div><div class="line">CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(currentText);</div><div class="line"></div><div class="line">//创建一个CGRect用于定义文本的大小</div><div class="line">  CGRect frameRect = CGRectMake(0, 0, 300, 50);CGMutablePathRef framePath = CGPathCreateMutable();CGPathAddRect(framePath, NULL, frameRect);// 获取将要被渲染的帧CFRange currentRange = CFRangeMake(0, 0);CTFrameRef frameRef = CTFramesetterCreateFrame(framesetter, currentRange, framePath, NULL);CGPathRelease(framePath);</div><div class="line">  </div><div class="line">  </div><div class="line">  //创建一个PDF上下文和标记的PDF的起始页。 PDF的每个页面都有开始并调用UIGraphicsBeginPDFPageWithInfo</div><div class="line">    // 创建一个PDF的上下文，页面大小默认为 612 x 792UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);// 标记新页面的开头UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, 612, 792), nil);// 获取上下文.CGContextRef currentContext = UIGraphicsGetCurrentContext();</div><div class="line">    </div><div class="line">    </div><div class="line">    // 创建一个PDF的上下文，页面大小默认为 612 x 792</div><div class="line">UIGraphicsBeginPDFContextToFile(pdfFileName, CGRectZero, nil);</div><div class="line">// 标记新页面的开头</div><div class="line">UIGraphicsBeginPDFPageWithInfo(CGRectMake(0, 0, 612, 792), nil);</div><div class="line">// 获取上下文.</div><div class="line">CGContextRef currentContext = UIGraphicsGetCurrentContext();</div><div class="line"></div><div class="line"></div><div class="line">//由于Core Graphics 的坐标是从左下角开始，而UIKit的坐标是从左上角开始，所以需做一个变换：</div><div class="line">// 把文字变成矩阵已知状态。这将确保没有旧缩放因子被留在原处。</div><div class="line">CGContextSetTextMatrix(currentContext, CGAffineTransformIdentity);</div><div class="line">//文本坐标翻转</div><div class="line">CGContextTranslateCTM(currentContext, 0, 100);</div><div class="line">CGContextScaleCTM(currentContext, 1.0, -1.0);</div><div class="line"></div><div class="line"></div><div class="line">//绘制文本实际帧，释放Core Graphics对象，并关闭PDF上下文至此PDF写入到沙盒目录下。</div><div class="line">// 绘制帧</div><div class="line">CTFrameDraw(frameRef, currentContext);</div><div class="line">CFRelease(frameRef);</div><div class="line">CFRelease(stringRef);</div><div class="line">CFRelease(framesetter);</div><div class="line">//关闭PDF上下文</div><div class="line">UIGraphicsEndPDFContext();</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们使用UIWebView来加载PDF文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">- (void)showPDFFile</div><div class="line">&#123;</div><div class="line">NSString* fileName = @&quot;Invoice.PDF&quot;;</div><div class="line">NSArray *arrayPaths =</div><div class="line">NSSearchPathForDirectoriesInDomains(</div><div class="line">                                    NSDocumentDirectory,</div><div class="line">                                    NSUserDomainMask,</div><div class="line">                                    YES);</div><div class="line">NSString *path = [arrayPaths objectAtIndex:0];</div><div class="line">NSString* pdfFileName = [path stringByAppendingPathComponent:fileName];</div><div class="line"></div><div class="line">UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];</div><div class="line"></div><div class="line">NSURL *url = [NSURL fileURLWithPath:pdfFileName];</div><div class="line">NSURLRequest *request = [NSURLRequest requestWithURL:url];</div><div class="line">[webView setScalesPageToFit:YES];</div><div class="line">[webView loadRequest:request];</div><div class="line"></div><div class="line">[self.view addSubview:webView];  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">-(void)viewDidLoad</div><div class="line"></div><div class="line">&#123;</div><div class="line"></div><div class="line">  [self drawText];</div><div class="line"></div><div class="line">  [self showPDFFile];</div><div class="line"></div><div class="line"> [super viewDidLoad];</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<h4 id="Quartz-2D的渐变方式分为两种："><a href="#Quartz-2D的渐变方式分为两种：" class="headerlink" title="Quartz 2D的渐变方式分为两种："></a>Quartz 2D的渐变方式分为两种：</h4><pre><code>a.线性渐变线：渐变色以直线方式从开始位置逐渐向结束位置渐变
+b.径向渐变：以中心点为圆心从起始渐变色向四周辐射，直到终止渐变色
+   要做渐变则必须先设置从开始位置到结束位置的渐变颜色，做过photoshop的朋友相信对于渐变色设置并不陌生，只要在指定位置指定不同的颜色，剩下的事情交给系统处理即可，如下图在起始位置、3/10位置、结束位置指定了三种颜色就形成由三种颜色组成的渐变色：
+</code></pre><p><img src="http://img.blog.csdn.net/20160113092306928" alt=""><br>另外，在iOS中绘制渐变还需要注意一点就是指定颜色空间，所谓颜色空间就是不同颜色在不同的维度上取值最终组成一种颜色的过程。就拿RGB来说，如果将红色、绿色、蓝色看成是x、y、z轴坐标系，那么在三个坐标上分别取0~255范围内的不同值则可以组成各类颜色。当然，不同颜色空间的“坐标系”也是不同的（也就是说颜色表示的方式是不同的），常用的颜色空间除了RGB还有CMYK（印刷业常用这种颜色模式）、Gray。<br>      在使用Quartz 2D绘图时我们的颜色除了使用常规的方法（前面<code>CGContextSetRGBFillColor(CGContextRef context, CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)</code>方法）设置<code>RGB</code>和透明度外，有时还会遇到颜色参数是一个数组情况。如使用颜色空间填充时用到的<code>CGContextSetFillColor(CGContextRef context, const CGFloat *components)</code>方法，这个时候components数组中具体是如何存储颜色就要根据颜色空间而定，如果颜色空间使用RGB则数组中的元素四个为一组，分别是red（红）、green（绿）、blue（蓝）、alpha（透明度）；如果使用CMYK颜色空间，那么数组中的元素五个为一组，分别是cyan（青）、magenta（洋红）、yellow（黄）、black（黑）、alpha（透明度）。</p>
+<p>详细demo请看：<a href="https://github.com/Feyddy/FDQuartz2DGradualChange.git" target="_blank" rel="external">FDQuartz2DGradualChange</a><br>或者还有一篇比较好的博客：<a href="http://blog.csdn.net/xy_26207005/article/details/51481510" target="_blank" rel="external"> http://blog.csdn.net/xy_26207005/article/details/51481510 </a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Quartz-2D/" rel="tag"># Quartz 2D</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/12/ARC的基本使用/" rel="next" title="ARC的基本使用">
+                <i class="fa fa-chevron-left"></i> ARC的基本使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/13/CALayer的基本使用/" rel="prev" title="CALayer的基本使用">
+                CALayer的基本使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://yoursite.com/2017/01/13/Quartz-2D的基本使用/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是Quartz2D"><span class="nav-number">1.</span> <span class="nav-text">什么是Quartz2D?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Quartz2D在iOS开发中的价值"><span class="nav-number">2.</span> <span class="nav-text">Quartz2D在iOS开发中的价值:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图形上下文"><span class="nav-number">3.</span> <span class="nav-text">图形上下文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#drawRect"><span class="nav-number">4.</span> <span class="nav-text">drawRect:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#drawRect-方法的调用？"><span class="nav-number">5.</span> <span class="nav-text">drawRect:方法的调用？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义view"><span class="nav-number">6.</span> <span class="nav-text">自定义view</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#自定义view的步骤"><span class="nav-number">6.1.</span> <span class="nav-text">自定义view的步骤:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用拼接路径函数"><span class="nav-number">7.</span> <span class="nav-text">常用拼接路径函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用绘制路径函数"><span class="nav-number">8.</span> <span class="nav-text">常用绘制路径函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图形上下文栈的操作"><span class="nav-number">9.</span> <span class="nav-text">图形上下文栈的操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵操作"><span class="nav-number"></span> <span class="nav-text">矩阵操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘图的核心步骤："><span class="nav-number"></span> <span class="nav-text">绘图的核心步骤：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贝塞尔路径"><span class="nav-number">1.</span> <span class="nav-text">贝塞尔路径</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接下来针对上面讲的一些内容，我们来做几个小demo。上代码："><span class="nav-number"></span> <span class="nav-text">接下来针对上面讲的一些内容，我们来做几个小demo。上代码：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Quartz-2D的渐变方式分为两种："><span class="nav-number">1.</span> <span class="nav-text">Quartz 2D的渐变方式分为两种：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
