@@ -87,13 +87,8 @@
 <meta name="description" content="总是是飞洒综述asdasd
 block是OC中另外一种对象和对象的通信方式，是一对一的关系，类似于delegate，而通知时一对多的关系
 Block的基本用法
-block 也可以看做是一个变量，也有点类似于函数``objective
-```ob
-// block 的声明
-// 返回值 (^变量名)(参数类型1, 参数类型2, ...)
-int (^block1)(int, int);
-
-// bl">
+block 也可以看做是一个变量，也有点类似于函数
+123456789101112131415161718192021// block 的声明 // 返回值 (^变量名)(参数类型1, 参数类型2, ...) int (^block1)(i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Block的基本用法">
 <meta property="og:url" content="http://yoursite.com/2017/01/12/Block的基本用法/index.html">
@@ -101,26 +96,16 @@ int (^block1)(int, int);
 <meta property="og:description" content="总是是飞洒综述asdasd
 block是OC中另外一种对象和对象的通信方式，是一对一的关系，类似于delegate，而通知时一对多的关系
 Block的基本用法
-block 也可以看做是一个变量，也有点类似于函数``objective
-```ob
-// block 的声明
-// 返回值 (^变量名)(参数类型1, 参数类型2, ...)
-int (^block1)(int, int);
-
-// bl">
-<meta property="og:updated_time" content="2017-01-13T00:48:50.000Z">
+block 也可以看做是一个变量，也有点类似于函数
+123456789101112131415161718192021// block 的声明 // 返回值 (^变量名)(参数类型1, 参数类型2, ...) int (^block1)(i">
+<meta property="og:updated_time" content="2017-01-15T14:42:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Block的基本用法">
 <meta name="twitter:description" content="总是是飞洒综述asdasd
 block是OC中另外一种对象和对象的通信方式，是一对一的关系，类似于delegate，而通知时一对多的关系
 Block的基本用法
-block 也可以看做是一个变量，也有点类似于函数``objective
-```ob
-// block 的声明
-// 返回值 (^变量名)(参数类型1, 参数类型2, ...)
-int (^block1)(int, int);
-
-// bl">
+block 也可以看做是一个变量，也有点类似于函数
+123456789101112131415161718192021// block 的声明 // 返回值 (^变量名)(参数类型1, 参数类型2, ...) int (^block1)(i">
 
 
 
@@ -418,106 +403,34 @@ int (^block1)(int, int);
         <h3 id="总是"><a href="#总是" class="headerlink" title="总是"></a>总是</h3><h3 id="是飞洒"><a href="#是飞洒" class="headerlink" title="是飞洒"></a>是飞洒</h3><h4 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h4><p><strong><em>asdasd</em></strong></p>
 <p>block是OC中另外一种对象和对象的通信方式，是一对一的关系，类似于delegate，而通知时一对多的关系</p>
 <h4 id="Block的基本用法"><a href="#Block的基本用法" class="headerlink" title="Block的基本用法"></a>Block的基本用法</h4><ul>
-<li><p>block 也可以看做是一个变量，也有点类似于函数<br>``<code>objective</code></p>
-<p>```ob</p>
-<pre><code>// block 的声明
-// 返回值 (^变量名)(参数类型1, 参数类型2, ...)
-int (^block1)(int, int);
-
-// block 的赋值
-// 注意 1. 参数不能只写类型，必须要带上参数名。 2. block的创建不代表代码块的运行
-block1 = ^(int a, int b){
-    return a + b;
-};
-
-// block 的调用
-int sum = block1(10,20);
-NSLog(@&quot;%i&quot;, sum);
-</code></pre><p>```</p>
+<li><p>block 也可以看做是一个变量，也有点类似于函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// block 的声明</div><div class="line"></div><div class="line"> // 返回值 (^变量名)(参数类型1, 参数类型2, ...)</div><div class="line"></div><div class="line"> int (^block1)(int, int);</div><div class="line"></div><div class="line"> // block 的赋值</div><div class="line"></div><div class="line"> // 注意 1. 参数不能只写类型，必须要带上参数名。 2. block的创建不代表代码块的运行</div><div class="line"></div><div class="line"> block1 = ^(int a, int b)&#123;</div><div class="line"></div><div class="line">     return a + b;</div><div class="line"></div><div class="line"> &#125;;</div><div class="line"></div><div class="line"> // block 的调用</div><div class="line"></div><div class="line"> int sum = block1(10,20);</div><div class="line"></div><div class="line"> NSLog(@&quot;%i&quot;, sum);</div></pre></td></tr></table></figure>
 </li>
 <li><p>定义一个block类型</p>
-<p>```ob</p>
-<pre><code>//---------------------block类型的定义---------------------
-// 定义一个block类型
-// 类型名：StringBlock  指代返回值为NSString* 参数为一个int 的block
-typedef NSString *(^StringBlock)(int);
-
-// 使用block类型 来定义变量
-StringBlock block2 = ^(int b){
-    return [NSString stringWithFormat:@&quot;%i&quot;, b];
-};
-
-NSString *str1 = block2(5);
-NSLog(@&quot;%@&quot;, str1);
-</code></pre><p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//---------------------block类型的定义---------------------</div><div class="line"></div><div class="line">// 定义一个block类型</div><div class="line"></div><div class="line">// 类型名：StringBlock  指代返回值为NSString* 参数为一个int 的block</div><div class="line"></div><div class="line">typedef NSString *(^StringBlock)(int);</div><div class="line"></div><div class="line">// 使用block类型 来定义变量</div><div class="line"></div><div class="line">StringBlock block2 = ^(int b)&#123;</div><div class="line"></div><div class="line">    return [NSString stringWithFormat:@&quot;%i&quot;, b];</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line">NSString *str1 = block2(5);</div><div class="line"></div><div class="line">NSLog(@&quot;%@&quot;, str1);</div></pre></td></tr></table></figure>
 </li>
 <li><p>block作为参数传递</p>
 <p>首先我们先定义一个Person类，里面定义一个Block属性</p>
 <p>Person.h</p>
-<p>```ob<br>#import \<foundation foundation.h\=""></foundation></p>
-<p>typedef NSString *(^YearBlock)();</p>
-<p>@interface Person : NSObject</p>
-</li>
-</ul>
-<p>  @property (nonatomic, copy) NSString *name;     // 名字<br>  @property (nonatomic, assign) NSInteger age;    // 年龄</p>
-<p>  @property (nonatomic, copy) YearBlock block;</p>
-<ul>
-<li>(instancetype)initWithName:(NSString *)name age:(NSInteger)age;</li>
-</ul>
-<ul>
-<li><p>(void)setBlock:(YearBlock)block;</p>
-<p>@end</p>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">- #import &lt;Foundation/Foundation.h&gt;</div><div class="line">  typedef NSString *(^YearBlock)();</div><div class="line">  @interface Person : NSObject</div><div class="line"></div><div class="line">  @property (nonatomic, copy) NSString *name;     // 名字</div><div class="line"></div><div class="line">  @property (nonatomic, assign) NSInteger age;    // 年龄</div><div class="line"></div><div class="line">  @property (nonatomic, copy) YearBlock block;</div><div class="line"></div><div class="line">- (instancetype)initWithName:(NSString *)name age:(NSInteger)age;</div><div class="line"></div><div class="line">- (void)setBlock:(YearBlock)block;</div><div class="line"></div><div class="line">  @end</div></pre></td></tr></table></figure>
 <p>Person.m</p>
-<p>```ob<br>#import “Person.h”<br>@implementation Person</p>
-</li>
-<li><p>(instancetype)initWithName:(NSString *)name age:(NSInteger)age<br>{<br>  self = [super init];<br>  if (self)<br>  {</p>
-<pre><code>self.name = name;
-self.age = age;
-</code></pre><p>  }<br>  return self;<br>}</p>
-</li>
-<li><p>(void)setBlock:(YearBlock)block<br>{<br>  // block 在作为类的属性  或者全局变量时 需要使用copy<br>  _block = [block copy];<br>}<br>@end<br>```</p>
-<p>然后在控制器中实现：</p>
-<p>```ob<br>//———————block作为参数———————<br>  Person *p = [[Person alloc] initWithName:@”jack” age:18];</p>
-<p>  [p setBlock:^NSString *{</p>
-<pre><code>return [NSString stringWithFormat:@&quot;%li&quot;, 2015 - p.age];
-</code></pre><p>  }];</p>
-<p>  NSString *yearString = p.block();<br>  NSLog(@”%@”, yearString);<br>```</p>
 </li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"> #import &quot;Person.h&quot;</div><div class="line"></div><div class="line">  @implementation Person</div><div class="line"></div><div class="line">- (instancetype)initWithName:(NSString *)name age:(NSInteger)age</div><div class="line">  &#123;</div><div class="line">    self = [super init];</div><div class="line">    if (self)</div><div class="line">    &#123;</div><div class="line">        self.name = name;</div><div class="line">        self.age = age;</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">  &#125;</div><div class="line">- (void)setBlock:(YearBlock)block</div><div class="line">  &#123;</div><div class="line">    // block 在作为类的属性  或者全局变量时 需要使用copy</div><div class="line">    _block = [block copy];</div><div class="line">  &#125;</div><div class="line">  @end</div></pre></td></tr></table></figure>
+<p>然后在控制器中实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">//---------------------block作为参数---------------------</div><div class="line"></div><div class="line">  Person *p = [[Person alloc] initWithName:@&quot;jack&quot; age:18];</div><div class="line"></div><div class="line">  [p setBlock:^NSString *&#123;</div><div class="line"></div><div class="line">      return [NSString stringWithFormat:@&quot;%li&quot;, 2015 - p.age];</div><div class="line"></div><div class="line">  &#125;];</div><div class="line"></div><div class="line">  NSString *yearString = p.block();</div><div class="line"></div><div class="line">  NSLog(@&quot;%@&quot;, yearString);</div></pre></td></tr></table></figure>
 <ul>
 <li><p>block页面传值</p>
 <p>首先创建一个控制器SecondViewController，里面定义一个block</p>
 <p>SecondViewController.h</p>
-<p>```ob<br>#import \<uikit uikit.h\=""></uikit></p>
-<p>// 给block 声明一个数据类型<br>typedef void(^ShowTextBlock)(NSString *);</p>
-<p>@interface SecondViewController : UIViewController</p>
-<p>// 定义一个block<br>@property (nonatomic, copy) ShowTextBlock block;</p>
-<p>@end<br>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">// 给block 声明一个数据类型</div><div class="line"></div><div class="line">typedef void(^ShowTextBlock)(NSString *);</div><div class="line"></div><div class="line">@interface SecondViewController : UIViewController</div><div class="line"></div><div class="line">// 定义一个block</div><div class="line"></div><div class="line">@property (nonatomic, copy) ShowTextBlock block;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>​</p>
 <p>SecondViewController.m</p>
-<p>```ob<br>#import “SecondViewController.h”<br>@interface SecondViewController ()<br>@property (weak, nonatomic) IBOutlet UITextField *textField;<br>@end<br>@implementation SecondViewController</p>
-<ul>
-<li><p>(IBAction)enterButtonAction:(id)sender {</p>
-<p>  // 使用block 来回传数据<br>  if (_block)<br>  {</p>
-<pre><code>_block(_textField.text);
-</code></pre><p>  }<br>  [self.navigationController popToRootViewControllerAnimated:YES];<br>}<br>@end</p>
-</li>
-</ul>
-<p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#import &quot;SecondViewController.h&quot;</div><div class="line"></div><div class="line">@interface SecondViewController ()</div><div class="line"></div><div class="line">@property (weak, nonatomic) IBOutlet UITextField *textField;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation SecondViewController</div><div class="line"></div><div class="line">- (IBAction)enterButtonAction:(id)sender &#123;</div><div class="line">  // 使用block 来回传数据</div><div class="line">  if (_block)</div><div class="line">  &#123;</div><div class="line">    block(textField.text);</div><div class="line">  &#125;</div><div class="line">  [self.navigationController popToRootViewControllerAnimated:YES];</div><div class="line">  &#125;</div><div class="line">  @end</div></pre></td></tr></table></figure>
+<p>​</p>
 <p>然后在主控制器中给block赋值</p>
-<p>```ob<br>#import “ViewController.h”<br>#import “SecondViewController.h”</p>
-<p>@interface ViewController ()<br>@property (weak, nonatomic) IBOutlet UILabel *label;</p>
-<p>@end</p>
-<p>@implementation ViewController</p>
-<ul>
-<li><p>(void)viewDidLoad {<br>  [super viewDidLoad];<br>  // Do any additional setup after loading the view, typically from a nib.<br>}</p>
-</li>
-<li><p>(IBAction)pushInputView:(id)sender {<br>  SecondViewController *second = [self.storyboard instantiateViewControllerWithIdentifier:@”SecondViewController”];<br>  // 给block赋值 用于将回传的值 显示到label上面去<br>  [second setBlock:^(NSString *text){</p>
-<pre><code>_label.text = text;
-</code></pre><p>  }];<br>  [self.navigationController pushViewController:second animated:YES];<br>}</p>
-</li>
-</ul>
-<p>@end<br>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line"></div><div class="line">#import &quot;SecondViewController.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@property (weak, nonatomic) IBOutlet UILabel *label;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">  [super viewDidLoad];</div><div class="line">  // Do any additional setup after loading the view, typically from a nib.</div><div class="line">  &#125;</div><div class="line">- (IBAction)pushInputView:(id)sender &#123;</div><div class="line">  SecondViewController *second = [self.storyboard instantiateViewControllerWithIdentifier:@&quot;SecondViewController&quot;];</div><div class="line">  // 给block赋值 用于将回传的值 显示到label上面去</div><div class="line">  [second setBlock:^(NSString *text)&#123;</div><div class="line">    _label.text = text;</div><div class="line">  &#125;];</div><div class="line">  [self.navigationController pushViewController:second animated:YES];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>​</p>
 </li>
 <li><p>block的内存管理问题</p>
 <p>循环引用的原因：某个对象 持有了一个 被 copy的block，这个block中，又引用了这个对象</p>
@@ -528,57 +441,26 @@ self.age = age;
 </li>
 <li><p>block和变量</p>
 <p>局部变量：在block中，会把局部变量当成常量变量</p>
-<p>```ob<br>   int num=10;<br>　　int num=30;<br>　　MyBlock myblock=^(int a)<br>　　{<br>　　num=20; //此处会报错<br>　　NSLog(@”%d”,a);<br>　　return 30;<br>　　};<br>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">int num=10;</div><div class="line"></div><div class="line">    　　int num=30;</div><div class="line"></div><div class="line">    　　MyBlock myblock=^(int a)</div><div class="line"></div><div class="line">    　　&#123;</div><div class="line"></div><div class="line">    　　num=20; //此处会报错</div><div class="line"></div><div class="line">    　　NSLog(@&quot;%d&quot;,a);</div><div class="line"></div><div class="line">    　　return 30;</div><div class="line"></div><div class="line">    　　&#125;;</div></pre></td></tr></table></figure>
+<p>​</p>
 <p>原因：block代码块不会在写的地方执行，是在其他地方调用时才会执行，局部变量在跳出此作用域时销毁，所以block代码块会将局部变量当成一个常量变量来处理，要修改前面加__block</p>
 <p>解决方法：</p>
-<p>```ob</p>
-<pre><code>__block int num=10; 
-MyBlock myblock=^(int a) { 
-NSLog(@&quot;before the val of num is %d&quot;,num);
-num++; 
-return 30; 
-}; 
-num=30; 
-[self testBlock:myblock];
-NSLog(@&quot;after the val of num is %d&quot;,num);
-</code></pre><p>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">__block int num=10; </div><div class="line"></div><div class="line">MyBlock myblock=^(int a) &#123; </div><div class="line"></div><div class="line">NSLog(@&quot;before the val of num is %d&quot;,num);</div><div class="line"></div><div class="line">num++; </div><div class="line"></div><div class="line">return 30; </div><div class="line"></div><div class="line">&#125;; </div><div class="line"></div><div class="line">num=30; </div><div class="line"></div><div class="line">[self testBlock:myblock];</div><div class="line"></div><div class="line">NSLog(@&quot;after the val of num is %d&quot;,num);</div></pre></td></tr></table></figure>
+<p>​</p>
 <p>输出结果：</p>
-<p>```ob<br>2013-10-28 15:38:24.602 blockDemo[1541:70b] before the val of num is 30<br>2013-10-28 15:38:24.603 blockDemo[1541:70b] after the val of num is 31<br>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">2013-10-28 15:38:24.602 blockDemo[1541:70b] before the val of num is 30</div><div class="line"></div><div class="line">2013-10-28 15:38:24.603 blockDemo[1541:70b] after the val of num is 31</div></pre></td></tr></table></figure>
+<p>​</p>
 </li>
 <li><p>用block自定义一个按钮</p>
 <p>BlockButton.h</p>
-<p>```ob<br>#import \<uikit uikit.h\=""><br>// 定义block类型<br>typedef void(^ButtonBlock)(UIButton *);</uikit></p>
-<p>@interface BlockButton : UIButton<br>// 属性  block  用于在按钮被点击之后执行回调<br>@property (nonatomic, copy) ButtonBlock block;<br>// 给按钮设置回调的block</p>
-<ul>
-<li>(void)addBlock:(ButtonBlock)block;</li>
-</ul>
-<p>@end<br>```</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">// 定义block类型</div><div class="line"></div><div class="line">typedef void(^ButtonBlock)(UIButton *);</div><div class="line"></div><div class="line">@interface BlockButton : UIButton</div><div class="line"></div><div class="line">// 属性  block  用于在按钮被点击之后执行回调</div><div class="line"></div><div class="line">@property (nonatomic, copy) ButtonBlock block;</div><div class="line"></div><div class="line">// 给按钮设置回调的block</div><div class="line"></div><div class="line">- (void)addBlock:(ButtonBlock)block;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>​</p>
 <p>BlockButton.m</p>
-<p>```ob<br>#import “BlockButton.h”<br>@implementation BlockButton</p>
-<p>// 给按钮添加block回调</p>
-<ul>
-<li>(void)addBlock:(ButtonBlock)block<br>{<br>  // 1. 储存block<br>  _block = [block copy];<br>  // 2. 添加一个点击事件<br>  [self addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];<br>}</li>
-</ul>
-<p>// 按钮的点击事件</p>
-<ul>
-<li>(void)buttonAction:(UIButton *)button<br>{<br>  // 调用block<br>  // 判断 如果没有block<br>  if (_block)<br>  {<pre><code>_block(button);
-</code></pre>  }<br>}<br>@end<br>```</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#import &quot;BlockButton.h&quot;</div><div class="line"></div><div class="line">@implementation BlockButton</div><div class="line"></div><div class="line">// 给按钮添加block回调</div><div class="line"></div><div class="line">- (void)addBlock:(ButtonBlock)block</div><div class="line">  &#123;</div><div class="line">  // 1. 储存block</div><div class="line">  _block = [block copy];</div><div class="line">  // 2. 添加一个点击事件</div><div class="line">  [self addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">// 按钮的点击事件</div><div class="line"></div><div class="line">- (void)buttonAction:(UIButton *)button</div><div class="line">  &#123;</div><div class="line">  // 调用block</div><div class="line">  // 判断 如果没有block</div><div class="line">  if (_block)</div><div class="line">  &#123;</div><div class="line">      _block(button);</div><div class="line">  &#125;</div><div class="line">  &#125;</div><div class="line">  @end</div></pre></td></tr></table></figure>
+<p>​</p>
 <p>然后在主控制器中</p>
-<p>```ob<br>#import “ViewController.h”<br>#import “BlockButton.h”</p>
-<p>@interface ViewController ()</p>
-<p>@end</p>
-<p>@implementation ViewController</p>
-<ul>
-<li><p>(void)viewDidLoad {<br>  [super viewDidLoad];</p>
-<p>  BlockButton *button2 = [BlockButton buttonWithType:UIButtonTypeContactAdd];<br>  button2.frame = CGRectMake(100, 100, 30, 30);<br>  // 给按钮添加点击回调block<br>  [button2 addBlock:^(UIButton *button) {</p>
-<pre><code>// 按钮被点击之后 运行的代码
- NSLog(@&quot;按钮被点击了&quot;);
-</code></pre><p>  }];<br>  [self.view addSubview:button2];<br>}</p>
-</li>
-<li><p>(void)buttonAction:(UIButton *)button<br>{<br>}<br>@end<br>```</p>
-</li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line"></div><div class="line">#import &quot;BlockButton.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">  [super viewDidLoad];</div><div class="line">  BlockButton *button2 = [BlockButton buttonWithType:UIButtonTypeContactAdd];</div><div class="line">  button2.frame = CGRectMake(100, 100, 30, 30);</div><div class="line">  // 给按钮添加点击回调block</div><div class="line">  [button2 addBlock:^(UIButton *button) &#123;</div><div class="line">   // 按钮被点击之后 运行的代码</div><div class="line">    NSLog(@&quot;按钮被点击了&quot;);</div><div class="line">  &#125;];</div><div class="line">  [self.view addSubview:button2];</div><div class="line">  &#125;</div><div class="line">- (void)buttonAction:(UIButton *)button</div><div class="line">  &#123;</div><div class="line">  &#125;</div><div class="line">  @end</div></pre></td></tr></table></figure>
+<p>​</p>
 <p>​</p>
 <p>​</p>
 </li>
