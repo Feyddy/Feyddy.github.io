@@ -277,6 +277,351 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/10/滑动视图UISrollView/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/10/滑动视图UISrollView/" itemprop="url">
+                  滑动视图UISrollView
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-10T23:47:04+08:00">
+                2017-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/10/滑动视图UISrollView/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/10/滑动视图UISrollView/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/10/滑动视图UISrollView/" class="leancloud_visitors" data-flag-title="滑动视图UISrollView">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>UIScrollView的基本创建和属性的用法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad</div><div class="line">&#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    //创建滑动视图</div><div class="line">    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 300)];</div><div class="line">    scrollView.backgroundColor = [UIColor grayColor];</div><div class="line">    [self.view addSubview:scrollView];</div><div class="line"></div><div class="line">    //1. 设置内容尺寸,只有内容尺寸大于了视图尺寸才能滑动</div><div class="line">    scrollView.contentSize = CGSizeMake(320 * 3, 600);</div><div class="line"></div><div class="line">    //创建子视图</div><div class="line">    UILabel* label1 = [[UILabel alloc] initWithFrame:CGRectMake(60, 60, 200, 50)];</div><div class="line">    label1.text = @&quot;1&quot;;</div><div class="line">    label1.backgroundColor = [UIColor redColor];</div><div class="line">    [scrollView addSubview:label1];</div><div class="line"></div><div class="line">    UILabel* label2 = [[UILabel alloc] initWithFrame:CGRectMake(320 + 60, 60, 200, 50)];</div><div class="line">    label2.text = @&quot;2&quot;;</div><div class="line">    label2.backgroundColor = [UIColor redColor];</div><div class="line">    [scrollView addSubview:label2];</div><div class="line"></div><div class="line">    UILabel* label3 = [[UILabel alloc] initWithFrame:CGRectMake(320 * 2 + 60, 60, 200, 50)];</div><div class="line">    label3.text = @&quot;3&quot;;</div><div class="line">    label3.backgroundColor = [UIColor redColor];</div><div class="line">    [scrollView addSubview:label3];</div><div class="line"></div><div class="line">    //2.分页效果,开启分页效果,一页的宽度为scrollView的宽度</div><div class="line">//    scrollView.pagingEnabled = YES;</div><div class="line">    </div><div class="line">    //3.隐藏水平滚动条   showsVerticalScrollIndicator:垂直  showsHorizontalScrollIndicator : 水平</div><div class="line">//     scrollView.showsHorizontalScrollIndicator = NO;</div><div class="line">    </div><div class="line">    //4. 滑动到视图的末尾时,是否有反弹效果</div><div class="line">//    scrollView.bounces = NO;</div><div class="line">    </div><div class="line">    //5. 是否开启滑动</div><div class="line">//    scrollView.scrollEnabled = NO;</div><div class="line">    </div><div class="line">    //6.上下滑动时,点击状态栏是否可以返回</div><div class="line">//    scrollView.scrollsToTop = NO;</div><div class="line"></div><div class="line">    //7.内容偏移</div><div class="line">    [self performSelector:@selector(action) withObject:nil afterDelay:2];</div><div class="line">    </div><div class="line">    //8.减速时的速度</div><div class="line">    scrollView.decelerationRate = 0;</div><div class="line">    </div><div class="line">    //9.滑动时是否锁定为一个方向</div><div class="line">    scrollView.directionalLockEnabled = YES;</div><div class="line">    </div><div class="line">    //10.滚动条的样式 (默认为灰色,黑色,白色)</div><div class="line">    scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)action&#123;</div><div class="line"></div><div class="line">    //设置内容的偏移</div><div class="line">    scrollView.contentOffset = CGPointMake(-200, 0);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>UIScrollViewDelegate</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">#pragma mark UIScrollViewDelegate</div><div class="line"></div><div class="line">//滑动时调用,实时调用</div><div class="line">//- (void)scrollViewDidScroll:(UIScrollView *)scrollView &#123;</div><div class="line">//</div><div class="line">//</div><div class="line">////    NSLog(@&quot;x轴偏移的距离 %lf&quot;,scrollView.contentOffset.x);</div><div class="line">////    NSLog(@&quot;y轴偏移的距离 %lf&quot;,scrollView.contentOffset.y);</div><div class="line">//</div><div class="line">//</div><div class="line">//    CGFloat offsetX = scrollView.contentOffset.x;</div><div class="line">//    //第几页</div><div class="line">//    NSInteger index =  offsetX / 320;</div><div class="line">//    NSLog(@&quot;%ld&quot;,index);</div><div class="line">//</div><div class="line">//</div><div class="line">//&#125;</div><div class="line"></div><div class="line">//手指将要开始拖动</div><div class="line">- (void)scrollViewWillBeginDragging:(UIScrollView*)scrollView</div><div class="line">&#123;</div><div class="line"></div><div class="line">    NSLog(@&quot;手指将要开始拖动&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//手指已经离开滑动视图</div><div class="line">- (void)scrollViewDidEndDragging:(UIScrollView*)scrollView willDecelerate:(BOOL)decelerate</div><div class="line">&#123;</div><div class="line"></div><div class="line">    NSLog(@&quot;手指结束拖动,离开屏幕&quot;);</div><div class="line"></div><div class="line">    //decelerate:手指离开屏幕时,是否为减速状态</div><div class="line">    if (decelerate) &#123;</div><div class="line"></div><div class="line">        NSLog(@&quot;视图为减速状态&quot;);</div><div class="line">    &#125;</div><div class="line">    else &#123;</div><div class="line"></div><div class="line">        NSLog(@&quot;视图为静止状态&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//视图将要开始减速</div><div class="line">- (void)scrollViewWillBeginDecelerating:(UIScrollView*)scrollView</div><div class="line">&#123;</div><div class="line"></div><div class="line">    NSLog(@&quot;视图将要开始减速&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//视图结束减速,视图滑动停止</div><div class="line">- (void)scrollViewDidEndDecelerating:(UIScrollView*)scrollView</div><div class="line">&#123;</div><div class="line">    //一般在此处判断页数</div><div class="line">    NSLog(@&quot;视图结束减速,滑动停止&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//手指将要离开屏幕时调用</div><div class="line">- (void)scrollViewWillEndDragging:(UIScrollView*)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint*)targetContentOffset NS_AVAILABLE_IOS(5_0)</div><div class="line">&#123;</div><div class="line"></div><div class="line">    //velocity 手指离开视图时,滑动视图的速度</div><div class="line">    //targetContentOffset 滑动最终会滑倒哪个位置</div><div class="line"></div><div class="line">    //</div><div class="line">    //    CGFloat x =  targetContentOffset -&gt; x;</div><div class="line">    //    NSLog(@&quot;x轴最终停止的位置为%f&quot;,x);</div><div class="line"></div><div class="line">    targetContentOffset-&gt;x = 320;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>滑动视图的捏合手势</p>
+<p>首先先设置代理，然后设置设置放大的倍数</p>
+<p><code>scroll.maximumZoomScale = 3;</code></p>
+<p>再设置最小的缩放倍数</p>
+<p><code>scroll.minimumZoomScale = .5;</code></p>
+<p><code>scrollView.zoomBouncing = YES;//缩放反弹效果</code></p>
+<p>最后实现代理方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">#pragma mark UIScrollViewDelegate</div><div class="line">//返回一个需要放大的视图</div><div class="line">- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView &#123;</div><div class="line"></div><div class="line">    </div><div class="line">    UIView *view = [scrollView viewWithTag:10];</div><div class="line">    </div><div class="line">    return view;</div><div class="line"></div><div class="line">&#125;     // return a view that will be scaled. if delegate returns nil, nothing happens</div><div class="line"></div><div class="line">//滑动视图缩放时,会调用此方法,实时调用</div><div class="line">- (void)scrollViewDidZoom:(UIScrollView *)scrollView NS_AVAILABLE_IOS(3_2) &#123;</div><div class="line">    //zoomScale当前的缩放倍数</div><div class="line">    NSLog(@&quot;%f&quot;,scrollView.zoomScale);</div><div class="line"></div><div class="line">&#125; </div><div class="line"></div><div class="line">//缩放时常用一些协议方法</div><div class="line">- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view NS_AVAILABLE_IOS(3_2) &#123;</div><div class="line">    </div><div class="line">    NSLog(@&quot;开始放大&quot;);</div><div class="line">    </div><div class="line">&#125;</div><div class="line">- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale &#123;</div><div class="line">    NSLog(@&quot;结束放大&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>双击手势放大</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">	UITapGestureRecognizer * tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self 	action:@selector(tap2:)];</div><div class="line">    </div><div class="line">    //设置点击的次数</div><div class="line">    tap2.numberOfTapsRequired = 2;</div><div class="line">    tap2.numberOfTouchesRequired = 1;</div><div class="line">    </div><div class="line">    //scrollView 添加双击手势</div><div class="line">    [scrollView addGestureRecognizer:tap2];</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">-(void)tap2:(UITapGestureRecognizer *)ges &#123;</div><div class="line">    </div><div class="line">    NSLog(@&quot;双击手势&quot;);</div><div class="line">    //手势所在的视图</div><div class="line">    UIScrollView *view = (UIScrollView *)ges.view;</div><div class="line">    [UIView animateWithDuration:.35</div><div class="line">                     animations:^&#123;</div><div class="line">                         //实现scrollView的缩放</div><div class="line">                         if (view.zoomScale == 1) &#123;</div><div class="line">                             //放大</div><div class="line">                             view.zoomScale = 2;</div><div class="line">                         &#125;else&#123;</div><div class="line">                             view.zoomScale = 1;</div><div class="line">                         &#125;</div><div class="line">                     &#125;];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>结合UIPageControl的使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    scroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 340, 568)];</div><div class="line">    scroll.backgroundColor = [UIColor grayColor];</div><div class="line">    [self.view addSubview:scroll];</div><div class="line">    </div><div class="line">    NSArray *imageNames = @[@&quot;chenyixun.jpg&quot;,@&quot;joy.jpg&quot;,@&quot;yanzi.jpg&quot;,@&quot;wanglihong.jpg&quot;];</div><div class="line">    for (NSInteger i = 0; i &lt; imageNames.count; i++) &#123;</div><div class="line">        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * 340, 0, 320, 568)];</div><div class="line">        NSString *imageName = imageNames[i];</div><div class="line">        imageView.image = [UIImage imageNamed:imageName];</div><div class="line">        [scroll addSubview:imageView];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //设置内容大小</div><div class="line">    scroll.contentSize = CGSizeMake(4 * 340, 568);</div><div class="line">    </div><div class="line">    //设置代理</div><div class="line">    scroll.delegate = self;</div><div class="line">    </div><div class="line">    //开启分页效果</div><div class="line">    scroll.pagingEnabled = YES;</div><div class="line"></div><div class="line">    //分页控件</div><div class="line">    pageContrl = [[UIPageControl alloc] initWithFrame:CGRectMake(60, 568 - 30, 200, 30)];</div><div class="line">//    pageContrl.backgroundColor = [UIColor redColor];</div><div class="line">    [self.view addSubview:pageContrl];</div><div class="line"> </div><div class="line">    //禁用分页控件</div><div class="line">    pageContrl.enabled = NO;</div><div class="line">    pageContrl.numberOfPages = 4;</div><div class="line">    </div><div class="line">    //选中的颜色</div><div class="line">    pageContrl.currentPageIndicatorTintColor = [UIColor redColor];</div><div class="line">    pageContrl.pageIndicatorTintColor = [UIColor grayColor];</div><div class="line">    </div><div class="line">    //绑定事件方法</div><div class="line">    [pageContrl addTarget:self action:@selector(pageAction:) forControlEvents:UIControlEventValueChanged];</div><div class="line">&#125;</div><div class="line">- (void)pageAction:(UIPageControl *)page&#123;</div><div class="line">   NSInteger index = page.currentPage;</div><div class="line">   CGFloat x = index * 340;</div><div class="line">   scroll.contentOffset = CGPointMake(x, 0);</div><div class="line">&#125;</div><div class="line">#pragma mark UIScrollViewDelage</div><div class="line">- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView &#123;</div><div class="line">    //计算页数</div><div class="line">    NSInteger index = scrollView.contentOffset.x / 340;</div><div class="line">    pageContrl.currentPage = index;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/10/UITabBarController的基本使用/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/10/UITabBarController的基本使用/" itemprop="url">
+                  UITabBarController的基本使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-10T22:41:03+08:00">
+                2017-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/10/UITabBarController的基本使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/10/UITabBarController的基本使用/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/10/UITabBarController的基本使用/" class="leancloud_visitors" data-flag-title="UITabBarController的基本使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>首先介绍创建一个UITabBarController，并将其设置为根控制器的一般方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">//创建标签控制器</div><div class="line">    UITabBarController *tabBarCtrl = [[UITabBarController alloc] init];</div><div class="line">    </div><div class="line">    tabBarCtrl.delegate = self;</div><div class="line">    </div><div class="line">    //创建子控制器</div><div class="line">    UIViewController *ctrl1 = [[UIViewController alloc] init];</div><div class="line">    ctrl1.title = @&quot;首页&quot;;</div><div class="line">    ctrl1.view.backgroundColor = [UIColor redColor];</div><div class="line">    </div><div class="line">    UIViewController *ctrl2 = [[UIViewController alloc] init];</div><div class="line">    ctrl2.title = @&quot;通讯录&quot;;</div><div class="line">    ctrl2.view.backgroundColor = [UIColor greenColor];</div><div class="line">    </div><div class="line">    UIViewController *ctrl3 = [[UIViewController alloc] init];</div><div class="line">    ctrl3.title = @&quot;设置&quot;;</div><div class="line">    ctrl3.view.backgroundColor = [UIColor orangeColor];</div><div class="line">    </div><div class="line">    //设置子控制器(以后无法改变)</div><div class="line">    tabBarCtrl.viewControllers = @[ctrl1,ctrl2,ctrl3];</div><div class="line">    </div><div class="line">    //将标签控制器设为窗口的根控制器</div><div class="line">    self.window.rootViewController = tabBarCtrl;</div><div class="line">    </div><div class="line">    </div><div class="line"> //delegate</div><div class="line">//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController  &#123;</div><div class="line">//    return YES;</div><div class="line">//&#125;</div><div class="line">- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController &#123;</div><div class="line">    </div><div class="line">    </div><div class="line">    NSLog(@&quot;%ld&quot;,[tabBarController.viewControllers indexOfObject:viewController]);</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>tabarItem的创建</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//第一种方式</div><div class="line">    UITabBarItem *item1 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:1];</div><div class="line">    //取得一个子控制器,设置item</div><div class="line">    UIViewController *ctrl1 = [viewCtrls objectAtIndex:0];</div><div class="line">    ctrl1.tabBarItem = item1;</div><div class="line">    </div><div class="line">    UITabBarItem *item2 = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemHistory tag:2];</div><div class="line">    //取得第二个子控制器,设置item</div><div class="line">    UIViewController *ctrl2 = [viewCtrls objectAtIndex:1];</div><div class="line">    ctrl2.tabBarItem = item2;</div><div class="line">    </div><div class="line">    //第二种方式</div><div class="line">    UITabBarItem *item3 = [[UITabBarItem alloc] initWithTitle:@&quot;通讯录&quot; image:[UIImage imageNamed:@&quot;3.png&quot;] tag:3];</div><div class="line">    //提示文字</div><div class="line">    item3.badgeValue = @&quot;New&quot;;</div><div class="line">    //取得第三个子控制器</div><div class="line">    UIViewController *ctrl3 = [viewCtrls objectAtIndex:2];</div><div class="line">    ctrl3.tabBarItem = item3;</div></pre></td></tr></table></figure>
+</li>
+<li><p>UITabar属性与方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">//更改item选中的颜色</div><div class="line">    tabarCtrl.tabBar.tintColor = [UIColor redColor];</div><div class="line">    </div><div class="line">    //设置选中的图片</div><div class="line">    tabarCtrl.tabBar.selectionIndicatorImage = [UIImage imageNamed:@&quot;选中.png&quot;];</div><div class="line">    [tabbar setSelectedImageTintColor:&lt;#(UIColor *)#&gt;];</div><div class="line">    //设置背景图片</div><div class="line">    UIImage *image = [UIImage imageNamed:@&quot;navbg.png&quot;];</div><div class="line">    image = [image stretchableImageWithLeftCapWidth:2 topCapHeight:0];</div><div class="line">    [tabbar setBackgroundImage:image];</div><div class="line">//    tabarCtrl.tabBar.backgroundImage = [UIImage imageNamed:@&quot;navbg.png&quot;];</div><div class="line">    </div><div class="line">    //设置背景颜色</div><div class="line">//    tabarCtrl.tabBar.backgroundColor = [UIColor greenColor];</div><div class="line">    tabarCtrl.tabBar.barTintColor = [UIColor greenColor];</div><div class="line">    </div><div class="line">    //item上的图标</div><div class="line">    item1.badgeValue = @&quot;new&quot;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义Tabbar（这里自定义的继承UITabBarController的一个类，self为UITabBarController子类的对象）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">//1.隐藏系统tabbar</div><div class="line">    self.tabBar.hidden = YES;</div><div class="line">    </div><div class="line">    //2.创建图片视图</div><div class="line">    UIImageView *tabar = [[UIImageView alloc] initWithFrame:CGRectMake(0, kSreenHeight - 49, kScreenWidth, 49)];</div><div class="line">    </div><div class="line">    tabar.userInteractionEnabled = YES;</div><div class="line">    tabar.image = [UIImage imageNamed:@&quot;navbg.png&quot;];</div><div class="line">    </div><div class="line">    [self.view addSubview:tabar];</div><div class="line">    </div><div class="line">    </div><div class="line">    //创建选中视图</div><div class="line">    selectImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 53, 45)];</div><div class="line">    selectImageView.image = [UIImage imageNamed:@&quot;选中.png&quot;];</div><div class="line">    [tabar addSubview:selectImageView];</div><div class="line">    </div><div class="line">    </div><div class="line">    //3.创建tabbar按钮</div><div class="line">    </div><div class="line">    for (NSInteger i = 0; i &lt; 5; i++) &#123;</div><div class="line">        NSString *imageName = [NSString stringWithFormat:@&quot;%ld.png&quot;,i + 1];</div><div class="line">        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];</div><div class="line">        btn.frame = CGRectMake(i *  kScreenWidth / 5, 0, kScreenWidth / 5, 49);</div><div class="line">        [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];</div><div class="line">        </div><div class="line">        [btn addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];</div><div class="line">        [tabar addSubview:btn];</div><div class="line">        </div><div class="line">        btn.tag = i;</div><div class="line">        if (i == 0) &#123;</div><div class="line">            </div><div class="line">            selectImageView.center = btn.center;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>将UINavigationController变成UITabBarController的根视图控制器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">//个人中心 创建第三级控制器</div><div class="line">    ProfileViewController *proCtrl = [[ProfileViewController alloc] init];</div><div class="line"></div><div class="line">    //广场</div><div class="line">    SquareViewController *squeCtrl = [[SquareViewController alloc] init];</div><div class="line">    //搜索</div><div class="line">    SearchViewController *searchCtrl = [[SearchViewController alloc] init];</div><div class="line">    //微评</div><div class="line">    ComentViewController *comentCtrl = [[ComentViewController alloc] init];</div><div class="line">    //消息</div><div class="line">    MessageViewController *messageCtrl = [[MessageViewController alloc] init];</div><div class="line">    </div><div class="line">    NSArray *viewCtrls = @[proCtrl,squeCtrl,searchCtrl,comentCtrl,messageCtrl];</div><div class="line">    </div><div class="line">    //创建数组用于存放导航控制器</div><div class="line">    NSMutableArray *navCtrls = [NSMutableArray array];</div><div class="line">    </div><div class="line">    //创建导航控制器 二级控制器</div><div class="line">    for (NSInteger i = 0; i &lt; viewCtrls.count; i++) &#123;</div><div class="line">        </div><div class="line">        //取到对应的子控制器</div><div class="line">        UIViewController *ctrl =  viewCtrls[i];</div><div class="line">        </div><div class="line">        //将第三级控制器交给导航控制器管理</div><div class="line">        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ctrl];</div><div class="line">        </div><div class="line">        //将导航控制器加入到数组中</div><div class="line">        [navCtrls addObject:nav];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    //将导航控制器(二级控制器)交给标签控制器管理</div><div class="line">    self.viewControllers = navCtrls;</div></pre></td></tr></table></figure>
+</li>
+<li><p>当第一个视图有导航控制器的时候，当push到第二个视图的时候要隐藏tabbar，这个时候就需要实现导航控制器的代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">- (void)_creatSubViewCtrls&#123;</div><div class="line"></div><div class="line">    //个人中心 创建第三级控制器</div><div class="line">    ProfileViewController *proCtrl = [[ProfileViewController alloc] init];</div><div class="line"></div><div class="line">    //广场</div><div class="line">    SquareViewController *squeCtrl = [[SquareViewController alloc] init];</div><div class="line">    //搜索</div><div class="line">    SearchViewController *searchCtrl = [[SearchViewController alloc] init];</div><div class="line">    //微评</div><div class="line">    ComentViewController *comentCtrl = [[ComentViewController alloc] init];</div><div class="line">    //消息</div><div class="line">    MessageViewController *messageCtrl = [[MessageViewController alloc] init];</div><div class="line">    </div><div class="line">    NSArray *viewCtrls = @[proCtrl,squeCtrl,searchCtrl,comentCtrl,messageCtrl];</div><div class="line">    </div><div class="line">    //创建数组用于存放导航控制器</div><div class="line">    NSMutableArray *navCtrls = [NSMutableArray array];</div><div class="line">    </div><div class="line">    //创建导航控制器 二级控制器</div><div class="line">    for (NSInteger i = 0; i &lt; viewCtrls.count; i++) &#123;</div><div class="line">        </div><div class="line">        //取到对应的子控制器</div><div class="line">        UIViewController *ctrl =  viewCtrls[i];</div><div class="line">        </div><div class="line">        //将第三级控制器交给导航控制器管理</div><div class="line">        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:ctrl];</div><div class="line">        </div><div class="line">        //设置代理监听导航控制器的切换</div><div class="line">        nav.delegate = self;</div><div class="line">        </div><div class="line">        //将导航控制器加入到数组中</div><div class="line">        [navCtrls addObject:nav];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    //将导航控制器(二级控制器)交给标签控制器管理</div><div class="line">    self.viewControllers = navCtrls;</div><div class="line"></div><div class="line">&#125;</div><div class="line"> //- (void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated&#123;</div><div class="line"></div><div class="line">pragma mark UINavigationControllerDelegate</div><div class="line"></div><div class="line">  //导航控制器切换子控制器时,会调用此协议方法</div><div class="line"></div><div class="line">- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated&#123;</div><div class="line">    NSLog(@&quot;%@将要显示&quot;,viewController);</div><div class="line">    [UIView beginAnimations:nil context:nil];</div><div class="line">    [UIView setAnimationDuration:.2];</div><div class="line">    //隐藏标签栏</div><div class="line">    if (navigationController.viewControllers.count == 1)&#123; // 显示标签栏</div><div class="line">  //        tabar.hidden = NO;</div><div class="line">        CGRect frame = tabar.frame;</div><div class="line">        frame.origin.x = 0;</div><div class="line">        tabar.frame = frame;</div><div class="line">      </div><div class="line">        &#125;</div><div class="line">    else if(navigationController.viewControllers.count &gt; 1)&#123;//隐藏标签</div><div class="line">  //        tabar.hidden = YES;</div><div class="line">        //将tabbar移动到屏幕的左侧</div><div class="line">        CGRect frame = tabar.frame;</div><div class="line">        frame.origin.x = -kScreenWidth;</div><div class="line">        tabar.frame = frame;</div><div class="line">    &#125;</div><div class="line">    [UIView commitAnimations];</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/10/UINavigationController的常用属性和方法/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2068,308 +2413,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/25/HTML5新手教学-表单（输入类型）/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Feyddy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="清风明心">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/25/HTML5新手教学-表单（输入类型）/" itemprop="url">
-                  HTML5新手教学-表单（输入类型）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-25T07:38:17+08:00">
-                2016-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML5</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/25/HTML5新手教学-表单（输入类型）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/25/HTML5新手教学-表单（输入类型）/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/25/HTML5新手教学-表单（输入类型）/" class="leancloud_visitors" data-flag-title="HTML5新手教学-表单（输入类型）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></div><div class="line">		label &#123;</div><div class="line">			display: block;</div><div class="line">		&#125;</div><div class="line">		input &#123;</div><div class="line">			display: block;</div><div class="line">		&#125;</div><div class="line">	<span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">form</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">legend</span>&gt;</span>输入类型<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"demo"</span>&gt;</span></div><div class="line">				email:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">id</span>=<span class="string">"demo"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				tel:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"tel"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				url:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"url"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				number:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">step</span>=<span class="string">"3"</span> <span class="attr">max</span>=<span class="string">"10"</span> <span class="attr">min</span>=<span class="string">"2"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				search:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"search"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="comment">&lt;!-- 上面的几个大胆的用，下面的带有选择的使用 --&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				range:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"range"</span> <span class="attr">value</span>=<span class="string">"80"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span> 	</div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				color:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"color"</span> &gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span> </div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				time:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"time"</span> &gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span> </div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				date:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"date"</span> &gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span> </div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				datetime:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"datetime"</span> &gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span> </div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				month:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"month"</span> &gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span> </div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				week:<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"week "</span> &gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span> 	</div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/22/HTML5新手教学-多媒体/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Feyddy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="清风明心">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/22/HTML5新手教学-多媒体/" itemprop="url">
-                  HTML5新手教学-多媒体
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-22T21:36:34+08:00">
-                2016-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML5</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/22/HTML5新手教学-多媒体/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/22/HTML5新手教学-多媒体/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/22/HTML5新手教学-多媒体/" class="leancloud_visitors" data-flag-title="HTML5新手教学-多媒体">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="HTML5新增的音频标签（audio）和视频标签（video），基本使用方法见下面的代码："><a href="#HTML5新增的音频标签（audio）和视频标签（video），基本使用方法见下面的代码：" class="headerlink" title="HTML5新增的音频标签（audio）和视频标签（video），基本使用方法见下面的代码："></a>HTML5新增的音频标签（audio）和视频标签（video），基本使用方法见下面的代码：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>多媒体<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 音频 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">"See You Again.mp3"</span> <span class="attr">controls</span> <span class="attr">autoplay</span> <span class="attr">loop</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- controls:页面显示音频播放器的一些控件</span></div><div class="line">	autoplay:页面显示后立即播放</div><div class="line">	loop:循环播放几次 --&gt;</div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 有些浏览器不支持音频格式的采用下面方法来兼容 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"See You Again.mp3"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"See You Again.wav"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"See You Again.ogg"</span>&gt;</span></div><div class="line">		如果浏览器不支持这个H5标签的话，显示这段文字</div><div class="line">	<span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 视频 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">"movie.mp4"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"400"</span> <span class="attr">controls</span> <span class="attr">autoplay</span> <span class="attr">loop</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- controls:页面显示视频播放器的一些控件</span></div><div class="line">	autoplay:页面显示后立即播放</div><div class="line">	loop:循环播放几次 </div><div class="line">	width:设置视频窗口宽度</div><div class="line">	height:设置视频窗口宽高度</div><div class="line">	但是宽高会自动调整。因为视频不会拉伸，所以浏览器会按照视频的比例有所调整，不像img标签，图片标签会拉伸</div><div class="line">	--&gt;</div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 有些浏览器不支持视频格式的采用下面方法来兼容 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"movie.mp4"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"movie.wav"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"movie.ogg"</span>&gt;</span></div><div class="line">		如果浏览器不支持这个H5标签的话，显示这段文字</div><div class="line">	<span class="tag">&lt;/<span class="name">video</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2415,7 +2458,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2432,7 +2475,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
