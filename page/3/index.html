@@ -277,6 +277,228 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/07/分类的使用的注意点/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/07/分类的使用的注意点/" itemprop="url">
+                  分类的使用的注意点
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T21:56:03+08:00">
+                2017-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/07/分类的使用的注意点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/07/分类的使用的注意点/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/07/分类的使用的注意点/" class="leancloud_visitors" data-flag-title="分类的使用的注意点">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>分类</p>
+<ul>
+<li><p>分类的作用：</p>
+<p>在不修改原始类模型的基础上，给某个类扩充方法。分类提供简单的方式将类的定义模块化到相应的分类中，不需要创建子类就可以扩充方法。</p>
+</li>
+<li><p>分类的语法：</p>
+<p>分类的声明</p>
+<p> @interface 原始类名 (分类名)</p>
+<p> //扩充方法的声明</p>
+<p> @end</p>
+<p> 分类的实现</p>
+<p> @implenmentation 原始类名（分类名）</p>
+<p> //扩充方法的实现</p>
+<p> @end</p>
+</li>
+<li><p>分类思想的好处</p>
+<p>使一个庞大的类可以分功能模块进行开发，可以分多人开发，更有利于团队合作。</p>
+</li>
+<li><p>分类命名的规则</p>
+<p>分类名一般为模块的功能。</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>分类使用的注意要点</p>
+<p>(1) 分类中不能扩充成员变量</p>
+<p>(2) 在分类的方法中可以访问到原始类中定义的成员变量</p>
+<p>(3) 分类中允许重新实现原始类中的方法，但是会覆盖掉原始类的中方法，导致其无法再使用，开发不建议在分类中重新实现原始类中的方法。</p>
+<p>(4) 当原始类，不同的分类中有相同的方法时，遵循下列原则：</p>
+<p> 方法调用的优先顺序： 分类（最后参与编译的分类优先）–&gt;原始类。</p>
+<p>​</p>
+</li>
+</ul>
+<ul>
+<li><p>延展</p>
+<ul>
+<li><p>1.本质：</p>
+<p>延展就是分类，但是只有一个@interface，方法的实现在原始类中进行</p>
+</li>
+<li><p>2.作用</p>
+<p>（1）最初时设计的目的是在.m声明所有的私有方法，使当前类的公有方法和私有方法区分开来，使程序更规范。</p>
+<p>（2）现在也可以在.h中加入延展，使类的方法按照功能模块进行区分，方便阅读和查找。Foundation框架中经常使用此种用法。</p>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>​
+</code></pre><p><strong>下面简单举个例子</strong></p>
+<p>创建一个Person类</p>
+<p>Person.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@interface Person : NSObject</div><div class="line">&#123;</div><div class="line">    NSInteger _age;</div><div class="line">    NSArray *_array;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">@property NSInteger age;</div></pre></td></tr></table></figure>
+<p>Person.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#import &quot;Person.h&quot;</div><div class="line">#import &quot;Person_p4.h&quot;</div><div class="line">//延展的作用：作私有方法的声明。在原始类中实现私有方法。</div><div class="line">//延展的本质就是分类</div><div class="line">@interface Person ()</div><div class="line">- (void)_showInfo;</div><div class="line">- (void)_demo;</div><div class="line">@end</div><div class="line"></div><div class="line">@interface Person ()</div><div class="line"></div><div class="line">//私有方法2</div><div class="line">//私有方法3</div><div class="line">@end</div><div class="line"></div><div class="line"></div><div class="line">@implementation Person</div><div class="line"></div><div class="line">- (void)work &#123;</div><div class="line">    NSLog(@&quot;我在认真工作&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//私有方法的命名规则：方法名前加下划线</div><div class="line">- (void)_showInfo &#123;</div><div class="line">    NSLog(@&quot;我的信息是....&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">//私有方法1</div><div class="line"></div><div class="line">- (void)_demo &#123;</div><div class="line">    NSLog(@&quot;demo&quot;);</div><div class="line">&#125;</div><div class="line">//私有方法2</div><div class="line"></div><div class="line">- (void)shabi &#123;</div><div class="line">    NSLog(@&quot;asdasd&quot;);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>创建一个Person的延展</p>
+<p>Person_p4</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#import &quot;Person.h&quot;</div><div class="line"></div><div class="line">//新建一个延展，只有.h文件，其中做方法的声明</div><div class="line">@interface Person ()</div><div class="line">- (void)shabi;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>创建一个Person的分类</p>
+<p>Person+Eat.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#import &quot;Person.h&quot;</div><div class="line"></div><div class="line">@interface Person (Eat)</div><div class="line">//分类中不能扩充成员变量</div><div class="line">//&#123;</div><div class="line">//    NSInteger _count;</div><div class="line">//&#125;</div><div class="line"></div><div class="line">- (void)eat;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>Person+Eat.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#import &quot;Person+Eat.h&quot;</div><div class="line"></div><div class="line">@implementation Person (Eat)</div><div class="line">- (void)eat &#123;</div><div class="line">    NSLog(@&quot;年龄是%li的人在使劲吃饭&quot;,_age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)work &#123;</div><div class="line">   // [self work];</div><div class="line">    NSLog(@&quot;Eat work&quot;);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>创建另一个Person的分类</p>
+<p>Person+Sleep.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#import &quot;Person.h&quot;</div><div class="line"></div><div class="line">@interface Person (Sleep)</div><div class="line">- (void)sleep;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>Person+Sleep.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#import &quot;Person+Sleep.h&quot;</div><div class="line"></div><div class="line">@implementation Person (Sleep)</div><div class="line">- (void)sleep &#123;</div><div class="line">    NSLog(@&quot;我在休息&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)work &#123;</div><div class="line">    //[self work];</div><div class="line">    NSLog(@&quot;sleep work&quot;);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>最后在主程序中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line">#import &quot;Person+Eat.h&quot;</div><div class="line">#import &quot;Person+Sleep.h&quot;</div><div class="line">#import &quot;Person.h&quot;</div><div class="line">#import &quot;Person_p4.h&quot;</div><div class="line"></div><div class="line">int main(int argc, const char * argv[]) &#123;</div><div class="line">    Person *p = [[Person alloc] init];</div><div class="line">    p.age = 10;</div><div class="line"></div><div class="line">    [p shabi];</div><div class="line">    [p sleep];</div><div class="line">    [p eat];</div><div class="line">    [p work];</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">2017-01-07 22:03:19.480 02-分类中需要注意的问题[4824:111908] asdasd</div><div class="line">2017-01-07 22:03:19.482 02-分类中需要注意的问题[4824:111908] 我在休息</div><div class="line">2017-01-07 22:03:19.482 02-分类中需要注意的问题[4824:111908] 年龄是10的人在使劲吃饭</div><div class="line">2017-01-07 22:03:19.482 02-分类中需要注意的问题[4824:111908] sleep work</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/26/HTML5新手教学-表单（表单-表单元素）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1933,164 +2155,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/13/文字内容换行/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Feyddy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="清风明心">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/13/文字内容换行/" itemprop="url">
-                  文字内容换行
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-13T21:07:07+08:00">
-                2016-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/13/文字内容换行/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/13/文字内容换行/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/13/文字内容换行/" class="leancloud_visitors" data-flag-title="文字内容换行">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>如何让storyboard\xib中的文字内容换行<ul>
-<li>快捷键: option + 回车键</li>
-<li>在storyboard\xib输入\n是无法实现换行的</li>
-</ul>
-</li>
-<li>在代码中输入\n是可以实现换行的</li>
-</ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">self</span>.label.text = <span class="string">@"534534534\n5345345\n5345"</span>;</div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2136,7 +2200,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2153,7 +2217,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
