@@ -277,6 +277,166 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/19/Swift3-0学习笔记（二）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/19/Swift3-0学习笔记（二）/" itemprop="url">
+                  Swift3.0学习笔记（二）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-19T11:34:23+08:00">
+                2017-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/19/Swift3-0学习笔记（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/19/Swift3-0学习笔记（二）/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/19/Swift3-0学习笔记（二）/" class="leancloud_visitors" data-flag-title="Swift3.0学习笔记（二）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">arrayDemo</span><span class="params">()</span></span>  &#123;</div><div class="line">        <span class="comment">//[Int]-&gt;表示存放的都是Int类型的数据</span></div><div class="line">        <span class="comment">//Swift中基本数据类型不需要包装</span></div><div class="line">        <span class="keyword">let</span> array1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</div><div class="line">        <span class="built_in">print</span>(array1)</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">//结构体:不需要包装</span></div><div class="line">        <span class="keyword">let</span> p = <span class="type">CGPoint</span>(x: <span class="number">10</span>, y: <span class="number">20</span>)</div><div class="line">        <span class="comment">//[CGPoint]</span></div><div class="line">        <span class="keyword">let</span> array2 = [p];</div><div class="line">        <span class="built_in">print</span>(array2)</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">//混合数组：开发中几乎不用，因为数组是靠下标索引</span></div><div class="line">        <span class="comment">//如果数组中的类型不一致，自动推导的结果就是NSObject</span></div><div class="line">        <span class="comment">//Swfit 中还有一个[AnyObject] - &gt; 任意对象</span></div><div class="line">        <span class="comment">//Swift中一个类可以没有任何“父类”</span></div><div class="line">        <span class="comment">//AnyObject范围大于NSObject</span></div><div class="line">        </div><div class="line">        <span class="comment">/**在混合数组中CG结构体需要包装*/</span></div><div class="line">        <span class="comment">//let array3 = ["Feyddy",1,p]//报错：需要包装</span></div><div class="line">        <span class="comment">//现在必须要在后面加上 as [Any]（这个在Swift3.0的时候还不需要的）</span></div><div class="line">        <span class="keyword">let</span> array3 = [<span class="string">"Feyddy"</span>,<span class="number">1</span>,<span class="type">NSValue</span>(cgPoint: p)] <span class="keyword">as</span> [<span class="type">Any</span>]</div><div class="line">        <span class="built_in">print</span>(array3)</div><div class="line">        </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//遍历数组</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">arrayTraverse</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> array = [<span class="string">"feyddy"</span>,<span class="string">"crise"</span>,<span class="string">"dirk"</span>];</div><div class="line">        </div><div class="line">        <span class="comment">//1.按照下标遍历</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"--------按照下标遍历--------"</span>)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;array.<span class="built_in">count</span> &#123;</div><div class="line">            <span class="built_in">print</span>(array[i])</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//2.遍历元素</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"--------遍历元素--------"</span>)</div><div class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> array &#123;</div><div class="line">            <span class="built_in">print</span>(s)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">//3.enum block 遍历，同时遍历下标和内容1</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"--------同时遍历下标和内容1--------"</span>)</div><div class="line">        <span class="keyword">for</span> e <span class="keyword">in</span> array.enumerated() &#123;</div><div class="line">            <span class="comment">//元组</span></div><div class="line">            <span class="built_in">print</span>(e)</div><div class="line">            </div><div class="line">            <span class="built_in">print</span>(<span class="string">"<span class="subst">\(e.offset)</span>,<span class="subst">\(e.element)</span>"</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//4.同时遍历下标和内容2</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"--------同时遍历下标和内容2--------"</span>)</div><div class="line">        <span class="comment">//n为下标，s为数组的元素，这两个可以随便写</span></div><div class="line">        <span class="keyword">for</span> (n,s) <span class="keyword">in</span> array.enumerated() &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"<span class="subst">\(n)</span>,<span class="subst">\(s)</span>"</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//5.反序遍历</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"--------反序遍历--------"</span>)</div><div class="line">        <span class="keyword">for</span> e <span class="keyword">in</span> array.reversed() &#123;</div><div class="line">            <span class="built_in">print</span>(e)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">//6.反序遍历索引和内容</span></div><div class="line">        <span class="built_in">print</span>(<span class="string">"--------反序遍历索引和内容--------"</span>)</div><div class="line">        <span class="built_in">print</span>(<span class="string">"--------错误的反序遍历索引和内容--------"</span>)</div><div class="line">        <span class="keyword">for</span> (n,s) <span class="keyword">in</span> array.reversed().enumerated() &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"<span class="subst">\(n)</span>:<span class="subst">\(s)</span>"</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">print</span>(<span class="string">"--------正确的的反序遍历索引和内容--------"</span>)</div><div class="line">        <span class="keyword">for</span> (n,s) <span class="keyword">in</span> array.enumerated().reversed() &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"<span class="subst">\(n)</span>:<span class="subst">\(s)</span>"</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="数组的增删改和容量"><a href="#数组的增删改和容量" class="headerlink" title="数组的增删改和容量"></a>数组的增删改和容量</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//增删改</span></div><div class="line">   <span class="function"><span class="keyword">func</span> <span class="title">arrayOperation</span><span class="params">()</span></span> &#123;</div><div class="line">       </div><div class="line">       <span class="comment">//可变数组用var</span></div><div class="line">       <span class="keyword">var</span> array = [<span class="string">"feyddy"</span>,<span class="string">"crise"</span>,<span class="string">"dirk"</span>];</div><div class="line">       </div><div class="line">       <span class="comment">//追加元素</span></div><div class="line">       array.append(<span class="string">"dog"</span>)</div><div class="line">       <span class="built_in">print</span>(array)</div><div class="line">       </div><div class="line">       </div><div class="line">       <span class="comment">//修改,通过下标定位</span></div><div class="line">       array[<span class="number">1</span>] = <span class="string">"wang"</span></div><div class="line">       <span class="built_in">print</span>(array)</div><div class="line">       </div><div class="line">       <span class="comment">//数组越界：Index out of range</span></div><div class="line">       <span class="comment">//array[4] = "xxx"</span></div><div class="line"></div><div class="line">       </div><div class="line">       <span class="comment">//删除</span></div><div class="line">       array.remove(at: <span class="number">3</span>)</div><div class="line">       <span class="built_in">print</span>(array)</div><div class="line">       </div><div class="line">       </div><div class="line">       <span class="comment">//删除全部，并且保留空间</span></div><div class="line">       array.removeAll(keepingCapacity: <span class="literal">true</span>)</div><div class="line">       <span class="built_in">print</span>(<span class="string">"<span class="subst">\(array)</span><span class="subst">\(array.capacity)</span>"</span>)</div><div class="line">       </div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//数组的容量</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">arrayCapacity</span><span class="params">()</span></span>  &#123;</div><div class="line">        <span class="comment">//定义一个数组，指定类型存放Int的数组</span></div><div class="line">        <span class="comment">//var array: [Int]</span></div><div class="line">        </div><div class="line">        <span class="comment">//给数组初始化</span></div><div class="line">        <span class="comment">//array = [Int]()</span></div><div class="line">        </div><div class="line">        <span class="comment">//以上两句代码可以合并成一句</span></div><div class="line">        <span class="keyword">var</span> array = [<span class="type">Int</span>]()</div><div class="line">        </div><div class="line">        <span class="built_in">print</span>(<span class="string">"初始容量<span class="subst">\(array.capacity)</span>"</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">8</span> &#123;</div><div class="line">            array.append(i)<span class="comment">//插入时如果容量不够了，容量就*2</span></div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">print</span>(<span class="string">"<span class="subst">\(array)</span>容量<span class="subst">\(array.capacity)</span>"</span>)</div><div class="line">        </div><div class="line">        </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="数组的合并"><a href="#数组的合并" class="headerlink" title="数组的合并"></a>数组的合并</h4><p><strong>注意：</strong>要合并数组的两个数组内的元素的类型必须一致</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//数组的合并</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">arrayMerge</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">var</span> array = [<span class="string">"feyddy"</span>,<span class="string">"crise"</span>,<span class="string">"dirk"</span>];</div><div class="line">        <span class="keyword">let</span> array2 = [<span class="string">"linlin"</span>,<span class="string">"chenchen"</span>];</div><div class="line">        </div><div class="line">        <span class="comment">//将array2的内容合并到array上</span></div><div class="line">        <span class="comment">//注意：要合并数组的两个数组内的元素的类型必须一致</span></div><div class="line">        array += array2</div><div class="line">        <span class="built_in">print</span>(array)</div><div class="line">        </div><div class="line">        <span class="comment">//如果要合并一个元素不一样数组</span></div><div class="line"><span class="comment">//        var array3: [NSObject] = ["feyddy" as NSObject,"crise" as NSObject,"dirk" as NSObject];</span></div><div class="line">        </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h4 id="字典操作"><a href="#字典操作" class="headerlink" title="字典操作"></a>字典操作</h4><h6 id="字典的定义"><a href="#字典的定义" class="headerlink" title="字典的定义"></a>字典的定义</h6><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//字典的定义</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">dictionaryDefine</span><span class="params">()</span></span>  &#123;</div><div class="line">        </div><div class="line">        <span class="comment">//KEY:VALUE   -&gt;  [String:Any]</span></div><div class="line">        <span class="keyword">let</span> dict = [<span class="string">"name"</span>:<span class="string">"Feyddy"</span>,<span class="string">"age"</span>:<span class="number">25</span>] <span class="keyword">as</span> [<span class="type">String</span> : <span class="type">Any</span>];</div><div class="line">        <span class="built_in">print</span>(dict)</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">//定义字典数组-提示  这种格式在开发中使用的最多</span></div><div class="line">        <span class="keyword">let</span> array = [</div><div class="line">            [<span class="string">"name"</span>:<span class="string">"Feyddy"</span>,</div><div class="line">            <span class="string">"age"</span>:<span class="number">25</span>,</div><div class="line">            <span class="string">"sex"</span>:<span class="string">"M"</span>],</div><div class="line">            [<span class="string">"name"</span>:<span class="string">"dirk"</span>,</div><div class="line">             <span class="string">"age"</span>:<span class="number">55</span>,</div><div class="line">             <span class="string">"sex"</span>:<span class="string">"M"</span>],</div><div class="line">            [<span class="string">"name"</span>:<span class="string">"Chen"</span>,</div><div class="line">             <span class="string">"age"</span>:<span class="number">18</span>,</div><div class="line">             <span class="string">"sex"</span>:<span class="string">"F"</span>],</div><div class="line">        ]</div><div class="line">        </div><div class="line">        <span class="built_in">print</span>(array)</div><div class="line">        </div><div class="line">        </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h6 id="字典的增删改"><a href="#字典的增删改" class="headerlink" title="字典的增删改"></a>字典的增删改</h6><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//字典的增删改</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">dictionaryOperation</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="comment">//可变 var / 不可变 let</span></div><div class="line">        <span class="keyword">var</span> dict = [<span class="string">"name"</span>:<span class="string">"Feyddy"</span>,<span class="string">"age"</span>: <span class="number">25</span>] <span class="keyword">as</span> [<span class="type">String</span> : <span class="type">Any</span>];</div><div class="line">        </div><div class="line">        <span class="comment">//新增 - 如果key不存在就是新增</span></div><div class="line">        dict[<span class="string">"sex"</span>] = <span class="string">"M"</span></div><div class="line">        <span class="built_in">print</span>(dict)</div><div class="line">        </div><div class="line">        <span class="comment">//修改--字典中通过key取值的，key是唯一的</span></div><div class="line">        <span class="comment">//key存在就是修改</span></div><div class="line">        dict[<span class="string">"name"</span>] = <span class="string">"linlin"</span></div><div class="line">        <span class="built_in">print</span>(dict)</div><div class="line">        </div><div class="line">        <span class="comment">//删除 - 直接给定KEY</span></div><div class="line">        <span class="comment">//字典通过KEY来定位。KEY必须可以“hash 哈希” MD5一种</span></div><div class="line">        <span class="comment">//hash 就是将字符串变成唯一的“整数”，便于查找，提高字典的遍历速度</span></div><div class="line">        dict.removeValue(forKey: <span class="string">"age"</span>)</div><div class="line">        <span class="built_in">print</span>(dict)</div><div class="line">        </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h6 id="字典的遍历"><a href="#字典的遍历" class="headerlink" title="字典的遍历"></a>字典的遍历</h6><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//字典的遍历</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">dictionaryTraverse</span><span class="params">()</span></span>  &#123;</div><div class="line">        <span class="keyword">let</span> dict = [<span class="string">"name"</span>:<span class="string">"Feyddy"</span>,<span class="string">"age"</span>: <span class="number">25</span>,<span class="string">"sex"</span>:<span class="string">"M"</span>] <span class="keyword">as</span> [<span class="type">String</span> : <span class="type">Any</span>];</div><div class="line">        </div><div class="line">        <span class="comment">//元组形式</span></div><div class="line">        <span class="keyword">for</span> e <span class="keyword">in</span> dict &#123;</div><div class="line">            <span class="comment">//(key:value)</span></div><div class="line">            <span class="built_in">print</span>(e)</div><div class="line">            </div><div class="line">            <span class="built_in">print</span>(<span class="string">"<span class="subst">\(e.key)</span>:<span class="subst">\(e.value)</span>"</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">/*</span></div><div class="line">         前面是key</div><div class="line">         后面是value</div><div class="line">         */</div><div class="line">        <span class="keyword">for</span> (key,value) <span class="keyword">in</span> dict &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"<span class="subst">\(key)</span>:<span class="subst">\(value)</span>"</span>)</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h6 id="字典的合并"><a href="#字典的合并" class="headerlink" title="字典的合并"></a>字典的合并</h6><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//字典的合并</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">dictionaryMerge</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">var</span> dict = [<span class="string">"name"</span>:<span class="string">"Feyddy"</span>,<span class="string">"age"</span>: <span class="number">25</span>,<span class="string">"sex"</span>:<span class="string">"M"</span>] <span class="keyword">as</span> [<span class="type">String</span> : <span class="type">Any</span>];</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> dict1 = [<span class="string">"title"</span>:<span class="string">"info"</span>]</div><div class="line">        </div><div class="line">        <span class="comment">//字典不能直接相加</span></div><div class="line">        <span class="comment">//遍历dict1 依次设置</span></div><div class="line">        <span class="comment">//如果key存在，直接修改，若不存在，直接添加</span></div><div class="line">        <span class="comment">//添加的地方时无序的</span></div><div class="line">        <span class="keyword">for</span> e <span class="keyword">in</span> dict1 &#123;</div><div class="line">            dict[e.key] = dict1[e.key]</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="built_in">print</span>(dict)</div><div class="line">        </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/18/Swift3-0学习笔记（一）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2134,193 +2294,6 @@ b.径向渐变：以中心点为圆心从起始渐变色向四周辐射，直到
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/12/ARC的基本使用/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Feyddy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="清风明心">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/12/ARC的基本使用/" itemprop="url">
-                  ARC的基本使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T22:23:28+08:00">
-                2017-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/01/12/ARC的基本使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/12/ARC的基本使用/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/12/ARC的基本使用/" class="leancloud_visitors" data-flag-title="ARC的基本使用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>ARC中可以重写dealloc，但是不允许调用[super dealloc]</p>
-</li>
-<li><p>ARC中一般不需要重写Dealloc,但是一些情况比如移除通知，移除观察者等需要重写dealloc,在对象释放之前做一些内存的清理工作。</p>
-</li>
-<li><p>弱指针指向的实例对象被释放后，弱指针自动清空为nil</p>
-<p>__<em>unsafe\</em>__unretained修饰的指针，当其指向的实例对象被释放后，此指针不会自动清空。此关键字在iOS5之前会使用，目前几乎不使用。</p>
-</li>
-<li><p>弱指针使用的场景：</p>
-<p>   (1)delegate属性一般使用weak避免产生循环引用 self–&gt;self.view–&gt;tableView–&gt;self 产生循环引用</p>
-<p>   (2)block</p>
-<p>   (3)storyboard连线默认是weak:viewController–&gt;view–&gt;button,没有必要再让viewController再次持有一次button。</p>
-</li>
-<li><p>ARC桥接（Toll-free Bridging。 简称：TFB）</p>
-<ul>
-<li><p>允许OC类型与对应的CoreFoundation类型之间相互转换的机制。</p>
-</li>
-<li><p>ARC进行内存管理的范围即OC对象，对于CF框架框架中的对象无法进行管理。</p>
-</li>
-<li><p>两个框架之间类型进行转换时，有三个关键字进行桥接：_<strong><em>bridge\</em>_ </strong>bridge_retained __bridge_transfer</p>
-</li>
-<li><p><strong>\</strong>bridge表示即不授权也不放权，仍然由ARC来管理string对象的内存.__</p>
-<p><code>CFStringRef cfstring1 = (__bridge CFStringRef)string;</code></p>
-</li>
-<li><p>__bridge_retained表示ARC放弃管理内存，把此权利交给CF,由其管理内存</p>
-<p><code>CFStringRef cfstring1 = (__bridge_retained CFStringRef)string;</code></p>
-<p><code>CFStringRef cfstring2 = CFBridgingRetain(string);</code></p>
-</li>
-<li><p>CF释放内存</p>
-<p><code>CFRelease(cfstring1);</code></p>
-</li>
-</ul>
-<p>下面举个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CFStringRef cfString = CFStringCreateWithFormat(kCFAllocatorDefault, NULL, (__bridge CFStringRef)@&quot;text-%i&quot;, 100);</div><div class="line"></div><div class="line">  //把CF对象转成OC对象 __bridge_transfer：表示把管理内存的权利授权给ARC,CF不需要管理内存</div><div class="line">  NSString *ocString = (__bridge_transfer NSString *)cfString;</div><div class="line">  </div><div class="line">  CFRelease(cfString);</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2366,7 +2339,7 @@ b.径向渐变：以中心点为圆心从起始渐变色向四周辐射，直到
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2383,7 +2356,7 @@ b.径向渐变：以中心点为圆心从起始渐变色向四周辐射，直到
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
