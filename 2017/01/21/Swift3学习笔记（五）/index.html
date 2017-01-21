@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="函数," />
+  <meta name="keywords" content="循环引用," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="函数的基本使用123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293import UIKitclas">
+<meta name="description" content="使用Swift实现循环引用123456789101112131415161718192021222324252627282930313233343536373839404142import UIKitclass ViewController: UIViewController &amp;#123;        //定义属性    var completionCallBack: (()-&amp;gt;())?">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift3学习笔记（三）">
-<meta property="og:url" content="http://yoursite.com/2017/01/19/Swift3学习笔记（三）/index.html">
+<meta property="og:title" content="Swift3学习笔记（五）">
+<meta property="og:url" content="http://yoursite.com/2017/01/21/Swift3学习笔记（五）/index.html">
 <meta property="og:site_name" content="清风明心">
-<meta property="og:description" content="函数的基本使用123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293import UIKitclas">
-<meta property="og:updated_time" content="2017-01-19T10:17:01.000Z">
+<meta property="og:description" content="使用Swift实现循环引用123456789101112131415161718192021222324252627282930313233343536373839404142import UIKitclass ViewController: UIViewController &amp;#123;        //定义属性    var completionCallBack: (()-&amp;gt;())?">
+<meta property="og:updated_time" content="2017-01-21T02:38:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift3学习笔记（三）">
-<meta name="twitter:description" content="函数的基本使用123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293import UIKitclas">
+<meta name="twitter:title" content="Swift3学习笔记（五）">
+<meta name="twitter:description" content="使用Swift实现循环引用123456789101112131415161718192021222324252627282930313233343536373839404142import UIKitclass ViewController: UIViewController &amp;#123;        //定义属性    var completionCallBack: (()-&amp;gt;())?">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/19/Swift3学习笔记（三）/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/21/Swift3学习笔记（五）/"/>
 
 
 
 
 
-  <title> Swift3学习笔记（三） | 清风明心 </title>
+  <title> Swift3学习笔记（五） | 清风明心 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +276,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/19/Swift3学习笔记（三）/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/21/Swift3学习笔记（五）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Feyddy">
@@ -300,7 +300,7 @@
             
             
               
-                Swift3学习笔记（三）
+                Swift3学习笔记（五）
               
             
           </h1>
@@ -313,8 +313,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-19T18:16:30+08:00">
-                2017-01-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-21T08:18:59+08:00">
+                2017-01-21
               </time>
             
 
@@ -347,8 +347,8 @@
             
               <span class="post-comments-count">
                 <span class="post-meta-divider">|</span>
-                <a href="/2017/01/19/Swift3学习笔记（三）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/19/Swift3学习笔记（三）/" itemprop="commentCount">0</span> comments
+                <a href="/2017/01/21/Swift3学习笔记（五）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/21/Swift3学习笔记（五）/" itemprop="commentCount">0</span> comments
                 </a>
               </span>
             
@@ -358,7 +358,7 @@
 
           
           
-             <span id="/2017/01/19/Swift3学习笔记（三）/" class="leancloud_visitors" data-flag-title="Swift3学习笔记（三）">
+             <span id="/2017/01/21/Swift3学习笔记（五）/" class="leancloud_visitors" data-flag-title="Swift3学习笔记（五）">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -388,7 +388,21 @@
       
 
       
-        <h4 id="函数的基本使用"><a href="#函数的基本使用" class="headerlink" title="函数的基本使用"></a>函数的基本使用</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        </div><div class="line">        <span class="comment">//调用方法</span></div><div class="line">        <span class="built_in">print</span>(sum(x: <span class="number">10</span>, y: <span class="number">40</span>))</div><div class="line">        </div><div class="line">        <span class="comment">//外部参数的调用</span></div><div class="line">        <span class="built_in">print</span>(sum1(num1: <span class="number">10</span>, num2: <span class="number">100</span>))</div><div class="line">        <span class="built_in">print</span>(sum2(<span class="number">10</span>, <span class="number">20</span>))</div><div class="line">        </div><div class="line">        <span class="comment">//测试默认值</span></div><div class="line">        <span class="built_in">print</span>(defaultValue())</div><div class="line">        <span class="built_in">print</span>(defaultValue(x: <span class="number">10</span>, y: <span class="number">20</span>))</div><div class="line">        <span class="built_in">print</span>(defaultValue(y: <span class="number">20</span>))</div><div class="line">        <span class="built_in">print</span>(defaultValue(x: <span class="number">10</span>))</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">//无返回值</span></div><div class="line">        noReturn1()</div><div class="line">        noReturn2()</div><div class="line">        noReturn3()</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line"></div><div class="line">    <span class="comment">// MARK: - 函数定义</span></div><div class="line">    <span class="comment">/// 函数定义的格式：函数名(形参列表) -&gt; 返回值类型</span></div><div class="line">    <span class="comment">///</span></div><div class="line">    <span class="comment">/// - Parameters:</span></div><div class="line">    <span class="comment">///   - x: 形参1</span></div><div class="line">    <span class="comment">///   - y: 形参2</span></div><div class="line">    <span class="comment">/// - Returns: 返回值</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sum</span><span class="params">(x: Int , y: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> x + y</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment">// MARK: - 外部参数</span></div><div class="line">    <span class="comment">/// -外部参数就是在函数前面加上一个名字</span></div><div class="line">    <span class="comment">/// -外部参数不会影响函数内部的细节</span></div><div class="line">    <span class="comment">/// -外部参数会让外部调用方法的时候更加直观</span></div><div class="line">    <span class="comment">/// -外部参数如果使用_，在外部调用函数时，会忽略形参的名字</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sum2</span><span class="params">(<span class="number">_</span> x: Int,<span class="number">_</span> y: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        </div><div class="line">        <span class="comment">//在Swift中 _ 就是可以忽略任意不感兴趣的内容</span></div><div class="line">        <span class="comment">//从来没有被用到的数据可以用_来替代,如下面的i</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">10</span> &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"hello"</span>)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> x+y</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">sum1</span><span class="params">(num1 x: Int, num2 y: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> x+y</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment">// MARK: - 默认值</span></div><div class="line">    <span class="comment">//通过给参数设置默认值，在调用的时候，可以任意组合参数，然后没有赋值的参数就是用默认的函数中定义的值</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">defaultValue</span><span class="params">(x: Int = <span class="number">1</span>,y: Int = <span class="number">11</span>)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> x+y</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="comment">// MARK: - 无返回值</span></div><div class="line">    <span class="comment">/*</span></div><div class="line">     主要用在闭包</div><div class="line">     - 直接省略</div><div class="line">     - （）</div><div class="line">     - void</div><div class="line">     */</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">noReturn1</span><span class="params">()</span></span> -&gt; <span class="type">Void</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"Void"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">noReturn2</span><span class="params">()</span></span> -&gt; () &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"()"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">noReturn3</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"省略"</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h4 id="使用Swift实现循环引用"><a href="#使用Swift实现循环引用" class="headerlink" title="使用Swift实现循环引用"></a>使用Swift实现循环引用</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">//定义属性</span></div><div class="line">    <span class="keyword">var</span> completionCallBack: (()-&gt;())?</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        </div><div class="line">        <span class="comment">// block 中如果出现self 要特别小心</span></div><div class="line">        <span class="comment">//- 只是闭包对 self 进行了copy,闭包执行完成之后，会自动销毁，同时释放对self的引用</span></div><div class="line">        <span class="comment">//- 同时需要self对闭包引用</span></div><div class="line">        loadData &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="keyword">self</span>.view)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">loadData</span><span class="params">(completion: @escaping <span class="params">()</span></span></span>-&gt;()) -&gt; () &#123;</div><div class="line">        <span class="comment">//使用属性记录闭包-&gt;self对闭包引用.这个时候deinit不会运行，因为出现了循环引用</span></div><div class="line">        completionCallBack = completion</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment">//异步</span></div><div class="line">        <span class="type">DispatchQueue</span>.global().async &#123; </div><div class="line">            <span class="built_in">print</span>(<span class="string">"耗时操作"</span>)</div><div class="line">            </div><div class="line">            <span class="comment">//尾随闭包</span></div><div class="line">            <span class="type">DispatchQueue</span>.main.async &#123;</div><div class="line">                <span class="comment">//回调执行闭包</span></div><div class="line">                completion()</div><div class="line">                </div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//类似于OC中的dealloc</span></div><div class="line">    <span class="keyword">deinit</span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"没有循环引用"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="解除循环引用"><a href="#解除循环引用" class="headerlink" title="解除循环引用"></a>解除循环引用</h4><p>还是拿上面的代码进行解决</p>
+<ul>
+<li><p>OC方式解决循环引用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//***解除循环引用，需要打断链条</span></div><div class="line">        <span class="comment">//细节1：var ：weak只能修饰var，不能修饰let</span></div><div class="line">        <span class="comment">//‘weak’ must be a mutable variable,because it may change at runtime</span></div><div class="line">        <span class="comment">//weak 可能会在运行时被修改-&gt;指向对象一旦被释放掉，会被自动设置为nil</span></div><div class="line">        <span class="comment">//ViewController?</span></div><div class="line">        </div><div class="line">        <span class="keyword">weak</span> <span class="keyword">var</span> weakSelf = <span class="keyword">self</span></div><div class="line">        loadData &#123;</div><div class="line">            </div><div class="line">            <span class="comment">//细节2：</span></div><div class="line">            <span class="comment">//解包的方式有两种</span></div><div class="line">            <span class="comment">//？可选解包 - 如果 self 已经被释放，不会对对象发送 getter 消息，更加安全</span></div><div class="line">            <span class="comment">//！强行解包 - 如果 self 已经被释放，强行解包会导致奔溃</span></div><div class="line">            </div><div class="line">            <span class="comment">/**</span></div><div class="line">             weakSelf?.view  -  只是单纯的发送消息，没有任的计算</div><div class="line">             强行解包，因为需要计算，可选项不能直接参与计算</div><div class="line">            */</div><div class="line">            </div><div class="line">            <span class="built_in">print</span>(weakSelf?.view)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Swift解决循环引用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//Swift推荐方法</span></div><div class="line">        <span class="comment">//[weak self] 表示&#123;&#125;里面的self都是弱引用，需要注意解包</span></div><div class="line">        loadData &#123;</div><div class="line">            [<span class="keyword">weak</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(<span class="keyword">self</span>?.view)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="comment">//Swift另外的用法，不推荐。不安全</span></div><div class="line">        <span class="comment">//[unowned self]表示&#123;&#125;中的所有的self都是assgin的，不会强引用，但是，如果对象释放，指针地址不会变化</span></div><div class="line">        <span class="comment">//如果对象被释放，继续调用，就会出现野指针的问题</span></div><div class="line">        loadData &#123;</div><div class="line">            [<span class="keyword">unowned</span> <span class="keyword">self</span>] <span class="keyword">in</span></div><div class="line">            <span class="built_in">print</span>(<span class="keyword">self</span>.view)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>OC代码中解决循环引用的两种方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line">#import &quot;FDViewController.h&quot;</div><div class="line"></div><div class="line">@interface FDViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation FDViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // Do any additional setup after loading the view.</div><div class="line">    </div><div class="line">    /*</div><div class="line">    //解除引用1：__weak</div><div class="line">    __weak typeof(self) weakSelf = self;</div><div class="line">    </div><div class="line">    [self loadData:^&#123;</div><div class="line">        NSLog(@&quot;%@&quot;,weakSelf.view);</div><div class="line">    &#125;];</div><div class="line">    */</div><div class="line">    </div><div class="line">    //解除引用2:__unsafe_unretained</div><div class="line">    //如果需要自行管理内存，才使用</div><div class="line">    //EXC_BAD_ACCESS 坏内存访问，野指针访问</div><div class="line">    //__unsafe_unretained同样是 assign的引用（MRC中没有weak）</div><div class="line">    //在MRC中如果要弱引用对象都是使用assign，不会增加引用计数，但是一旦对象被释放，地址不会改变，继续访问，出现野指针</div><div class="line">    //ARC weak ,本质上是一个官缠着模式，一旦发现对象被释放，会自动将地址设置为nil，更加安全</div><div class="line">    </div><div class="line">    </div><div class="line">    //效率：weak的效率会略微差一些</div><div class="line">    __unsafe_unretained typeof(self) weakSelf = self;</div><div class="line">    [self loadData:^&#123;</div><div class="line">        NSLog(@&quot;%@&quot;,weakSelf.view);</div><div class="line"></div><div class="line">    &#125;];</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)loadData:(void(^)()) completion &#123;</div><div class="line">    dispatch_async(dispatch_get_global_queue(0, 0), ^&#123;</div><div class="line">        NSLog(@&quot;耗时操作 %@&quot;,[NSThread currentThread]);</div><div class="line">        </div><div class="line">        //睡眠</div><div class="line">        [NSThread sleepForTimeInterval:2.0];</div><div class="line">        </div><div class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</div><div class="line">            //执行block</div><div class="line">            </div><div class="line">            completion();</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+</li>
+</ul>
 
       
     </div>
@@ -412,7 +426,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/函数/" rel="tag"># 函数</a>
+            <a href="/tags/循环引用/" rel="tag"># 循环引用</a>
           
         </div>
       
@@ -421,8 +435,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/19/Swift3-0学习笔记（二）/" rel="next" title="Swift3.0学习笔记（二）">
-                <i class="fa fa-chevron-left"></i> Swift3.0学习笔记（二）
+              <a href="/2017/01/19/Swift3学习笔记（四）/" rel="next" title="Swift3学习笔记（四）">
+                <i class="fa fa-chevron-left"></i> Swift3学习笔记（四）
               </a>
             
           </div>
@@ -430,10 +444,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/19/Swift3学习笔记（四）/" rel="prev" title="Swift3学习笔记（四）">
-                Swift3学习笔记（四） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -460,7 +470,7 @@
   <div class="comments" id="comments">
     
       <div class="fb-comments"
-           data-href="http://yoursite.com/2017/01/19/Swift3学习笔记（三）/"
+           data-href="http://yoursite.com/2017/01/21/Swift3学习笔记（五）/"
            data-numposts="10"
            data-width="100%"
            data-colorscheme="light">
@@ -580,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数的基本使用"><span class="nav-number">1.</span> <span class="nav-text">函数的基本使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Swift实现循环引用"><span class="nav-number">1.</span> <span class="nav-text">使用Swift实现循环引用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解除循环引用"><span class="nav-number">2.</span> <span class="nav-text">解除循环引用</span></a></li></ol></div>
             
 
           </div>
