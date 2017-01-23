@@ -277,6 +277,214 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/11/表视图UITableView的基本用法/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/11/表视图UITableView的基本用法/" itemprop="url">
+                  表视图UITableView的基本使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-11T09:47:18+08:00">
+                2017-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/11/表视图UITableView的基本用法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/01/11/表视图UITableView的基本用法/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/11/表视图UITableView的基本用法/" class="leancloud_visitors" data-flag-title="表视图UITableView的基本使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>UITableView的基本创建</li>
+</ul>
+<p>其中最重要的就是实现它的两个必须实现的代理方法：UITableViewDataSource协议</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">[super viewDidLoad];</div><div class="line"></div><div class="line">//创建表视图</div><div class="line">UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 568) style:UITableViewStylePlain];</div><div class="line"></div><div class="line">//设置代理(数据源)</div><div class="line">tableView.dataSource = self;</div><div class="line"></div><div class="line">[self.view addSubview:tableView];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">#pragma mark UITableViewDatasource</div><div class="line">//返回单元格的个数的协议方法</div><div class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section &#123;</div><div class="line"></div><div class="line">return 20;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">//创建单元格的协议方法</div><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line"></div><div class="line">//    indexPath.section 组的索引</div><div class="line">//    indexPath.row  行的索引 0 , 1 ,2,4 .......9999</div><div class="line"></div><div class="line">UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];</div><div class="line"></div><div class="line">//设置单元格上显示的文本</div><div class="line">cell.textLabel.text = [NSString stringWithFormat:@&quot;section: %ld  row :%ld&quot;,indexPath.section,indexPath.row];</div><div class="line"></div><div class="line">return cell;</div><div class="line">&#125;</div><div class="line"></div><div class="line">-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    </div><div class="line">    //单元格高度自适应</div><div class="line">    </div><div class="line">    </div><div class="line">    NSString *text = _info[indexPath.row];</div><div class="line">    </div><div class="line">    //根据文本内容计算高度,使用属性文本计算高度</div><div class="line">    </div><div class="line">    //iOS7之后使用boundingRectWithSize计算文本所占的矩形</div><div class="line">    /*</div><div class="line">     参数：</div><div class="line">     CGSizeMake(320, 0)：指定文本的宽度，自动计算出高度</div><div class="line">     options:绘制文本需要的参数</div><div class="line">     attributes:文字的属性（字体大小）</div><div class="line">     context:上下文，这里不需要</div><div class="line">     </div><div class="line">     */</div><div class="line">    CGRect frame = [text boundingRectWithSize:CGSizeMake(320, 0)</div><div class="line">                                     options:NSStringDrawingUsesLineFragmentOrigin</div><div class="line">                                  attributes:@&#123;NSFontAttributeName:[UIFont systemFontOfSize:16]&#125;</div><div class="line">                                     context:nil];</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    NSLog(@&quot;size = %f&quot;,frame.size.height);</div><div class="line">    </div><div class="line">    return frame.size.height + 10;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//cell的点击方法</div><div class="line">-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    [tableView deselectRowAtIndexPath:indexPath animated:YES];//设置点击的风格</div><div class="line">//    NSLog(@&quot;选中的单元格的索引section = %ld,row = %ld&quot;,indexPath.section,indexPath.row);</div><div class="line">    </div><div class="line">    //获取点击的单元格对象</div><div class="line">    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];</div><div class="line">    NSLog(@&quot;%@&quot;,cell.textLabel.text);</div><div class="line">    </div><div class="line">    [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:YES];</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>UITableView的风格样式</li>
+</ul>
+<p>UITableViewStylePlain和UITableViewStyleGrouped。这两者操作起来其实并没有本质区别，只是后者按分组样式显示前者按照普通样式显示而已。</p>
+<p>​     UITableViewStyleGrouped:分组风格</p>
+<pre><code>UITableViewStylePlain:平铺风格
+</code></pre><p>上面介绍的UITableViewStylePlain，下面我们使用UITableViewStyleGrouped来试一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">[super viewDidLoad];</div><div class="line">// Do any additional setup after loading the view.</div><div class="line"></div><div class="line">UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, 320, 548) style:UITableViewStyleGrouped];</div><div class="line"></div><div class="line">[self.view addSubview:tableView];</div><div class="line"></div><div class="line">//设置数据源</div><div class="line">tableView.dataSource = self;</div><div class="line">//设置代理</div><div class="line">tableView.delegate = self;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//读取plist文件</div><div class="line">NSString *filePath = [[NSBundle mainBundle] pathForResource:@&quot;font&quot; ofType:@&quot;plist&quot;];</div><div class="line"></div><div class="line">array = [NSArray arrayWithContentsOfFile:filePath];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line">[</div><div class="line"></div><div class="line">[font1, font2 ,fon3 .....]; //显示在第一组</div><div class="line">[font1, .....];             // 第二组上面</div><div class="line">[fon1..........];........</div><div class="line"></div><div class="line"></div><div class="line">]</div><div class="line">*/</div><div class="line">#pragma mark UITableViewDataSource</div><div class="line">//返回组的个数,默认为1组</div><div class="line">- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView &#123;</div><div class="line"></div><div class="line">return array.count; // 13组</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">//此方法会调用13次,因为分了13组</div><div class="line">//返回每组中单元格的个数   section:每一组的索引</div><div class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section&#123; // 0,1,......12</div><div class="line"></div><div class="line">NSArray *fontNames = [array objectAtIndex:section];</div><div class="line"></div><div class="line">return fontNames.count;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//创建单元格</div><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line"></div><div class="line">// indexPath : section属性表示组 row属性表示行 整体表示单元格的位置</div><div class="line">// 第一组的单元格  s:0 r:0   0,1   0,2</div><div class="line">// 第二组的单元格  s:1 r:0   1,1   1,2........</div><div class="line"></div><div class="line">UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];</div><div class="line"></div><div class="line">//取得组的索引</div><div class="line">NSInteger section = indexPath.section;</div><div class="line">//取得小数组</div><div class="line">NSArray *fontNames = [array objectAtIndex:section];</div><div class="line"></div><div class="line">//取得组中行的索引</div><div class="line">NSInteger row = indexPath.row;</div><div class="line">//取得小数组中的字符串</div><div class="line">NSString *fontName = [fontNames objectAtIndex:row];</div><div class="line">//设置文本</div><div class="line">cell.textLabel.text = fontName;</div><div class="line"></div><div class="line">return cell;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//设置组的头视图的标题</div><div class="line">- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section &#123;</div><div class="line"></div><div class="line">NSString *title = [NSString stringWithFormat:@&quot;第%ld组&quot;,section];</div><div class="line"></div><div class="line">return title;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="http://ww2.sinaimg.cn/large/e3aca1a1jw1fbmgkzlju7j20940gkdgc.jpg" alt=""></p>
+<ul>
+<li>自定义头部视图</li>
+</ul>
+<p>直接像上面设置头视图的文字，这种代理方法局限性很大，无法设置,字的颜色,字的大小。</p>
+<p>下面我们用另一个代理方法自定义头部视图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//返回组的头部视图的协议方法</div><div class="line">- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section &#123;</div><div class="line"></div><div class="line">//高度无法控制,需要用协议方法控制</div><div class="line">UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];</div><div class="line">view.backgroundColor = [UIColor redColor];</div><div class="line"></div><div class="line">UILabel *lable = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, 200, 30)];</div><div class="line">lable.backgroundColor = [UIColor greenColor];</div><div class="line">lable.text = [NSString stringWithFormat:@&quot;第%ld组&quot;,section];</div><div class="line"></div><div class="line">[view addSubview:lable];</div><div class="line"></div><div class="line">return view;</div><div class="line">&#125;</div><div class="line">//返回组的头视图的高度</div><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section&#123;</div><div class="line">return 100;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>UITableView的常用方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"> //自定义表视图的头视图</div><div class="line">    UIImageView *headerView = [[UIImageView alloc ] initWithFrame:CGRectMake(0, 0, 0, 100)];</div><div class="line">    </div><div class="line">    headerView.image = [UIImage imageNamed:@&quot;scene1.jpg&quot;];</div><div class="line">    </div><div class="line">    //给表视图的头视图属性 赋值</div><div class="line">    table.tableHeaderView = headerView;</div><div class="line">    </div><div class="line">    //常用属性</div><div class="line">    //单元格分割线的颜色</div><div class="line">    table.separatorColor = [UIColor redColor];</div><div class="line">    </div><div class="line">//    table.separatorStyle = UITableViewCellSeparatorStyleNone;</div><div class="line">    </div><div class="line">    //单元格的高度:统一修改所有单元格的高度，一般不建议使用</div><div class="line">    //使用相应的代理来设置高度</div><div class="line">//    table.rowHeight = 100;</div><div class="line">    //设置组的头视图高度</div><div class="line">//    table.sectionHeaderHeight = 100;</div><div class="line">//    table.sectionFooterHeight = 100;</div><div class="line">//    </div><div class="line">    </div><div class="line">    //设置背景视图</div><div class="line">    </div><div class="line">    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];</div><div class="line">    view.backgroundColor = [UIColor redColor];</div><div class="line">    table.backgroundView = view;</div><div class="line">    </div><div class="line">    </div><div class="line">    //自定义表视图的尾视图</div><div class="line">    UIImageView *footerView = [[UIImageView alloc ] initWithFrame:CGRectMake(0, 0, 0, 100)];</div><div class="line">    </div><div class="line">    footerView.image = [UIImage imageNamed:@&quot;scene1.jpg&quot;];</div><div class="line">    </div><div class="line">    //给表视图的头视图属性 赋值</div><div class="line">    table.tableFooterView = footerView;</div><div class="line">    </div><div class="line">    [self.view addSubview:table];</div><div class="line">    </div><div class="line">    //返回一个单元格实例</div><div class="line">    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:1 inSection:8];</div><div class="line">    UITableViewCell *cell =[table cellForRowAtIndexPath:indexPath];</div><div class="line">    </div><div class="line">    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^&#123;</div><div class="line">        //reloadData：刷新整个表视图的数据</div><div class="line">        [table reloadData];</div><div class="line">        </div><div class="line">        //滑动到指定的单元格</div><div class="line">        [table scrollToRowAtIndexPath:indexPath</div><div class="line">                     atScrollPosition:UITableViewScrollPositionMiddle</div><div class="line">                             animated:YES];</div><div class="line">    </div><div class="line">        </div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>下面我们做个小案例：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">[super viewDidLoad];</div><div class="line"></div><div class="line">UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, 320, 548) style:UITableViewStyleGrouped];</div><div class="line"></div><div class="line">//数据源</div><div class="line">tableView.dataSource = self;</div><div class="line">[self.view addSubview:tableView];</div><div class="line"></div><div class="line">//读取省份的plist文件</div><div class="line">NSString *provinPath = [[NSBundle mainBundle] pathForResource:@&quot;provinces.plist&quot; ofType:nil];</div><div class="line">procinces = [NSArray arrayWithContentsOfFile:provinPath];</div><div class="line"></div><div class="line">//读取城市列表文件</div><div class="line">NSString *cityPath = [[NSBundle mainBundle] pathForResource:@&quot;cities.plist&quot; ofType:nil];</div><div class="line">cityDic = [NSDictionary dictionaryWithContentsOfFile:cityPath];</div><div class="line"></div><div class="line"></div><div class="line">//设置索引的颜色</div><div class="line">tableView.sectionIndexBackgroundColor = [UIColor redColor];</div><div class="line">tableView.sectionIndexColor = [UIColor orangeColor];</div><div class="line">tableView.sectionIndexTrackingBackgroundColor = [UIColor greenColor];</div><div class="line">//    tableView</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line">&#123;</div><div class="line">安徽:   [ ......]</div><div class="line">湖南:   [长沙, 娄底 ........]</div><div class="line">广东:   [];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">*/</div><div class="line"></div><div class="line">//组的个数</div><div class="line">- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView &#123;</div><div class="line"></div><div class="line">return procinces.count;</div><div class="line"></div><div class="line">&#125;            // Default is 1 if not implemented</div><div class="line"></div><div class="line">//每一组中的单元格个数</div><div class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section &#123;</div><div class="line"></div><div class="line">//取得省份的名字</div><div class="line">NSString *procinceName = [procinces objectAtIndex:section];</div><div class="line"></div><div class="line">//取出城市数组</div><div class="line">NSArray *cites = [cityDic objectForKey:procinceName];</div><div class="line"></div><div class="line"></div><div class="line">return cites.count;</div><div class="line"></div><div class="line">return 0;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line"></div><div class="line">UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];</div><div class="line"></div><div class="line">//组的索引</div><div class="line">NSInteger section = indexPath.section;</div><div class="line"></div><div class="line">//行的索引</div><div class="line">NSInteger row = indexPath.row;</div><div class="line"></div><div class="line">//省份的名字</div><div class="line">NSString *provinceName = [procinces objectAtIndex:section];</div><div class="line">//取出城市数组</div><div class="line">NSArray *cites = [cityDic objectForKey:provinceName];</div><div class="line"></div><div class="line">NSString *cityName = [cites objectAtIndex:row];</div><div class="line"></div><div class="line"></div><div class="line">cell.textLabel.text = cityName;</div><div class="line"></div><div class="line">return cell;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">//组的头视图上的标题,此方法有多少组就会调用多少次</div><div class="line">- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section &#123;</div><div class="line"></div><div class="line">NSString *str =  procinces[section];</div><div class="line"></div><div class="line">return str;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//返回索引</div><div class="line">- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView&#123;</div><div class="line"></div><div class="line">//    return @[@&quot;A&quot;,@&quot;B&quot;,@&quot;C&quot;];</div><div class="line">return procinces;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面案例的数据格式如下：</p>
+<p>provinces.plist</p>
+<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fbmira2tatj20bc0bcq4n.jpg" alt=""></p>
+<p>cities.plist</p>
+<p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fbmis2ffghj20di0dxwgr.jpg" alt=""></p>
+<p>效果图如下：</p>
+<p><img src="http://ww1.sinaimg.cn/large/e3aca1a1jw1fbmit0awsdj208s0fr756.jpg" alt=""></p>
+<ul>
+<li>UITableView的常用属性和方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">//____________tabelView常用属性______________</div><div class="line"></div><div class="line">UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 200)];</div><div class="line">headerView.backgroundColor = [UIColor redColor];</div><div class="line">//设置tableView的头视图</div><div class="line">_tableView.tableHeaderView = headerView;</div><div class="line"></div><div class="line">UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 100)];</div><div class="line">footView.backgroundColor = [UIColor greenColor];</div><div class="line">//设置tableView的尾部视图</div><div class="line">_tableView.tableFooterView = footView;</div><div class="line"></div><div class="line">//分割线颜色,默认是灰色</div><div class="line">_tableView.separatorColor = [UIColor blueColor];</div><div class="line"></div><div class="line">//分割线的样式  UITableViewCellSeparatorStyleNone取消分割线</div><div class="line">//    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;</div><div class="line"></div><div class="line">//设置行高 所有的单元格高度都是100,通过协议方法也可以设置</div><div class="line">_tableView.rowHeight = 100;</div><div class="line"></div><div class="line">//设置数据源</div><div class="line">_tableView.dataSource = self;</div><div class="line"></div><div class="line">//设置代理</div><div class="line">_tableView.delegate = self;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#pragma mark UITableViewDelegate</div><div class="line">//返回单元格的行高,此方法会调用多次,为每一个单元格确定行高</div><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line"></div><div class="line">if (indexPath.row == 0) &#123; //第一个单元格</div><div class="line"></div><div class="line">return 100;</div><div class="line"></div><div class="line">&#125;else&#123;</div><div class="line"></div><div class="line">return 50;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">//_________________表视图常用方法______________</div><div class="line"></div><div class="line">/*</div><div class="line">//删除第一个元素</div><div class="line">[fonts removeObjectAtIndex:0];</div><div class="line"></div><div class="line">//1. 刷新表视图,让显示的内容与数据同步</div><div class="line">[_tableView reloadData];</div><div class="line"></div><div class="line">*/</div><div class="line"></div><div class="line">//2. 滚动到指定的单元格</div><div class="line">// UITableViewScrollPositionTop 顶部</div><div class="line">// UITableViewScrollPositionMiddle 中间</div><div class="line">//UITableViewScrollPositionBottom 底部</div><div class="line"></div><div class="line">/*</div><div class="line">NSIndexPath *indexPath = [NSIndexPath indexPathForRow:10 inSection:0];</div><div class="line">[_tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];</div><div class="line">*/</div><div class="line"></div><div class="line">//3. 通过indexPath获取到对应的单元格</div><div class="line">NSIndexPath *indexPath = [NSIndexPath indexPathForRow:10 inSection:0];</div><div class="line">UITableViewCell *cell = [_tableView cellForRowAtIndexPath:indexPath];</div><div class="line"></div><div class="line">//4. 获取到当前显示的单元格</div><div class="line">NSArray *cells = [_tableView visibleCells];</div></pre></td></tr></table></figure>
+<ul>
+<li>到现在，我们继续做个小案例：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">[super viewDidLoad];</div><div class="line">_tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 20, 320, 548) style:UITableViewStylePlain];</div><div class="line"></div><div class="line">_tableView.dataSource = self;</div><div class="line">_tableView.delegate = self;</div><div class="line">[self.view addSubview:_tableView];</div><div class="line"></div><div class="line">//读取plist文件</div><div class="line">NSString *filePath = [[NSBundle mainBundle] pathForResource:@&quot;friends.plist&quot; ofType:nil];</div><div class="line">array = [NSArray arrayWithContentsOfFile:filePath];</div><div class="line"></div><div class="line">&#125;</div><div class="line">/*</div><div class="line">[</div><div class="line">&#123;</div><div class="line">groupe  :   @&quot;我的好友&quot;</div><div class="line">friends  :  [好友1,好友1,好友1,好友1,好友1,];</div><div class="line">&#125;,</div><div class="line"></div><div class="line">&#123;</div><div class="line">groupe  :   @&quot;大学同学&quot;</div><div class="line">friends  :  [好友1,好友1,好友1,好友1,好友1,];</div><div class="line">&#125;,</div><div class="line"></div><div class="line">]</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">*/</div><div class="line"></div><div class="line">//租的数量</div><div class="line">- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView &#123;</div><div class="line"></div><div class="line">return array.count;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">//返回每一组中单元格的个数</div><div class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section &#123;</div><div class="line">NSDictionary *dic = array[section];</div><div class="line">//取出好友数组</div><div class="line">NSArray *friends = dic[@&quot;friends&quot;];</div><div class="line"></div><div class="line">BOOL f = flag[section]; //NO :展开</div><div class="line"></div><div class="line">if (f) &#123; //收起</div><div class="line"></div><div class="line">return 0;</div><div class="line"></div><div class="line">&#125;else &#123; //展开</div><div class="line"></div><div class="line">return friends.count;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line"></div><div class="line">UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];</div><div class="line"></div><div class="line">NSDictionary *dic = array[indexPath.section];</div><div class="line">//取出好友数组</div><div class="line">NSArray *friends = dic[@&quot;friends&quot;];</div><div class="line"></div><div class="line">//取出好友姓名</div><div class="line">NSString *name = friends[indexPath.row];</div><div class="line"></div><div class="line">cell.textLabel.text = name;</div><div class="line"></div><div class="line">return cell;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">//组的头视图上的标题</div><div class="line">- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section&#123;</div><div class="line"></div><div class="line">UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];</div><div class="line">[btn setBackgroundImage:[UIImage imageNamed:@&quot;tableCell_common.png&quot;] forState:UIControlStateNormal];</div><div class="line">[btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];</div><div class="line"></div><div class="line">btn.tag = section;</div><div class="line">//添加点击事件</div><div class="line">[btn addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];</div><div class="line">//取出好友字典</div><div class="line">NSDictionary *dic = array[section];</div><div class="line">//取出分组标题</div><div class="line">NSString *title = dic[@&quot;group&quot;];</div><div class="line"></div><div class="line">[btn setTitle:title forState:UIControlStateNormal];</div><div class="line"></div><div class="line">return btn;</div><div class="line"></div><div class="line">&#125;</div><div class="line">//设置租的头视图的高度</div><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section&#123;</div><div class="line"></div><div class="line">return 43;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)clickAction:(UIButton *)btn&#123;</div><div class="line"></div><div class="line">NSInteger section = btn.tag; // 0</div><div class="line"></div><div class="line">//改变数组中元素的状态</div><div class="line">flag[section] = !flag[section];</div><div class="line"></div><div class="line">//刷新表视图</div><div class="line">//    [_tableView reloadData];</div><div class="line"></div><div class="line">//刷新多个组</div><div class="line">//用此种方式创建的set对象只能表示一组</div><div class="line">NSIndexSet *set = [NSIndexSet indexSetWithIndex:section];</div><div class="line"></div><div class="line">//创建的set对象表示多个组</div><div class="line">//    [NSIndexSet indexSetWithIndexesInRange:&lt;#(NSRange)#&gt;];</div><div class="line"></div><div class="line">//刷新多个单元格</div><div class="line">//    [_tableView reloadRowsAtIndexPaths:&lt;#(NSArray *)#&gt; withRowAnimation:&lt;#(UITableViewRowAnimation)#&gt;];</div><div class="line">[_tableView reloadSections:set withRowAnimation:UITableViewRowAnimationFade];</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>数据格式如下：</p>
+<p><img src="http://ww2.sinaimg.cn/large/e3aca1a1jw1fbmj62btkwj20bt0anmz0.jpg" alt=""></p>
+<p>效果如下：</p>
+<p><img src="http://ww2.sinaimg.cn/large/e3aca1a1jw1fbmj7qrrp1j208u0cjjrw.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/e3aca1a1jw1fbmj82suokj208r0foaaj.jpg" alt=""></p>
+<ul>
+<li><p>最后补充一下表视图的编辑模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line">&#123;</div><div class="line">    </div><div class="line">    BOOL _isEdit;</div><div class="line">    UITableView *_tableView;</div><div class="line">    </div><div class="line">    NSMutableArray *_data;</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    </div><div class="line">    _data = [NSMutableArray arrayWithArray:@[@&quot;班长1&quot;,@&quot;班长1&quot;,@&quot;班长1&quot;,@&quot;班长1&quot;,@&quot;班长2&quot;,@&quot;班长1&quot;,@&quot;班长10&quot;,@&quot;班长1&quot;,@&quot;班长1&quot;,@&quot;班长1&quot;,@&quot;班长1&quot;,@&quot;班长1&quot;,@&quot;班长11&quot;,@&quot;班长1&quot;,@&quot;班长1&quot;,@&quot;班长1&quot;,]];</div><div class="line">    </div><div class="line">    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];</div><div class="line">    </div><div class="line">    _tableView.delegate = self;</div><div class="line">    _tableView.dataSource = self;</div><div class="line">    </div><div class="line">    [self.view addSubview:_tableView];</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section &#123;</div><div class="line">    </div><div class="line">    return _data.count;</div><div class="line">&#125;</div><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    </div><div class="line">    static NSString * identifer = @&quot;cell&quot;;</div><div class="line">    </div><div class="line">    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:identifer];</div><div class="line">    </div><div class="line">    if (cell == nil) &#123;</div><div class="line">        </div><div class="line">        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    cell.textLabel.text = _data[indexPath.row];</div><div class="line">    </div><div class="line">    return cell;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (IBAction)edit:(UIBarButtonItem *)sender &#123;</div><div class="line">    </div><div class="line">    //让表视图进入编辑模式</div><div class="line">    _isEdit = !_isEdit;</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    _tableView.allowsMultipleSelectionDuringEditing = YES;</div><div class="line">    </div><div class="line">    </div><div class="line">    [_tableView setEditing:_isEdit animated:YES];</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">- (IBAction)multip:(UIBarButtonItem *)sender &#123;</div><div class="line">    </div><div class="line">    </div><div class="line">    // 获取选择的cell 的 indexPath</div><div class="line">    NSArray *indexPaths =  [_tableView indexPathsForSelectedRows];</div><div class="line">    </div><div class="line">    </div><div class="line">    NSMutableIndexSet *fontSet = [[NSMutableIndexSet alloc] init];</div><div class="line">    for (int i = 0; i &lt; indexPaths.count; i++) &#123;</div><div class="line">        </div><div class="line">        NSIndexPath *indexPath = indexPaths[i];</div><div class="line">        [fontSet addIndex:indexPath.row];</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    // 删除数组中位置所对应集合的数据</div><div class="line">    [_data removeObjectsAtIndexes:fontSet];</div><div class="line">    </div><div class="line">    </div><div class="line">    [_tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationLeft];</div><div class="line">        </div><div class="line">    </div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath&#123;</div><div class="line">    </div><div class="line">    //返回每一个单元格的编辑模式</div><div class="line">    </div><div class="line">    if (indexPath.row == 2) &#123;</div><div class="line">        return UITableViewCellEditingStyleInsert;</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    return UITableViewCellEditingStyleDelete;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//删除或者添加单元格</div><div class="line">-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    if (editingStyle == UITableViewCellEditingStyleDelete) &#123;</div><div class="line">        //删除</div><div class="line">        </div><div class="line">        //1.删除数据</div><div class="line">        [_data removeObjectAtIndex:indexPath.row];</div><div class="line">        </div><div class="line">        //2.删除单元格</div><div class="line">        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];</div><div class="line">        </div><div class="line">    &#125;else if (editingStyle == UITableViewCellEditingStyleInsert)</div><div class="line">    &#123;</div><div class="line">        //添加</div><div class="line">        </div><div class="line">        //1.添加数据</div><div class="line">        [_data insertObject:@&quot;我是新来的&quot; atIndex:indexPath.row + 1];</div><div class="line"></div><div class="line">        //2.添加单元格</div><div class="line">        NSIndexPath *indexPathNew = [NSIndexPath indexPathForRow:indexPath.row + 1 inSection:indexPath.section];</div><div class="line">        </div><div class="line">        </div><div class="line">        [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPathNew] withRowAnimation:UITableViewRowAnimationLeft];</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line">-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath&#123;</div><div class="line">    </div><div class="line">    //交换数据</div><div class="line">    [_data exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/10/滑动视图UISrollView/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2021,422 +2229,11 @@ NSLog(@&quot;%@&quot;, array);
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/25/iOS开发笔记-OC语言语法注意点/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Feyddy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="清风明心">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/25/iOS开发笔记-OC语言语法注意点/" itemprop="url">
-                  iOS开发笔记-OC语言语法注意点
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-25T07:56:09+08:00">
-                2016-12-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2016/12/25/iOS开发笔记-OC语言语法注意点/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2016/12/25/iOS开发笔记-OC语言语法注意点/" itemprop="commentCount">0</span> comments
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/12/25/iOS开发笔记-OC语言语法注意点/" class="leancloud_visitors" data-flag-title="iOS开发笔记-OC语言语法注意点">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。"><a href="#Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。" class="headerlink" title="Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。"></a>Objective-C是面向对象的语言，专门为iOS开发所设计，下面我就自己所学过程中遇到的注意点来告诉大家，OC（下面Objective-C的简写）语言的一些重点和注意点。</h4><ul>
-<li><p>self</p>
-<ul>
-<li>self的定义：</li>
-</ul>
-<p>（1）self是方法中一个隐藏的形参，它是一个指针，谁调用了当前方法，self就指向谁。</p>
-<p>（2）self出现在对象方法中，其指向了调用当前方法的实例对象。</p>
-<p>（3）self出现在类方法中，其指向了当前类。</p>
-<ul>
-<li>self的作用</li>
-</ul>
-<p>（1）当方法中的局部变量和实例变量重名时，使用Self可以进行区分。</p>
-<p>（2） 在方法中使用[self 方法名]来调用其它的方法，实现代码的复用。</p>
-<ul>
-<li>self使用注意的要点</li>
-</ul>
-<p>（1）不能在方法中使用Self来调用当前方法，会引发死循环。</p>
-<p>（2）类方法不能使用self来调用对象方法，对象方法中不能使用Self来调用类方法。</p>
-<p>（3）在类方法和对象方法中都不能使用self来调用普通函数。</p>
-<p>（4）self只能出现在方法（类方法和对象方法）中。</p>
-<p>​</p>
-</li>
-<li><p>property和synthesize</p>
-<ul>
-<li>Xcode4.4之前</li>
-</ul>
-<p>（1）@property自动生成set和get方法的声明</p>
-<p>​           <code>@propterty NSInteger age;</code></p>
-<p>（2）@synthesize自动生成Set和get方法的实现</p>
-<p>​            <code>@synthesize age = _age;</code></p>
-<p>​            左边的age表示Set和get方法名这里的age。</p>
-<p>​            右边的_age表示要在set方法中对_age这个成员进行设置，在get方法中获取_age这个成员变量。</p>
-<ul>
-<li><p>Xcode4.4之后</p>
-<pre><code>@property可以自动生成Set方法和get方法的声明和实现
-</code></pre></li>
-</ul>
-<p>​         （1）自动生成成员变量_age</p>
-<p>​         （2）自动生成get和set方法的声明</p>
-<p>​         （3）自动生成get和set方法的实现</p>
-<ul>
-<li>规则：</li>
-</ul>
-<p>​     （1）如果手动实现了set方法，则编译器只会自动生成get方法。</p>
-<p>​     （2）反之也相同。</p>
-<p>​     （3）如果手动实现了set方法和get方法，此时编译器不会自动生成成员变量。</p>
-<ul>
-<li><p>利用@property的最佳方法</p>
-<p>   （1）声明带下划线的成员变量</p>
-<p>   （2）利用@property生成set和get方法的声明和实现。</p>
-</li>
-</ul>
-</li>
-<li><p>继承</p>
-<ul>
-<li><p>我们为什么要使用继承呢？</p>
-<ol>
-<li>建立类与类之间关联。</li>
-<li>子类继承父类的所有实例变量和方法，避免了重复代码的出现，实现代码复用。</li>
-</ol>
-</li>
-<li><p>NSObject类：基类</p>
-<ol>
-<li><p>OC中所有的类都必须直接或者间接的继承自NSObject，因为NSObject这个类中定义了很多常用的方法。如new, init，alloc</p>
-</li>
-<li><p>每个实例对象中的isa指针也是继承自NSObject.</p>
-</li>
-</ol>
-</li>
-<li><p>继承使用注意要点</p>
-<ol>
-<li>子类中不能定义和父类相同名称的实例变量</li>
-<li>子类可以重写父类的方法，子类的方法必须和父类方法的原型完全一致，通过子类实例对象去调用该方法时，优先调用子类重写的方法，如果子类中没有重写则调用父类的方法。</li>
-</ol>
-</li>
-<li><p>继承关系的缺点</p>
-<p>父类和子类的关系紧密，耦合性强，如果删除父类，则子类不能单独存在。</p>
-</li>
-<li><p>self在继承关系中的使用</p>
-<p> 在子类方法中使用Self调用其它方法时，如果子类重写了方法，则调用子类的方法，如果没重写，则调用父类的方法。</p>
-</li>
-<li><p>super关键字</p>
-<ol>
-<li><p>当子类想保留父类的一些行为时，要强制使用super关键字来调用父类方法。</p>
-</li>
-<li><p>当super出现在对象方法中，会强制调用父类的对象方法。</p>
-</li>
-<li><p>当super出现在类方法中，会强制调用父类的类方法。</p>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>多态</p>
-<ul>
-<li><p>什么是多态</p>
-<ol>
-<li><p>一种类型，多种形态</p>
-</li>
-<li><p>在OC中表现为父类指针可以指向父类对象，也可以指向子类对象</p>
-</li>
-<li><p>直到运行期，才能根据父类指针实际指向的对象来确定调用哪个一类的方法，父类方法还是子类重写的方法。</p>
-</li>
-</ol>
-</li>
-<li><p>多态产生的条件</p>
-<ol>
-<li><p>必须有继承关系</p>
-</li>
-<li><p>子类要重写父类的方法</p>
-</li>
-<li><p>父类指针指向子类对象</p>
-</li>
-</ol>
-</li>
-<li><p>多态的好处</p>
-<p> 使用多态后，可以用父类指针操纵所有的子类对象，程序的可扩展性就会增强。</p>
-</li>
-<li><p>多态使用的限制</p>
-<p> 父类指针不能调用子类新增的方法。</p>
-<p><strong>下面使用最简单的打印机的例子</strong></p>
-<ol>
-<li><p>父类：Printer</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)print &#123;</div><div class="line">    NSLog(@&quot;打印机在打印&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>彩色打印子类：ColorPrinter</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//重写父类的print方法</div><div class="line">- (void)print &#123;</div><div class="line">    NSLog(@&quot;彩色打印机打印彩色效果&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>黑白打印子类：BlackPrinter</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//重写父类的print方法</div><div class="line">- (void)print &#123;</div><div class="line">    NSLog(@&quot;黑白打印机打印黑白效果&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>接下来见证奇迹的时刻到了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Printer *printer = [BlackPrinter new];</div><div class="line">[printer print];</div></pre></td></tr></table></figure>
-<p>虽然创建的对象是父类，但是初始化的时候是其中一个子类的，所以运行之后打印出来的就是子类的方法（前提是重写父类的方法，然后调用的方法也是重写的这个方法名）</p>
-<p><strong>打印结果如下：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">黑白打印机打印黑白效果</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>import</p>
-<ul>
-<li><p>#import和#include的区别</p>
-<ol>
-<li><p>#include多次导入同一文件，会导致重复包含。</p>
-<ol>
-<li>#import多次导入，在第二次导入时，会自动判断之前此文件是否已被导入过，如果已经导入则不做导入操作。</li>
-</ol>
-</li>
-<li><p>#import可以确保头文件只被导入一次。</p>
-</li>
-</ol>
-</li>
-<li><p>@class和#import的区别</p>
-<p>@class告诉编译器该类是一个类名，但是这个类具体有什么样的实例变量和方法无法确定。</p>
-<p> #import XXX.h是一个预处理命令，把包含的文件的全部内容插入当前文件中来。</p>
-<p> 尽量在头文件中使用@class,在源文件一般使用#import。</p>
-</li>
-<li><p>@class的优点</p>
-<p> （1）可以避免循环引用引起的嵌套包含</p>
-<p> （2）如果一个工程中有多个文件#import了同一个头文件，当头文件需要修改时，所有包含了此头文件的文件都需要重新进行编译，编译效率较低，而@class不需要重新编译。</p>
-</li>
-</ul>
-</li>
-<li><p>构造方法</p>
-<ul>
-<li><p>子类重写构造方法的规则：</p>
-<ol>
-<li>一定要调用父类的init方法，初始化从父类继承过来的成员变量。</li>
-<li>判断父类成员是否初始化成功，如果成功才有必要去初始化子类新增的成员变量</li>
-<li>返回经过了初始后的当前实例对象self</li>
-</ol>
-</li>
-<li><p>自定义的构造方法的规范：</p>
-<ol>
-<li>一定是对象方法。</li>
-<li>返回值类型必须为id类型。</li>
-<li>方法名以init开头，如果传参数,init后接With。</li>
-</ol>
-</li>
-<li><p>子类对象的初始化过程：</p>
-<p>首选调用NSObject类的init方法–》Person类（Student父类）的init方法–》Student类的init方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">      Student *s = [[Student alloc] init];</div></pre></td></tr></table></figure>
-<p>alloc init组合：alloc:分配存储空间；init:初始化。初始化方法以init开头，如果初始化失败返回nil。</p>
-</li>
-</ul>
-</li>
-<li><p>类的本质</p>
-<ul>
-<li><p>类也是对象，类型为Class,也叫类对象，Person对象叫实例对象。</p>
-</li>
-<li><p>类就是类对象，因此可以直接用类对象来调用类方法。</p>
-</li>
-<li><p>获取类方法的方法</p>
-<p> 1、对象方法：[p class];</p>
-<p> 2、类方法：[Person class];</p>
-</li>
-<li><p>类的加载和初始化过程</p>
-<p> 1、+ load:类对象加载后调用的方法</p>
-<p> 当程序开始运行时，会加载当前项目中所有的类，加载完成后自动调用+load方法，只调用一次。</p>
-<p>2、 + initialize：类对象初始化的方法。</p>
-<p> 当程序中第一次使用某个类时，会调用+ initialize方法，只调用一次。</p>
-</li>
-<li><p>类对象加载和初始化的规则：</p>
-<p>（1）先加载父类，再加载子类。</p>
-<p>（2）如果使用子类实例对象，则先初始化父类对象，再初始化子类对象。</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//通过对象获取类对象</div><div class="line">    Class c1 = [p1 class];//类对象在内存中只有一个，一个类对应一个类对象</div><div class="line"></div><div class="line">//通过类方法获取类对象</div><div class="line">    Class c4 = [Person class];</div><div class="line"></div><div class="line">//类就是类对象，类名就是类对象</div><div class="line">    Person *p = [[Person alloc] init];</div><div class="line">    Class c = [p class];</div></pre></td></tr></table></figure>
-</li>
-<li><p>description方法</p>
-<ul>
-<li><p>需求：想直接输出实例对象，把对象的所有成员变量的值全部一一输出。</p>
-</li>
-<li><p>-description方法–》决定了以%@输出一个实例对象的结果</p>
-<p>（1）方法的返回值是NSString *，把这个字符串输出到屏幕上。</p>
-<p>（2）NSObject类的-description方法默认返回的是&lt;类名：实例对象的内存地址&gt;</p>
-<p>（3）如果想根据需求进行处理，则在当前类中重写-description方法，把所有的实例变量按照格式拼接成一个字符串输出，方便用户进行查看。</p>
-</li>
-<li><p>+description方法–》决定了以%@输出一个类对象的结果</p>
-<p>（1）方法的返回值是NSString *，把这个字符串输出到屏幕上。</p>
-<p>（2）NSObject类的+description方法默认返回的是类名。</p>
-<p>（3）如果想输出其它内容，则重写类方法。</p>
-</li>
-</ul>
-<p><strong>直接在类里面书写下面的代码，然后再输出该累的对象，然后会自动执行对象方法；同时类方法也是同样的使用方法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (NSString *)description &#123;</div><div class="line">    return [NSString stringWithFormat:@&quot;age=%li,name=%@&quot;,_age,_name];</div><div class="line">&#125;</div><div class="line"></div><div class="line">+ (NSString *)description &#123;</div><div class="line">    return @&quot;helloworld&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Person *p = [[Person alloc] initWithAge:10 andName:@</div><div class="line">                &quot;kathy&quot;];    </div><div class="line">NSLog(@&quot;%@&quot;, p);</div><div class="line">Class c = [p class];</div><div class="line">NSLog(@&quot;%@&quot;, c);</div></pre></td></tr></table></figure>
-<p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2016-12-25 19:54:50.340 06-description方法[10195:373710] age=10,name=kathy</div><div class="line">2016-12-25 19:54:50.341 06-description方法[10195:373710] helloworld</div></pre></td></tr></table></figure>
-</li>
-<li><p>SEL类型</p>
-<ol>
-<li><p>封装成SEL类型的目的，可以通过两种方式来调用方法</p>
-<p>（1）方法名直接调用</p>
-<p>（2）传SEL类型的数据去找到方法的入口地址，间接调用方法。</p>
-<ol>
-<li>包装成selector的语法</li>
-</ol>
-<p>（1）无参</p>
-</li>
-</ol>
-<p>​       [p performSelector:@selector(demo)];</p>
-<p> （2）带参数的</p>
-<p>​       [p performSelector:s3 withObject:@”kathy” withObject:@”13588099765”];</p>
-<ol>
-<li><p>OC中的私有方法：在.m在定义的方法，在.h没有声明。</p>
-<p> 可以包装成selector来调用私有方法。</p>
-</li>
-<li><p>字符串对象转换成selector的函数</p>
-<p>  SEL s = NSSelectorFromString(name);</p>
-</li>
-<li><p>selector的作用： </p>
-<p>  本质类似于C语言的回调函数，主要用于两个对象之间的通信。</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">//方法名包装成一个selector数据,进行方法调用</div><div class="line">    SEL s1 = @selector(demo);</div><div class="line">    SEL s2 = @selector(demo:);</div><div class="line">    SEL s3 = @selector(setName:andTel:);</div><div class="line"></div><div class="line">//调用私有方法</div><div class="line">    [p performSelector:@selector(showInfo)];</div><div class="line">    </div><div class="line">//只知道方法名，而方法名是一个字符串，可以把字符串对象转换为一个SEL类型的数据</div><div class="line">    NSString *name = @&quot;showInfo&quot;;</div><div class="line">    SEL s = NSSelectorFromString(name);</div><div class="line">    [p performSelector:s];</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2477,7 +2274,7 @@ NSLog(@&quot;%@&quot;, array);
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2494,7 +2291,7 @@ NSLog(@&quot;%@&quot;, array);
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-count">49</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
