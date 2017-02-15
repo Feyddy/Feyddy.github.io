@@ -95,11 +95,7 @@ bounds
 
 概括
 frame.size == bounds.size
-scrollView.bounds.origin == scrollView.contentOffset
-
-
-
-bound">
+scrollView.bounds.origin == scrollView.contentOffset">
 <meta property="og:type" content="article">
 <meta property="og:title" content="frame、bounds、contentOffset以及contentInset的认识">
 <meta property="og:url" content="http://yoursite.com/2016/12/12/frame、bounds、contentOffset以及contentInset的认识/index.html">
@@ -115,16 +111,12 @@ bounds
 
 概括
 frame.size == bounds.size
-scrollView.bounds.origin == scrollView.contentOffset
-
-
-
-bound">
+scrollView.bounds.origin == scrollView.contentOffset">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/e3aca1a1jw1falg9mc7ywj21170va0uq.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/e3aca1a1jw1falga4z2z7j20ny09y75i.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/e3aca1a1jw1falga8qzemj20i207n0tv.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1falgabupcxj20k809yq3y.jpg">
-<meta property="og:updated_time" content="2016-12-12T13:29:48.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:28:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="frame、bounds、contentOffset以及contentInset的认识">
 <meta name="twitter:description" content="frame和bounds的重新认识
@@ -138,11 +130,7 @@ bounds
 
 概括
 frame.size == bounds.size
-scrollView.bounds.origin == scrollView.contentOffset
-
-
-
-bound">
+scrollView.bounds.origin == scrollView.contentOffset">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/e3aca1a1jw1falg9mc7ywj21170va0uq.jpg">
 
 
@@ -449,11 +437,12 @@ bound">
 </li>
 <li>概括<ul>
 <li>frame.size == bounds.size</li>
-<li>scrollView.bounds.origin == scrollView.contentOffset</li>
+<li>scrollView.bounds.origin == scrollView.contentOffset<a id="more"></a>
+<h3 id="bounds和frame的区别"><a href="#bounds和frame的区别" class="headerlink" title="bounds和frame的区别"></a>bounds和frame的区别</h3></li>
 </ul>
 </li>
 </ul>
-<h3 id="bounds和frame的区别"><a href="#bounds和frame的区别" class="headerlink" title="bounds和frame的区别"></a>bounds和frame的区别</h3><p><img src="http://ww1.sinaimg.cn/large/e3aca1a1jw1falg9mc7ywj21170va0uq.jpg" alt=""></p>
+<p><img src="http://ww1.sinaimg.cn/large/e3aca1a1jw1falg9mc7ywj21170va0uq.jpg" alt=""></p>
 <h3 id="矩形框和内容的理解"><a href="#矩形框和内容的理解" class="headerlink" title="矩形框和内容的理解"></a>矩形框和内容的理解</h3><ul>
 <li>矩形框<ul>
 <li>控件自己的显示位置和尺寸</li>
@@ -476,7 +465,7 @@ bound">
 </li>
 <li>如何禁止上述的默认问题?</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">控制器A.automaticallyAdjustsScrollViewInsets = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">控制器A.automaticallyAdjustsScrollViewInsets = NO;</div></pre></td></tr></table></figure>
 <p><strong>注</strong>：如果只有UITabBarController在管理而没有导航栏在管理的话，只能手动设置内容偏移量了</p>
 <pre><code>- UIEdgeInsetsMake(0, 0, 49, 0)
 </code></pre><h3 id="在使用UITableViewController过程中-可能会出现的错误"><a href="#在使用UITableViewController过程中-可能会出现的错误" class="headerlink" title="在使用UITableViewController过程中,可能会出现的错误"></a>在使用UITableViewController过程中,可能会出现的错误</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@interface TestTableViewController : UITableViewController</div><div class="line">@end</div><div class="line">&apos;-[UITableViewController loadView] instantiated view controller with identifier &quot;UIViewController-BYZ-38-t0r&quot; from storyboard &quot;Main&quot;, but didn&apos;t get a UITableView.&apos;</div></pre></td></tr></table></figure>
@@ -515,7 +504,13 @@ bound">
       
         <div class="post-tags">
           
-            <a href="/tags/frame-bounds-contentOffset-contentInset/" rel="tag"># frame,bounds,contentOffset,contentInset</a>
+            <a href="/tags/frame/" rel="tag"># frame</a>
+          
+            <a href="/tags/bounds/" rel="tag"># bounds</a>
+          
+            <a href="/tags/contentOffset/" rel="tag"># contentOffset</a>
+          
+            <a href="/tags/contentInset/" rel="tag"># contentInset</a>
           
         </div>
       
@@ -622,7 +617,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -639,7 +634,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="定时器，NSTimer,NSRunLoop," />
+  <meta name="keywords" content="定时器,NSTimer,NSRunLoop," />
 
 
 
@@ -94,7 +94,7 @@
 <meta property="og:description" content="初始化方法：有五种初始化方法，分别是
 (1)  + (NSTimer )timerWithTimeInterval:(NSTimeInterval)ti invocation:(NSInvocation )invocation repeats:(BOOL)yesOrNo;
 123456789101112- (void)viewDidLoad &amp;#123;    [super viewDidLoa">
-<meta property="og:updated_time" content="2017-01-07T14:33:47.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:27:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="定时器的用法总结">
 <meta name="twitter:description" content="初始化方法：有五种初始化方法，分别是
@@ -398,15 +398,18 @@
 <li><p>初始化方法：有五种初始化方法，分别是</p>
 <p>(1)  + (NSTimer <em>)timerWithTimeInterval:(NSTimeInterval)ti invocation:(NSInvocation </em>)invocation repeats:(BOOL)yesOrNo;</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    //初始化一个Invocation对象</div><div class="line">    NSInvocation * invo = [NSInvocation invocationWithMethodSignature:[[self class] instanceMethodSignatureForSelector:@selector(init)]];</div><div class="line">    [invo setTarget:self];</div><div class="line">    [invo setSelector:@selector(myLog)];</div><div class="line">    NSTimer * timer = [NSTimer timerWithTimeInterval:1 invocation:invo repeats:YES];</div><div class="line">    //加入主循环池中</div><div class="line">    [[NSRunLoop mainRunLoop]addTimer:timer forMode:NSDefaultRunLoopMode];</div><div class="line">    //开始循环</div><div class="line">    [timer fire];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>(2) + (NSTimer <em>)scheduledTimerWithTimeInterval:(NSTimeInterval)ti invocation:(NSInvocation </em>)invocation repeats:(BOOL)yesOrNo;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 invocation:invo repeats:YES];</div></pre></td></tr></table></figure>
-<p>(3) + (NSTimer *)timerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSTimer * timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(myLog) userInfo:nil repeats:NO]</div></pre></td></tr></table></figure>
-<p>(4) + (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(myLog:) userInfo:@&quot;123&quot; repeats:YES]</div></pre></td></tr></table></figure>
-<p>(5) - (instancetype)initWithFireDate:(NSDate *)date interval:(NSTimeInterval)ti target:(id)t selector:(SEL)s userInfo:(id)ui repeats:(BOOL)rep </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSTimer * timer = [[NSTimer alloc]initWithFireDate:[NSDate distantPast] interval:1 target:self selector:@selector(myLog:) userInfo:nil repeats:YES];</div><div class="line">   [[NSRunLoop mainRunLoop]addTimer:timer forMode:NSDefaultRunLoopMode];</div></pre></td></tr></table></figure>
-<p><strong>注意：五种初始化方法的异同：</strong></p>
+</li>
+</ul>
+<a id="more"></a>
+<p>  (2) + (NSTimer <em>)scheduledTimerWithTimeInterval:(NSTimeInterval)ti invocation:(NSInvocation </em>)invocation repeats:(BOOL)yesOrNo;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 invocation:invo repeats:YES];</div></pre></td></tr></table></figure>
+<p>  (3) + (NSTimer *)timerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSTimer * timer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(myLog) userInfo:nil repeats:NO]</div></pre></td></tr></table></figure>
+<p>  (4) + (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo;</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(myLog:) userInfo:@&quot;123&quot; repeats:YES]</div></pre></td></tr></table></figure>
+<p>  (5) - (instancetype)initWithFireDate:(NSDate *)date interval:(NSTimeInterval)ti target:(id)t selector:(SEL)s userInfo:(id)ui repeats:(BOOL)rep </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">NSTimer * timer = [[NSTimer alloc]initWithFireDate:[NSDate distantPast] interval:1 target:self selector:@selector(myLog:) userInfo:nil repeats:YES];</div><div class="line">   [[NSRunLoop mainRunLoop]addTimer:timer forMode:NSDefaultRunLoopMode];</div></pre></td></tr></table></figure>
+<p>  <strong>注意：五种初始化方法的异同：</strong></p>
 <ul>
 <li><p>参数repeats是指定是否循环执行，YES将循环，NO将只执行一次。</p>
 </li>
@@ -418,7 +421,7 @@
 <p>​</p>
 </li>
 </ul>
-</li>
+<ul>
 <li><p>成员变量</p>
 <p><code>@property (copy) NSDate *fireDate;</code></p>
 <p>这是设置定时器的启动时间，常用来管理定时器的启动与停止</p>
@@ -462,7 +465,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/定时器，NSTimer-NSRunLoop/" rel="tag"># 定时器，NSTimer,NSRunLoop</a>
+            <a href="/tags/定时器/" rel="tag"># 定时器</a>
+          
+            <a href="/tags/NSTimer/" rel="tag"># NSTimer</a>
+          
+            <a href="/tags/NSRunLoop/" rel="tag"># NSRunLoop</a>
           
         </div>
       
@@ -560,7 +567,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -577,7 +584,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

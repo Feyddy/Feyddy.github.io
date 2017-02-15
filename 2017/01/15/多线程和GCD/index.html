@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="多线程 NSThread NSOperationQueue GCD 单例," />
+  <meta name="keywords" content="多线程,NSThread,NSOperationQueue,GCD,单例," />
 
 
 
@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="清风明心">
 <meta property="og:description" content="使用NSThread来操作多线程不说废话直接上代码：
 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879/* 使用NSThread来操作多线程 */#i">
-<meta property="og:updated_time" content="2017-01-15T15:28:59.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:20:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程和GCD">
 <meta name="twitter:description" content="使用NSThread来操作多线程不说废话直接上代码：
@@ -393,6 +393,7 @@
       
         <h5 id="使用NSThread来操作多线程"><a href="#使用NSThread来操作多线程" class="headerlink" title="使用NSThread来操作多线程"></a>使用NSThread来操作多线程</h5><p>不说废话直接上代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> 使用NSThread来操作多线程</div><div class="line"> */</div><div class="line">#import &quot;ViewController.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line">    // Do any additional setup after loading the view, typically from a nib.</div><div class="line">    </div><div class="line">//    //主线程中的循环打印任务1</div><div class="line">//    for (int j = 0; j &lt; 50; j++) &#123;</div><div class="line">//        </div><div class="line">//        NSLog(@&quot;主线程1:%i&quot;, j);</div><div class="line">//    </div><div class="line">//    &#125;</div><div class="line">    </div><div class="line">//    //1.创建一个线程对象,可以获取线程对象，指定线程名优先级等，灵活处理。</div><div class="line">//    NSThread *thread = [[NSThread alloc] initWithTarget:self selector:@selector(thread:) object:@&quot;multiThread1&quot;];</div><div class="line">//    thread.name = @&quot;multiThread1&quot;;</div><div class="line">//    </div><div class="line">//    //开启多线程，程序开始有了一条新的执行路径</div><div class="line">//    [thread start];</div><div class="line">    </div><div class="line">     //2.创建一个线程对象，并且直接启动此线程</div><div class="line">    //[NSThread detachNewThreadSelector:@selector(thread:) toTarget:self withObject:@&quot;multiThread1&quot;];</div><div class="line">    //3.创建一个线程对象，并且直接启动此线程</div><div class="line">    [self performSelectorInBackground:@selector(thread:) withObject:@&quot;multiThread1&quot;];</div><div class="line"></div><div class="line">    </div><div class="line">    //主线程中的循环打印任务2</div><div class="line">    for (int i = 0; i &lt; 50; i++) &#123;</div><div class="line">        </div><div class="line">        NSLog(@&quot;主线程2:%i&quot;, i);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">//多线程的入口方法</div><div class="line">- (void)thread:(NSString *)threadName &#123;</div><div class="line">    </div><div class="line">    //获取当前线程对象</div><div class="line">    NSThread *thread = [NSThread currentThread];</div><div class="line">    NSLog(@&quot;多线程:%@&quot;, thread);</div><div class="line">    </div><div class="line">    //当前线程分配的堆栈大小:512K</div><div class="line">    NSLog(@&quot;多线程stackSize:%li&quot;, thread.stackSize);</div><div class="line">    </div><div class="line">        for (int j = 0; j &lt; 50; j++) &#123;</div><div class="line">    </div><div class="line">            NSLog(@&quot;%@:%i&quot;, threadName, j);</div><div class="line">            </div><div class="line">//            if(j % 10 == 0) &#123;</div><div class="line">//                //线程睡眠</div><div class="line">//                [NSThread sleepForTimeInterval:1];</div><div class="line">//            &#125;</div><div class="line">            </div><div class="line">//            if (j == 10) &#123;</div><div class="line">//                </div><div class="line">//                //线程退出的方法</div><div class="line">//                [NSThread exit];</div><div class="line">//</div><div class="line">//            &#125;</div><div class="line">            &#125;</div><div class="line">    </div><div class="line">    //判断当前线程是否为主线程</div><div class="line">    if (![NSThread isMainThread]) &#123;</div><div class="line">        NSLog(@&quot;当前线程不是主线程&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h5 id="线程同步解决方案"><a href="#线程同步解决方案" class="headerlink" title="线程同步解决方案"></a>线程同步解决方案</h5><p>ViewController.h</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#import &lt;UIKit/UIKit.h&gt;</div><div class="line"></div><div class="line">@interface ViewController : UIViewController</div><div class="line"></div><div class="line">//atomic--&gt;给多线程加锁</div><div class="line">//nonatomic--&gt;不加锁</div><div class="line">@property(atomic, copy)NSString *name;</div><div class="line"></div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
 <p>ViewController.m</p>
@@ -484,7 +485,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/多线程-NSThread-NSOperationQueue-GCD-单例/" rel="tag"># 多线程 NSThread NSOperationQueue GCD 单例</a>
+            <a href="/tags/多线程/" rel="tag"># 多线程</a>
+          
+            <a href="/tags/NSThread/" rel="tag"># NSThread</a>
+          
+            <a href="/tags/NSOperationQueue/" rel="tag"># NSOperationQueue</a>
+          
+            <a href="/tags/GCD/" rel="tag"># GCD</a>
+          
+            <a href="/tags/单例/" rel="tag"># 单例</a>
           
         </div>
       
@@ -503,8 +512,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/01/16/网络编程/" rel="prev" title="网络编程">
-                网络编程 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/16/iOS开发技巧/" rel="prev" title="iOS开发技巧(一)">
+                iOS开发技巧(一) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -591,7 +600,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -608,7 +617,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

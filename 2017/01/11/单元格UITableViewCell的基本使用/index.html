@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UITableViewCell 自定义cell," />
+  <meta name="keywords" content="UITableViewCell,自定义cell," />
 
 
 
@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="清风明心">
 <meta property="og:description" content="在单元格的使用中，最重要的就是单元格重用机制
 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970//创建单元格  ,此方法,当滑动表视图时就会调用/*      懒加载 :如果需要需要显">
-<meta property="og:updated_time" content="2017-01-12T04:14:40.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:19:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单元格UITableViewCell的基本使用">
 <meta name="twitter:description" content="在单元格的使用中，最重要的就是单元格重用机制
@@ -395,6 +395,9 @@
 <li><p>在单元格的使用中，最重要的就是单元格重用机制</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">//创建单元格  ,此方法,当滑动表视图时就会调用</div><div class="line">/*  </div><div class="line">    懒加载 :如果需要需要显示100单元格,则系统不会一次性把所有的单元格创建出来</div><div class="line">    单元格重用: N+1机制: 如果屏幕上能显示N个单元格那么最多也就创建N+1个单元格,就可以满足需求</div><div class="line"> </div><div class="line"> */</div><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    //标识符用于标记单元格</div><div class="line">    static NSString *identy = @&quot;cell&quot;;</div><div class="line">    </div><div class="line">    //从复用池中取单元格</div><div class="line">    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identy];</div><div class="line">    //如果复用池中没有单元格</div><div class="line">    if (cell == nil) &#123;</div><div class="line"></div><div class="line">       index++;</div><div class="line">        //创建单元格</div><div class="line">       cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identy];</div><div class="line">       </div><div class="line">       </div><div class="line">        //________________单元格的常用属性______________</div><div class="line">        </div><div class="line">        //1. 单元格选中的样式 默认为UITableViewCellSelectionStyleBlue</div><div class="line">        // UITableViewCellSelectionStyleNone:取消选中效果</div><div class="line">//        cell.selectionStyle =  UITableViewCellSelectionStyleNone;</div><div class="line">        </div><div class="line">        //2.辅助视图</div><div class="line">        cell.accessoryType = UITableViewCellAccessoryCheckmark;</div><div class="line">        </div><div class="line">        //3.自定义辅助视图</div><div class="line">        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];</div><div class="line">        view.backgroundColor = [UIColor redColor];</div><div class="line">        cell.accessoryView = view;</div><div class="line">        </div><div class="line">        //4.背景视图</div><div class="line">        UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@&quot;tableCell_common.png&quot;]];</div><div class="line">        cell.backgroundView = imgView;</div><div class="line">        </div><div class="line">        //当单元格被点击,单元格上的子视图的背景会变为透明</div><div class="line">       </div><div class="line">        </div><div class="line">        NSLog(@&quot;%ld&quot;,index); //index是几,就说明创建了几个单元格</div><div class="line">        </div><div class="line">        //在单元格上添加按钮(创建单元格的同时创建子视图)</div><div class="line">        UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];</div><div class="line">        btn.frame = CGRectMake(50, 0, 60, 30);</div><div class="line">        [cell addSubview:btn];</div><div class="line">        </div><div class="line">        NSLog(@&quot;%@&quot;,cell.subviews);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //填充数据(更新数据)</div><div class="line">    cell.textLabel.text = [NSString stringWithFormat:@&quot;%ld&quot;,indexPath.row];</div><div class="line">    /* 不要在此处添加子视图,此方法会调用多次,会有性能问题</div><div class="line">    </div><div class="line">    //以字符作为打断方式</div><div class="line">    cell.lineBreakMode = NSLineBreakByCharWrapping;</div><div class="line">    </div><div class="line">    //设置自动换行</div><div class="line">    cell.textLabel.numberOfLines = 0;</div><div class="line">    </div><div class="line">    //在单元格上添加按钮</div><div class="line">    UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];</div><div class="line">    btn.frame = CGRectMake(50, 0, 60, 30);</div><div class="line">    [cell addSubview:btn];</div><div class="line">    </div><div class="line">    NSLog(@&quot;%@&quot;,cell.subviews);</div><div class="line">    */</div><div class="line">    return cell;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>系统内置的单元格</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath &#123;</div><div class="line">    </div><div class="line">    static NSString *identy = @&quot;cell&quot;;</div><div class="line">    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identy];</div><div class="line">    </div><div class="line">    if (cell == nil) &#123;</div><div class="line">        </div><div class="line">        //系统内置单元格的类型 ,系统提供的单元格上的子视图,无法定制,很少使用</div><div class="line">        //1. UITableViewCellStyleDefault</div><div class="line">        //2. UITableViewCellStyleValue1</div><div class="line">        //3. UITableViewCellStyleValue2</div><div class="line">        //4. UITableViewCellStyleSubtitle</div><div class="line">        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:identy];</div><div class="line">        </div><div class="line">        //设置标题</div><div class="line">        cell.textLabel.text = @&quot;标题&quot;;</div><div class="line">        //设置图片</div><div class="line">        cell.imageView.image = [UIImage imageNamed:@&quot;1.png&quot;];</div><div class="line">        </div><div class="line">        cell.detailTextLabel.text = @&quot;子标题&quot;;</div><div class="line">        </div><div class="line">        //无法更改frame</div><div class="line">//        cell.imageView.frame = CGRectMake(50, 0, 50, 50);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    return cell;</div><div class="line">&#125;</div><div class="line"></div><div class="line">//单元格高度</div><div class="line">- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath&#123;</div><div class="line">    return 80;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
@@ -439,7 +442,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UITableViewCell-自定义cell/" rel="tag"># UITableViewCell 自定义cell</a>
+            <a href="/tags/UITableViewCell/" rel="tag"># UITableViewCell</a>
+          
+            <a href="/tags/自定义cell/" rel="tag"># 自定义cell</a>
           
         </div>
       
@@ -537,7 +542,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -554,7 +559,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

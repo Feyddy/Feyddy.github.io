@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UITouch  hitTest  pointInside  UIResponder  手势," />
+  <meta name="keywords" content="UITouch,hitTest,pointInside,UIResponder,手势," />
 
 
 
@@ -94,7 +94,7 @@
 <meta property="og:description" content="UITouch
 触摸实现的方法很简单，只需要在视图中重写以下的方法就行
 12345678910111213141516171819202122232425262728293031323334353637// 当有一个或者多个手指 开始触摸屏幕时调用- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event&amp;#123;    N">
-<meta property="og:updated_time" content="2017-01-12T07:39:39.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:23:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="触摸与手势">
 <meta name="twitter:description" content="UITouch
@@ -400,6 +400,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">// 当有一个或者多个手指 开始触摸屏幕时调用</div><div class="line">- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;开始了一次触摸&quot;);</div><div class="line">    </div><div class="line">    //---------------------UITouch---------------------</div><div class="line">    // 从NSSet从 取出一个触摸对象</div><div class="line">    UITouch *touch = [touches anyObject];</div><div class="line"></div><div class="line">    // 获取触摸所在的window</div><div class="line">    //NSLog(@&quot;触摸所在的window %@&quot;, touch.window);</div><div class="line">    //NSLog(@&quot;当前视图所在的window%@&quot;, self.window);</div><div class="line">    </div><div class="line">    // 获取触摸所在的View</div><div class="line">//    NSLog(@&quot;触摸所在的View:%@, self = %@&quot;, touch.view, self);</div><div class="line">    </div><div class="line">    // 触摸的位置 相对于某个视图的坐标点</div><div class="line">    CGPoint point = [touch locationInView:self.superview];</div><div class="line">    </div><div class="line">    NSLog(@&quot;point x = %f, y = %f&quot;, point.x, point.y);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;触摸结束&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;移动触摸点&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;触摸取消&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>注：</strong>如果是在封装的控件中（如：UIView）实现UITouch的方法，那么只有点击这个View的时候才会触发这些方法。</p>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>下面我们实现两个小的demo</p>
 <p>1、运用手势移动视图：</p>
 <p>定义一个视图UIView的子类，然后实现下面的代码，然后就可以实现拖动视图的效果。</p>
@@ -474,7 +477,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UITouch-hitTest-pointInside-UIResponder-手势/" rel="tag"># UITouch  hitTest  pointInside  UIResponder  手势</a>
+            <a href="/tags/UITouch/" rel="tag"># UITouch</a>
+          
+            <a href="/tags/hitTest/" rel="tag"># hitTest</a>
+          
+            <a href="/tags/pointInside/" rel="tag"># pointInside</a>
+          
+            <a href="/tags/UIResponder/" rel="tag"># UIResponder</a>
+          
+            <a href="/tags/手势/" rel="tag"># 手势</a>
           
         </div>
       
@@ -572,7 +583,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -589,7 +600,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

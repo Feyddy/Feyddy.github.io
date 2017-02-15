@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="图片变蓝，图片渲染，tabBarItem," />
+  <meta name="keywords" content="图片变蓝,图片渲染,tabBarItem," />
 
 
 
@@ -88,12 +88,7 @@
 设置tabBarItem的选中图片
 
 1vc.tabBarItem.selectedImage = image;
-我使用的图片都是灰色的，但是选中之后出现下面的效果
-
-解决方案
-再次产生一张不会进行渲染的图片
-
-12345// 加载图片UIImage *tempImage = [UIImage imageNamed:@&quot;tabBar_essence_click_icon&quot;];// 产生一张不">
+我使用的图片都是灰色的，但是选中之后出现下面的效果">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在设置一些控件的图片时，有些图片显示出来会自动渲染成蓝色">
 <meta property="og:url" content="http://yoursite.com/2016/12/07/在设置一些控件的图片时，有些图片显示出来会自动渲染成蓝色/index.html">
@@ -102,27 +97,17 @@
 设置tabBarItem的选中图片
 
 1vc.tabBarItem.selectedImage = image;
-我使用的图片都是灰色的，但是选中之后出现下面的效果
-
-解决方案
-再次产生一张不会进行渲染的图片
-
-12345// 加载图片UIImage *tempImage = [UIImage imageNamed:@&quot;tabBar_essence_click_icon&quot;];// 产生一张不">
+我使用的图片都是灰色的，但是选中之后出现下面的效果">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai1ix7xu6j20a90j3q33.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/e3aca1a1jw1fai1nq2yy8j211f0cytbb.jpg">
-<meta property="og:updated_time" content="2016-12-11T03:44:13.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:39:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在设置一些控件的图片时，有些图片显示出来会自动渲染成蓝色">
 <meta name="twitter:description" content="比如
 设置tabBarItem的选中图片
 
 1vc.tabBarItem.selectedImage = image;
-我使用的图片都是灰色的，但是选中之后出现下面的效果
-
-解决方案
-再次产生一张不会进行渲染的图片
-
-12345// 加载图片UIImage *tempImage = [UIImage imageNamed:@&quot;tabBar_essence_click_icon&quot;];// 产生一张不">
+我使用的图片都是灰色的，但是选中之后出现下面的效果">
 <meta name="twitter:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai1ix7xu6j20a90j3q33.jpg">
 
 
@@ -421,13 +406,14 @@
         <h4 id="比如"><a href="#比如" class="headerlink" title="比如"></a>比如</h4><ul>
 <li>设置tabBarItem的选中图片</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vc.tabBarItem.selectedImage = image;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vc.tabBarItem.selectedImage = image;</div></pre></td></tr></table></figure>
 <p>我使用的图片都是灰色的，但是选中之后出现下面的效果</p>
 <p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai1ix7xu6j20a90j3q33.jpg" alt="image"></p>
+<a id="more"></a>
 <h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
 <li>再次产生一张不会进行渲染的图片</li>
 </ul>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 加载图片</span></div><div class="line"><span class="built_in">UIImage</span> *tempImage = [<span class="built_in">UIImage</span> imageNamed:<span class="string">@"tabBar_essence_click_icon"</span>];</div><div class="line"><span class="comment">// 产生一张不会进行自动渲染的图片</span></div><div class="line"><span class="built_in">UIImage</span> *selectedImage = [tempImage imageWithRenderingMode:<span class="built_in">UIImageRenderingModeAlwaysOriginal</span>];</div><div class="line">vc.tabBarItem.selectedImage = selectedImage;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 加载图片</div><div class="line">UIImage *tempImage = [UIImage imageNamed:@&quot;tabBar_essence_click_icon&quot;];</div><div class="line">// 产生一张不会进行自动渲染的图片</div><div class="line">UIImage *selectedImage = [tempImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];</div><div class="line">vc.tabBarItem.selectedImage = selectedImage;</div></pre></td></tr></table></figure>
 <ul>
 <li>直接在<code>Assets.xcassets</code>中设置（推荐）</li>
 </ul>
@@ -455,7 +441,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/图片变蓝，图片渲染，tabBarItem/" rel="tag"># 图片变蓝，图片渲染，tabBarItem</a>
+            <a href="/tags/图片变蓝/" rel="tag"># 图片变蓝</a>
+          
+            <a href="/tags/图片渲染/" rel="tag"># 图片渲染</a>
+          
+            <a href="/tags/tabBarItem/" rel="tag"># tabBarItem</a>
           
         </div>
       
@@ -562,7 +552,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -579,7 +569,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

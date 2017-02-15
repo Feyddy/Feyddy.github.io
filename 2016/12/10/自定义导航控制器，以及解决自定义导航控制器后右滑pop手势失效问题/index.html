@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="自定义导航栏，右滑pop手势返回," />
+  <meta name="keywords" content="自定义导航栏,右滑pop手势返回," />
 
 
 
@@ -85,21 +85,18 @@
 
 
 <meta name="description" content="通过自定义导航控制器，来给所有push的控制器自动加上自定义的返回键。
-只需要重写- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated这个push方法。重写的目的就是拦截所有push进来的子控制器。然后对他们进行返回键的设置。
-123456789101112131415161718">
+只需要重写- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated这个push方法。重写的目的就是拦截所有push进来的子控制器。然后对他们进行返回键的设置。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义导航控制器，以及解决自定义导航控制器后右滑pop手势失效问题">
 <meta property="og:url" content="http://yoursite.com/2016/12/10/自定义导航控制器，以及解决自定义导航控制器后右滑pop手势失效问题/index.html">
 <meta property="og:site_name" content="清风明心">
 <meta property="og:description" content="通过自定义导航控制器，来给所有push的控制器自动加上自定义的返回键。
-只需要重写- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated这个push方法。重写的目的就是拦截所有push进来的子控制器。然后对他们进行返回键的设置。
-123456789101112131415161718">
-<meta property="og:updated_time" content="2016-12-11T03:44:31.000Z">
+只需要重写- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated这个push方法。重写的目的就是拦截所有push进来的子控制器。然后对他们进行返回键的设置。">
+<meta property="og:updated_time" content="2017-02-15T14:43:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义导航控制器，以及解决自定义导航控制器后右滑pop手势失效问题">
 <meta name="twitter:description" content="通过自定义导航控制器，来给所有push的控制器自动加上自定义的返回键。
-只需要重写- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated这个push方法。重写的目的就是拦截所有push进来的子控制器。然后对他们进行返回键的设置。
-123456789101112131415161718">
+只需要重写- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated这个push方法。重写的目的就是拦截所有push进来的子控制器。然后对他们进行返回键的设置。">
 
 
 
@@ -396,14 +393,15 @@
       
         <p>通过自定义导航控制器，来给所有<strong>push</strong>的控制器自动加上自定义的返回键。</p>
 <p>只需要重写<code>- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated</code>这个push方法。重写的目的就是拦截所有<strong>push</strong>进来的子控制器。然后对他们进行返回键的设置。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (<span class="keyword">void</span>)pushViewController:(<span class="built_in">UIViewController</span> *)viewController animated:(<span class="built_in">BOOL</span>)animated</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.childViewControllers.count &gt; <span class="number">0</span>) &#123; <span class="comment">// 如果viewController不是最早push进来的子控制器</span></div><div class="line">        <span class="comment">// 左上角</span></div><div class="line">        <span class="built_in">UIButton</span> *backButton = [<span class="built_in">UIButton</span> buttonWithType:<span class="built_in">UIButtonTypeCustom</span>];</div><div class="line">        [backButton setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"navigationButtonReturn"</span>] forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">        [backButton setImage:[<span class="built_in">UIImage</span> imageNamed:<span class="string">@"navigationButtonReturnClick"</span>] forState:<span class="built_in">UIControlStateHighlighted</span>];</div><div class="line">        [backButton setTitle:<span class="string">@"返回"</span> forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">        [backButton setTitleColor:[<span class="built_in">UIColor</span> blackColor] forState:<span class="built_in">UIControlStateNormal</span>];</div><div class="line">        [backButton setTitleColor:[<span class="built_in">UIColor</span> redColor] forState:<span class="built_in">UIControlStateHighlighted</span>];</div><div class="line">        [backButton sizeToFit];</div><div class="line">        <span class="comment">// 这句代码放在sizeToFit后面</span></div><div class="line">        backButton.contentEdgeInsets = <span class="built_in">UIEdgeInsetsMake</span>(<span class="number">0</span>, <span class="number">-20</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">        [backButton addTarget:<span class="keyword">self</span> action:<span class="keyword">@selector</span>(back) forControlEvents:<span class="built_in">UIControlEventTouchUpInside</span>];</div><div class="line">        viewController.navigationItem.leftBarButtonItem = [[<span class="built_in">UIBarButtonItem</span> alloc] initWithCustomView:backButton];</div><div class="line">        <span class="comment">// 隐藏底部的工具条</span></div><div class="line">        viewController.hidesBottomBarWhenPushed = <span class="literal">YES</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 所有设置搞定后, 再push控制器</span></div><div class="line">    [<span class="keyword">super</span> pushViewController:viewController animated:animated];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated</div><div class="line">&#123;</div><div class="line">    if (self.childViewControllers.count &gt; 0) &#123; // 如果viewController不是最早push进来的子控制器</div><div class="line">        // 左上角</div><div class="line">        UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];</div><div class="line">        [backButton setImage:[UIImage imageNamed:@&quot;navigationButtonReturn&quot;] forState:UIControlStateNormal];</div><div class="line">        [backButton setImage:[UIImage imageNamed:@&quot;navigationButtonReturnClick&quot;] forState:UIControlStateHighlighted];</div><div class="line">        [backButton setTitle:@&quot;返回&quot; forState:UIControlStateNormal];</div><div class="line">        [backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];</div><div class="line">        [backButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];</div><div class="line">        [backButton sizeToFit];</div><div class="line">        // 这句代码放在sizeToFit后面</div><div class="line">        backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);</div><div class="line">        [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];</div><div class="line">        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];</div><div class="line">        // 隐藏底部的工具条</div><div class="line">        viewController.hidesBottomBarWhenPushed = YES;</div><div class="line">    &#125;</div><div class="line">    // 所有设置搞定后, 再push控制器</div><div class="line">    [super pushViewController:viewController animated:animated];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样我们会发现，<strong>push</strong>完后，右滑<strong>pop</strong>手势不起作用了。</p>
 <p><strong>解决方法：</strong></p>
 <ol>
 <li>在<strong>viewDidLoad</strong>方法里面重新设置手势代理<code>self.interactivePopGestureRecognizer.delegate = self;</code>。记得挂上代理<code>&lt;UIGestureRecognizerDelegate&gt;</code>。</li>
 <li>实现代理方法</li>
 </ol>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">\<span class="comment">/**</span></div><div class="line"> \*  手势识别器对象会调用这个代理方法来决定手势是否有效</div><div class="line"> \*  @return YES : 手势有效, NO : 手势无效</div><div class="line"> */</div><div class="line">\- (<span class="built_in">BOOL</span>)gestureRecognizerShouldBegin:(<span class="built_in">UIGestureRecognizer</span> *)gestureRecognizer</div><div class="line">&#123;</div><div class="line">    <span class="comment">//    if (self.childViewControllers.count == 1) &#123; // 导航控制器中只有1个子控制器</span></div><div class="line">    <span class="comment">//        return NO;</span></div><div class="line">    <span class="comment">//    &#125;</span></div><div class="line">    <span class="comment">//    return YES;</span></div><div class="line">    <span class="comment">// 手势何时有效 : 当导航控制器的子控制器个数 &gt; 1就有效</span></div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>.childViewControllers.count &gt; <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">\/**</div><div class="line"> \*  手势识别器对象会调用这个代理方法来决定手势是否有效</div><div class="line"> \*  @return YES : 手势有效, NO : 手势无效</div><div class="line"> */</div><div class="line">\- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer</div><div class="line">&#123;</div><div class="line">    //    if (self.childViewControllers.count == 1) &#123; // 导航控制器中只有1个子控制器</div><div class="line">    //        return NO;</div><div class="line">    //    &#125;</div><div class="line">    //    return YES;</div><div class="line">    // 手势何时有效 : 当导航控制器的子控制器个数 &gt; 1就有效</div><div class="line">    return self.childViewControllers.count &gt; 1;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -426,7 +424,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/自定义导航栏，右滑pop手势返回/" rel="tag"># 自定义导航栏，右滑pop手势返回</a>
+            <a href="/tags/自定义导航栏/" rel="tag"># 自定义导航栏</a>
+          
+            <a href="/tags/右滑pop手势返回/" rel="tag"># 右滑pop手势返回</a>
           
         </div>
       
@@ -524,7 +524,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -541,7 +541,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

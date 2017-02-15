@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="自定义button，contentRect," />
+  <meta name="keywords" content="自定义button,contentRect," />
 
 
 
@@ -86,20 +86,20 @@
 
 <meta name="description" content="在开发过程中，有时候系统自带的按钮风格不满足我们的需求。这个时候的最佳方法就是自定义按钮。
 接下来，我自定义一个图片在上，文字在下的按钮。
-123456789101112131415161718192021222324252627282930313233343536#import &quot;FDButton.h&quot;@implementation FDButton//为了适应xib文件-(id)initWit">
+123456789101112131415161718192021222324252627282930313233343536#import &amp;quot;FDButton.h&amp;quot;@implementation FDButton//为了适应xib文件-(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义图上字下的Button">
 <meta property="og:url" content="http://yoursite.com/2016/12/17/自定义图上字下的Button/index.html">
 <meta property="og:site_name" content="清风明心">
 <meta property="og:description" content="在开发过程中，有时候系统自带的按钮风格不满足我们的需求。这个时候的最佳方法就是自定义按钮。
 接下来，我自定义一个图片在上，文字在下的按钮。
-123456789101112131415161718192021222324252627282930313233343536#import &quot;FDButton.h&quot;@implementation FDButton//为了适应xib文件-(id)initWit">
-<meta property="og:updated_time" content="2016-12-17T12:03:39.000Z">
+123456789101112131415161718192021222324252627282930313233343536#import &amp;quot;FDButton.h&amp;quot;@implementation FDButton//为了适应xib文件-(">
+<meta property="og:updated_time" content="2017-02-15T14:42:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义图上字下的Button">
 <meta name="twitter:description" content="在开发过程中，有时候系统自带的按钮风格不满足我们的需求。这个时候的最佳方法就是自定义按钮。
 接下来，我自定义一个图片在上，文字在下的按钮。
-123456789101112131415161718192021222324252627282930313233343536#import &quot;FDButton.h&quot;@implementation FDButton//为了适应xib文件-(id)initWit">
+123456789101112131415161718192021222324252627282930313233343536#import &amp;quot;FDButton.h&amp;quot;@implementation FDButton//为了适应xib文件-(">
 
 
 
@@ -396,7 +396,7 @@
       
         <p>在开发过程中，有时候系统自带的按钮风格不满足我们的需求。这个时候的最佳方法就是自定义按钮。</p>
 <p>接下来，我自定义一个图片在上，文字在下的按钮。</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"FDButton.h"</span></span></div><div class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">FDButton</span></span></div><div class="line"><span class="comment">//为了适应xib文件</span></div><div class="line">-(<span class="keyword">id</span>)initWithCoder:(<span class="built_in">NSCoder</span> *)aDecoder&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>=[<span class="keyword">super</span> initWithCoder:aDecoder]) &#123;</div><div class="line">        [<span class="keyword">self</span> commonInit];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line">-(<span class="keyword">id</span>)initWithFrame:(<span class="built_in">CGRect</span>)frame&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>=[<span class="keyword">super</span> initWithFrame:frame]) &#123;</div><div class="line">        [<span class="keyword">self</span> commonInit];</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//常用属性设置</span></div><div class="line">-(<span class="keyword">void</span>)commonInit&#123;</div><div class="line">    <span class="keyword">self</span>.titleLabel.textAlignment = <span class="built_in">NSTextAlignmentCenter</span>;</div><div class="line">    <span class="keyword">self</span>.imageView.contentMode = <span class="built_in">UIViewContentModeScaleAspectFit</span>;</div><div class="line">    <span class="keyword">self</span>.titleLabel.font = [<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">14</span>];</div><div class="line">&#125;</div><div class="line"><span class="comment">//文字的尺寸位置设置</span></div><div class="line">-(<span class="built_in">CGRect</span>)titleRectForContentRect:(<span class="built_in">CGRect</span>)contentRect&#123;</div><div class="line">    <span class="built_in">CGFloat</span> titleX = <span class="number">0</span>;</div><div class="line">    <span class="built_in">CGFloat</span> titleY = contentRect.size.height *<span class="number">0.75</span>;</div><div class="line">    <span class="built_in">CGFloat</span> titleW = contentRect.size.width;</div><div class="line">    <span class="built_in">CGFloat</span> titleH = contentRect.size.height - titleY;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">CGRectMake</span>(titleX, titleY, titleW, titleH);</div><div class="line">&#125;</div><div class="line"><span class="comment">//图片的尺寸位置设置</span></div><div class="line">-(<span class="built_in">CGRect</span>)imageRectForContentRect:(<span class="built_in">CGRect</span>)contentRect&#123;</div><div class="line">    <span class="built_in">CGFloat</span> imageW = <span class="built_in">CGRectGetWidth</span>(contentRect);</div><div class="line">    <span class="built_in">CGFloat</span> imageH = contentRect.size.height * <span class="number">0.7</span>;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">CGRectMake</span>(<span class="number">0</span>, <span class="number">0</span>, imageW, imageH);</div><div class="line">&#125;</div><div class="line"><span class="keyword">@end</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">#import &quot;FDButton.h&quot;</div><div class="line">@implementation FDButton</div><div class="line">//为了适应xib文件</div><div class="line">-(id)initWithCoder:(NSCoder *)aDecoder&#123;</div><div class="line">    if (self=[super initWithCoder:aDecoder]) &#123;</div><div class="line">        [self commonInit];</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line">-(id)initWithFrame:(CGRect)frame&#123;</div><div class="line">    if (self=[super initWithFrame:frame]) &#123;</div><div class="line">        [self commonInit];</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line">//常用属性设置</div><div class="line">-(void)commonInit&#123;</div><div class="line">    self.titleLabel.textAlignment = NSTextAlignmentCenter;</div><div class="line">    self.imageView.contentMode = UIViewContentModeScaleAspectFit;</div><div class="line">    self.titleLabel.font = [UIFont systemFontOfSize:14];</div><div class="line">&#125;</div><div class="line">//文字的尺寸位置设置</div><div class="line">-(CGRect)titleRectForContentRect:(CGRect)contentRect&#123;</div><div class="line">    CGFloat titleX = 0;</div><div class="line">    CGFloat titleY = contentRect.size.height *0.75;</div><div class="line">    CGFloat titleW = contentRect.size.width;</div><div class="line">    CGFloat titleH = contentRect.size.height - titleY;</div><div class="line">    return CGRectMake(titleX, titleY, titleW, titleH);</div><div class="line">&#125;</div><div class="line">//图片的尺寸位置设置</div><div class="line">-(CGRect)imageRectForContentRect:(CGRect)contentRect&#123;</div><div class="line">    CGFloat imageW = CGRectGetWidth(contentRect);</div><div class="line">    CGFloat imageH = contentRect.size.height * 0.7;</div><div class="line">    return CGRectMake(0, 0, imageW, imageH);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -420,7 +420,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/自定义button，contentRect/" rel="tag"># 自定义button，contentRect</a>
+            <a href="/tags/自定义button/" rel="tag"># 自定义button</a>
+          
+            <a href="/tags/contentRect/" rel="tag"># contentRect</a>
           
         </div>
       
@@ -518,7 +520,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -535,7 +537,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

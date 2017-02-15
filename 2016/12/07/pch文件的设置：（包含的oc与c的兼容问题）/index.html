@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="pch文件，宏定义," />
+  <meta name="keywords" content="pch文件,宏定义," />
 
 
 
@@ -89,9 +89,7 @@
 
 这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为$(SRCROOT)+项目名+pch文件名。如下：
 
-到这里我们的pch文件就和项目关联上了。
-
-接下来如果在项目中需要兼容C语言文件的时候，就需要设置一下#ifdef __OBJC">
+到这里我们的pch文件就和项目关联上了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pch文件的设置以及宏定义的注意事项：（包含的oc与c的兼容问题）">
 <meta property="og:url" content="http://yoursite.com/2016/12/07/pch文件的设置：（包含的oc与c的兼容问题）/index.html">
@@ -101,15 +99,13 @@
 
 这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为$(SRCROOT)+项目名+pch文件名。如下：
 
-到这里我们的pch文件就和项目关联上了。
-
-接下来如果在项目中需要兼容C语言文件的时候，就需要设置一下#ifdef __OBJC">
+到这里我们的pch文件就和项目关联上了。">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2mxk4g5j20uz0i8whm.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2sgsfwij20jl05g3z7.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/e3aca1a1jw1fai3952o3oj208l0ktgn9.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/e3aca1a1jw1fai382ve8xj20vf0clacj.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/e3aca1a1jw1fai3952o3oj208l0ktgn9.jpg">
-<meta property="og:updated_time" content="2016-12-11T03:44:07.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:40:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pch文件的设置以及宏定义的注意事项：（包含的oc与c的兼容问题）">
 <meta name="twitter:description" content="首先我们先建立一个pch文件，然后与项目进行配置。如下：
@@ -117,9 +113,7 @@
 
 这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为$(SRCROOT)+项目名+pch文件名。如下：
 
-到这里我们的pch文件就和项目关联上了。
-
-接下来如果在项目中需要兼容C语言文件的时候，就需要设置一下#ifdef __OBJC">
+到这里我们的pch文件就和项目关联上了。">
 <meta name="twitter:image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2mxk4g5j20uz0i8whm.jpg">
 
 
@@ -421,14 +415,14 @@
 <p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2mxk4g5j20uz0i8whm.jpg" alt="image"></p>
 <p>这种方法只能在本地读取到，因为这个路径是绝对的。但是如果在公司开发项目，一般好几个人一起开发。这个时候这个路径就会出现问题，最好使用相对路径。路径的设置为<strong>$(SRCROOT)</strong>+<strong>项目名</strong>+<strong>pch文件名</strong>。如下：</p>
 <p><img src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fai2sgsfwij20jl05g3z7.jpg" alt="image"></p>
-<p>到这里我们的pch文件就和项目关联上了。</p>
+<p>到这里我们的pch文件就和项目关联上了。<br><a id="more"></a></p>
 <ul>
 <li>接下来如果在项目中需要兼容C语言文件的时候，就需要设置一下<code>#ifdef __OBJC__</code>。</li>
 </ul>
 <p>否则会出现以下的错误提示：</p>
 <p><img src="http://ww4.sinaimg.cn/large/e3aca1a1jw1fai3952o3oj208l0ktgn9.jpg" alt="image"></p>
 <p>具体实现方案：</p>
-<figure class="highlight objc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/</span></div><div class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></div><div class="line">\<span class="meta">#ifdef __OBJC__</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  日志</div><div class="line"> *  在Debug模式下，输出内容</div><div class="line"> */</div><div class="line">\<span class="meta">#ifdef DEBUG</span></div><div class="line">\<span class="meta">#define DLOG(...)   NSLog(__VA_ARGS__)</span></div><div class="line">\<span class="meta">#endif</span></div><div class="line">\<span class="meta">#endif</span></div><div class="line"><span class="comment">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</span></div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/*** 如果希望某些内容能拷贝到任何源代码文件(OC\C\C++等), 那么就不要写在#ifdef __OBJC__和#endif之间 ***/</div><div class="line">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</div><div class="line">\#ifdef __OBJC__</div><div class="line">/**</div><div class="line"> *  日志</div><div class="line"> *  在Debug模式下，输出内容</div><div class="line"> */</div><div class="line">\#ifdef DEBUG</div><div class="line">\#define DLOG(...)   NSLog(__VA_ARGS__)</div><div class="line">\#endif</div><div class="line">\#endif</div><div class="line">/***** 在#ifdef __OBJC__和#endif之间的内容, 只会拷贝到OC源代码文件中, 不会拷贝到其他语言的源代码文件中 *****/</div></pre></td></tr></table></figure>
 <ul>
 <li><p>配置宏有两种方式</p>
 <ol>
@@ -471,7 +465,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/pch文件，宏定义/" rel="tag"># pch文件，宏定义</a>
+            <a href="/tags/pch文件/" rel="tag"># pch文件</a>
+          
+            <a href="/tags/宏定义/" rel="tag"># 宏定义</a>
           
         </div>
       
@@ -569,7 +565,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -586,7 +582,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

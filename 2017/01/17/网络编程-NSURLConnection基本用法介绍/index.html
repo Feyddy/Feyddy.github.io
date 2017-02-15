@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/17/网络编程-NSURLConnection基本用法介绍/index.html">
 <meta property="og:site_name" content="清风明心">
 <meta property="og:description" content="NSURLConnection的基本使用简介NSURLConnection 这个名字，实际上是指代的 Foundation 框架的 URL 加载系统中一系列有关联的组件：NSURLRequest、NSURLResponse、NSURLProtocol、 NSURLCache、 NSHTTPCookieStorage、NSURLCredentialStorage 以及同名类 NSURLConnect">
-<meta property="og:updated_time" content="2017-01-17T14:24:47.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:21:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络编程-NSURLConnection基本用法介绍">
 <meta name="twitter:description" content="NSURLConnection的基本使用简介NSURLConnection 这个名字，实际上是指代的 Foundation 框架的 URL 加载系统中一系列有关联的组件：NSURLRequest、NSURLResponse、NSURLProtocol、 NSURLCache、 NSHTTPCookieStorage、NSURLCredentialStorage 以及同名类 NSURLConnect">
@@ -394,6 +394,7 @@
 <p>3、NSMutableURLRequest：这个是NSURLRequest的子类，通过名字我们可以看出这是一个可变的对象，我们可以在这里自定义设置发送的服务器的全部数据（超市等待时间、请求方法、请求体、请求头）</p>
 <p>4、NSURLResponse：服务的响应类，和NSURLRequest对象，包含服务返回的响应头部数据</p>
 <p>5、NSURLConnection：负责发送请求，建立客户端和服务器的连接。发送NSURLRequest的数据给服务器，并收集来自服务器的响应头部数据NSURLResponse或者NSData</p>
+<a id="more"></a>
 <h4 id="NSURLConnection使用步骤"><a href="#NSURLConnection使用步骤" class="headerlink" title="NSURLConnection使用步骤"></a><strong>NSURLConnection使用步骤</strong></h4><p>1、根据url创建一个NSURL对象</p>
 <p>2、根据创建的NSURL创建一个NSURLRequest对象，创建请求对象（此对象内容全部都是默认值，如：请求方法默认是GET），如果想要自定数据则创建NSMutableURLRequest对象</p>
 <p>3、最后使用NSURLConnection发送创建好的NSURLRequest或者NSMutableURLRequest对象，与服务器建立链接</p>
@@ -479,7 +480,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/NSURLConnection-AFNetworking/" rel="tag"># NSURLConnection,AFNetworking</a>
+            <a href="/tags/NSURLConnection/" rel="tag"># NSURLConnection</a>
+          
+            <a href="/tags/AFNetworking/" rel="tag"># AFNetworking</a>
           
         </div>
       
@@ -586,7 +589,7 @@ ds.charset = 'UTF-8';
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">51</span>
+              <span class="site-state-item-count">49</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -603,7 +606,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">67</span>
+                <span class="site-state-item-count">174</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
