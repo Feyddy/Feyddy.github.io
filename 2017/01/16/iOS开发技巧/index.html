@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="常用代码块 常用宏 小技巧," />
+  <meta name="keywords" content="常用代码块,常用宏,小技巧," />
 
 
 
@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/16/iOS开发技巧/index.html">
 <meta property="og:site_name" content="清风明心">
 <meta property="og:description" content="常用代码块遍历可变数组的同时删除数组元素1234567NSMutableArray *copyArray = [NSMutableArray arrayWithArray:array];   NSString *str1 = @“zhangsan”;  for (AddressPerson *perName in copyArray) &amp;#123;      if ([[perName name]">
-<meta property="og:updated_time" content="2017-01-18T05:34:54.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:03:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发技巧(一)">
 <meta name="twitter:description" content="常用代码块遍历可变数组的同时删除数组元素1234567NSMutableArray *copyArray = [NSMutableArray arrayWithArray:array];   NSString *str1 = @“zhangsan”;  for (AddressPerson *perName in copyArray) &amp;#123;      if ([[perName name]">
@@ -389,6 +389,7 @@
 
       
         <h2 id="常用代码块"><a href="#常用代码块" class="headerlink" title="常用代码块"></a>常用代码块</h2><h4 id="遍历可变数组的同时删除数组元素"><a href="#遍历可变数组的同时删除数组元素" class="headerlink" title="遍历可变数组的同时删除数组元素"></a>遍历可变数组的同时删除数组元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">NSMutableArray *copyArray = [NSMutableArray arrayWithArray:array];   </div><div class="line">NSString *str1 = @“zhangsan”;  </div><div class="line">for (AddressPerson *perName in copyArray) &#123;  </div><div class="line">    if ([[perName name] isEqualToString:str1]) &#123;  </div><div class="line">        [array removeObject:perName];  </div><div class="line">   &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="获取系统当前语言"><a href="#获取系统当前语言" class="headerlink" title="获取系统当前语言"></a><strong>获取系统当前语言</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">NSString *currentLanguage = [[NSLocale preferredLanguages] objectAtIndex:0];</div><div class="line">NSLog(@&quot;currentlanguage = %@&quot;,currentLanguage);</div><div class="line"></div><div class="line">if ([currentLanguage containsString:@&quot;zh-Hans&quot;]) &#123;</div><div class="line">    NSLog(@&quot;zh-Hans简体中文&quot;);</div><div class="line">&#125;else if ([currentLanguage containsString:@&quot;zh-Hant&quot;]) &#123;</div><div class="line">    NSLog(@&quot;zh-Hant繁体中文&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 当前所在地信息</div><div class="line">NSString *identifier = [[NSLocalecurrentLocale] localeIdentifier];</div><div class="line">NSString *displayName = [[NSLocale currentLocale] displayNameForKey:NSLocaleIdentifiervalue:identifier];</div><div class="line">NSLog(@&apos;%@&apos;, displayName);</div><div class="line">// 当前所在地的使用语言</div><div class="line">NSLocale *currentLocale = [NSLocale currentLocale];</div><div class="line">NSLog(@&apos;Language Code is %@&apos;, [currentLocale objectForKey:NSLocaleLanguageCode]);</div><div class="line">// 系统语言</div><div class="line">NSArray *arLanguages = [[NSUserDefaultsstandardUserDefaults] objectForKey:@&apos;AppleLanguages&apos;];</div><div class="line">NSString *strLang = [arLanguages objectAtIndex:0];</div><div class="line">NSLog(@&apos;LANG:%@&apos;,strLang);</div></pre></td></tr></table></figure>
 <h4 id="UITableView的Group样式下顶部空白处理"><a href="#UITableView的Group样式下顶部空白处理" class="headerlink" title="UITableView的Group样式下顶部空白处理"></a><strong>UITableView的Group样式下顶部空白处理</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1)];</div><div class="line">self.tableView.tableHeaderView = view;</div></pre></td></tr></table></figure>
 <h4 id="UITableView的plain样式下，取消区头停滞效果"><a href="#UITableView的plain样式下，取消区头停滞效果" class="headerlink" title="UITableView的plain样式下，取消区头停滞效果"></a><strong>UITableView的plain样式下，取消区头停滞效果</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">- (void)scrollViewDidScroll:(UIScrollView *)scrollView</div><div class="line">&#123;</div><div class="line">    CGFloat sectionHeaderHeight = sectionHead.height;</div><div class="line">    if (scrollView.contentOffset.y&lt;=sectionHeaderHeight&amp;&amp;scrollView;.contentOffset.y&gt;=0)</div><div class="line">    &#123;</div><div class="line">        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);</div><div class="line">    &#125;</div><div class="line">    else if(scrollView.contentOffset.y&gt;=sectionHeaderHeight)</div><div class="line">    &#123;</div><div class="line">        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -502,7 +503,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/常用代码块-常用宏-小技巧/" rel="tag"># 常用代码块 常用宏 小技巧</a>
+            <a href="/tags/常用代码块/" rel="tag"># 常用代码块</a>
+          
+            <a href="/tags/常用宏/" rel="tag"># 常用宏</a>
+          
+            <a href="/tags/小技巧/" rel="tag"># 小技巧</a>
           
         </div>
       
@@ -626,7 +631,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

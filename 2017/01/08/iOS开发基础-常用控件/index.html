@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="UIWindow iOS动画 旋转 平移 UILabel UIButton UITextField UIImageView UISlider 模态视图 UIActivityIndicatorView UISwitch UIPageControl UISegmentedControl AVAudioPlayer," />
+  <meta name="keywords" content="AVAudioPlayer,UIWindow,iOS动画,旋转,平移,UILabel,UIButton,UITextField,UIImageView,UISlider,模态视图,UIActivityIndicatorView,UISwitch,UIPageControl,UISegmentedControl," />
 
 
 
@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="清风明心">
 <meta property="og:description" content="视图的层次结构
 123456789101112131415161718192021222324252627//直接将view2添加到父视图上//    [self.window addSubview:view2];        /*    当把一个视图添加到父试图上显示时,会有一个索引,第一个被添加的试图索引值为0,然后依次递增,索引值越大,显示的优先级越高,也就是后添加的会把前面添加的覆盖">
-<meta property="og:updated_time" content="2017-01-12T05:32:41.000Z">
+<meta property="og:updated_time" content="2017-02-15T14:02:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发基础-视图层次结构和UIWindow的基本使用以及常用控件和iOS基本动画的使用">
 <meta name="twitter:description" content="视图的层次结构
@@ -395,6 +395,9 @@
 <li><p>视图的层次结构</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">//直接将view2添加到父视图上</div><div class="line">//    [self.window addSubview:view2];</div><div class="line">    </div><div class="line">    /*</div><div class="line">    当把一个视图添加到父试图上显示时,会有一个索引,第一个被添加的试图索引值为0,然后依次递增,索引值越大,显示的优先级越高,也就是后添加的会把前面添加的覆盖</div><div class="line">     */</div><div class="line">    </div><div class="line">    //1. 将view2添加到window中,并且将索引设置为0</div><div class="line">//    [self.window insertSubview:view2 atIndex:0];</div><div class="line">    </div><div class="line">    //2.将view2添加到window中,并且放到view1的下面</div><div class="line">//    [self.window insertSubview:view2 belowSubview:view1];</div><div class="line">    </div><div class="line">    //3.将view2添加到window中,并且放到view1的上面</div><div class="line">      [self.window insertSubview:view2 aboveSubview:view1];</div><div class="line">    /*</div><div class="line">    //4.将view1放到子视图的最上层显示</div><div class="line">    [self.window bringSubviewToFront:view1];</div><div class="line">    //5.将view1放到子视图的最下层显示</div><div class="line">    [self.window sendSubviewToBack:view1];</div><div class="line">     */</div><div class="line">    </div><div class="line">    //6.交换两个试图的索引值</div><div class="line">    [self.window exchangeSubviewAtIndex:0 withSubviewAtIndex:1];</div><div class="line">    </div><div class="line">    //7.设置视图对象的属性tag，通过tag查找子视图</div><div class="line">        UIView *subView = [self.view viewWithTag:102];</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>UIWindow的基本使用</p>
 <p>UIWindow的作用：</p>
 <pre><code>1.提供区域显示界面
@@ -477,7 +480,35 @@
       
         <div class="post-tags">
           
-            <a href="/tags/UIWindow-iOS动画-旋转-平移-UILabel-UIButton-UITextField-UIImageView-UISlider-模态视图-UIActivityIndicatorView-UISwitch-UIPageControl-UISegmentedControl-AVAudioPlayer/" rel="tag"># UIWindow iOS动画 旋转 平移 UILabel UIButton UITextField UIImageView UISlider 模态视图 UIActivityIndicatorView UISwitch UIPageControl UISegmentedControl AVAudioPlayer</a>
+            <a href="/tags/AVAudioPlayer/" rel="tag"># AVAudioPlayer</a>
+          
+            <a href="/tags/UIWindow/" rel="tag"># UIWindow</a>
+          
+            <a href="/tags/iOS动画/" rel="tag"># iOS动画</a>
+          
+            <a href="/tags/旋转/" rel="tag"># 旋转</a>
+          
+            <a href="/tags/平移/" rel="tag"># 平移</a>
+          
+            <a href="/tags/UILabel/" rel="tag"># UILabel</a>
+          
+            <a href="/tags/UIButton/" rel="tag"># UIButton</a>
+          
+            <a href="/tags/UITextField/" rel="tag"># UITextField</a>
+          
+            <a href="/tags/UIImageView/" rel="tag"># UIImageView</a>
+          
+            <a href="/tags/UISlider/" rel="tag"># UISlider</a>
+          
+            <a href="/tags/模态视图/" rel="tag"># 模态视图</a>
+          
+            <a href="/tags/UIActivityIndicatorView/" rel="tag"># UIActivityIndicatorView</a>
+          
+            <a href="/tags/UISwitch/" rel="tag"># UISwitch</a>
+          
+            <a href="/tags/UIPageControl/" rel="tag"># UIPageControl</a>
+          
+            <a href="/tags/UISegmentedControl/" rel="tag"># UISegmentedControl</a>
           
         </div>
       
@@ -592,7 +623,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

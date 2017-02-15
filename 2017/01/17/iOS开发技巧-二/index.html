@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="清风明心">
 <meta property="og:description" content="获取全局的Delegate对象，这样我们可以调用这个对象里的方法和变量1[(MyAppDelegate*)[[UIApplication sharedApplication] delegate] MyMethodOrMyVariable];
 获得程序的主Bundle123456789NSBundle *bundle = [NSBundle mainBundle];/*Bundle可以理解成一种文件">
-<meta property="og:updated_time" content="2017-01-18T05:15:55.000Z">
+<meta property="og:updated_time" content="2017-02-15T13:59:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发技巧(二)">
 <meta name="twitter:description" content="获取全局的Delegate对象，这样我们可以调用这个对象里的方法和变量1[(MyAppDelegate*)[[UIApplication sharedApplication] delegate] MyMethodOrMyVariable];
@@ -393,6 +393,7 @@
       
         <h4 id="获取全局的Delegate对象，这样我们可以调用这个对象里的方法和变量"><a href="#获取全局的Delegate对象，这样我们可以调用这个对象里的方法和变量" class="headerlink" title="获取全局的Delegate对象，这样我们可以调用这个对象里的方法和变量"></a>获取全局的Delegate对象，这样我们可以调用这个对象里的方法和变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[(MyAppDelegate*)[[UIApplication sharedApplication] delegate] MyMethodOrMyVariable];</div></pre></td></tr></table></figure>
 <h4 id="获得程序的主Bundle"><a href="#获得程序的主Bundle" class="headerlink" title="获得程序的主Bundle"></a>获得程序的主Bundle</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">NSBundle *bundle = [NSBundle mainBundle];</div><div class="line">/*</div><div class="line">Bundle可以理解成一种文件夹，其内容遵循特定的框架。</div><div class="line"></div><div class="line">Main Bundle一种主要用途是使用程序中的资源文件，如图片、声音、plst文件等。</div><div class="line">*/</div><div class="line">NSURL *plistURL = [bundle URLForResource:@&quot;plistFile&quot; withExtension:@&quot;plist&quot;];</div><div class="line"></div><div class="line">//上面的代码获得plistFile.plist文件的路径。</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="在程序中播放声音"><a href="#在程序中播放声音" class="headerlink" title="在程序中播放声音"></a>在程序中播放声音</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">首先在程序添加AudioToolbox：</div><div class="line"></div><div class="line">其次，在有播放声音方法的.m方法添加#import：</div><div class="line"></div><div class="line">#import</div><div class="line">*/</div><div class="line">//接下来，播放声音的代码如下：</div><div class="line"></div><div class="line">NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;soundFileName&quot; ofType:@&quot;wav&quot;];</div><div class="line"></div><div class="line">SystemSoundID soundID;</div><div class="line"></div><div class="line">AudioServicesCreateSystemSoundID ((__bridge CFURLRef)[NSURL fileURLWithPath:path], &amp;soundID);</div><div class="line"></div><div class="line">AudioServicesPlaySystemSound (soundID);</div></pre></td></tr></table></figure>
 <h4 id="设置和获取类中属性值"><a href="#设置和获取类中属性值" class="headerlink" title="设置和获取类中属性值"></a>设置和获取类中属性值</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[self setValue: 变量值 forKey: 变量名];</div><div class="line"></div><div class="line">[self valueForKey: 变量名];</div></pre></td></tr></table></figure>
 <h4 id="让某一方法在未来某段时间之后执行"><a href="#让某一方法在未来某段时间之后执行" class="headerlink" title="让某一方法在未来某段时间之后执行"></a>让某一方法在未来某段时间之后执行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[self performSelector:@selector(方法名) withObject:nil afterDelay:延迟时间（s）];</div></pre></td></tr></table></figure>
@@ -593,7 +594,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">67</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
