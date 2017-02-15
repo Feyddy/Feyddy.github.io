@@ -100,7 +100,7 @@ ARC中一般不需要重写Dealloc,但是一些情况比如移除通知，移除
 
 弱指针指向的实例对象被释放后，弱指针自动清空为nil
 __unsafe\__unretained修饰的指针，当其指向的实例对象被释放后，此指针不会自动清空。此关键字在iOS5之前">
-<meta property="og:updated_time" content="2017-01-12T14:37:55.000Z">
+<meta property="og:updated_time" content="2017-02-15T11:43:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ARC的基本使用">
 <meta name="twitter:description" content="ARC中可以重写dealloc，但是不允许调用[super dealloc]
@@ -415,6 +415,7 @@ __unsafe\__unretained修饰的指针，当其指向的实例对象被释放后�
 <p>   (1)delegate属性一般使用weak避免产生循环引用 self–&gt;self.view–&gt;tableView–&gt;self 产生循环引用</p>
 <p>   (2)block</p>
 <p>   (3)storyboard连线默认是weak:viewController–&gt;view–&gt;button,没有必要再让viewController再次持有一次button。</p>
+<a id="more"></a>
 </li>
 <li><p>ARC桥接（Toll-free Bridging。 简称：TFB）</p>
 <ul>
@@ -578,7 +579,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

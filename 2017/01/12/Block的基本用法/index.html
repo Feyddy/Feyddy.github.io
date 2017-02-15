@@ -96,7 +96,7 @@ block 也可以看做是一个变量，也有点类似于函数
 Block的基本用法
 block 也可以看做是一个变量，也有点类似于函数
 123456789101112131415161718192021// block 的声明 // 返回值 (^变量名)(参数类型1, 参数类型2, ...) int (^block1)(int, int); // b">
-<meta property="og:updated_time" content="2017-01-15T14:43:54.000Z">
+<meta property="og:updated_time" content="2017-02-15T11:43:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Block的基本用法">
 <meta name="twitter:description" content="block是OC中另外一种对象和对象的通信方式，是一对一的关系，类似于delegate，而通知时一对多的关系
@@ -402,6 +402,9 @@ block 也可以看做是一个变量，也有点类似于函数
 <li><p>block 也可以看做是一个变量，也有点类似于函数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">// block 的声明</div><div class="line"></div><div class="line"> // 返回值 (^变量名)(参数类型1, 参数类型2, ...)</div><div class="line"></div><div class="line"> int (^block1)(int, int);</div><div class="line"></div><div class="line"> // block 的赋值</div><div class="line"></div><div class="line"> // 注意 1. 参数不能只写类型，必须要带上参数名。 2. block的创建不代表代码块的运行</div><div class="line"></div><div class="line"> block1 = ^(int a, int b)&#123;</div><div class="line"></div><div class="line">     return a + b;</div><div class="line"></div><div class="line"> &#125;;</div><div class="line"></div><div class="line"> // block 的调用</div><div class="line"></div><div class="line"> int sum = block1(10,20);</div><div class="line"></div><div class="line"> NSLog(@&quot;%i&quot;, sum);</div></pre></td></tr></table></figure>
 </li>
+</ul>
+<a id="more"></a>
+<ul>
 <li><p>定义一个block类型</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">//---------------------block类型的定义---------------------</div><div class="line"></div><div class="line">// 定义一个block类型</div><div class="line"></div><div class="line">// 类型名：StringBlock  指代返回值为NSString* 参数为一个int 的block</div><div class="line"></div><div class="line">typedef NSString *(^StringBlock)(int);</div><div class="line"></div><div class="line">// 使用block类型 来定义变量</div><div class="line"></div><div class="line">StringBlock block2 = ^(int b)&#123;</div><div class="line"></div><div class="line">    return [NSString stringWithFormat:@&quot;%i&quot;, b];</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line">NSString *str1 = block2(5);</div><div class="line"></div><div class="line">NSLog(@&quot;%@&quot;, str1);</div></pre></td></tr></table></figure>
 </li>
@@ -608,7 +611,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS, html5，Swift，自学" />
+  <meta name="keywords" content="UIImagePickerController  AVAudioPlayer  AVAudioSession," />
 
 
 
@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/01/17/iOS开发-音视频/index.html">
 <meta property="og:site_name" content="清风明心">
 <meta property="og:description" content="访问手机相册123456789101112131415//只能选择单张图片    UIImagePickerController *pickVC = [[UIImagePickerController alloc] init];        //设置相片的来源//    UIImagePickerControllerSourceTypePhotoLibrary 来自于相册库//    UIIma">
-<meta property="og:updated_time" content="2017-01-17T08:59:35.000Z">
+<meta property="og:updated_time" content="2017-02-15T11:44:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-音视频">
 <meta name="twitter:description" content="访问手机相册123456789101112131415//只能选择单张图片    UIImagePickerController *pickVC = [[UIImagePickerController alloc] init];        //设置相片的来源//    UIImagePickerControllerSourceTypePhotoLibrary 来自于相册库//    UIIma">
@@ -389,6 +389,7 @@
 
       
         <h4 id="访问手机相册"><a href="#访问手机相册" class="headerlink" title="访问手机相册"></a>访问手机相册</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//只能选择单张图片</div><div class="line">    UIImagePickerController *pickVC = [[UIImagePickerController alloc] init];</div><div class="line">    </div><div class="line">    //设置相片的来源</div><div class="line">//    UIImagePickerControllerSourceTypePhotoLibrary 来自于相册库</div><div class="line">//    UIImagePickerControllerSourceTypeCamera 来自于摄像头</div><div class="line">//    UIImagePickerControllerSourceTypeSavedPhotosAlbum 来自于默认相册</div><div class="line">    pickVC.sourceType =  UIImagePickerControllerSourceTypeSavedPhotosAlbum;</div><div class="line">    </div><div class="line">    </div><div class="line">    pickVC.delegate = self;</div><div class="line">    </div><div class="line">    </div><div class="line">    //以模态视图的形式弹出</div><div class="line">    [self presentViewController:pickVC animated:YES completion:NULL];</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>当然一定要实现<code>&lt;UINavigationControllerDelegate,UIImagePickerControllerDelegate&gt;</code>这两个代理</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">#pragma mark - UIImagePickerController 代理方法</div><div class="line">//监听图片被选择的事件</div><div class="line">- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info &#123;</div><div class="line">    NSLog(@&quot;%@&quot;, info);</div><div class="line">    //获取选择的图片</div><div class="line">    UIImage *image = info[UIImagePickerControllerOriginalImage];</div><div class="line">    </div><div class="line">    self.imgView.image = image;</div><div class="line">    </div><div class="line">    //判断照片如果来自于摄像头，则要将此图片保存至相册</div><div class="line">    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) &#123;</div><div class="line">        </div><div class="line">        //图片的保存</div><div class="line">        UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    [picker dismissViewControllerAnimated:YES completion:NULL];</div><div class="line">&#125;</div><div class="line"></div><div class="line">//图片保存成功调用的协议方法</div><div class="line">- (void)image: (UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo &#123;</div><div class="line">    NSLog(@&quot;保存成功&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="访问照相机"><a href="#访问照相机" class="headerlink" title="访问照相机"></a>访问照相机</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">BOOL isCamera = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront | UIImagePickerControllerCameraDeviceRear];</div><div class="line">   </div><div class="line">   if (!isCamera) &#123;</div><div class="line">       </div><div class="line">       UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@&quot;提示&quot; message:@&quot;没有可用摄像头&quot; delegate:nil cancelButtonTitle:@&quot;取消&quot; otherButtonTitles:nil, nil];</div><div class="line">       [alertView show];</div><div class="line">       return;</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   </div><div class="line">   UIImagePickerController *pickVC = [[UIImagePickerController alloc] init];</div><div class="line"></div><div class="line">   pickVC.sourceType =  UIImagePickerControllerSourceTypeCamera;</div><div class="line">   </div><div class="line">   </div><div class="line">   pickVC.delegate = self;</div><div class="line">   </div><div class="line">   [self presentViewController:pickVC animated:YES completion:NULL];</div></pre></td></tr></table></figure>
@@ -430,6 +431,12 @@
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/UIImagePickerController-AVAudioPlayer-AVAudioSession/" rel="tag"># UIImagePickerController  AVAudioPlayer  AVAudioSession</a>
+          
+        </div>
       
 
       
@@ -551,7 +558,7 @@ ds.charset = 'UTF-8';
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">49</span>
+                <span class="site-state-item-count">50</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
