@@ -388,104 +388,15 @@
 
       
         
-          
-            <h2 id="证书的配置流程"><a href="#证书的配置流程" class="headerlink" title="证书的配置流程"></a>证书的配置流程</h2><p>首先，你的Apple Id必须是付过费的，这样你才可以使用相关的证书功能。<br>如果你的账号没有付过费，那么你登录Apple developer之后是下面的样子：</p>
+          <h2 id="证书的配置流程"><a href="#证书的配置流程" class="headerlink" title="证书的配置流程"></a>证书的配置流程</h2><p>首先，你的Apple Id必须是付过费的，这样你才可以使用相关的证书功能。<br>如果你的账号没有付过费，那么你登录Apple developer之后是下面的样子：</p>
 <p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fczk0iq72nj30sw0hc0un.jpg" alt=""></p>
-<p>如果你的账号付过费，那么你登录之后将会是下面的样子：</p>
-<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fczk3z3c7hj30zz0hwwgw.jpg" alt=""></p>
-<p>点击上图中的<code>Certificates, Identifiers &amp; Profiles</code>。跳转到下面的界面：</p>
-<pre><code>![](https://ww3.sinaimg.cn/large/006tNc79gy1fczkrph5kaj30rl0hzaas.jpg)
-</code></pre><p><strong>在配置证书之前需要将我们的Apple ID和我们的项目进行绑定。</strong></p>
-<ul>
-<li><p>首先应该配置自己的App IDs:</p>
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fczl0hcgqqj30rd0cugm1.jpg" alt=""></p>
-<ul>
-<li>点击上图中的+跳转到下面的界面，在此界面我们可以设置自己的App ID</li>
-</ul>
-<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fczl31dhxuj30kf0eh74g.jpg" alt=""></p>
-<p><strong>上图中的Name可以随便取一个名字</strong></p>
-<ul>
-<li>下图中的Bundle ID必须和自己的项目中的Bundle ID一样的，具体的取名格式图片上已经有了提示：</li>
-</ul>
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fczl6aquosj30kd0er74l.jpg" alt=""></p>
-<ul>
-<li>还有就是该页面的最下面有一个App Services。里面的可以先不勾选，等到以后有需求在勾选也不迟。</li>
-<li><p>最后点击continue继续，跳转界面后，在点击Register后就可以了。到此你的项目就和你的Apple ID绑定了。</p>
-</li>
-<li><p>另外，我们需要在指定的设备上进行相关的证书的测试，这个时候我们就需要添加设备了。详细步骤见下图：</p>
-</li>
-</ul>
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fczmuz30xoj30rf0gv759.jpg" alt=""></p>
-<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fczmvzf42oj30kb0gk0sz.jpg" alt=""></p>
-<p>UUID需要连接手机后在itunes里查看：</p>
-<p><img src="https://ww4.sinaimg.cn/large/006tNc79gy1fczmzv6rbaj30un0ig7a6.jpg" alt=""></p>
-<p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fczn01937xj30ug0igdgu.jpg" alt=""></p>
-<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fczn0k0c9rj30ug0ihab2.jpg" alt=""></p>
-<p>最后点击注册就行了。</p>
-</li>
-</ul>
-<p>接下来才可以配置证书。</p>
-<h3 id="证书的配置过程"><a href="#证书的配置过程" class="headerlink" title="证书的配置过程"></a>证书的配置过程</h3><p><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fczlkw7v51j30rb0csmxp.jpg" alt=""></p>
-<ul>
-<li>开发证书(Development)（线下真机测试）<ul>
-<li>开发环境下app签证证书</li>
-<li>开发环境下推送证书<br><img src="https://ww2.sinaimg.cn/large/006tNc79gy1fczlu1z4h3j30q90bet96.jpg" alt=""></li>
-</ul>
-</li>
-</ul>
-<pre><code>- 选择上面的证书后，点击继续，会跳转到下面的界面：
-
- ![](https://ww2.sinaimg.cn/large/006tNc79gy1fczlwnk7z4j30j00ct0t1.jpg)
-**在这里你需要选择上面自己创建的App ID。**
-
-- 接下来一直continue直到出现下面的界面：
-
- ![](https://ww4.sinaimg.cn/large/006tNc79gy1fczm0xoch4j30kh0ej0t0.jpg)
-
- 这个时候你必须要去你电脑里面的钥匙串里面导出CertificateSigningRequest文件。具体的步骤见下图：
-
- ![](https://ww2.sinaimg.cn/large/006tNc79gy1fczm6c33x0j30qi0cmabm.jpg)
-
- ![](https://ww3.sinaimg.cn/large/006tNc79gy1fczm7rq4cfj30h40c40sx.jpg)
-
-**注意上面的email填写必须为你的APPLE ID账号**
-
-获得文件后，回到配置证书界面：点击choose File，将刚刚导出的文件上传后跳转到下面：
-![](https://ww2.sinaimg.cn/large/006tNc79gy1fczn9v0ve1j30jf0gtjs3.jpg)
-
-点击下载文件，然后双击这个文件，在钥匙串里面导出p12文件。
-
-![](https://ww1.sinaimg.cn/large/006tNc79gy1fczmjm1zdej30o80eiq3s.jpg)
-
-双击p12文件，就会自动导入你的项目中，这个就是开发证书。
-
-**推送证书的步骤类似**
-</code></pre><ul>
-<li><p>profile文件</p>
-<p>  <img src="https://ww2.sinaimg.cn/large/006tNc79gy1fcznim3pdaj30770h8q2x.jpg" alt=""></p>
-<p>  <img src="https://ww1.sinaimg.cn/large/006tNc79gy1fcznjpulvyj30kg04i747.jpg" alt=""></p>
-<p>  <img src="https://ww2.sinaimg.cn/large/006tNc79gy1fcznka843rj30km0gjdg7.jpg" alt=""></p>
-<p>  下面就是选择一开始设置的那个APP ID</p>
-<p>  <img src="https://ww2.sinaimg.cn/large/006tNc79gy1fcznljwnvgj30kf0bo74m.jpg" alt=""></p>
-<p>  下面就是你之前配置的开发证书选择：</p>
-<p>  <img src="https://ww1.sinaimg.cn/large/006tNc79gy1fcznnbl7i7j30kl0a6aa7.jpg" alt=""></p>
-<p>  因为是开发证书，所以接下来需要选择真机测试的UUID设备：</p>
-<p>  <img src="https://ww4.sinaimg.cn/large/006tNc79gy1fcznok9yjnj30kh0htgls.jpg" alt=""></p>
-<p>  最后为你的profile文件取个名字</p>
-<p>  <img src="https://ww4.sinaimg.cn/large/006tNc79gy1fcznp044blj30kn0dwq33.jpg" alt=""></p>
-<p>  下载profile文件后双击打开就会自动导入项目。</p>
-</li>
-</ul>
-<ul>
-<li>生产证书(Distribution)（线上）<ul>
-<li>App Store</li>
-<li>Adhoc (打包.ipa文件为了测试线上的证书配置效果)，UUID的配置，为了在特定的手机上进行线上环境测试。</li>
-<li>推送证书<br><img src="https://ww3.sinaimg.cn/large/006tNc79gy1fcznwumb89j30jh09lwew.jpg" alt=""></li>
-</ul>
-</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/22/iOS证书配置流程详解/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
