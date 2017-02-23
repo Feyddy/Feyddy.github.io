@@ -277,165 +277,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/10/UITabBarController的基本使用/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Feyddy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="清风明心">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/10/UITabBarController的基本使用/" itemprop="url">
-                  UITabBarController的基本使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-10T22:41:03+08:00">
-                2017-01-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/01/10/UITabBarController的基本使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/10/UITabBarController的基本使用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/10/UITabBarController的基本使用/" class="leancloud_visitors" data-flag-title="UITabBarController的基本使用">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li><p>首先介绍创建一个UITabBarController，并将其设置为根控制器的一般方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">//创建标签控制器</div><div class="line">    UITabBarController *tabBarCtrl = [[UITabBarController alloc] init];</div><div class="line">    </div><div class="line">    tabBarCtrl.delegate = self;</div><div class="line">    </div><div class="line">    //创建子控制器</div><div class="line">    UIViewController *ctrl1 = [[UIViewController alloc] init];</div><div class="line">    ctrl1.title = @&quot;首页&quot;;</div><div class="line">    ctrl1.view.backgroundColor = [UIColor redColor];</div><div class="line">    </div><div class="line">    UIViewController *ctrl2 = [[UIViewController alloc] init];</div><div class="line">    ctrl2.title = @&quot;通讯录&quot;;</div><div class="line">    ctrl2.view.backgroundColor = [UIColor greenColor];</div><div class="line">    </div><div class="line">    UIViewController *ctrl3 = [[UIViewController alloc] init];</div><div class="line">    ctrl3.title = @&quot;设置&quot;;</div><div class="line">    ctrl3.view.backgroundColor = [UIColor orangeColor];</div><div class="line">    </div><div class="line">    //设置子控制器(以后无法改变)</div><div class="line">    tabBarCtrl.viewControllers = @[ctrl1,ctrl2,ctrl3];</div><div class="line">    </div><div class="line">    //将标签控制器设为窗口的根控制器</div><div class="line">    self.window.rootViewController = tabBarCtrl;</div><div class="line">    </div><div class="line">    </div><div class="line"> //delegate</div><div class="line">//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController  &#123;</div><div class="line">//    return YES;</div><div class="line">//&#125;</div><div class="line">- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController &#123;</div><div class="line">    </div><div class="line">    </div><div class="line">    NSLog(@&quot;%ld&quot;,[tabBarController.viewControllers indexOfObject:viewController]);</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/10/UITabBarController的基本使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/10/UINavigationController的常用属性和方法/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1860,6 +1701,157 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/22/HTML5新手教学-多媒体/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/22/HTML5新手教学-多媒体/" itemprop="url">
+                  HTML5新手教学-多媒体
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-22T21:36:34+08:00">
+                2016-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2016/12/22/HTML5新手教学-多媒体/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/22/HTML5新手教学-多媒体/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/22/HTML5新手教学-多媒体/" class="leancloud_visitors" data-flag-title="HTML5新手教学-多媒体">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="HTML5新增的音频标签（audio）和视频标签（video），基本使用方法见下面的代码："><a href="#HTML5新增的音频标签（audio）和视频标签（video），基本使用方法见下面的代码：" class="headerlink" title="HTML5新增的音频标签（audio）和视频标签（video），基本使用方法见下面的代码："></a>HTML5新增的音频标签（audio）和视频标签（video），基本使用方法见下面的代码：</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">title</span>&gt;</span>多媒体<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">	</div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- 音频 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">audio</span> <span class="attr">src</span>=<span class="string">"See You Again.mp3"</span> <span class="attr">controls</span> <span class="attr">autoplay</span> <span class="attr">loop</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- controls:页面显示音频播放器的一些控件</span></div><div class="line">	autoplay:页面显示后立即播放</div><div class="line">	loop:循环播放几次 --&gt;</div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 有些浏览器不支持音频格式的采用下面方法来兼容 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">audio</span> <span class="attr">controls</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"See You Again.mp3"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"See You Again.wav"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"See You Again.ogg"</span>&gt;</span></div><div class="line">		如果浏览器不支持这个H5标签的话，显示这段文字</div><div class="line">	<span class="tag">&lt;/<span class="name">audio</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 视频 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">video</span> <span class="attr">src</span>=<span class="string">"movie.mp4"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"400"</span> <span class="attr">controls</span> <span class="attr">autoplay</span> <span class="attr">loop</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!-- controls:页面显示视频播放器的一些控件</span></div><div class="line">	autoplay:页面显示后立即播放</div><div class="line">	loop:循环播放几次 </div><div class="line">	width:设置视频窗口宽度</div><div class="line">	height:设置视频窗口宽高度</div><div class="line">	但是宽高会自动调整。因为视频不会拉伸，所以浏览器会按照视频的比例有所调整，不像img标签，图片标签会拉伸</div><div class="line">	--&gt;</div><div class="line"></div><div class="line">	<span class="comment">&lt;!-- 有些浏览器不支持视频格式的采用下面方法来兼容 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">video</span> <span class="attr">controls</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"movie.mp4"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"movie.wav"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">source</span> <span class="attr">src</span>=<span class="string">"movie.ogg"</span>&gt;</span></div><div class="line">		如果浏览器不支持这个H5标签的话，显示这段文字</div><div class="line">	<span class="tag">&lt;/<span class="name">video</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1904,7 +1896,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-count">58</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1921,7 +1913,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">213</span>
+                <span class="site-state-item-count">203</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
