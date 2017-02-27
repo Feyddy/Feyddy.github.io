@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79ly1fd4x49jnhbj30gm0h5wgj.jpg">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fd4xocwif8j309z0fegm4.jpg">
 <meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNc79ly1fd4yyovatsj30gk09kgmw.jpg">
-<meta property="og:updated_time" content="2017-02-27T13:04:58.000Z">
+<meta property="og:updated_time" content="2017-02-27T13:22:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发进阶-Runtime学习笔记">
 <meta name="twitter:description" content="Objective-C Runtime到底是什么东西？Objective-C Runtime是一个将C语言转化为面向对象语言的扩展。Objective-C是基于动态运行时类型，与静态类型的C++不一样。也就是说用C++编写的程序编译时就直接编译成了可令机器读懂的机器语言；用Objective-C编写的程序不能直接编译成可令机器读懂的机器语言，而是在程序运行的时候，通过Runtime把程序转为可令机">
@@ -393,8 +393,6 @@
 
       
         <h1 id="Objective-C-Runtime到底是什么东西？"><a href="#Objective-C-Runtime到底是什么东西？" class="headerlink" title="Objective-C Runtime到底是什么东西？"></a>Objective-C Runtime到底是什么东西？</h1><p>Objective-C Runtime是一个将C语言转化为面向对象语言的扩展。<br>Objective-C是基于动态运行时类型，与静态类型的C++不一样。也就是说用C++编写的程序编译时就直接编译成了可令机器读懂的机器语言；用Objective-C编写的程序不能直接编译成可令机器读懂的机器语言，而是在程序运行的时候，通过Runtime把程序转为可令机器读懂的机器语言。Runtime是Objective不可缺少的重要一部分。</p>
-<p><a href="http://yulingtianxia.com/blog/2014/11/05/objective-c-runtime/" target="_blank" rel="external">参考1</a></p>
-<p><a href="http://ios.jobbole.com/84028/" target="_blank" rel="external">参考2</a></p>
 <a id="more"></a>
 <h1 id="Objective-C的基本元素的认识"><a href="#Objective-C的基本元素的认识" class="headerlink" title="Objective-C的基本元素的认识"></a>Objective-C的基本元素的认识</h1><h3 id="1-id和Class"><a href="#1-id和Class" class="headerlink" title="1. id和Class"></a>1. id和Class</h3><p>打开/Runtime-/runtime/objc.h文件可以看到如下定义：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#if !OBJC_TYPES_DEFINED</div><div class="line">/// An opaque type that represents an Objective-C class.</div><div class="line">typedef struct objc_class *Class;</div><div class="line"> </div><div class="line">/// Represents an instance of a class.</div><div class="line">struct objc_object &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">&#125;;</div><div class="line"> </div><div class="line">/// A pointer to an instance of a class.</div><div class="line">typedef struct objc_object *id;</div><div class="line">#endif</div></pre></td></tr></table></figure>
@@ -649,7 +647,7 @@ ds.charset = 'UTF-8';
                src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
                alt="Feyddy" />
           <p class="site-author-name" itemprop="name">Feyddy</p>
-          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
