@@ -108,7 +108,7 @@ sqlite">
 <meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcgy1fd33p757qdj30j90dmdgc.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgy1fd33pe5lrgj30k00e2dgb.jpg">
 <meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgy1fd33ux4vh5j305q028glv.jpg">
-<meta property="og:updated_time" content="2017-03-01T16:01:09.000Z">
+<meta property="og:updated_time" content="2017-03-01T16:13:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Core Data的基本使用">
 <meta name="twitter:description" content="Core Data什么是Core DataCore Data是一个框架，他提供了对象-关系映射的功能，即能够将OC对象转化成数据，保存在SQLite数据库文件中，也能够将保存的数据库中的数据还原成OC对象。在此数据操作期间，我们不需要编写任何SQL语句，这个有点类似于著名的Hibernate持久化框架，不过功能肯定是没有Hibernate强大的。
@@ -507,6 +507,66 @@ for (Employee *emp in emps) {
 // 3.用context同步下数据库
 //所有的操作暂时都是在内存里，调用save 同步数据库
 [self.context save:nil];
+</code></pre>
+</li>
+<li><p>查找员工信息</p>
+<pre><code class="objective-c">  - (NSArray *)findEmployeeWithName:(NSString *)name{
+  // 1.查找员工
+  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@&quot;Employee&quot;];
+
+  NSPredicate *pre = [NSPredicate predicateWithFormat:@&quot;name=%@&quot;,name];
+  request.predicate = pre;
+
+  return [self.context executeFetchRequest:request error:nil]; 
+}
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>修改员工信息</p>
+<pre><code class="objective-c">// 把wangwu的身高更改成 1.7
+// 1.查找wangwu
+NSArray *emps = [self findEmployeeWithName:@&quot;wangwu&quot;];
+
+// 2.更新身高
+if (emps.count == 1) {
+    Employee *emp = emps[0];
+    emp.height = @1.7;
+}
+
+// 3.同步（保存）到数据
+[self.context save:nil];
+</code></pre>
+</li>
+<li><p>模糊查询员工信息</p>
+<pre><code class="objective-c">// 查询
+NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@&quot;Employee&quot;];
+
+// 过滤
+// 1.查询以wang开头员工
+//NSPredicate *pre = [NSPredicate predicateWithFormat:@&quot;name BEGINSWITH %@&quot;,@&quot;wang&quot;];
+
+// 2.以si 结尾
+//NSPredicate *pre = [NSPredicate predicateWithFormat:@&quot;name ENDSWITH %@&quot;,@&quot;si&quot;];
+
+// 3.名字包含 g
+//NSPredicate *pre = [NSPredicate predicateWithFormat:@&quot;name CONTAINS %@&quot;,@&quot;g&quot;];
+
+// 4.like 以si结尾
+NSPredicate *pre = [NSPredicate predicateWithFormat:@&quot;name like %@&quot;,@&quot;li*&quot;];
+request.predicate = pre;
+
+//读取信息
+NSError *error = nil;
+NSArray *emps = [self.context executeFetchRequest:request error:&amp;error];
+if (!error) {
+    NSLog(@&quot;emps: %@&quot;,emps);
+    for (Employee *emp in emps) {
+        NSLog(@&quot;%@ %@ %@&quot;,emp.name,emp.age,emp.height);
+    }
+}else{
+    NSLog(@&quot;%@&quot;,error);
+}
 </code></pre>
 </li>
 </ul>
