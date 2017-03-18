@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="keyCode,document,event,（||）,冒泡事件,cancelBubble,clientX,scrollTop,offsetWidth,ctrlKey,shiftKey,altKey," />
+  <meta name="keywords" content="document,event,（||）,冒泡事件,cancelBubble,clientX,scrollTop,keyCode,offsetWidth,ctrlKey,shiftKey,altKey," />
 
 
 
@@ -273,12 +273,27 @@
   
     <div class="site-search">
       
-  <div class="popup">
- <span class="search-icon fa fa-search"></span>
- <input type="text" id="local-search-input">
- <div id="local-search-result"></div>
- <span class="popup-btn-close">close</span>
-</div>
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
 
 
     </div>
@@ -511,8 +526,6 @@
       
         <div class="post-tags">
           
-            <a href="/tags/keyCode/" rel="tag"># keyCode</a>
-          
             <a href="/tags/document/" rel="tag"># document</a>
           
             <a href="/tags/event/" rel="tag"># event</a>
@@ -526,6 +539,8 @@
             <a href="/tags/clientX/" rel="tag"># clientX</a>
           
             <a href="/tags/scrollTop/" rel="tag"># scrollTop</a>
+          
+            <a href="/tags/keyCode/" rel="tag"># keyCode</a>
           
             <a href="/tags/offsetWidth/" rel="tag"># offsetWidth</a>
           
@@ -1118,6 +1133,19 @@ ds.charset = 'UTF-8';
   
 
   
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
 
 
 </body>
