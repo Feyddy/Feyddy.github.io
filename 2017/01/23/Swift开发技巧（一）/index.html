@@ -1,0 +1,1122 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="arc4random,arc4random_uniform,Range,struct,enum,while,文件操作," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="使用arc4random()、arc4random_uniform()取得随机数arc4random() 这个全局函数会生成10位数的随机整数（UInt32）。其生成的最大值是4294967295（2^32 - 1），最小值为0。
+1234567891011//下面是使用 arc4random 函数求一个 1~100 的随机数（包括1和100）        for _ in 0...10 &amp;#1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift开发技巧（一）">
+<meta property="og:url" content="http://yoursite.com/2017/01/23/Swift开发技巧（一）/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="使用arc4random()、arc4random_uniform()取得随机数arc4random() 这个全局函数会生成10位数的随机整数（UInt32）。其生成的最大值是4294967295（2^32 - 1），最小值为0。
+1234567891011//下面是使用 arc4random 函数求一个 1~100 的随机数（包括1和100）        for _ in 0...10 &amp;#1">
+<meta property="og:updated_time" content="2017-02-15T14:16:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swift开发技巧（一）">
+<meta name="twitter:description" content="使用arc4random()、arc4random_uniform()取得随机数arc4random() 这个全局函数会生成10位数的随机整数（UInt32）。其生成的最大值是4294967295（2^32 - 1），最小值为0。
+1234567891011//下面是使用 arc4random 函数求一个 1~100 的随机数（包括1和100）        for _ in 0...10 &amp;#1">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/23/Swift开发技巧（一）/"/>
+
+
+
+
+
+  <title> Swift开发技巧（一） | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/23/Swift开发技巧（一）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Swift开发技巧（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T11:25:16+08:00">
+                2017-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/23/Swift开发技巧（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/23/Swift开发技巧（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/23/Swift开发技巧（一）/" class="leancloud_visitors" data-flag-title="Swift开发技巧（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="使用arc4random-、arc4random-uniform-取得随机数"><a href="#使用arc4random-、arc4random-uniform-取得随机数" class="headerlink" title="使用arc4random()、arc4random_uniform()取得随机数"></a>使用arc4random()、arc4random_uniform()取得随机数</h4><p><strong>arc4random() </strong>这个全局函数会生成10位数的随机整数（UInt32）。其生成的最大值是4294967295（2^32 - 1），最小值为0。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//下面是使用 arc4random 函数求一个 1~100 的随机数（包括1和100）</span></div><div class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>...<span class="number">10</span> &#123;</div><div class="line">            <span class="keyword">let</span> temp = <span class="type">Int</span>(arc4random()%<span class="number">100</span>)+<span class="number">1</span></div><div class="line">            <span class="built_in">print</span>(temp)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line"><span class="comment">//下面是使用 arc4random_uniform 函数求一个 1~100 的随机数（包括1和100）</span></div><div class="line">        <span class="keyword">for</span> <span class="number">_</span> <span class="keyword">in</span> <span class="number">0</span>..&lt;<span class="number">10</span> &#123;</div><div class="line">            <span class="keyword">let</span> temp = <span class="type">Int</span>(arc4random_uniform(<span class="number">100</span>))+<span class="number">1</span></div><div class="line">            <span class="built_in">print</span>(temp)</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="字符串范围也可以使用区间运算符"><a href="#字符串范围也可以使用区间运算符" class="headerlink" title="字符串范围也可以使用区间运算符"></a><strong>字符串范围也可以使用区间运算符</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//不使用区间运算符</span></div><div class="line">        <span class="keyword">let</span> index = str.index(str.startIndex, offsetBy: <span class="number">4</span>)</div><div class="line">        <span class="keyword">let</span> index2 = str.index(str.startIndex, offsetBy: <span class="number">6</span>)</div><div class="line">        <span class="keyword">let</span> range1 = <span class="type">Range</span>(uncheckedBounds: (lower: index, upper: index2))</div><div class="line">        <span class="keyword">let</span> rangeStr1 = str.substring(with: range1)</div><div class="line">        <span class="built_in">print</span>(rangeStr1)<span class="comment">//结果为am</span></div><div class="line">        </div><div class="line">        </div><div class="line"><span class="comment">//使用区间运算符</span></div><div class="line">        <span class="keyword">let</span> range2 = str.index(str.startIndex, offsetBy: <span class="number">4</span>)..&lt;str.index(str.startIndex, offsetBy: <span class="number">8</span>)</div><div class="line">        <span class="keyword">let</span> rangeStr2 = str.substring(with: range2)</div><div class="line">        <span class="built_in">print</span>(rangeStr2)<span class="comment">//结果为ame</span></div></pre></td></tr></table></figure>
+<h4 id="区间运算符除了返回一个Range外，还可以接受Comparable的输入，返回ClosedInterval或HalfOpenInterval"><a href="#区间运算符除了返回一个Range外，还可以接受Comparable的输入，返回ClosedInterval或HalfOpenInterval" class="headerlink" title="区间运算符除了返回一个Range外，还可以接受Comparable的输入，返回ClosedInterval或HalfOpenInterval"></a><strong>区间运算符除了返回一个Range外，还可以接受Comparable的输入，返回ClosedInterval或HalfOpenInterval</strong></h4><p>用这个特性检查字符串里的字符是不是都是合法字符（比如是不是都是小写）</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> str = <span class="string">"My name is Feyddy"</span></div><div class="line"><span class="comment">//设置一个范围</span></div><div class="line"><span class="keyword">let</span> interval = <span class="string">"a"</span>...<span class="string">"z"</span></div><div class="line"><span class="keyword">for</span> <span class="built_in">c</span> <span class="keyword">in</span> str.characters &#123;</div><div class="line">    interval.<span class="built_in">contains</span>(<span class="type">String</span>(<span class="built_in">c</span>)) == <span class="literal">true</span> ?  <span class="built_in">print</span>(<span class="string">"\(c)是小写字母"</span>) :  <span class="built_in">print</span>(<span class="string">"\(c)不是小写字母"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="结构体-struct"><a href="#结构体-struct" class="headerlink" title="结构体 - struct"></a><strong>结构体 - struct</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个结构体</span></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">BookInfo</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> <span class="type">ID</span>:<span class="type">Int</span> = <span class="number">0</span></div><div class="line">    <span class="keyword">var</span> <span class="type">Name</span>:<span class="type">String</span> = <span class="string">"Defaut"</span></div><div class="line">    <span class="keyword">var</span> <span class="type">Author</span>:<span class="type">String</span> = <span class="string">"Defaut"</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> book1:<span class="type">BookInfo</span> <span class="comment">//默认构造器创建结构体实例</span></div><div class="line"><span class="keyword">var</span> book2 = <span class="type">BookInfo</span>(<span class="type">ID</span>:<span class="number">0021</span>,<span class="type">Name</span>:<span class="string">"航歌"</span>,<span class="type">Author</span>:<span class="string">"hangge"</span>)  <span class="comment">//调用逐一构造器创建实例</span></div><div class="line">book2.<span class="type">ID</span> = <span class="number">1234</span>  <span class="comment">//修改内部值</span></div></pre></td></tr></table></figure>
+<h4 id="枚举-enum"><a href="#枚举-enum" class="headerlink" title="枚举-enum"></a>枚举-enum</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//普通的写法</span></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">CompassPoint</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">North</span></div><div class="line">    <span class="keyword">case</span> <span class="type">South</span></div><div class="line">    <span class="keyword">case</span> <span class="type">East</span></div><div class="line">    <span class="keyword">case</span> <span class="type">West</span></div><div class="line">&#125;</div><div class="line"><span class="comment">//调用</span></div><div class="line"><span class="keyword">var</span> directionToHead = <span class="type">CompassPoint</span>.<span class="type">West</span></div><div class="line"> </div><div class="line"><span class="comment">//带有原始值的写法</span></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Planet</span>: <span class="title">Int</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">Mercury</span> = <span class="number">1</span></div><div class="line">    <span class="keyword">case</span> <span class="type">Venus</span> = <span class="number">2</span></div><div class="line">    <span class="keyword">case</span> <span class="type">Earth</span> = <span class="number">3</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> earthsOrder = <span class="type">Planet</span>.<span class="type">Earth</span>.rawValue <span class="comment">//rawValue来获取他的原始值:3</span></div><div class="line"><span class="keyword">let</span> possiblePlanet = <span class="type">Planet</span>(rawValue: <span class="number">2</span>)  <span class="comment">//通过原始值来寻找所对应的枚举成员:Venus</span></div><div class="line"> </div><div class="line"><span class="comment">//里面定义函数的写法</span></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">Direction</span> </span>&#123;</div><div class="line">    <span class="keyword">case</span> <span class="type">Up</span></div><div class="line">    <span class="keyword">case</span> <span class="type">Down</span></div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">description</span><span class="params">()</span></span> -&gt; <span class="type">String</span>&#123;</div><div class="line">        <span class="keyword">switch</span>(<span class="keyword">self</span>)&#123;</div><div class="line">        <span class="keyword">case</span> .<span class="type">Up</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"向上"</span></div><div class="line">        <span class="keyword">case</span> .<span class="type">Down</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">"向下"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">print</span>(<span class="type">Direction</span>.<span class="type">Up</span>.description())</div></pre></td></tr></table></figure>
+<h4 id="while循环语句"><a href="#while循环语句" class="headerlink" title="while循环语句"></a><strong>while循环语句</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> i&lt;<span class="number">100</span> &#123;</div><div class="line">    i+=<span class="number">1</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//类似于do-while</span></div><div class="line"><span class="keyword">repeat</span>&#123;</div><div class="line">    i+=<span class="number">1</span></div><div class="line">&#125;<span class="keyword">while</span> i&lt;<span class="number">100</span></div></pre></td></tr></table></figure>
+<h4 id="可变形参：可以接受0个或者任意数量的输入参数"><a href="#可变形参：可以接受0个或者任意数量的输入参数" class="headerlink" title="可变形参：可以接受0个或者任意数量的输入参数"></a><strong>可变形参：可以接受0个或者任意数量的输入参数</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">test</span><span class="params">(numbers:Int...)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">var</span> <span class="built_in">count</span>:<span class="type">Int</span> = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> number <span class="keyword">in</span> numbers&#123;</div><div class="line">        <span class="built_in">count</span> += number</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">count</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="如果想要同时改变函数内外的参数值，可以利用inout关键字，同时调用函数的时候给参数加上前缀“-amp-”"><a href="#如果想要同时改变函数内外的参数值，可以利用inout关键字，同时调用函数的时候给参数加上前缀“-amp-”" class="headerlink" title="如果想要同时改变函数内外的参数值，可以利用inout关键字，同时调用函数的时候给参数加上前缀“&amp;”"></a><strong>如果想要同时改变函数内外的参数值，可以利用inout关键字，同时调用函数的时候给参数加上前缀“&amp;”</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">(age:<span class="keyword">inout</span> Int)</span></span>&#123;</div><div class="line">    age += <span class="number">1</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">var</span> age = <span class="number">22</span></div><div class="line">add(age: &amp;age)</div><div class="line"><span class="built_in">print</span>(age) <span class="comment">//23</span></div></pre></td></tr></table></figure>
+<h4 id="可以使用函数类型的参数"><a href="#可以使用函数类型的参数" class="headerlink" title="可以使用函数类型的参数"></a><strong>可以使用函数类型的参数</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">additive</span><span class="params">(a:Int, b:Int)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//函数类型的参数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">printAdditiveResult</span><span class="params">(addFun: <span class="params">(Int, Int)</span></span></span> -&gt; <span class="type">Int</span>, a:<span class="type">Int</span>, b:<span class="type">Int</span>)&#123;</div><div class="line">    <span class="built_in">print</span>(<span class="string">"Result:\(addFun(a,b))"</span>)</div><div class="line">&#125;</div><div class="line"> </div><div class="line">printAdditiveResult(addFun: additive, a: <span class="number">5</span> ,b: <span class="number">7</span>)</div></pre></td></tr></table></figure>
+<h4 id="也可以使用函数类型的返回值"><a href="#也可以使用函数类型的返回值" class="headerlink" title="也可以使用函数类型的返回值"></a><strong>也可以使用函数类型的返回值</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//定义个自增函数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">increase</span><span class="params">(input:Int)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">return</span> input + <span class="number">1</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//定义个自减函数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">reduce</span><span class="params">(input:Int)</span></span> -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">return</span> input - <span class="number">1</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//定义一个返回函数类型的函数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">chooseFunction</span><span class="params">(backwards:Bool)</span></span> -&gt; (<span class="type">Int</span>) -&gt; <span class="type">Int</span>&#123;</div><div class="line">    <span class="keyword">return</span> backwards ? <span class="built_in">reduce</span> : increase</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//测试</span></div><div class="line"><span class="keyword">let</span> aFun = chooseFunction(backwards: <span class="number">3</span>&gt;<span class="number">2</span>)</div><div class="line"><span class="built_in">print</span>(aFun(<span class="number">3</span>))  <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<h4 id="Swift-属性观察者（willSet与didSet）"><a href="#Swift-属性观察者（willSet与didSet）" class="headerlink" title="Swift - 属性观察者（willSet与didSet）"></a>Swift - 属性观察者（willSet与didSet）</h4><p>属性观察者，类似于触发器。用来监视属性的除初始化之外的属性值变化，当属性值发生改变时可以对此作出响应。有如下特点：</p>
+<p>1，不仅可以在属性值改变后触发didSet，也可以在属性值改变前触发willSet。</p>
+<p>2，给属性添加观察者必须要声明清楚属性类型，否则编译器报错。</p>
+<p>3，willSet可以带一个newName的参数，没有的话，该参数默认命名为newValue。</p>
+<p>4，didSet可以带一个oldName的参数，表示旧的属性，不带的话默认命名为oldValue。</p>
+<p>5，属性初始化时，willSet和didSet不会调用。只有在初始化上下文之外，当设置属性值时才会调用。</p>
+<p>6，即使是设置的值和原来值相同，willSet和didSet也会被调用</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">//普通属性</span></div><div class="line">    <span class="keyword">var</span> firstName:<span class="type">String</span> = <span class="string">""</span></div><div class="line">    <span class="keyword">var</span> lastName:<span class="type">String</span>  = <span class="string">""</span></div><div class="line">    <span class="keyword">var</span> nickName:<span class="type">String</span>  = <span class="string">""</span></div><div class="line">     </div><div class="line">    <span class="comment">//计算属性</span></div><div class="line">    <span class="keyword">var</span> fullName:<span class="type">String</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">get</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> nickName + <span class="string">" "</span> + firstName + <span class="string">" "</span> + lastName</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">     </div><div class="line">    <span class="comment">//带属性监视器的普通属性</span></div><div class="line">    <span class="keyword">var</span> age:<span class="type">Int</span> = <span class="number">0</span></div><div class="line">    &#123;</div><div class="line">        <span class="comment">//我们需要在age属性变化前做点什么</span></div><div class="line">        <span class="keyword">willSet</span></div><div class="line">        &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"Will set an new value \(newValue) to age"</span>)</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//我们需要在age属性发生变化后，更新一下nickName这个属性</span></div><div class="line">        <span class="keyword">didSet</span></div><div class="line">        &#123;</div><div class="line">            <span class="built_in">print</span>(<span class="string">"age filed changed form \(oldValue) to \(age)"</span>)</div><div class="line">            <span class="keyword">if</span> age&lt;<span class="number">10</span></div><div class="line">            &#123;</div><div class="line">                nickName = <span class="string">"Little"</span></div><div class="line">            &#125;<span class="keyword">else</span></div><div class="line">            &#123;</div><div class="line">                nickName = <span class="string">"Big"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">toString</span><span class="params">()</span></span> -&gt; <span class="type">String</span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Full Name: \(fullName) "</span> + <span class="string">", Age: \(age) "</span></div><div class="line">    &#125;</div><div class="line">     </div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">let</span> me = <span class="type">People</span>()</div><div class="line">me.firstName = <span class="string">"Li"</span></div><div class="line">me.lastName  = <span class="string">"Lei"</span></div><div class="line">me.age = <span class="number">30</span></div><div class="line"> </div><div class="line"><span class="built_in">print</span>(me.<span class="built_in">toString</span>())</div><div class="line"> </div><div class="line"><span class="comment">/*程序输出</span></div><div class="line">Will set an new value 30 to age</div><div class="line">age filed changed form 0 to 30</div><div class="line">Full Name: Big Li Lei , Age: 30</div><div class="line">*/</div></pre></td></tr></table></figure>
+<h4 id="类的计算属性（使用get和set来间接获取-改变其他属性的值）"><a href="#类的计算属性（使用get和set来间接获取-改变其他属性的值）" class="headerlink" title="类的计算属性（使用get和set来间接获取/改变其他属性的值）"></a>类的计算属性（使用get和set来间接获取/改变其他属性的值）</h4><ul>
+<li><p><strong>Swift中类可以使用计算属性，即使用get和set来间接获取/改变其他属性的值</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calcuator</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> a:<span class="type">Int</span> = <span class="number">1</span>;</div><div class="line">    <span class="keyword">var</span> b:<span class="type">Int</span> = <span class="number">1</span>;</div><div class="line"> </div><div class="line">    <span class="keyword">var</span> sum:<span class="type">Int</span>&#123;</div><div class="line">        <span class="keyword">get</span>&#123;</div><div class="line">            <span class="keyword">return</span> a + b</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">set</span>(val)&#123;</div><div class="line">            b = val - a</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> cal = <span class="type">Calcuator</span>();</div><div class="line"><span class="built_in">print</span>(cal.sum) <span class="comment">//2</span></div><div class="line">cal.sum = <span class="number">5</span></div><div class="line"><span class="built_in">print</span>(cal.b) <span class="comment">//4</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>对于set有简写方法，简写时，新赋的值默认为newValue</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calcuator</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> a:<span class="type">Int</span> = <span class="number">1</span>;</div><div class="line">    <span class="keyword">var</span> b:<span class="type">Int</span> = <span class="number">1</span>;</div><div class="line"> </div><div class="line">    <span class="keyword">var</span> sum:<span class="type">Int</span>&#123;</div><div class="line">        <span class="keyword">get</span>&#123;</div><div class="line">            <span class="keyword">return</span> a + b</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">set</span>&#123;</div><div class="line">            b = newValue - a</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>如果只要get，不要set方法</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calcuator</span></span>&#123;</div><div class="line">    <span class="keyword">var</span> a:<span class="type">Int</span> = <span class="number">1</span>;</div><div class="line">    <span class="keyword">var</span> b:<span class="type">Int</span> = <span class="number">1</span>;</div><div class="line"> </div><div class="line">    <span class="keyword">var</span> sum:<span class="type">Int</span>&#123;</div><div class="line">        <span class="keyword">return</span> a + b</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="遍历一个目录下的所有文件"><a href="#遍历一个目录下的所有文件" class="headerlink" title="遍历一个目录下的所有文件"></a><strong>遍历一个目录下的所有文件</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//1.首先我们获取用户文档目录路径</span></div><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlForDocument = manager.urls(<span class="keyword">for</span>: .documentDirectory, <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> url = urlForDocument[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">URL</span></div><div class="line"><span class="built_in">print</span>(url)</div><div class="line"></div><div class="line"><span class="comment">//2.对指定路径执行浅搜索，返回指定目录路径下的文件、子目录及符号链接的列表</span></div><div class="line"><span class="keyword">let</span> contentsOfPath = <span class="keyword">try</span>? manager.contentsOfDirectory(atPath: url.path)</div><div class="line"><span class="built_in">print</span>(<span class="string">"contentsOfPath: \(contentsOfPath)"</span>)</div><div class="line"></div><div class="line"><span class="comment">//3.类似上面的，对指定路径执行浅搜索，返回指定目录路径下的文件、子目录及符号链接的列表</span></div><div class="line"><span class="keyword">let</span> contentsOfURL = <span class="keyword">try</span>? manager.contentsOfDirectory(at: url,</div><div class="line">                        includingPropertiesForKeys: <span class="literal">nil</span>, options: .skipsHiddenFiles)</div><div class="line"><span class="built_in">print</span>(<span class="string">"contentsOfURL: \(contentsOfURL)"</span>)</div><div class="line"></div><div class="line"><span class="comment">//4.深度遍历，会递归遍历子文件夹（但不会递归符号链接）</span></div><div class="line"><span class="keyword">let</span> enumeratorAtPath = manager.enumerator(atPath: url.path)</div><div class="line"><span class="built_in">print</span>(<span class="string">"enumeratorAtPath: \(enumeratorAtPath?.allObjects)"</span>)</div><div class="line"></div><div class="line"><span class="comment">//5.类似上面的，深度遍历，会递归遍历子文件夹（但不会递归符号链接）</span></div><div class="line"><span class="keyword">let</span> enumeratorAtURL = manager.enumerator(at: url, includingPropertiesForKeys: <span class="literal">nil</span>,</div><div class="line">                                         options: .skipsHiddenFiles, errorHandler:<span class="literal">nil</span>)</div><div class="line"><span class="built_in">print</span>(<span class="string">"enumeratorAtURL: \(enumeratorAtURL?.allObjects)"</span>)</div><div class="line"></div><div class="line"><span class="comment">//6.深度遍历，会递归遍历子文件夹（包括符号链接，所以要求性能的话用enumeratorAtPath）</span></div><div class="line"><span class="keyword">let</span> subPaths = manager.subpaths(atPath: url.path)</div><div class="line"><span class="built_in">print</span>(<span class="string">"subPaths: \(subPaths)"</span>)</div></pre></td></tr></table></figure>
+<h4 id="判断文件或文件夹是否存在"><a href="#判断文件或文件夹是否存在" class="headerlink" title="判断文件或文件夹是否存在"></a><strong>判断文件或文件夹是否存在</strong></h4><ul>
+<li>法一：</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> myDirectory:<span class="type">String</span> = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/myFolder/Files"</span></div><div class="line"><span class="keyword">let</span> fileManager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"> </div><div class="line"><span class="comment">//withIntermediateDirectories为ture表示路径中间如果有不存在的文件夹都会创建</span></div><div class="line"><span class="keyword">try</span>! fileManager.createDirectory(atPath: myDirectory,</div><div class="line">                        withIntermediateDirectories: <span class="literal">true</span>, attributes: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>法二</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">createFolder</span><span class="params">(name:String,baseUrl:NSURL)</span></span>&#123;</div><div class="line">    <span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line">    <span class="keyword">let</span> folder = baseUrl.appendingPathComponent(name, isDirectory: <span class="literal">true</span>)</div><div class="line">    <span class="built_in">print</span>(<span class="string">"文件夹: \(folder)"</span>)</div><div class="line">    <span class="keyword">let</span> exist = manager.fileExists(atPath: folder!.path)</div><div class="line">    <span class="keyword">if</span> !exist &#123;</div><div class="line">        <span class="keyword">try</span>! manager.createDirectory(at: folder!, withIntermediateDirectories: <span class="literal">true</span>,</div><div class="line">                                     attributes: <span class="literal">nil</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">     </div><div class="line"><span class="comment">//在文档目录下新建folder目录</span></div><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlForDocument = manager.urls(<span class="keyword">for</span>: .documentDirectory, <span class="keyword">in</span>: .userDomainMask)</div><div class="line"><span class="keyword">let</span> url = urlForDocument[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">NSURL</span></div><div class="line">createFolder(name: <span class="string">"folder"</span>, baseUrl: url)</div></pre></td></tr></table></figure>
+<h4 id="将对象写入文件"><a href="#将对象写入文件" class="headerlink" title="将对象写入文件"></a><strong>将对象写入文件</strong></h4><p>可以通过write(to:)方法，可以创建文件并将对象写入，对象包括String，NSString，UIImage，NSArray，NSDictionary等。</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//把String保存到文件</span></div><div class="line"><span class="keyword">let</span> filePath:<span class="type">String</span> = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/hangge.txt"</span></div><div class="line"><span class="keyword">let</span> info = <span class="string">"欢迎来到hange.com"</span></div><div class="line"><span class="keyword">try</span>! info.write(toFile: filePath, atomically: <span class="literal">true</span>, encoding: <span class="type">String</span>.<span class="type">Encoding</span>.utf8)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//把图片保存到文件路径下</span></div><div class="line"><span class="keyword">let</span> filePath = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/hangge.png"</span></div><div class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(named: <span class="string">"apple.png"</span>)</div><div class="line"><span class="keyword">let</span> data:<span class="type">Data</span> = <span class="type">UIImagePNGRepresentation</span>(image!)!</div><div class="line"><span class="keyword">try</span>? data.write(to: <span class="type">URL</span>(fileURLWithPath: filePath))</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//把NSArray保存到文件路径下</span></div><div class="line"><span class="keyword">let</span> array = <span class="type">NSArray</span>(objects: <span class="string">"aaa"</span>,<span class="string">"bbb"</span>,<span class="string">"ccc"</span>)</div><div class="line"><span class="keyword">let</span> filePath:<span class="type">String</span> = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/array.plist"</span></div><div class="line">array.write(toFile: filePath, atomically: <span class="literal">true</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//把NSDictionary保存到文件路径下</span></div><div class="line"><span class="keyword">let</span> dictionary:<span class="type">NSDictionary</span> = [<span class="string">"Gold"</span>: <span class="string">"1st Place"</span>, <span class="string">"Silver"</span>: <span class="string">"2nd Place"</span>]</div><div class="line"><span class="keyword">let</span> filePath:<span class="type">String</span> = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/dictionary.plist"</span></div><div class="line">dictionary.write(toFile: filePath, atomically: <span class="literal">true</span>)</div></pre></td></tr></table></figure>
+<h4 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a><strong>创建文件</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">createFile</span><span class="params">(name:String, fileBaseUrl:URL)</span></span>&#123;</div><div class="line">    <span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line">     </div><div class="line">    <span class="keyword">let</span> file = fileBaseUrl.appendingPathComponent(name)</div><div class="line">    <span class="built_in">print</span>(<span class="string">"文件: \(file)"</span>)</div><div class="line">    <span class="keyword">let</span> exist = manager.fileExists(atPath: file.path)</div><div class="line">    <span class="keyword">if</span> !exist &#123;</div><div class="line">        <span class="keyword">let</span> data = <span class="type">Data</span>(base64Encoded:<span class="string">"aGVsbG8gd29ybGQ="</span> ,options:.ignoreUnknownCharacters)</div><div class="line">        <span class="keyword">let</span> createSuccess = manager.createFile(atPath: file.path,contents:data,attributes:<span class="literal">nil</span>)</div><div class="line">        <span class="built_in">print</span>(<span class="string">"文件创建结果: \(createSuccess)"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">//在文档目录下新建test.txt文件</span></div><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlForDocument = manager.urls( <span class="keyword">for</span>: .documentDirectory,</div><div class="line">                                   <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> url = urlForDocument[<span class="number">0</span>]</div><div class="line">createFile(name:<span class="string">"test.txt"</span>, fileBaseUrl: url)</div><div class="line"><span class="comment">//createFile(name: "folder/new.txt", fileBaseUrl: url)</span></div></pre></td></tr></table></figure>
+<h4 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件 "></a><strong>复制文件 </strong></h4><ul>
+<li>法一:</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fileManager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> homeDirectory = <span class="type">NSHomeDirectory</span>()</div><div class="line"><span class="keyword">let</span> srcUrl = homeDirectory + <span class="string">"/Documents/hangge.txt"</span></div><div class="line"><span class="keyword">let</span> toUrl = homeDirectory + <span class="string">"/Documents/copyed.txt"</span></div><div class="line"><span class="keyword">try</span>! fileManager.copyItem(atPath: srcUrl, toPath: toUrl)</div></pre></td></tr></table></figure>
+<ul>
+<li>法二：</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定位到用户文档目录</span></div><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlForDocument = manager.urls( <span class="keyword">for</span>:.documentDirectory, <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> url = urlForDocument[<span class="number">0</span>]</div><div class="line"> </div><div class="line"><span class="comment">// 将test.txt文件拷贝到文档目录根目录下的copyed.txt文件</span></div><div class="line"><span class="keyword">let</span> srcUrl = url.appendingPathComponent(<span class="string">"test.txt"</span>)</div><div class="line"><span class="keyword">let</span> toUrl = url.appendingPathComponent(<span class="string">"copyed.txt"</span>)</div><div class="line"> </div><div class="line"><span class="keyword">try</span>! manager.copyItem(at: srcUrl, to: toUrl)</div></pre></td></tr></table></figure>
+<h4 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h4><ul>
+<li>法一：</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fileManager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> homeDirectory = <span class="type">NSHomeDirectory</span>()</div><div class="line"><span class="keyword">let</span> srcUrl = homeDirectory + <span class="string">"/Documents/hangge.txt"</span></div><div class="line"><span class="keyword">let</span> toUrl = homeDirectory + <span class="string">"/Documents/moved/hangge.txt"</span></div><div class="line"><span class="keyword">try</span>! fileManager.moveItem(atPath: srcUrl, toPath: toUrl)</div></pre></td></tr></table></figure>
+<ul>
+<li>法二：</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定位到用户文档目录</span></div><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlForDocument = manager.urls( <span class="keyword">for</span>: .documentDirectory, <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> url = urlForDocument[<span class="number">0</span>]</div><div class="line"> </div><div class="line"><span class="keyword">let</span> srcUrl = url.appendingPathComponent(<span class="string">"test.txt"</span>)</div><div class="line"><span class="keyword">let</span> toUrl = url.appendingPathComponent(<span class="string">"copyed.txt"</span>)</div><div class="line"><span class="comment">// 移动srcUrl中的文件（test.txt）到toUrl中（copyed.txt）</span></div><div class="line"><span class="keyword">try</span>! manager.moveItem(at: srcUrl, to: toUrl)</div></pre></td></tr></table></figure>
+<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a><strong>删除文件</strong></h4><ul>
+<li>法一：</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fileManager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> homeDirectory = <span class="type">NSHomeDirectory</span>()</div><div class="line"><span class="keyword">let</span> srcUrl = homeDirectory + <span class="string">"/Documents/hangge.txt"</span></div><div class="line"><span class="keyword">try</span>! fileManager.removeItem(atPath: srcUrl)</div></pre></td></tr></table></figure>
+<ul>
+<li>法二：</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定位到用户文档目录</span></div><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlForDocument = manager.urls(<span class="keyword">for</span>: .documentDirectory, <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> url = urlForDocument[<span class="number">0</span>]</div><div class="line"> </div><div class="line"><span class="keyword">let</span> toUrl = url.appendingPathComponent(<span class="string">"copyed.txt"</span>)</div><div class="line"><span class="comment">// 删除文档根目录下的toUrl路径的文件（copyed.txt文件）</span></div><div class="line"><span class="keyword">try</span>! manager.removeItem(at: toUrl)</div></pre></td></tr></table></figure>
+<h4 id="删除目录下所有的文件"><a href="#删除目录下所有的文件" class="headerlink" title="删除目录下所有的文件"></a><strong>删除目录下所有的文件</strong></h4><ul>
+<li><p>法一：获取所有文件，然后遍历删除</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fileManager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> myDirectory = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/Files"</span></div><div class="line"><span class="keyword">let</span> fileArray = fileManager.subpaths(atPath: myDirectory)</div><div class="line"><span class="keyword">for</span> fn <span class="keyword">in</span> fileArray!&#123;</div><div class="line">    <span class="keyword">try</span>! fileManager.removeItem(atPath: myDirectory + <span class="string">"/\(fn)"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>法二：删除目录后重新创建该目录</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> fileManager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> myDirectory = <span class="type">NSHomeDirectory</span>() + <span class="string">"/Documents/Files"</span></div><div class="line"><span class="keyword">try</span>! fileManager.removeItem(atPath: myDirectory)</div><div class="line"><span class="keyword">try</span>! fileManager.createDirectory(atPath: myDirectory, withIntermediateDirectories: <span class="literal">true</span>,</div><div class="line">                                 attributes: <span class="literal">nil</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a><strong>读取文件</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlsForDocDirectory = manager.urls(<span class="keyword">for</span>: .documentDirectory, <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> docPath = urlsForDocDirectory[<span class="number">0</span>]</div><div class="line"><span class="keyword">let</span> file = docPath.appendingPathComponent(<span class="string">"test.txt"</span>)</div><div class="line"> </div><div class="line"><span class="comment">//方法1</span></div><div class="line"><span class="keyword">let</span> readHandler = <span class="keyword">try</span>! <span class="type">FileHandle</span>(forReadingFrom:file)</div><div class="line"><span class="keyword">let</span> data = readHandler.readDataToEndOfFile()</div><div class="line"><span class="keyword">let</span> readString = <span class="type">String</span>(data: data, encoding: <span class="type">String</span>.<span class="type">Encoding</span>.utf8)</div><div class="line"><span class="built_in">print</span>(<span class="string">"文件内容: \(readString)"</span>)</div><div class="line"> </div><div class="line"><span class="comment">//方法2</span></div><div class="line"><span class="keyword">let</span> data2 = manager.contents(atPath: file.path)</div><div class="line"><span class="keyword">let</span> readString2 = <span class="type">String</span>(data: data2!, encoding: <span class="type">String</span>.<span class="type">Encoding</span>.utf8)</div><div class="line"><span class="built_in">print</span>(<span class="string">"文件内容: \(readString2)"</span>)</div></pre></td></tr></table></figure>
+<h4 id="在任意位置写入数据"><a href="#在任意位置写入数据" class="headerlink" title="在任意位置写入数据"></a><strong>在任意位置写入数据</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlsForDocDirectory = manager.urls(<span class="keyword">for</span>:.documentDirectory, <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> docPath = urlsForDocDirectory[<span class="number">0</span>]</div><div class="line"><span class="keyword">let</span> file = docPath.appendingPathComponent(<span class="string">"test.txt"</span>)</div><div class="line"> </div><div class="line"><span class="keyword">let</span> string = <span class="string">"添加一些文字到文件末尾"</span></div><div class="line"><span class="keyword">let</span> appendedData = string.data(using: <span class="type">String</span>.<span class="type">Encoding</span>.utf8, allowLossyConversion: <span class="literal">true</span>)</div><div class="line"><span class="keyword">let</span> writeHandler = <span class="keyword">try</span>? <span class="type">FileHandle</span>(forWritingTo:file)</div><div class="line">writeHandler!.seekToEndOfFile()</div><div class="line">writeHandler!.write(appendedData!)</div></pre></td></tr></table></figure>
+<h4 id="文件权限判断"><a href="#文件权限判断" class="headerlink" title="文件权限判断"></a><strong>文件权限判断</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlForDocument = manager.urls(<span class="keyword">for</span>: .documentDirectory, <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> docPath = urlForDocument[<span class="number">0</span>]</div><div class="line"><span class="keyword">let</span> file = docPath.appendingPathComponent(<span class="string">"test.txt"</span>)</div><div class="line"> </div><div class="line"><span class="keyword">let</span> readable = manager.isReadableFile(atPath: file.path)</div><div class="line"><span class="built_in">print</span>(<span class="string">"可读: \(readable)"</span>)</div><div class="line"><span class="keyword">let</span> writeable = manager.isWritableFile(atPath: file.path)</div><div class="line"><span class="built_in">print</span>(<span class="string">"可写: \(writeable)"</span>)</div><div class="line"><span class="keyword">let</span> executable = manager.isExecutableFile(atPath: file.path)</div><div class="line"><span class="built_in">print</span>(<span class="string">"可执行: \(executable)"</span>)</div><div class="line"><span class="keyword">let</span> deleteable = manager.isDeletableFile(atPath: file.path)</div><div class="line"><span class="built_in">print</span>(<span class="string">"可删除: \(deleteable)"</span>)</div></pre></td></tr></table></figure>
+<h4 id="获取文件属性（创建时间，修改时间，文件大小，文件类型等信息）"><a href="#获取文件属性（创建时间，修改时间，文件大小，文件类型等信息）" class="headerlink" title="获取文件属性（创建时间，修改时间，文件大小，文件类型等信息）"></a><strong>获取文件属性（创建时间，修改时间，文件大小，文件类型等信息）</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlForDocument = manager.urls(<span class="keyword">for</span>: .documentDirectory, <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> docPath = urlForDocument[<span class="number">0</span>]</div><div class="line"><span class="keyword">let</span> file = docPath.appendingPathComponent(<span class="string">"test.txt"</span>)</div><div class="line"> </div><div class="line"><span class="keyword">let</span> attributes = <span class="keyword">try</span>? manager.attributesOfItem(atPath: file.path) <span class="comment">//结果为Dictionary类型</span></div><div class="line"><span class="built_in">print</span>(<span class="string">"attributes: \(attributes!)"</span>)</div></pre></td></tr></table></figure>
+<h4 id="文件-文件夹比较"><a href="#文件-文件夹比较" class="headerlink" title="文件/文件夹比较"></a>文件/文件夹比较</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> manager = <span class="type">FileManager</span>.<span class="keyword">default</span></div><div class="line"><span class="keyword">let</span> urlForDocument = manager.urls(<span class="keyword">for</span>: .documentDirectory, <span class="keyword">in</span>:.userDomainMask)</div><div class="line"><span class="keyword">let</span> docPath = urlForDocument[<span class="number">0</span>]</div><div class="line"><span class="keyword">let</span> contents = <span class="keyword">try</span>! manager.contentsOfDirectory(atPath: docPath.path)</div><div class="line"> </div><div class="line"><span class="comment">//下面比较用户文档中前面两个文件是否内容相同（该方法也可以用来比较目录）</span></div><div class="line"><span class="keyword">let</span> <span class="built_in">count</span> = contents.<span class="built_in">count</span></div><div class="line"><span class="keyword">if</span> <span class="built_in">count</span> &gt; <span class="number">1</span> &#123;</div><div class="line">    <span class="keyword">let</span> path1 = docPath.path + <span class="string">"/"</span> + (contents[<span class="number">0</span>] <span class="keyword">as</span> <span class="type">String</span>)</div><div class="line">    <span class="keyword">let</span> path2 = docPath.path + <span class="string">"/"</span> + (contents[<span class="number">1</span>] <span class="keyword">as</span> <span class="type">String</span>)</div><div class="line">    <span class="keyword">let</span> <span class="built_in">equal</span> = manager.contentsEqual(atPath: path1,andPath:path2)</div><div class="line">    <span class="built_in">print</span>(<span class="string">"path1：\(path1)"</span>)</div><div class="line">    <span class="built_in">print</span>(<span class="string">"path2：\(path2)"</span>)</div><div class="line">    <span class="built_in">print</span>(<span class="string">"比较结果： \(equal)"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="UILabel的富文本设置"><a href="#UILabel的富文本设置" class="headerlink" title="UILabel的富文本设置"></a>UILabel的富文本设置</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//富文本设置</span></div><div class="line"><span class="keyword">let</span> attributeString = <span class="type">NSMutableAttributedString</span>(string:<span class="string">"welcome to hangge.com"</span>)</div><div class="line"><span class="comment">//从文本0开始6个字符字体HelveticaNeue-Bold,16号</span></div><div class="line">attributeString.addAttribute(<span class="type">NSFontAttributeName</span>,</div><div class="line">                             value: <span class="type">UIFont</span>(name: <span class="string">"HelveticaNeue-Bold"</span>, size: <span class="number">16</span>)!,</div><div class="line">                             range: <span class="type">NSMakeRange</span>(<span class="number">0</span>,<span class="number">6</span>))</div><div class="line"><span class="comment">//设置字体颜色</span></div><div class="line">attributeString.addAttribute(<span class="type">NSForegroundColorAttributeName</span>, value: <span class="type">UIColor</span>.blue,</div><div class="line">                             range: <span class="type">NSMakeRange</span>(<span class="number">0</span>, <span class="number">3</span>))</div><div class="line"><span class="comment">//设置文字背景颜色</span></div><div class="line">attributeString.addAttribute(<span class="type">NSBackgroundColorAttributeName</span>, value: <span class="type">UIColor</span>.green,</div><div class="line">                             range: <span class="type">NSMakeRange</span>(<span class="number">3</span>,<span class="number">3</span>))</div><div class="line">label.attributedText = attributeString</div></pre></td></tr></table></figure>
+<h4 id="UITextView"><a href="#UITextView" class="headerlink" title="UITextView"></a>UITextView</h4><ul>
+<li>给文字中的电话号码和网址自动加链接</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">textview.dataDetectorTypes = [] <span class="comment">//都不加链接</span></div><div class="line">textview.dataDetectorTypes = <span class="type">UIDataDetectorTypes</span>.phoneNumber <span class="comment">//只有电话加链接</span></div><div class="line">textview.dataDetectorTypes = <span class="type">UIDataDetectorTypes</span>.link <span class="comment">//只有网址加链接</span></div><div class="line">textview.dataDetectorTypes = <span class="type">UIDataDetectorTypes</span>.all <span class="comment">//电话和网址都加</span></div></pre></td></tr></table></figure>
+<ul>
+<li>自定义选择内容后的菜单</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> textview = <span class="type">UITextView</span>(frame:<span class="type">CGRect</span>(x:<span class="number">10</span>, y:<span class="number">100</span>, width:<span class="number">200</span>, height:<span class="number">100</span>))</div><div class="line">textview.layer.borderWidth = <span class="number">1</span>  <span class="comment">//边框粗细</span></div><div class="line">textview.layer.borderColor = <span class="type">UIColor</span>.gray.cgColor <span class="comment">//边框颜色</span></div><div class="line"><span class="keyword">self</span>.view.addSubview(textview)</div><div class="line"></div><div class="line"><span class="keyword">let</span> mail = <span class="type">UIMenuItem</span>(title: <span class="string">"邮件"</span>, action: #selector(<span class="type">ViewController</span>.onMail))</div><div class="line"><span class="keyword">let</span> weixin = <span class="type">UIMenuItem</span>(title: <span class="string">"微信"</span>, action: #selector(<span class="type">ViewController</span>.onWeiXin))</div><div class="line"><span class="keyword">let</span> menu = <span class="type">UIMenuController</span>()</div><div class="line">menu.menuItems = [mail,weixin]</div></pre></td></tr></table></figure>
+<h4 id="滑块（UISlider）自定义滑块组件图片"><a href="#滑块（UISlider）自定义滑块组件图片" class="headerlink" title="滑块（UISlider）自定义滑块组件图片"></a>滑块（UISlider）<strong>自定义滑块组件图片</strong></h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//设置滑块右边部分的图片</span></div><div class="line">slider.setMaximumTrackImage(<span class="type">UIImage</span>(named:<span class="string">"slider_max"</span>),forState:<span class="type">UIControlState</span>.<span class="type">Normal</span>)</div><div class="line"><span class="comment">//设置滑块左边部分的图片</span></div><div class="line">slider.setMinimumTrackImage(<span class="type">UIImage</span>(named:<span class="string">"slider_min"</span>),forState:<span class="type">UIControlState</span>.<span class="type">Normal</span>)</div><div class="line"><span class="comment">//设置滑块的图片</span></div><div class="line">slider.setThumbImage(<span class="type">UIImage</span>(named:<span class="string">"slider_thumb"</span>),forState:<span class="type">UIControlState</span>.<span class="type">Normal</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//设置滑块右边部分的图片-使用三宫格缩放（左右14像素不变，中间缩放）</span></div><div class="line"><span class="keyword">let</span> imgTrackRight = <span class="type">UIImage</span>(named:<span class="string">"slider_max"</span>)</div><div class="line"><span class="keyword">let</span> imgRight = imgTrackRight!.stretchableImageWithLeftCapWidth(<span class="number">14</span>, topCapHeight:<span class="number">0</span>)</div><div class="line">slider.setMaximumTrackImage(imgRight, forState:<span class="type">UIControlState</span>.<span class="type">Normal</span>)</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/arc4random/" rel="tag"># arc4random</a>
+          
+            <a href="/tags/arc4random-uniform/" rel="tag"># arc4random_uniform</a>
+          
+            <a href="/tags/Range/" rel="tag"># Range</a>
+          
+            <a href="/tags/struct/" rel="tag"># struct</a>
+          
+            <a href="/tags/enum/" rel="tag"># enum</a>
+          
+            <a href="/tags/while/" rel="tag"># while</a>
+          
+            <a href="/tags/文件操作/" rel="tag"># 文件操作</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/23/Swift3学习笔记（七）/" rel="next" title="Swift3学习笔记（七）">
+                <i class="fa fa-chevron-left"></i> Swift3学习笔记（七）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/17/div的浮动详解/" rel="prev" title="div的浮动详解">
+                div的浮动详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       <section id="comments">
+   <!-- 多说评论框 start -->
+<div id="ds-thread" class="ds-thread" data-thread-key="2017/01/23/Swift开发技巧（一）/" data-title="Swift开发技巧（一）" data-url="http://yoursite.com/2017/01/23/Swift开发技巧（一）/" }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feyddy"};
+  (function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">290</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用arc4random-、arc4random-uniform-取得随机数"><span class="nav-number">1.</span> <span class="nav-text">使用arc4random()、arc4random_uniform()取得随机数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串范围也可以使用区间运算符"><span class="nav-number">2.</span> <span class="nav-text">字符串范围也可以使用区间运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#区间运算符除了返回一个Range外，还可以接受Comparable的输入，返回ClosedInterval或HalfOpenInterval"><span class="nav-number">3.</span> <span class="nav-text">区间运算符除了返回一个Range外，还可以接受Comparable的输入，返回ClosedInterval或HalfOpenInterval</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构体-struct"><span class="nav-number">4.</span> <span class="nav-text">结构体 - struct</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#枚举-enum"><span class="nav-number">5.</span> <span class="nav-text">枚举-enum</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#while循环语句"><span class="nav-number">6.</span> <span class="nav-text">while循环语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可变形参：可以接受0个或者任意数量的输入参数"><span class="nav-number">7.</span> <span class="nav-text">可变形参：可以接受0个或者任意数量的输入参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果想要同时改变函数内外的参数值，可以利用inout关键字，同时调用函数的时候给参数加上前缀“-amp-”"><span class="nav-number">8.</span> <span class="nav-text">如果想要同时改变函数内外的参数值，可以利用inout关键字，同时调用函数的时候给参数加上前缀“&”</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可以使用函数类型的参数"><span class="nav-number">9.</span> <span class="nav-text">可以使用函数类型的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#也可以使用函数类型的返回值"><span class="nav-number">10.</span> <span class="nav-text">也可以使用函数类型的返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Swift-属性观察者（willSet与didSet）"><span class="nav-number">11.</span> <span class="nav-text">Swift - 属性观察者（willSet与didSet）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类的计算属性（使用get和set来间接获取-改变其他属性的值）"><span class="nav-number">12.</span> <span class="nav-text">类的计算属性（使用get和set来间接获取/改变其他属性的值）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历一个目录下的所有文件"><span class="nav-number">13.</span> <span class="nav-text">遍历一个目录下的所有文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#判断文件或文件夹是否存在"><span class="nav-number">14.</span> <span class="nav-text">判断文件或文件夹是否存在</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将对象写入文件"><span class="nav-number">15.</span> <span class="nav-text">将对象写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建文件"><span class="nav-number">16.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制文件"><span class="nav-number">17.</span> <span class="nav-text">复制文件 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动文件"><span class="nav-number">18.</span> <span class="nav-text">移动文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除文件"><span class="nav-number">19.</span> <span class="nav-text">删除文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除目录下所有的文件"><span class="nav-number">20.</span> <span class="nav-text">删除目录下所有的文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取文件"><span class="nav-number">21.</span> <span class="nav-text">读取文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在任意位置写入数据"><span class="nav-number">22.</span> <span class="nav-text">在任意位置写入数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件权限判断"><span class="nav-number">23.</span> <span class="nav-text">文件权限判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取文件属性（创建时间，修改时间，文件大小，文件类型等信息）"><span class="nav-number">24.</span> <span class="nav-text">获取文件属性（创建时间，修改时间，文件大小，文件类型等信息）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件-文件夹比较"><span class="nav-number">25.</span> <span class="nav-text">文件/文件夹比较</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UILabel的富文本设置"><span class="nav-number">26.</span> <span class="nav-text">UILabel的富文本设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UITextView"><span class="nav-number">27.</span> <span class="nav-text">UITextView</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#滑块（UISlider）自定义滑块组件图片"><span class="nav-number">28.</span> <span class="nav-text">滑块（UISlider）自定义滑块组件图片</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feyddy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

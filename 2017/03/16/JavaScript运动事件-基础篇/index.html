@@ -1,0 +1,1083 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="定时器,offsetLeft,filter,opacity,Math.ceil,Math.floor,缓冲运动,匀速运动," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript运动事件(基础篇)">
+<meta property="og:url" content="http://yoursite.com/2017/03/16/JavaScript运动事件-基础篇/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="知识点">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1fdohk1o31oj30ox0osadz.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdojpp1zljg30ou0g00sz.gif">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdoli2scdyg30ou0g0jru.gif">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1fdomppwlnig30ou0g01ky.gif">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwgy1fdoygdeep0g30n10esjre.gif">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fdoyomzo3og30n10esju4.gif">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwgy1fdoyunxa28g30n10esacu.gif">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwgy1fdoz36t158g30n10es77q.gif">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwgy1fdoz7ahvqcg30n10esq77.gif">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fdp083eqr6g30n10es3yy.gif">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwgy1fdp0rnignmg30n10es3yj.gif">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwgy1fdp0rrbl1sg30n10esq30.gif">
+<meta property="og:updated_time" content="2017-03-16T13:58:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript运动事件(基础篇)">
+<meta name="twitter:description" content="知识点">
+<meta name="twitter:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1fdohk1o31oj30ox0osadz.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/16/JavaScript运动事件-基础篇/"/>
+
+
+
+
+
+  <title> JavaScript运动事件(基础篇) | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/16/JavaScript运动事件-基础篇/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript运动事件(基础篇)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-16T21:55:45+08:00">
+                2017-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/16/JavaScript运动事件-基础篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/16/JavaScript运动事件-基础篇/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/16/JavaScript运动事件-基础篇/" class="leancloud_visitors" data-flag-title="JavaScript运动事件(基础篇)">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fdohk1o31oj30ox0osadz.jpg" alt=""></p>
+<a id="more"></a>
+<h1 id="运动基础-div移动"><a href="#运动基础-div移动" class="headerlink" title="运动基础-div移动"></a>运动基础-div移动</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>div移动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>: orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line"></div><div class="line">            <span class="keyword">var</span> timer = <span class="literal">null</span>;<span class="comment">//创建一个定时器对象。方便后面对定时器的存在与否进行设置</span></div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                startMove(<span class="number">7</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="comment">//封装一个移动函数</span></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">iSpeed</span>) </span>&#123;<span class="comment">//iSpeed移动的速度也就是定时器中每次加多少像素</span></div><div class="line"></div><div class="line">                clearInterval(timer);<span class="comment">//防止多次点击按钮定时器相加，移动速度变快</span></div><div class="line">                timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">                   <span class="keyword">if</span>(oDiv.offsetLeft &gt;= <span class="number">300</span>)<span class="comment">//一定要是大于等于，因为如果==300如果速度不能被整除就不会停了</span></div><div class="line">                   &#123;</div><div class="line">                       clearInterval(timer);<span class="comment">//在大于等于300像素的时候清除定时器</span></div><div class="line">                   &#125;<span class="keyword">else</span></div><div class="line">                   &#123;</div><div class="line">                       oDiv.style.left = oDiv.offsetLeft + iSpeed + <span class="string">"px"</span>;<span class="comment">//offsetLeft就是指当前的div的左边距</span></div><div class="line">                   &#125;</div><div class="line">                &#125;,<span class="number">30</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">value</span>=<span class="string">"开始运动"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdojpp1zljg30ou0g00sz.gif" alt=""></p>
+<p>这里的<code>startMove</code>函数其实就是一个运动框架。</p>
+<h1 id="运动框架的应用"><a href="#运动框架的应用" class="headerlink" title="运动框架的应用"></a>运动框架的应用</h1><h2 id="分享侧边栏实例"><a href="#分享侧边栏实例" class="headerlink" title="分享侧边栏实例"></a>分享侧边栏实例</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>分享到运动框架<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">left</span>: -<span class="number">100px</span>;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">        <span class="selector-id">#div1</span> <span class="selector-tag">span</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">60px</span>;</div><div class="line">            <span class="attribute">line-height</span>: <span class="number">20px</span>;</div><div class="line">            <span class="attribute">text-align</span>: center;</div><div class="line">            <span class="attribute">left</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">top</span>: <span class="number">70px</span>;</div><div class="line">            <span class="attribute">background-color</span>: orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">            <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line">            oDiv.onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                startMove(<span class="number">0</span>);</div><div class="line">            &#125;</div><div class="line">            oDiv.onmouseout = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                startMove(<span class="number">-100</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">iTarget</span>) </span>&#123;</div><div class="line">                clearInterval(timer);</div><div class="line">                timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">var</span> iSpeed;</div><div class="line">                    <span class="keyword">if</span>(oDiv.offsetLeft &lt; iTarget)&#123;</div><div class="line">                        iSpeed = <span class="number">10</span>;</div><div class="line">                    &#125;<span class="keyword">else</span>&#123;</div><div class="line">                        iSpeed = <span class="number">-10</span>;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                    <span class="keyword">if</span>(oDiv.offsetLeft == iTarget)&#123;</div><div class="line">                        clearInterval(timer);</div><div class="line">                    &#125;<span class="keyword">else</span> &#123;</div><div class="line">                        oDiv.style.left = oDiv.offsetLeft + iSpeed + <span class="string">'px'</span>;</div><div class="line">                    &#125;</div><div class="line"><span class="number">1</span>                &#125;,<span class="number">30</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>分享到<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行效果：<br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdoli2scdyg30ou0g0jru.gif" alt=""></p>
+<h2 id="淡入淡出的图片"><a href="#淡入淡出的图片" class="headerlink" title="淡入淡出的图片"></a>淡入淡出的图片</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>淡入淡出图片<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#img1</span> &#123;</div><div class="line">            <span class="attribute">filter</span>: <span class="built_in">alpha</span>(opacity:30);<span class="comment">/*IE用的*/</span></div><div class="line">            <span class="attribute">opacity </span>: <span class="number">0.3</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line">            <span class="keyword">var</span> oImg = <span class="built_in">document</span>.getElementById(<span class="string">'img1'</span>);</div><div class="line"></div><div class="line"></div><div class="line">            oImg.onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                startChangeAlpha(<span class="number">1</span>,<span class="number">30</span>,<span class="number">100</span>);</div><div class="line">            &#125;</div><div class="line">            oImg.onmouseout = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                startChangeAlpha(<span class="number">-1</span>,<span class="number">100</span>,<span class="number">30</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">startChangeAlpha</span>(<span class="params">iSpeed,startAlpha,iTarget</span>) </span>&#123;<span class="comment">//参数解释：变化的速度，开始的alpha，目标alpha值</span></div><div class="line">                clearInterval(timer);</div><div class="line"></div><div class="line">                <span class="keyword">var</span> oAlpha = startAlpha;<span class="comment">//因为没有offsetAlpha类似的方法获取他的透明度，所以需要通过一个值将它取出来。</span></div><div class="line"></div><div class="line">                timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                    <span class="keyword">if</span>(oAlpha == iTarget)&#123;</div><div class="line">                        clearInterval(timer);</div><div class="line">                    &#125;<span class="keyword">else</span></div><div class="line">                    &#123;</div><div class="line">                        oAlpha += iSpeed;</div><div class="line">                        oImg.style.filter = <span class="string">"alpha(opacity:"</span>+oAlpha+<span class="string">")"</span>;</div><div class="line">                        oImg.style.opacity = oAlpha/<span class="number">100</span>;</div><div class="line">                    &#125;</div><div class="line"></div><div class="line">                &#125;,<span class="number">30</span>)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"Desert.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"img1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行效果：<br><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fdomppwlnig30ou0g01ky.gif" alt=""></p>
+<h1 id="缓冲运动"><a href="#缓冲运动" class="headerlink" title="缓冲运动"></a>缓冲运动</h1><p>缓冲变慢：</p>
+<p>越接近终点，速度越小；距离越大，速度越大；距离越小，速度越小。</p>
+<h2 id="div缓冲运动"><a href="#div缓冲运动" class="headerlink" title="div缓冲运动"></a>div缓冲运动</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>缓冲运动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>: orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line"></div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                startMove(<span class="number">300</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">iTarget</span>) </span>&#123;</div><div class="line">                clearInterval(timer);</div><div class="line"></div><div class="line">                timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">                    <span class="keyword">var</span> iSpeed = (iTarget - oDiv.offsetLeft)/<span class="number">8</span>;<span class="comment">//动态改变速度就可以了。</span></div><div class="line">                    <span class="keyword">if</span>(oDiv.offsetLeft == iTarget)&#123;</div><div class="line">                        clearInterval(timer);</div><div class="line">                    &#125;<span class="keyword">else</span></div><div class="line">                    &#123;</div><div class="line">                        oDiv.style.left = oDiv.offsetLeft + iSpeed + <span class="string">"px"</span>;</div><div class="line">                    &#125;</div><div class="line">                &#125;,<span class="number">30</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">value</span>=<span class="string">"开始运动"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwgy1fdoygdeep0g30n10esjre.gif" alt=""></p>
+<p>看上去效果不错，但是里面有个小问题：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>缓冲运动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>: orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line"></div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                startMove(<span class="number">300</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">iTarget</span>) </span>&#123;</div><div class="line">                clearInterval(timer);</div><div class="line"></div><div class="line">                timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">                    <span class="keyword">var</span> iSpeed = (iTarget - oDiv.offsetLeft)/<span class="number">8</span>;<span class="comment">//动态改变速度就可以了。</span></div><div class="line">                    <span class="keyword">if</span>(oDiv.offsetLeft == iTarget)&#123;</div><div class="line">                        clearInterval(timer);</div><div class="line">                    &#125;<span class="keyword">else</span></div><div class="line">                    &#123;</div><div class="line">                        oDiv.style.left = oDiv.offsetLeft + iSpeed + <span class="string">"px"</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="built_in">document</span>.title = iSpeed + <span class="string">"距离"</span> + oDiv.offsetLeft;</div><div class="line">                &#125;,<span class="number">30</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">value</span>=<span class="string">"开始运动"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"width: 1px;height: 300px;background-color:orange;position: absolute;left: 300px;top: 10px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1fdoyomzo3og30n10esju4.gif" alt=""></p>
+<p>我们可以看到：速度到了后面就是小数了,div距离左边到达297的位置之后就不运动了，而且移动的div并没有完全和那条线重合。这是因为，计算机不会识别小数。当我们运行到<code>297 + iSpeed</code>的时候因为<code>iSpeed</code>是小数，计算机就自动忽略了。所以不会加上去。</p>
+<p>这个时候我们需要用到两个函数：<code>Math.ceil()</code>向上取整和<code>Math.floor()</code>向下取整。所以我们需要将上面代码中的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">oDiv.style.left = oDiv.offsetLeft + iSpeed  + <span class="string">"px"</span>;</div></pre></td></tr></table></figure>
+<p>改成：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">oDiv.style.left = oDiv.offsetLeft + <span class="built_in">Math</span>.ceil(iSpeed)  + <span class="string">"px"</span>;<span class="comment">//速度向上取整</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fdoyunxa28g30n10esacu.gif" alt=""></p>
+<p>看上去完美，但是如果我已开始就把div放在竖线的右边呢？比如，我把div的<code>left</code>属性改成<code>500px</code>。</p>
+<p>结果就会如下：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwgy1fdoz36t158g30n10es77q.gif" alt=""></p>
+<p>你会发现，这个时候，运动到307就停止了。此时我们就需要完善一下我们的代码；</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>缓冲运动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>: orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">left</span>: <span class="number">500px</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line"></div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                startMove(<span class="number">300</span>);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">iTarget</span>) </span>&#123;</div><div class="line">                clearInterval(timer);</div><div class="line"></div><div class="line">                timer = setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">                    <span class="keyword">var</span> iSpeed = (iTarget - oDiv.offsetLeft)/<span class="number">8</span>;<span class="comment">//动态改变速度就可以了。</span></div><div class="line"></div><div class="line">                    iSpeed = iSpeed &gt; <span class="number">0</span> ? <span class="built_in">Math</span>.ceil(iSpeed) : <span class="built_in">Math</span>.floor(iSpeed);</div><div class="line"></div><div class="line"><span class="comment">//                    if(iSpeed &gt; 0)&#123;</span></div><div class="line"><span class="comment">//                        iSpeed = Math.ceil(iSpeed);</span></div><div class="line"><span class="comment">//                    &#125;else</span></div><div class="line"><span class="comment">//                    &#123;</span></div><div class="line"><span class="comment">//                        iSpeed = Math.floor(iSpeed);</span></div><div class="line"><span class="comment">//                    &#125;</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">                    <span class="keyword">if</span>(oDiv.offsetLeft == iTarget)&#123;</div><div class="line">                        clearInterval(timer);</div><div class="line">                    &#125;<span class="keyword">else</span></div><div class="line">                    &#123;</div><div class="line">                        oDiv.style.left = oDiv.offsetLeft + <span class="built_in">Math</span>.ceil(iSpeed)  + <span class="string">"px"</span>;<span class="comment">//速度向上取整</span></div><div class="line">                    &#125;</div><div class="line">                    <span class="built_in">document</span>.title = iSpeed + <span class="string">"距离"</span> + oDiv.offsetLeft;<span class="comment">//速度计算机对小数无法识别</span></div><div class="line">                &#125;,<span class="number">30</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">value</span>=<span class="string">"开始运动"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"width: 1px;height: 300px;background-color:orange;position: absolute;left: 300px;top: 10px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：<br>正向的和上面的一样的效果。反向的如下：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwgy1fdoz7ahvqcg30n10esq77.gif" alt=""></p>
+<h2 id="缓冲菜单制作"><a href="#缓冲菜单制作" class="headerlink" title="缓冲菜单制作"></a>缓冲菜单制作</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>: orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">            <span class="keyword">var</span> scrollTop = <span class="built_in">document</span>.documentElement.scrollTop || <span class="built_in">document</span>.body.scrollTop;</div><div class="line"></div><div class="line"><span class="comment">//            oDiv.style.top = scrollTop + (document.documentElement.clientHeight - oDiv.offsetHeight)/2 + "px";</span></div><div class="line">            <span class="keyword">var</span> targets = scrollTop + (<span class="built_in">document</span>.documentElement.clientHeight - oDiv.offsetHeight)/<span class="number">2</span>;</div><div class="line">            startMove(<span class="built_in">parseInt</span>(targets));<span class="comment">//这里是为了防止出现除不尽，会导致div上下抖动半个像素</span></div><div class="line"></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">iTarget</span>) </span>&#123;</div><div class="line">            clearInterval(timer);</div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">            <span class="keyword">var</span> oInput = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'input'</span>);</div><div class="line">            timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">                <span class="keyword">var</span> iSpeed = (iTarget - oDiv.offsetTop) / <span class="number">7</span>;</div><div class="line">                iSpeed = iSpeed &gt; <span class="number">0</span>? <span class="built_in">Math</span>.ceil(iSpeed) : <span class="built_in">Math</span>.floor(iSpeed);</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(oDiv.offsetTop == iTarget)&#123;</div><div class="line">                    clearInterval(timer);</div><div class="line">                &#125;<span class="keyword">else</span></div><div class="line">                &#123;</div><div class="line">                    oDiv.style.top = oDiv.offsetTop + iSpeed + <span class="string">"px"</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;,<span class="number">30</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"height: 2000px;"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNbRwgy1fdp083eqr6g30n10es3yy.gif" alt=""></p>
+<h1 id="匀速运动"><a href="#匀速运动" class="headerlink" title="匀速运动"></a>匀速运动</h1><p>我们需要用到一个绝对值函数:<code>Math.abs()</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>匀速运动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>: orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">left</span>: <span class="number">0px</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                startMove(<span class="number">300</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">iTarget</span>) </span>&#123;</div><div class="line"></div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">            clearInterval(timer);</div><div class="line"></div><div class="line">            timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">                <span class="keyword">var</span> iSpeed = iTarget - oDiv.offsetLeft;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(iSpeed &gt; <span class="number">0</span>)&#123;</div><div class="line">                    iSpeed = <span class="number">7</span>;</div><div class="line">                &#125;<span class="keyword">else</span></div><div class="line">                &#123;</div><div class="line">                    iSpeed = <span class="number">-7</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                <span class="keyword">if</span>(<span class="built_in">Math</span>.abs(iTarget - oDiv.offsetLeft)&lt;<span class="number">7</span>)&#123;</div><div class="line">                    clearInterval(timer);</div><div class="line">                    oDiv.style.left = iTarget+ <span class="string">"px"</span>;</div><div class="line"></div><div class="line">                &#125;<span class="keyword">else</span></div><div class="line">                &#123;</div><div class="line">                    oDiv.style.left = oDiv.offsetLeft + iSpeed + <span class="string">"px"</span>;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">            &#125;,<span class="number">30</span>);</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">value</span>=<span class="string">"开始运动"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">style</span>=<span class="string">"width: 1px;height: 300px;background-color:orange;position: absolute;left: 300px;top: 10px;"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行效果：</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNbRwgy1fdp0rnignmg30n10es3yj.gif" alt=""></p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwgy1fdp0rrbl1sg30n10esq30.gif" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/定时器/" rel="tag"># 定时器</a>
+          
+            <a href="/tags/offsetLeft/" rel="tag"># offsetLeft</a>
+          
+            <a href="/tags/filter/" rel="tag"># filter</a>
+          
+            <a href="/tags/opacity/" rel="tag"># opacity</a>
+          
+            <a href="/tags/Math-ceil/" rel="tag"># Math.ceil</a>
+          
+            <a href="/tags/Math-floor/" rel="tag"># Math.floor</a>
+          
+            <a href="/tags/缓冲运动/" rel="tag"># 缓冲运动</a>
+          
+            <a href="/tags/匀速运动/" rel="tag"># 匀速运动</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/JavaScript基础-AJAX/" rel="next" title="JavaScript基础-AJAX">
+                <i class="fa fa-chevron-left"></i> JavaScript基础-AJAX
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/17/Python初识/" rel="prev" title="Python初识">
+                Python初识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       <section id="comments">
+   <!-- 多说评论框 start -->
+<div id="ds-thread" class="ds-thread" data-thread-key="2017/03/16/JavaScript运动事件-基础篇/" data-title="JavaScript运动事件(基础篇)" data-url="http://yoursite.com/2017/03/16/JavaScript运动事件-基础篇/" }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feyddy"};
+  (function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">290</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运动基础-div移动"><span class="nav-number">2.</span> <span class="nav-text">运动基础-div移动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运动框架的应用"><span class="nav-number">3.</span> <span class="nav-text">运动框架的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分享侧边栏实例"><span class="nav-number">3.1.</span> <span class="nav-text">分享侧边栏实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#淡入淡出的图片"><span class="nav-number">3.2.</span> <span class="nav-text">淡入淡出的图片</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#缓冲运动"><span class="nav-number">4.</span> <span class="nav-text">缓冲运动</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#div缓冲运动"><span class="nav-number">4.1.</span> <span class="nav-text">div缓冲运动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓冲菜单制作"><span class="nav-number">4.2.</span> <span class="nav-text">缓冲菜单制作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#匀速运动"><span class="nav-number">5.</span> <span class="nav-text">匀速运动</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feyddy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

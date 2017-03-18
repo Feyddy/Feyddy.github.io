@@ -1,0 +1,1138 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MAMP,缓存,eval,json,自定义Ajax," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript基础-AJAX">
+<meta property="og:url" content="http://yoursite.com/2017/03/15/JavaScript基础-AJAX/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="知识点">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnc6cmn7mj30l60gqdib.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1fdnccqnlq8j30l30jc0vm.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1fdnehlskf4j30m1097dig.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnejf8kzqj30ex0c9dh6.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1fdnelkaf9wj30f404r0tf.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnhdfg0yrj30br02djrf.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnhdl106pj30hs05bwet.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnhn73x0yj30az08bweq.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcly1fdnhnbevmaj30au08bwen.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnhnedwi4j309d082dg0.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1fdnifj3c2bj30hk03t74h.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1fdnifj3c2bj30hk03t74h.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcly1fdniordyl9j30i103xjrn.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1fdnip630pgj30hw03tjrl.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnipgp0kaj30ht03tq36.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnipnsj9cj30hu04caaa.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnjiho92lj30hx03x3yp.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1fdnlj6dcrsj30hr03uweq.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1fdnmb9l09dj308t03z0sw.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tKfTcly1fdnmbmhiowj307g03d74c.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tKfTcly1fdnmnt7vkwj30cb013q2w.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnmny6qodj30js01vweq.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwgy1fdnutds0lmj30ao06kwfa.jpg">
+<meta property="og:updated_time" content="2017-03-15T14:02:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript基础-AJAX">
+<meta name="twitter:description" content="知识点">
+<meta name="twitter:image" content="https://ww4.sinaimg.cn/large/006tKfTcly1fdnc6cmn7mj30l60gqdib.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/15/JavaScript基础-AJAX/"/>
+
+
+
+
+
+  <title> JavaScript基础-AJAX | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/15/JavaScript基础-AJAX/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript基础-AJAX
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-15T21:46:58+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/15/JavaScript基础-AJAX/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/JavaScript基础-AJAX/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/15/JavaScript基础-AJAX/" class="leancloud_visitors" data-flag-title="JavaScript基础-AJAX">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnc6cmn7mj30l60gqdib.jpg" alt=""></p>
+<a id="more"></a>
+<p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fdnccqnlq8j30l30jc0vm.jpg" alt=""></p>
+<h1 id="Ajax基础"><a href="#Ajax基础" class="headerlink" title="Ajax基础"></a>Ajax基础</h1><h2 id="什么是服务器？"><a href="#什么是服务器？" class="headerlink" title="什么是服务器？"></a>什么是服务器？</h2><p>传统的表单<code>form</code>，当我提交的时候整个页面都会刷新，这个时候用户体验就不好，而且也会给浏览器一些负担。<br><code>Ajax</code>是在不刷新页面的前提下提交页面数据或者从服务器上读取数据。但是他只能从服务器上读取数据。</p>
+<p>下面介绍一下AMP的安装：(因为我的是MAC系统，所以安装MAMP)</p>
+<p>首先在官方网站下载(MAMP):<a href="https://www.mamp.info/en/downloads/" target="_blank" rel="external">https://www.mamp.info/en/downloads/</a></p>
+<p>然后点击安装，如果没有修改安装地址的话，默认会在</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fdnehlskf4j30m1097dig.jpg" alt=""></p>
+<p>下面我们设置一下访问方式：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnejf8kzqj30ex0c9dh6.jpg" alt=""></p>
+<p>点击<code>set web &amp; mysql ports to 80 &amp; 3306</code>。</p>
+<p>然后就可以直接在浏览器中输入<code>http://localhost/FeyddyBlog.txt</code>,这个时候浏览器会访问你本地的服务器。</p>
+<p>运行结果：</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fdnelkaf9wj30f404r0tf.jpg" alt=""></p>
+<h2 id="举例使用Ajax库"><a href="#举例使用Ajax库" class="headerlink" title="举例使用Ajax库"></a>举例使用Ajax库</h2><p>简单介绍一下<code>Ajax.js</code>这个库，它是异步读取数据的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url, fnSucc, fnFaild</span>)</span></div><div class="line">&#123;</div><div class="line">	<span class="comment">//1.创建Ajax对象</span></div><div class="line">	<span class="keyword">var</span> oAjax=<span class="literal">null</span>;</div><div class="line"></div><div class="line">	<span class="keyword">if</span>(<span class="built_in">window</span>.XMLHttpRequest)</div><div class="line">	&#123;</div><div class="line">		oAjax=<span class="keyword">new</span> XMLHttpRequest();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		oAjax=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//2.连接服务器</span></div><div class="line">	oAjax.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>);</div><div class="line"></div><div class="line">	<span class="comment">//3.发送请求</span></div><div class="line">	oAjax.send();</div><div class="line"></div><div class="line">	<span class="comment">//4.接收服务器的返回</span></div><div class="line">	oAjax.onreadystatechange=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span>(oAjax.readyState==<span class="number">4</span>)	<span class="comment">//完成</span></div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>(oAjax.status==<span class="number">200</span>)	<span class="comment">//成功</span></div><div class="line">			&#123;</div><div class="line">				fnSucc(oAjax.responseText);</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				<span class="keyword">if</span>(fnFaild)</div><div class="line">					fnFaild(oAjax.status);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>简介解析一下：</p>
+<ul>
+<li>function ajax(文件的地址, 函数, fnFaild)</li>
+</ul>
+<p>下面正式用一下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>读取文件<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ajax.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="comment">//ajax能且仅能从服务器中读取数据</span></div><div class="line">                ajax(<span class="string">'FeyddyBlog.txt'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">                    alert(str);<span class="comment">//str为从服务器中获取的数据</span></div><div class="line">                &#125;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">点击按钮获取服务器中的数据：注意这里的文件路径必须放在服务器路径里面,文件名不能为中文</div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"读取文件"</span> <span class="attr">id</span>=<span class="string">"btn1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnhdfg0yrj30br02djrf.jpg" alt=""></p>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnhdl106pj30hs05bwet.jpg" alt=""></p>
+<h3 id="字符集编码"><a href="#字符集编码" class="headerlink" title="字符集编码"></a>字符集编码</h3><p>下面我们对服务器下多个文档进行读取切换，但是这三个文档的文件编码格式不一样。让我们看一下运行结果。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>获取多个文件内容字符编码问题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-tag">div</span>&#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">200ex</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#cccccc</span>;</div><div class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid orange;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ajax.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> aBtns = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'input'</span>);</div><div class="line">            <span class="keyword">var</span> oDiv = <span class="built_in">document</span>.getElementById(<span class="string">'div1'</span>);</div><div class="line">            <span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; aBtns.length;i++)&#123;</div><div class="line">                aBtns[i].index = i;<span class="comment">//不能通过i来获取文件</span></div><div class="line">                aBtns[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    ajax(<span class="string">'FeyddyBlog_'</span> + <span class="keyword">this</span>.index + <span class="string">'.txt'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">                        oDiv.innerHTML = str;</div><div class="line">                    &#125;)</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">value</span>=<span class="string">"按钮1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn2"</span> <span class="attr">value</span>=<span class="string">"按钮2"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn3"</span> <span class="attr">value</span>=<span class="string">"按钮3"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnhn73x0yj30az08bweq.jpg" alt=""></p>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fdnhnbevmaj30au08bwen.jpg" alt=""></p>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnhnedwi4j309d082dg0.jpg" alt=""></p>
+<p>按按钮2显示的乱码是因为这个文件里面的内容不是UT-8格式的。需要修改成统一的。</p>
+<h3 id="缓存、阻止缓存"><a href="#缓存、阻止缓存" class="headerlink" title="缓存、阻止缓存"></a>缓存、阻止缓存</h3><p>所谓的缓存也就是说他只读一次，也就是第一次进入页面的时候从服务器获取数据，后面再进入的时候会直接从缓存本地读取，而服务器中的数据就不会重新获取了。<br>它可以加速网络的访问。但是却不能及时更新数据的显示。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>缓存<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ajax.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                ajax(<span class="string">'cache_test.txt'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">                    alert(str);</div><div class="line">                &#125;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">点击按钮读取文件</div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">value</span>=<span class="string">"读取文件"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fdnifj3c2bj30hk03t74h.jpg" alt=""></p>
+<p>然后我们将文本内容改成<code>good good study,day day up!</code>。</p>
+<p>显示的还是</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fdnifj3c2bj30hk03t74h.jpg" alt=""></p>
+<p>这就是缓存的结果。</p>
+<p>那么怎么解决这个问题呢？</p>
+<p>首先我们了解一下缓存的机制：</p>
+<p>缓存其实是根据地址来缓存东西的，也就是同样的地址这个东西只存储一次。所以只需要让地址不一样就行了。</p>
+<p>我们可以给每个地址后面加上一个时间。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>缓存<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ajax.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                alert(<span class="string">'cache_test.txt?t='</span> + <span class="keyword">new</span>  <span class="built_in">Date</span>().getTime());</div><div class="line">                ajax(<span class="string">'cache_test.txt?t='</span> + <span class="keyword">new</span>  <span class="built_in">Date</span>().getTime(), <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">                    alert(str);</div><div class="line">                &#125;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">点击按钮读取文件</div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">value</span>=<span class="string">"读取文件"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p>地址：<br><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fdniordyl9j30i103xjrn.jpg" alt=""><br>数据：<br><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fdnip630pgj30hw03tjrl.jpg" alt=""><br>文件修改后：</p>
+<p>地址：<br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnipgp0kaj30ht03tq36.jpg" alt=""><br>内容：<br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnipnsj9cj30hu04caaa.jpg" alt=""></p>
+<h2 id="动态数据请求"><a href="#动态数据请求" class="headerlink" title="动态数据请求"></a>动态数据请求</h2><h3 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h3><p>我们做个小例子：读取文件中的数组并使用。文件中的数组<code>[1,4,6,87,45,75]</code></p>
+<p>Ajax请求后获取的数据都是文本字符型；我们要做的就是将返回的文本转换成数组的形式。</p>
+<p>我们就可以使用<code>eval</code>:计算字符串里面的值。他的功能比较强大，可以识别字符串里面的是数组，还是方法，还是其他的具有特殊功能性的字符串。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>请求并使用文件中的数组<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ajax.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                ajax(<span class="string">'data_array.txt'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">                    <span class="keyword">var</span> array = <span class="built_in">eval</span>(str);</div><div class="line">                    alert(array[<span class="number">0</span>]);</div><div class="line">                &#125;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">请求服务器中的一个文件，文件中是一个数组 <span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"读取数组文件"</span> <span class="attr">id</span>=<span class="string">"btn1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnjiho92lj30hx03x3yp.jpg" alt=""></p>
+<h3 id="json"><a href="#json" class="headerlink" title="json"></a>json</h3><p>新建一个json文件：<code>[{job:&quot;iOS开发工程师&quot;,experience:3},{name:&quot;Feyddy&quot;,age:25}]</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>json<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ajax.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                ajax(<span class="string">'data_json.json'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">                    <span class="keyword">var</span> jsonArray = <span class="built_in">eval</span>(str);</div><div class="line">                    alert(jsonArray[<span class="number">0</span>].job);</div><div class="line">                &#125;)</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">请求服务器中的一个文件，文件中是一个json <span class="tag">&lt;<span class="name">br</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"读取json文件"</span> <span class="attr">id</span>=<span class="string">"btn1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fdnlj6dcrsj30hr03uweq.jpg" alt=""></p>
+<h3 id="实现换页的效果"><a href="#实现换页的效果" class="headerlink" title="实现换页的效果"></a>实现换页的效果</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"ajax.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">'ul1'</span>);</div><div class="line">            <span class="keyword">var</span> aAs = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'a'</span>);</div><div class="line">            <span class="keyword">var</span> i;</div><div class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt;aAs.length;i++)&#123;</div><div class="line">                aAs[i].index = i;</div><div class="line">                aAs[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    ajax(<span class="string">"page"</span>+(<span class="keyword">this</span>.index+<span class="number">1</span>) + <span class="string">".txt"</span>, <span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">                        <span class="keyword">var</span> aData = <span class="built_in">eval</span>(str);</div><div class="line">                        oUl.innerHTML = <span class="string">""</span>;<span class="comment">//清空所有的元素</span></div><div class="line">                        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; aData.length;i++)</div><div class="line">                        &#123;</div><div class="line">                            <span class="keyword">var</span> oLi = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</div><div class="line">                            oLi.innerHTML = <span class="string">'&lt;strong&gt;用户名：'</span>+aData[i].userName+<span class="string">'；&lt;/strong&gt;'</span> + <span class="string">"&lt;i&gt;密码："</span> + aData[i].passWorld + <span class="string">"。&lt;/i&gt;"</span>;</div><div class="line">                            oUl.appendChild(oLi);</div><div class="line">                        &#125;</div><div class="line">                    &#125;)</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p>点击<code>1</code></p>
+<p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fdnmb9l09dj308t03z0sw.jpg" alt=""></p>
+<p>点击<code>2</code></p>
+<p><img src="https://ww3.sinaimg.cn/large/006tKfTcly1fdnmbmhiowj307g03d74c.jpg" alt=""></p>
+<h1 id="Ajax原理"><a href="#Ajax原理" class="headerlink" title="Ajax原理"></a>Ajax原理</h1><h2 id="HTTP请求方法"><a href="#HTTP请求方法" class="headerlink" title="HTTP请求方法"></a>HTTP请求方法</h2><h3 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h3><p>下面通过表单介绍一下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>http请求<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"http://www.feyddy.com"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></div><div class="line">    用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"userName"</span>/&gt;</span><span class="comment">&lt;!--name 属性是给后台使用的，就是字段--&gt;</span></div><div class="line">    密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"passWorld"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tKfTcly1fdnmnt7vkwj30cb013q2w.jpg" alt=""><br><img src="https://ww4.sinaimg.cn/large/006tKfTcly1fdnmny6qodj30js01vweq.jpg" alt=""></p>
+<p>从上图可以看到，链接后面的一串<code>/?userName=Feyddy&amp;passWorld=LOVE</code>和我提交的内容一样。这就是GET方法，直接拼接上。</p>
+<h3 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>http请求<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"http://www.feyddy.com"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></div><div class="line">    用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"userName"</span>/&gt;</span><span class="comment">&lt;!--name 属性是给后台使用的，就是字段--&gt;</span></div><div class="line">    密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"passWorld"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>提交后你会发现url里面<code>http://www.feyddy.com/</code>没有自己刚刚输入的内容。</p>
+<h3 id="POST方法和GET方法的区别"><a href="#POST方法和GET方法的区别" class="headerlink" title="POST方法和GET方法的区别"></a>POST方法和GET方法的区别</h3><p>get:把数据放在URL（网址）里面来提交<br>post:把数据放在http content里面提交，在url里面不会显示</p>
+<p>get：安全性很低，容易在历史记录里面看到自己的用户名等等、容量很低、便于分享<br>post：安全性一般、容量几乎无限</p>
+<h1 id="写一个自己的Ajax库"><a href="#写一个自己的Ajax库" class="headerlink" title="写一个自己的Ajax库"></a>写一个自己的Ajax库</h1><p>Ajax请求的步骤：</p>
+<ol>
+<li>创建Ajax对象；</li>
+<li>连接服务器；</li>
+<li>发送请求；</li>
+<li>接受返回值；</li>
+</ol>
+<blockquote>
+<p>小知识点：全局变量和函数其实是window的一个属性，只不过window可以不写。当你用一个不存在的变量的时候，会出错；但是用一个不存在的属性的时候，只会显示未定义（undefined）；</p>
+</blockquote>
+<p>下面我们开始自己写Ajax库</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Ajax<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">		<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		  <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">		  oBtn.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		    <span class="comment">//1.创建ajax对象,但是XMLHttpRequest在IE6以下无法使用</span></div><div class="line">		    <span class="comment">// var oAjax = new XMLHttpRequest();</span></div><div class="line">		    <span class="comment">//IE6</span></div><div class="line">		    <span class="comment">// var oAjax = new ActiveXObject("Microsoft.XMLHTTP");//插件</span></div><div class="line">		    <span class="keyword">var</span> oAjax = <span class="literal">null</span>;</div><div class="line"></div><div class="line">		    <span class="comment">//这里如果用if (XMLHttpRequest)的话还是在IE6下报错，因为IE6下没有XMLHttpRequest函数。所以只能使用属性函数</span></div><div class="line">		    <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">		      oAjax = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">		    &#125; <span class="keyword">else</span> &#123;</div><div class="line">		      oAjax = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">		    &#125;</div><div class="line"></div><div class="line">		    <span class="comment">//2.连接服务器</span></div><div class="line">		    <span class="comment">//open(方法,url，是否异步)</span></div><div class="line">		    oAjax.open(<span class="string">'GET'</span>,<span class="string">'FeyddyBlog_0.txt'</span>,<span class="literal">true</span>);</div><div class="line"></div><div class="line">		    <span class="comment">//3.发送请求</span></div><div class="line">		    oAjax.send();</div><div class="line"></div><div class="line">		    <span class="comment">//4.接受返回信息</span></div><div class="line">		    <span class="comment">//onreadystatechange类似于window.onload，但是不一样。当Aajx和服务器之间有通讯发生的时候，有状态变化的时候会调用</span></div><div class="line">		    oAjax.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		      <span class="comment">//oAjax.readyState告诉我们ajax和服务器之间的通信完成到哪一步了。他总共有5种状态。详情看知识点。其实我们观察的只是状态4（完成），其他的都不重要。</span></div><div class="line">		      <span class="keyword">if</span> (oAjax.readyState == <span class="number">4</span>) &#123;<span class="comment">//只能代表请求完成，但是不一定是成功</span></div><div class="line">		        <span class="comment">//oAjax.status  这个代表请求的相关结果是否成功。200代表成功</span></div><div class="line">		        <span class="keyword">if</span> (oAjax.status == <span class="number">200</span>) &#123;</div><div class="line">		          <span class="comment">//oAjax.responseText请求得到的返回值</span></div><div class="line">		          alert(<span class="string">'请求成功：'</span> + oAjax.responseText);</div><div class="line">		        &#125;<span class="keyword">else</span> &#123;</div><div class="line">		          alert(<span class="string">'请求失败'</span>);</div><div class="line">		        &#125;</div><div class="line">		      &#125;</div><div class="line">		    &#125;</div><div class="line">		  &#125;</div><div class="line">		&#125;</div><div class="line">		<span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">value</span>=<span class="string">"读取文件"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>下面我们对js代码进行提取封装：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url,fnSucc,fnFaild</span>) </span>&#123;</div><div class="line">  <span class="comment">//1.创建ajax对象,但是XMLHttpRequest在IE6以下无法使用</span></div><div class="line">  <span class="comment">// var oAjax = new XMLHttpRequest();</span></div><div class="line">  <span class="comment">//IE6</span></div><div class="line">  <span class="comment">// var oAjax = new ActiveXObject("Microsoft.XMLHTTP");//插件</span></div><div class="line">  <span class="keyword">var</span> oAjax = <span class="literal">null</span>;</div><div class="line"></div><div class="line">  <span class="comment">//这里如果用if (XMLHttpRequest)的话还是在IE6下报错，因为IE6下没有XMLHttpRequest函数。所以只能使用属性函数</span></div><div class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest) &#123;</div><div class="line">    oAjax = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    oAjax = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">//2.连接服务器</span></div><div class="line">  <span class="comment">//open(方法,url，是否异步)</span></div><div class="line">  oAjax.open(<span class="string">'GET'</span>,url,<span class="literal">true</span>);</div><div class="line"></div><div class="line">  <span class="comment">//3.发送请求</span></div><div class="line">  oAjax.send();</div><div class="line"></div><div class="line">  <span class="comment">//4.接受返回信息</span></div><div class="line">  <span class="comment">//onreadystatechange类似于window.onload，但是不一样。当Aajx和服务器之间有通讯发生的时候，有状态变化的时候会调用</span></div><div class="line">  oAjax.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//oAjax.readyState告诉我们ajax和服务器之间的通信完成到哪一步了。他总共有5种状态。详情看知识点。其实我们观察的只是状态4（完成），其他的都不重要。</span></div><div class="line">    <span class="keyword">if</span> (oAjax.readyState == <span class="number">4</span>) &#123;<span class="comment">//只能代表请求完成，但是不一定是成功</span></div><div class="line">      <span class="comment">//oAjax.status  这个代表请求的相关结果是否成功。200代表成功</span></div><div class="line">      <span class="keyword">if</span> (oAjax.status == <span class="number">200</span>) &#123;</div><div class="line">        <span class="comment">//oAjax.responseText请求得到的返回值</span></div><div class="line">        <span class="comment">// alert('请求成功：' + oAjax.responseText);</span></div><div class="line">        fnSucc(oAjax.responseText)</div><div class="line">      &#125;<span class="keyword">else</span> &#123;</div><div class="line">        <span class="comment">// alert('请求失败');</span></div><div class="line">        <span class="keyword">if</span> (fnFaild) &#123;</div><div class="line">          fnFaild();</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面用我们封装的Ajax库使用：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Ajax<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"myAjax.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="javascript"></span></div><div class="line">      ajax(<span class="string">'FeyddyBlog_0.txt'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">str</span>) </span>&#123;</div><div class="line">        alert(str);</div><div class="line">      &#125;,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">'失败了'</span>);</div><div class="line">      &#125;);</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwgy1fdnutds0lmj30ao06kwfa.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MAMP/" rel="tag"># MAMP</a>
+          
+            <a href="/tags/缓存/" rel="tag"># 缓存</a>
+          
+            <a href="/tags/eval/" rel="tag"># eval</a>
+          
+            <a href="/tags/json/" rel="tag"># json</a>
+          
+            <a href="/tags/自定义Ajax/" rel="tag"># 自定义Ajax</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/14/JavaScript事件详解-进阶篇/" rel="next" title="JavaScript事件详解(进阶篇)">
+                <i class="fa fa-chevron-left"></i> JavaScript事件详解(进阶篇)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/16/JavaScript运动事件-基础篇/" rel="prev" title="JavaScript运动事件(基础篇)">
+                JavaScript运动事件(基础篇) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       <section id="comments">
+   <!-- 多说评论框 start -->
+<div id="ds-thread" class="ds-thread" data-thread-key="2017/03/15/JavaScript基础-AJAX/" data-title="JavaScript基础-AJAX" data-url="http://yoursite.com/2017/03/15/JavaScript基础-AJAX/" }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feyddy"};
+  (function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">290</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#知识点"><span class="nav-number">1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax基础"><span class="nav-number">2.</span> <span class="nav-text">Ajax基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是服务器？"><span class="nav-number">2.1.</span> <span class="nav-text">什么是服务器？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#举例使用Ajax库"><span class="nav-number">2.2.</span> <span class="nav-text">举例使用Ajax库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符集编码"><span class="nav-number">2.2.1.</span> <span class="nav-text">字符集编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存、阻止缓存"><span class="nav-number">2.2.2.</span> <span class="nav-text">缓存、阻止缓存</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态数据请求"><span class="nav-number">2.3.</span> <span class="nav-text">动态数据请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#eval"><span class="nav-number">2.3.1.</span> <span class="nav-text">eval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#json"><span class="nav-number">2.3.2.</span> <span class="nav-text">json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现换页的效果"><span class="nav-number">2.3.3.</span> <span class="nav-text">实现换页的效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax原理"><span class="nav-number">3.</span> <span class="nav-text">Ajax原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTP请求方法"><span class="nav-number">3.1.</span> <span class="nav-text">HTTP请求方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET方法"><span class="nav-number">3.1.1.</span> <span class="nav-text">GET方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST方法"><span class="nav-number">3.1.2.</span> <span class="nav-text">POST方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POST方法和GET方法的区别"><span class="nav-number">3.1.3.</span> <span class="nav-text">POST方法和GET方法的区别</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写一个自己的Ajax库"><span class="nav-number">4.</span> <span class="nav-text">写一个自己的Ajax库</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feyddy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>

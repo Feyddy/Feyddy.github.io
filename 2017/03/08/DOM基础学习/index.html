@@ -1,0 +1,1204 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="DOM,childNodes,nodeType,children,parentNode,offsetParent,firstChild,firstElementChild,lastChild,lastElementChild,previousSibling,previousElementSibling,nextSibling,nextElementSibling,setAttribute,getAttribute,removeAttribute,className,createElement,appendChild,innerHTML,inserBefore,removeChild,createDocumentFragment," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="DOM基础知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM基础学习">
+<meta property="og:url" content="http://yoursite.com/2017/03/08/DOM基础学习/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="DOM基础知识点">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fdf7xhesv2j30ri0pe783.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fdf7xzg4bvj30wg0ctwgf.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fdf8mzvh15j30e303w0sr.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fdf8op8sejj30e103xaa3.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fdf98e7to4j30ol02b747.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fdf981nuccj30ln02vjrb.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fdf9h3shshj306n03jq32.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fdf9h6xiljj305q02sdfw.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fdf9nb1yc3j306l05v745.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fdf9pm26a4j3084065wec.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fdf9u4v14pj3088075a9x.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fdfaqgzq4kj30p4078dg0.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fdfdbsc6kqj30oz069wem.jpg">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fdfdbnpl0fj30q3068weo.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fdfdt6i9pzj30jw03adfq.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fdfeci4nuuj30lh03jmx2.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fdffc41o77j30vq06ggll.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fdfgfbt4o0j305y03jdfs.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fdfgs5hglej306402pgli.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNbRwly1fdfh1loxw2j305i01yaa0.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fdfh1oo678j303z014jr9.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fdfhstvdzoj30p503uaad.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNbRwly1fdfhstvdzoj30p503uaad.jpg">
+<meta property="og:updated_time" content="2017-03-08T13:05:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DOM基础学习">
+<meta name="twitter:description" content="DOM基础知识点">
+<meta name="twitter:image" content="https://ww1.sinaimg.cn/large/006tNbRwly1fdf7xhesv2j30ri0pe783.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/08/DOM基础学习/"/>
+
+
+
+
+
+  <title> DOM基础学习 | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/08/DOM基础学习/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                DOM基础学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-08T20:52:39+08:00">
+                2017-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/08/DOM基础学习/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/08/DOM基础学习/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/08/DOM基础学习/" class="leancloud_visitors" data-flag-title="DOM基础学习">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="DOM基础"><a href="#DOM基础" class="headerlink" title="DOM基础"></a>DOM基础</h1><h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fdf7xhesv2j30ri0pe783.jpg" alt=""></p>
+<a id="more"></a>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fdf7xzg4bvj30wg0ctwgf.jpg" alt=""></p>
+<p>知识点源码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM基础<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-tag">div</span> &#123;</div><div class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid purple;</div><div class="line">        &#125;</div><div class="line">        <span class="selector-tag">dl</span> &#123;</div><div class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid purple;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>DOM基础</div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span>DOM基础</div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>什么是DOM<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>浏览器支持情况<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span>DOM节点</div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>childNodes  nodeType<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 获取子节点<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- children<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>parentNode<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 例子：点击链接，隐藏整个li<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>offsetParent<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 例子：获取元素在页面上的实际位置<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>首尾子节点<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 有兼容性问题<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- firstChild、firstElementChild<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- lastChild 、lastElementChild<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>兄弟节点<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 有兼容性问题<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- nextSibling、nextElementSibling<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- previousSibling、previousElementSibling<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>操纵元素属性</div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span>元素属性操作</div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>第一种：oDiv.style.display=“block”;<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>第二种：oDiv.style[“display”]=“block”;<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>第三种：Dom方式<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span>DOM方式操作元素属性</div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>获取：getAttribute(名称)<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>设置：setAttribute(名称, 值)<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>删除：removeAttribute(名称)<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>DOM元素灵活查找</div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span>用className选择元素</div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>如何用className选择元素<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 选出所有元素<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 通过className条件筛选<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>封装成函数<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>创建、插入和删除元素</div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span>创建DOM元素</div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>createElement(标签名)		创建一个节点<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>appendChild(节点)			追加一个节点<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 例子：为ul插入li<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span>插入元素</div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>insertBefore(节点, 原有节点)	在已有元素前插入<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 例子：倒序插入li<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span>删除DOM元素</div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>removeChild(节点)			删除一个节点<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dd</span>&gt;</span>- 例子：删除li<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>文档碎片</div><div class="line">    <span class="tag">&lt;<span class="name">dl</span>&gt;</span>文档碎片</div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>文档碎片可以提高DOM操作性能(理论上)<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>文档碎片原理<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dt</span>&gt;</span>document.createDocumentFragment()<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dl</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="DOM简介"><a href="#DOM简介" class="headerlink" title="DOM简介"></a>DOM简介</h2><p>DOM的作用是可以帮助JS操作浏览器页面里的那些元素，各种各样的操作都是通过DOM来完成的，例如：改变背景颜色，字体大小等。<br>DOM不仅仅是JS的一个组件，它还是一套标准。它有两个标准:DOM1和DOM2。而火狐基本上完全实现了两个标准。而IE是最不标准的，DOM1实现了一点，DOM2完全没实现。其他的类似于Chrome和Safari,DOM1实现了大班，DOM2实现了一点。</p>
+<h2 id="DOM节点"><a href="#DOM节点" class="headerlink" title="DOM节点"></a>DOM节点</h2><p>HTML标签也叫做节点。下面我们举个例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM节点<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>111<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>222<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>333<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>根据上面的例子，我们进行讲解;</p>
+<p>父节点：一个标签的父节点永远只会有一个；例如：<code>li</code>的父节点就是<code>ul</code>；<br>子节点：一个标签的子节点只有一层；例如：<code>ul</code>的子节点就是<code>li</code>，<code>a</code>不是<code>ul</code>的子节点；</p>
+<h3 id="获取节点的方法"><a href="#获取节点的方法" class="headerlink" title="获取节点的方法"></a>获取节点的方法</h3><h4 id="childNodes子节点"><a href="#childNodes子节点" class="headerlink" title="childNodes子节点"></a>childNodes子节点</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM节点<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">"ul1"</span>);</div><div class="line">            alert(oUl.childNodes.length);</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>111<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>222<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>333<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如果在IE浏览器中打开，就睡显示3。但是在chrome<br>下打开却是：</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fdf8mzvh15j30e303w0sr.jpg" alt=""></p>
+<p>但是如果你把代码改成这样：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM节点<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">"ul1"</span>);</div><div class="line">            alert(oUl.childNodes.length);</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>111<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>222<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>333<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果就会是正常的：</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fdf8op8sejj30e103xaa3.jpg" alt=""></p>
+<p>这是为什么呢？</p>
+<p>原因是因为有一个文本节点。像<ul>这种节点属于元素节点，文本节点就是只是一个文字显示。在火狐和Chrome中会自动把文本节点也算是一个节点，但是在IE中就不算。</ul></p>
+<p>这样就出现兼容性问题了。 <code>nodeType</code>可以解决这个问题。</p>
+<p><code>nodeType</code>类型解释：</p>
+<ul>
+<li><code>3</code>:代表文本节点</li>
+<li><code>1</code>:代表元素节点（标签）</li>
+</ul>
+<p>这样解决方法就出来了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM节点<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">           <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">"ul1"</span>);</div><div class="line">            <span class="keyword">var</span> i;</div><div class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt; oUl.childNodes.length;i++)&#123;</div><div class="line">            <span class="comment">//在IE下改变了，但是在Chrome下却没有出现，而且报错。因为不能给文本添加样式。</span></div><div class="line"><span class="comment">//             oUl.childNodes[i].style.backgroundColor='red';</span></div><div class="line"></div><div class="line">                <span class="keyword">if</span>(oUl.childNodes[i].nodeType == <span class="number">1</span>)&#123;</div><div class="line">                 oUl.childNodes[i].style.backgroundColor=<span class="string">'red'</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>111<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>222<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>333<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fdf98e7to4j30ol02b747.jpg" alt=""></p>
+<p>还有一种方法就是使用<code>children</code>。大家可以认为他是兼容版的<code>childNodes</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>children<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">"ul1"</span>);</div><div class="line">            <span class="keyword">var</span> i;</div><div class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt; oUl.children.length;i++)&#123;</div><div class="line">                oUl.children[i].style.background = <span class="string">"orange"</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>111<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>222<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">""</span>&gt;</span>333<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fdf981nuccj30ln02vjrb.jpg" alt=""></p>
+<h4 id="parentNode父节点"><a href="#parentNode父节点" class="headerlink" title="parentNode父节点"></a>parentNode父节点</h4><p>它获取的是结构上的父节点。</p>
+<p>我们下面来通过一个小例子来理解这个parentNode。</p>
+<p>需求：点击链接隐藏当前行。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> aA = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"a"</span>);</div><div class="line">            <span class="keyword">var</span> i;</div><div class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>; i&lt; aA.length;i++)&#123;</div><div class="line">                aA[i].onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="comment">//这里的this是a，a的父节点就是我们需要隐藏的li</span></div><div class="line">                    <span class="keyword">this</span>.parentNode.style.display = <span class="string">"none"</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">点击链接隐藏当前行（li）</div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>first<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>隐藏<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>second<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>隐藏<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>third<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>隐藏<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>效果：</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fdf9h3shshj306n03jq32.jpg" alt=""></p>
+<p>点击隐藏后：</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fdf9h6xiljj305q02sdfw.jpg" alt=""></p>
+<h4 id="offsetParent"><a href="#offsetParent" class="headerlink" title="offsetParent"></a>offsetParent</h4><p>它获取的是物体相对于某个的定位。</p>
+<p>下面通过举例说明：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>offsetParent<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>:red;</div><div class="line">        &#125;</div><div class="line">        <span class="selector-id">#div2</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>:orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">left</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">top</span>: <span class="number">100px</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fdf9nb1yc3j306l05v745.jpg" alt=""></p>
+<p>此时如果我们为<code>div1</code>添加一个<code>margin: 50px;</code>的样式后，橙色的<code>div2</code>完全没有移动。</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fdf9pm26a4j3084065wec.jpg" alt=""></p>
+<p>但是如果为<code>div1</code>添加一个<code>position: relative;</code>之后，橙色的<code>div2</code>就会随着<code>div1</code>移动而移动。</p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fdf9u4v14pj3088075a9x.jpg" alt=""></p>
+<p><strong>为什么呢？</strong></p>
+<p>这是因为，一开始<code>div2</code>不是相对于<code>div1</code>在定位的，而绝对定位是相对于有定位的父级来定位的，所以给<code>div1</code>加上了相对定位：<code>position: relative;</code>之后，<code>div1</code>就可以跟着<code>div1</code>移动了。换句话说，用来定位的那个父级不一定是结构上的父级。</p>
+<p>下面我们弹出<code>div2</code>的<code>offsetParent.id</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>offsetParent<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>:red;</div><div class="line">            <span class="attribute">margin</span>: <span class="number">50px</span>;</div><div class="line">            <span class="attribute">position</span>: relative;</div><div class="line">        &#125;</div><div class="line">        <span class="selector-id">#div2</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>:orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">left</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">top</span>: <span class="number">100px</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oDiv2= <span class="built_in">document</span>.getElementById(<span class="string">"div2"</span>);</div><div class="line">            oDiv2.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                alert(<span class="keyword">this</span>.offsetParent.id);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fdfaqgzq4kj30p4078dg0.jpg" alt=""></p>
+<p>可以知道<code>div2</code>的<code>offsetParent</code>是<code>div1</code>。</p>
+<p>但是如果我们去除<code>div1</code>的定位的话,他就会不断地向上找。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>offsetParent<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-id">#div1</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>:red;</div><div class="line">            <span class="attribute">margin</span>: <span class="number">50px</span>;</div><div class="line">            <span class="comment">/*position: relative;*/</span></div><div class="line">        &#125;</div><div class="line">        <span class="selector-id">#div2</span> &#123;</div><div class="line">            <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">height</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">background-color</span>:orange;</div><div class="line">            <span class="attribute">position</span>: absolute;</div><div class="line">            <span class="attribute">left</span>: <span class="number">100px</span>;</div><div class="line">            <span class="attribute">top</span>: <span class="number">100px</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oDiv2= <span class="built_in">document</span>.getElementById(<span class="string">"div2"</span>);</div><div class="line">            oDiv2.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                alert(<span class="keyword">this</span>.offsetParent.id);</div><div class="line">                alert(<span class="keyword">this</span>.offsetParent.tagName);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fdfdbsc6kqj30oz069wem.jpg" alt=""></p>
+<p><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fdfdbnpl0fj30q3068weo.jpg" alt=""></p>
+<p>可以看出来，此时的<code>div2</code>的<code>offsetParent</code>是<code>body</code>标签。</p>
+<p>所以<code>offsetParent</code>是找出有定位的父级。</p>
+<h4 id="首尾子节点"><a href="#首尾子节点" class="headerlink" title="首尾子节点"></a>首尾子节点</h4><h5 id="firstChild和firstElementChild"><a href="#firstChild和firstElementChild" class="headerlink" title="firstChild和firstElementChild"></a>firstChild和firstElementChild</h5><p>获取第一个子元素。</p>
+<p><code>firstChild</code>一样也是存在兼容性问题，只有在IE下可以用。<br>在火狐下可以使用<code>firstElementChild</code>。</p>
+<p>举个小例子：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>firstChild<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oUl= <span class="built_in">document</span>.getElementById(<span class="string">"ul1"</span>);</div><div class="line">            <span class="comment">//IE</span></div><div class="line"><span class="comment">//            oUl.firstChild.style.backgroundColor = "red";</span></div><div class="line">            <span class="comment">//FF</span></div><div class="line">            oUl.firstElementChild.style.backgroundColor = <span class="string">"orange"</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fdfdt6i9pzj30jw03adfq.jpg" alt=""></p>
+<p>那怎么处理这个兼容性问题呢？？</p>
+<p>可以通过一个中间变量。具体操作如下;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>firstChild<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oUl= <span class="built_in">document</span>.getElementById(<span class="string">"ul1"</span>);</div><div class="line">            <span class="keyword">var</span> oFirst=oUl.firstElementChild||oUl.firstChild;</div><div class="line">            oFirst.style.backgroundColor = <span class="string">"orange"</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这样就没问题了。</p>
+<p><strong>注意</strong>这里有一个小细节问题，<code>oUl.firstElementChild||oUl.firstChild</code>必须将<code>firstElementChild</code>写在前面，否则会出错。</p>
+<h5 id="lastChild和lastElementChild"><a href="#lastChild和lastElementChild" class="headerlink" title="lastChild和lastElementChild"></a>lastChild和lastElementChild</h5><p>方法和注意点同上。</p>
+<h4 id="兄弟节点"><a href="#兄弟节点" class="headerlink" title="兄弟节点"></a>兄弟节点</h4><h5 id="previousSibling和previousElementSibling"><a href="#previousSibling和previousElementSibling" class="headerlink" title="previousSibling和previousElementSibling"></a>previousSibling和previousElementSibling</h5><p>上一个兄弟节点。</p>
+<p><code>previousSibling</code>只能IE使用<br><code>previousElementSibling</code>只能FF使用</p>
+<p>方法和注意点和上面的差不多。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Sibling<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oli= <span class="built_in">document</span>.getElementById(<span class="string">"li2"</span>);</div><div class="line">            <span class="comment">//IE</span></div><div class="line"><span class="comment">//            oli.previousSibling.style.backgroundColor = "red";</span></div><div class="line">            <span class="comment">//FF</span></div><div class="line">            oli.previousElementSibling.style.backgroundColor = <span class="string">"orange"</span>;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"li2"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fdfeci4nuuj30lh03jmx2.jpg" alt=""></p>
+<p>解决方法也和上面一样</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Sibling<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oli= <span class="built_in">document</span>.getElementById(<span class="string">"li2"</span>);</div><div class="line">            <span class="keyword">var</span> oPrevious = oli.previousElementSibling||oli.previousSibling;</div><div class="line">            oPrevious.style.backgroundColor = <span class="string">"orange"</span>;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"li2"</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>注意：</strong><code>var oPrevious = oli.previousElementSibling||oli.previousSibling;</code>中的<code>previousElementSibling</code>一定要写在前面，否则不管用。</p>
+<h5 id="nextSibling和nextElementSibling"><a href="#nextSibling和nextElementSibling" class="headerlink" title="nextSibling和nextElementSibling"></a>nextSibling和nextElementSibling</h5><p>方法与注意点同上。</p>
+<h2 id="操纵元素属性"><a href="#操纵元素属性" class="headerlink" title="操纵元素属性"></a>操纵元素属性</h2><h3 id="元素属性操作"><a href="#元素属性操作" class="headerlink" title="元素属性操作"></a>元素属性操作</h3><p>有三种方式可以操作元素的属性：</p>
+<ul>
+<li>采用<code>.</code>语法；</li>
+<li>采用<code>[]</code>语法。他和<code>.</code>语法一样，但是唯一区别就是，<code>[]</code>里面的属性可以变的。相当于传一个参数;</li>
+<li>采用<code>DOM</code>方式；用<code>setAttribute(&#39;属性&#39;,&#39;值&#39;)</code>（设置属性值）和<code>getAttribute(&#39;属性&#39;)</code>（获取属性值）以及<code>removeAttribute(&#39;属性&#39;)</code>（删除属性值）。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>DOM方式操作元素属性<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oTxt = <span class="built_in">document</span>.getElementById(<span class="string">'txt1'</span>);</div><div class="line"><span class="comment">//            //1.采用.语法</span></div><div class="line"><span class="comment">//            oTxt.value = '123';</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//            //2.采用[]方式,他和.语法一样，但是唯一区别就是，[]里面的属性可以变的。相当于传一个参数</span></div><div class="line"><span class="comment">//            oTxt['value']='123';</span></div><div class="line"></div><div class="line">            <span class="comment">//3.DOM方式</span></div><div class="line">            oTxt.setAttribute(<span class="string">'value'</span>,<span class="string">'123'</span>);</div><div class="line">            alert(oTxt.getAttribute(<span class="string">'value'</span>));</div><div class="line">            oTxt.removeAttribute(<span class="string">'value'</span>);</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"txt1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="DOM元素灵活查找"><a href="#DOM元素灵活查找" class="headerlink" title="DOM元素灵活查找"></a>DOM元素灵活查找</h2><h3 id="className选择元素"><a href="#className选择元素" class="headerlink" title="className选择元素"></a>className选择元素</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>用Class选元素<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">'ul1'</span>);</div><div class="line">            <span class="keyword">var</span> aLi = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</div><div class="line">            <span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;aLi.length;i++)&#123;</div><div class="line">                <span class="keyword">if</span>(aLi[i].className==<span class="string">'box'</span>)&#123;</div><div class="line">                    aLi[i].style.backgroundColor=<span class="string">"red"</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fdffc41o77j30vq06ggll.jpg" alt=""></p>
+<p>这个方法完全可以使用了，但是这样实在太麻烦了。下面我们将这个方法封装成一个函数。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>用Class选元素<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">getByClass</span>(<span class="params">oParent,sClass</span>)</span>&#123;<span class="comment">//(父级，子级的class)</span></div><div class="line">            <span class="keyword">var</span> aEle = oParent.getElementsByName(<span class="string">'*'</span>);<span class="comment">//‘*’代表所有的标签元素</span></div><div class="line">            <span class="keyword">var</span> aResult=[];<span class="comment">//存放sClass的所有元素。</span></div><div class="line">            <span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;aEle.length;i++)&#123;</div><div class="line">                <span class="keyword">if</span>(aEle[i].className==sClass)&#123;</div><div class="line">                    aResult.push(aEle[i]);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">'ul1'</span>);</div><div class="line">            <span class="keyword">var</span> aLi = getByClass(oUl,<span class="string">'box'</span>);</div><div class="line">            <span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;aLi.length;i++)&#123;</div><div class="line">                aLi[i].style.backgroundColor = <span class="string">"red"</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="创建一个DOM元素"><a href="#创建一个DOM元素" class="headerlink" title="创建一个DOM元素"></a>创建一个DOM元素</h2><p><code>createElement(元素名)</code>创建一个元素。<br><code>appendChild(子节点)</code>将创建的子节点添加到调用这个方法的父节点里面。<br><code>innerHTML</code>元素的内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>创建DOM元素li<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            <span class="keyword">var</span> oTxt = <span class="built_in">document</span>.getElementById(<span class="string">'txt1'</span>);</div><div class="line">            <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">'ul1'</span>);</div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> newlI = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);<span class="comment">//创建一个li标签</span></div><div class="line">                newlI.innerHTML = oTxt.value;<span class="comment">//innerHTML是向li里面添加内容</span></div><div class="line">                <span class="comment">//父.appendChild(子节点)</span></div><div class="line">                oUl.appendChild(newlI);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"txt1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"创建li"</span> <span class="attr">id</span>=<span class="string">"btn1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>aaa<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fdfgfbt4o0j305y03jdfs.jpg" alt=""></p>
+<p>上述代码中，<code>newlI.innerHTML = oTxt.value;</code>和<code>oUl.appendChild(newlI);</code>添加的先后顺序，有一丁点区别。如果先赋值，再添加新标签，那么页面只会渲染一遍；如果先添加新标签，再赋值就会渲染两遍。</p>
+<h2 id="插入一个子节点"><a href="#插入一个子节点" class="headerlink" title="插入一个子节点"></a>插入一个子节点</h2><p><code>父节点.inserBefore(子节点，谁之前)</code>。<br><strong>注意：使用insertBefore的时候一定要先判断是否一开始就有一个标签</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>insertBefore<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            <span class="keyword">var</span> oTxt = <span class="built_in">document</span>.getElementById(<span class="string">'txt1'</span>);</div><div class="line">            <span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">'ul1'</span>);</div><div class="line">            <span class="keyword">var</span> aLi = oUl.getElementsByTagName(<span class="string">'li'</span>);</div><div class="line">            oBtn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> newlI = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);<span class="comment">//创建一个li标签</span></div><div class="line">                newlI.innerHTML = oTxt.value;<span class="comment">//innerHTML是向li里面添加内容</span></div><div class="line">                <span class="comment">//判断是否一开始就有一个li</span></div><div class="line">                <span class="keyword">if</span>(aLi.length == <span class="number">0</span>)</div><div class="line">                &#123;</div><div class="line">                    oUl.appendChild(newlI);</div><div class="line">                &#125;<span class="keyword">else</span></div><div class="line">                &#123;</div><div class="line">                    oUl.insertBefore(newlI,aLi[<span class="number">0</span>]);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"txt1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"创建li"</span> <span class="attr">id</span>=<span class="string">"btn1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>aaa<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fdfgs5hglej306402pgli.jpg" alt=""></p>
+<h2 id="删除DOM元素"><a href="#删除DOM元素" class="headerlink" title="删除DOM元素"></a>删除DOM元素</h2><p><code>父节点.removeChild(子节点)</code>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>removeChild<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oA = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'a'</span>);</div><div class="line">            <span class="keyword">var</span> oUL = <span class="built_in">document</span>.getElementById(<span class="string">'ul1'</span>);</div><div class="line">            <span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; oA.length;i++)&#123;</div><div class="line">                oA[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                    oUL.removeChild(<span class="keyword">this</span>.parentNode);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>feyddy<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>xuzhonglin<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNbRwly1fdfh1loxw2j305i01yaa0.jpg" alt=""></p>
+<p><img src="https://ww1.sinaimg.cn/large/006tNbRwly1fdfh1oo678j303z014jr9.jpg" alt=""></p>
+<h2 id="文档碎片"><a href="#文档碎片" class="headerlink" title="文档碎片"></a>文档碎片</h2><p><code>createDocumentFragment()</code></p>
+<p>就拿创建<code>li</code>来解释：如果我们需要创建10000个<code>li</code>的话，普通的循环创建是创建一个添加一个，页面就渲染一个，这样就需要10000次。但是文档碎片就是将创建的1000个<code>li</code>先保存在文档碎片里面，然后最后一次性添加和渲染，只需要一遍。（当然这只是理论上的，实际应用怎么样？也许不尽如人意。）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>文档碎片<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="keyword">var</span> oBtn1 = <span class="built_in">document</span>.getElementById(<span class="string">'btn1'</span>);</div><div class="line">            <span class="keyword">var</span> oBtn2 = <span class="built_in">document</span>.getElementById(<span class="string">'btn2'</span>);</div><div class="line">            <span class="keyword">var</span> oUL = <span class="built_in">document</span>.getElementById(<span class="string">'ul1'</span>);</div><div class="line">            oBtn1.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> startTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();<span class="comment">//时间戳</span></div><div class="line">                <span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line">                <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">10000</span>; i++)&#123;</div><div class="line">                    <span class="keyword">var</span> oli = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</div><div class="line">                    oUL.appendChild(oli);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">var</span> finishTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line">                <span class="keyword">var</span> differ = finishTime - startTime;</div><div class="line">                alert(<span class="string">"普通创建li"</span>+<span class="string">'时间差'</span>+differ+<span class="string">'毫秒'</span>);</div><div class="line">            &#125;</div><div class="line">            oBtn2.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                <span class="keyword">var</span> startTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();<span class="comment">//时间戳</span></div><div class="line">                <span class="keyword">var</span> oFrag = <span class="built_in">document</span>.createDocumentFragment();<span class="comment">//创建文档碎片对象</span></div><div class="line">                <span class="keyword">var</span> i = <span class="number">0</span>;</div><div class="line">                <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; <span class="number">10000</span>; i++)&#123;</div><div class="line">                    <span class="keyword">var</span> oli = <span class="built_in">document</span>.createElement(<span class="string">'li'</span>);</div><div class="line">                    oFrag.appendChild(oli);<span class="comment">//添加到文档碎片</span></div><div class="line">                &#125;</div><div class="line">                oUL.appendChild(oFrag);<span class="comment">//将文档碎片添加到oUL中</span></div><div class="line"></div><div class="line">                <span class="keyword">var</span> finishTime = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</div><div class="line">                <span class="keyword">var</span> differ = finishTime - startTime;</div><div class="line">                alert(<span class="string">"碎片创建li"</span>+<span class="string">'时间差'</span>+differ+<span class="string">'毫秒'</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"普通创建li"</span> <span class="attr">id</span>=<span class="string">"btn1"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"碎片创建li"</span> <span class="attr">id</span>=<span class="string">"btn2"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>aaa<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fdfhstvdzoj30p503uaad.jpg" alt=""></p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNbRwly1fdfhstvdzoj30p503uaad.jpg" alt=""></p>
+<p>从图中可以看出来用了碎片反而变慢了。。。。。。。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DOM/" rel="tag"># DOM</a>
+          
+            <a href="/tags/childNodes/" rel="tag"># childNodes</a>
+          
+            <a href="/tags/nodeType/" rel="tag"># nodeType</a>
+          
+            <a href="/tags/children/" rel="tag"># children</a>
+          
+            <a href="/tags/parentNode/" rel="tag"># parentNode</a>
+          
+            <a href="/tags/offsetParent/" rel="tag"># offsetParent</a>
+          
+            <a href="/tags/firstChild/" rel="tag"># firstChild</a>
+          
+            <a href="/tags/firstElementChild/" rel="tag"># firstElementChild</a>
+          
+            <a href="/tags/lastChild/" rel="tag"># lastChild</a>
+          
+            <a href="/tags/lastElementChild/" rel="tag"># lastElementChild</a>
+          
+            <a href="/tags/previousSibling/" rel="tag"># previousSibling</a>
+          
+            <a href="/tags/previousElementSibling/" rel="tag"># previousElementSibling</a>
+          
+            <a href="/tags/nextSibling/" rel="tag"># nextSibling</a>
+          
+            <a href="/tags/nextElementSibling/" rel="tag"># nextElementSibling</a>
+          
+            <a href="/tags/setAttribute/" rel="tag"># setAttribute</a>
+          
+            <a href="/tags/getAttribute/" rel="tag"># getAttribute</a>
+          
+            <a href="/tags/removeAttribute/" rel="tag"># removeAttribute</a>
+          
+            <a href="/tags/className/" rel="tag"># className</a>
+          
+            <a href="/tags/createElement/" rel="tag"># createElement</a>
+          
+            <a href="/tags/appendChild/" rel="tag"># appendChild</a>
+          
+            <a href="/tags/innerHTML/" rel="tag"># innerHTML</a>
+          
+            <a href="/tags/inserBefore/" rel="tag"># inserBefore</a>
+          
+            <a href="/tags/removeChild/" rel="tag"># removeChild</a>
+          
+            <a href="/tags/createDocumentFragment/" rel="tag"># createDocumentFragment</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/07/JavaScript基础学习（二）/" rel="next" title="JavaScript基础学习（二）">
+                <i class="fa fa-chevron-left"></i> JavaScript基础学习（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/09/BOM基础学习/" rel="prev" title="BOM基础学习">
+                BOM基础学习 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       <section id="comments">
+   <!-- 多说评论框 start -->
+<div id="ds-thread" class="ds-thread" data-thread-key="2017/03/08/DOM基础学习/" data-title="DOM基础学习" data-url="http://yoursite.com/2017/03/08/DOM基础学习/" }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feyddy"};
+  (function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">290</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM基础"><span class="nav-number">1.</span> <span class="nav-text">DOM基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#知识点"><span class="nav-number">1.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM简介"><span class="nav-number">1.2.</span> <span class="nav-text">DOM简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM节点"><span class="nav-number">1.3.</span> <span class="nav-text">DOM节点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取节点的方法"><span class="nav-number">1.3.1.</span> <span class="nav-text">获取节点的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#childNodes子节点"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">childNodes子节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parentNode父节点"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">parentNode父节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#offsetParent"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">offsetParent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#首尾子节点"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">首尾子节点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#firstChild和firstElementChild"><span class="nav-number">1.3.1.4.1.</span> <span class="nav-text">firstChild和firstElementChild</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lastChild和lastElementChild"><span class="nav-number">1.3.1.4.2.</span> <span class="nav-text">lastChild和lastElementChild</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#兄弟节点"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">兄弟节点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#previousSibling和previousElementSibling"><span class="nav-number">1.3.1.5.1.</span> <span class="nav-text">previousSibling和previousElementSibling</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nextSibling和nextElementSibling"><span class="nav-number">1.3.1.5.2.</span> <span class="nav-text">nextSibling和nextElementSibling</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操纵元素属性"><span class="nav-number">1.4.</span> <span class="nav-text">操纵元素属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元素属性操作"><span class="nav-number">1.4.1.</span> <span class="nav-text">元素属性操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM元素灵活查找"><span class="nav-number">1.5.</span> <span class="nav-text">DOM元素灵活查找</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#className选择元素"><span class="nav-number">1.5.1.</span> <span class="nav-text">className选择元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个DOM元素"><span class="nav-number">1.6.</span> <span class="nav-text">创建一个DOM元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入一个子节点"><span class="nav-number">1.7.</span> <span class="nav-text">插入一个子节点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除DOM元素"><span class="nav-number">1.8.</span> <span class="nav-text">删除DOM元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档碎片"><span class="nav-number">1.9.</span> <span class="nav-text">文档碎片</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feyddy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
