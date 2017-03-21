@@ -319,6 +319,234 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/21/iOS9新特性回顾/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/21/iOS9新特性回顾/" itemprop="url">
+                  iOS9新特性回顾
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-21T21:00:36+08:00">
+                2017-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/21/iOS9新特性回顾/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/21/iOS9新特性回顾/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/21/iOS9新特性回顾/" class="leancloud_visitors" data-flag-title="iOS9新特性回顾">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="iOS9新特性"><a href="#iOS9新特性" class="headerlink" title="iOS9新特性"></a>iOS9新特性</h1><h2 id="常见关键字"><a href="#常见关键字" class="headerlink" title="常见关键字"></a>常见关键字</h2><p>iOS9新出的关键字:用来修饰属性,或者方法的参数,方法的返回值。</p>
+<p>好处:</p>
+<ol>
+<li>迎合swift</li>
+<li>提高我们开发人员开发规范,减少程序员之间交流</li>
+</ol>
+<p><strong>注意:iOS9新出关键字<code>nonnull</code>,<code>nullable</code>只能修饰对象,不能修饰基本数据类型</strong></p>
+<h3 id="nullable"><a href="#nullable" class="headerlink" title="nullable"></a>nullable</h3><p>作用:表示可以为空</p>
+<p>nullable书写规范:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 方式一:</div><div class="line">@property (nonatomic, strong, nullable) NSString *name;</div><div class="line">// 方式二:</div><div class="line">@property (nonatomic, strong) NSString *_Nullable name;</div><div class="line">// 方式三:</div><div class="line">@property (nonatomic, strong) NSString *__nullable name;</div></pre></td></tr></table></figure></p>
+<h3 id="nonnull"><a href="#nonnull" class="headerlink" title="nonnull"></a>nonnull</h3><p>non:非 null:空</p>
+<p>书写格式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong, nonnull) NSString *icon;</div><div class="line"></div><div class="line">@property (nonatomic, strong) NSString * _Nonnull icon;</div><div class="line"></div><div class="line">@property (nonatomic, strong) NSString * __nonnull icon;</div></pre></td></tr></table></figure>
+<h3 id="NS-ASSUME-NONNULL-BEGIN和NS-ASSUME-NONNULL-END"><a href="#NS-ASSUME-NONNULL-BEGIN和NS-ASSUME-NONNULL-END" class="headerlink" title="NS_ASSUME_NONNULL_BEGIN和NS_ASSUME_NONNULL_END"></a>NS_ASSUME_NONNULL_BEGIN和NS_ASSUME_NONNULL_END</h3><p>在<code>NS_ASSUME_NONNULL_BEGIN</code>和<code>NS_ASSUME_NONNULL_END</code>之间,定义的所有对象属性和方法默认都是<code>nonnull</code></p>
+<h3 id="方法中-关键字书写规范"><a href="#方法中-关键字书写规范" class="headerlink" title="方法中,关键字书写规范"></a>方法中,关键字书写规范</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (nonnull NSString *)test:(nonnull NSString *)str;</div><div class="line">- (NSString * _Nonnull)test1:(NSString * _Nonnull)str;</div></pre></td></tr></table></figure>
+<h3 id="null-resettable"><a href="#null-resettable" class="headerlink" title="null_resettable"></a>null_resettable</h3><p><code>get:</code>不能返回为空, <code>set:</code>可以为空</p>
+<p><strong>注意:如果使用null_resettable,必须重写get方法或者set方法,处理传递的值为空的情况</strong></p>
+<p>书写方式:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong, null_resettable) NSString *name;</div></pre></td></tr></table></figure>
+<h3 id="Null-unspecified"><a href="#Null-unspecified" class="headerlink" title="_Null_unspecified"></a><em>_Null_unspecified</em></h3><p><em>_Null_unspecified(不确定是否为空)</em></p>
+<p>书写方式只有这种</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//方式一</div><div class="line">@property (nonatomic, strong) NSString *_Null_unspecified name;</div><div class="line"></div><div class="line">//方式二</div><div class="line">@property (nonatomic, strong) NSString *__null_unspecified name;</div></pre></td></tr></table></figure>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>泛型:限制类型。</p>
+<p>泛型使用场景:</p>
+<pre><code>1. 在集合(数组,字典,NSSet)中使用泛型比较常见。
+2. 当声明一个类,类里面的某些属性的类型不确定,这时候我们才使用泛型。
+</code></pre><p>泛型书写规范：</p>
+<pre><code>在类型后面定义泛型,`NSMutableArray&lt;UITouch *&gt; *datas`
+</code></pre><p>泛型修饰:</p>
+<pre><code>只能修饰方法的调用。
+</code></pre><p>泛型好处:   </p>
+<pre><code>1. 提高开发规范,减少程序员之间交流
+2. 通过集合取出来对象,直接当做泛型对象使用,可以直接使用点语法    
+</code></pre><p>下面对上面的几点通过代码进行说明：</p>
+<h3 id="泛型书写规范"><a href="#泛型书写规范" class="headerlink" title="泛型书写规范"></a>泛型书写规范</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//普通的类型声明</div><div class="line">@property (nonatomic, strong) NSMutableArray *data1;</div><div class="line"></div><div class="line">//泛型声明-限制数组里面全部是字符串</div><div class="line">@property (nonatomic, strong) NSMutableArray&lt;NSString *&gt; *data2;</div></pre></td></tr></table></figure>
+<h3 id="泛型修饰"><a href="#泛型修饰" class="headerlink" title="泛型修饰"></a>泛型修饰</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//普通的id类型，没有限制</div><div class="line">self.data1 addObject:(nonnull id)</div><div class="line"></div><div class="line">//泛型限制数组里面的对象必须为字符串</div><div class="line">self.data2 addObject:(nonnull NSString *)</div></pre></td></tr></table></figure>
+<h3 id="泛型好处第二点，id类型没有点语法。"><a href="#泛型好处第二点，id类型没有点语法。" class="headerlink" title="泛型好处第二点，id类型没有点语法。"></a>泛型好处第二点，<code>id</code>类型没有点语法。</h3><p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fdu7n559ycj30m801u0su.jpg" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//联想不出来，并且报错，如上图</div><div class="line">self.data1[0].length</div><div class="line"></div><div class="line">//可以联想出来</div><div class="line">self.data2[0].length;</div></pre></td></tr></table></figure>
+<h3 id="泛型使用场景第二点"><a href="#泛型使用场景第二点" class="headerlink" title="泛型使用场景第二点"></a>泛型使用场景第二点</h3><p>我们自定义一个泛型类：</p>
+<p>需求说明：Person类,开发语言Language类。iOS,Java两个继承Language类。</p>
+<p>Person.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">#import &quot;Language.h&quot;</div><div class="line">#import &quot;IOS.h&quot;</div><div class="line"></div><div class="line">// 声明泛型</div><div class="line">@interface Person&lt;ObjectType&gt; : NSObject</div><div class="line"></div><div class="line">// 语言</div><div class="line">@property (nonatomic)  ObjectType language;</div><div class="line">// id类型</div><div class="line">@property (nonatomic)  id language2;</div><div class="line">//Language类型</div><div class="line">@property (nonatomic)  Language * language3;</div><div class="line">//IOS类型</div><div class="line">@property (nonatomic)  IOS * language4;</div><div class="line">/*</div><div class="line"> id:任何对象都能传进来</div><div class="line"> Language:在外面调用的时候,没有提示</div><div class="line"> IOS* 以后只能传IOS对象,不能传其他的对象了</div><div class="line">*/</div><div class="line"></div><div class="line">//如果声明了泛型就会自动的生成下面的set和get方法</div><div class="line">- (ObjectType)language;</div><div class="line">- (void)setLanguage:(ObjectType)language;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p><em>上面的解释通过代码来演示一下：</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">不是泛型的三种情况的弊端</div><div class="line">*/</div><div class="line">Person *idP = [[Person alloc] init];</div><div class="line">idP.language2 = @&quot;123&quot;;//此时的language2是一个id类型，什么类型都可以赋值</div><div class="line"></div><div class="line">Person *languageP = [[Person alloc] init];</div><div class="line">languageP.language3 = [[IOS alloc] init];//此时的language3是一个Language类型，但是Language类型现在有两个，没有提示，所以还是不知道有哪些类型。</div><div class="line"></div><div class="line">Person *iOSP = [[Person alloc] init];</div><div class="line">iOSP.language4 = [[Java alloc] init];//此时的language4是ios类型的，所以只能赋iOS类型对象，不能赋其他类型的对象。此时报警告</div><div class="line"></div><div class="line">/*</div><div class="line">泛型的好处演示</div><div class="line">*/</div><div class="line">//Language</div><div class="line">Person&lt;Language *&gt; *p = [[Person alloc] init];</div><div class="line">p.language = [[Language alloc] init];//此时的language为Language类型</div><div class="line"></div><div class="line">//iOS</div><div class="line">Person&lt;IOS *&gt; *iosP = [[Person alloc] init];</div><div class="line">iosP.language = [[IOS alloc] init];//此时的language为IOS类型</div><div class="line"></div><div class="line">//JAVA</div><div class="line">Person&lt;Java *&gt; *javaP = [[Person alloc] init];</div><div class="line">javaP.language = [[Java alloc] init];//此时的language为Java类型</div></pre></td></tr></table></figure>
+<h3 id="泛型的进阶-协变、逆变"><a href="#泛型的进阶-协变、逆变" class="headerlink" title="泛型的进阶(协变、逆变)"></a>泛型的进阶(协变、逆变)</h3><p><code>__covariant</code>(协变):用于泛型数据强转类型,可以向上强转,子类 可以转成 父类。<br><code>__contravariant</code>(逆变):用于泛型数据强转类型,可以向下强转, 父类 可以 转成子类。</p>
+<p>将上面的Person.h里面修改一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">#import &quot;Language.h&quot;</div><div class="line">#import &quot;IOS.h&quot;</div><div class="line"></div><div class="line">// 声明泛型</div><div class="line">@interface Person&lt;__contravariant ObjectType&gt; : NSObject</div><div class="line"></div><div class="line">// 语言</div><div class="line">@property (nonatomic)  ObjectType language;</div><div class="line">// id类型</div><div class="line">@property (nonatomic)  id language2;</div><div class="line">//Language类型</div><div class="line">@property (nonatomic)  Language * language3;</div><div class="line">//IOS类型</div><div class="line">@property (nonatomic)  IOS * language4;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">//Language</div><div class="line">Person&lt;Language *&gt; *p = [[Person alloc] init];</div><div class="line">p.language = [[Language alloc] init];//此时的language为Language类型</div><div class="line"></div><div class="line">//iOS</div><div class="line">Person&lt;IOS *&gt; *iosP = [[Person alloc] init];</div><div class="line">iosP.language = [[IOS alloc] init];//此时的language为IOS类型</div><div class="line"></div><div class="line">//JAVA</div><div class="line">Person&lt;Java *&gt; *javaP = [[Person alloc] init];</div><div class="line">javaP.language = [[Java alloc] init];//此时的language为Java类型</div><div class="line"></div><div class="line">// 如果子类想给父类赋值,协变</div><div class="line"></div><div class="line">iosP = p;//需要__contravariant</div><div class="line"></div><div class="line">p = javaP;//需要__covariant</div></pre></td></tr></table></figure>
+<h2 id="kindof"><a href="#kindof" class="headerlink" title="__kindof"></a><em>__kindof</em></h2><p><strong>__kindof:表示当前类或者它子类</strong>：在调用的时候,很清楚的知道返回类型。</p>
+<p><strong>__kindof书写格式:</strong></p>
+<pre><code>放在类型前面,表示修饰这个类型`(__kindof Person *)`
+</code></pre><p>下面我们通过代码演示说明一下：</p>
+<p>首先创建一个Person类，然后创建一个集成它的SonPerson子类。</p>
+<p><strong>Person.h</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@interface Person : NSObject</div><div class="line"></div><div class="line">// 会自动识别当前对象的类</div><div class="line">// SonPerson</div><div class="line">//+ (instancetype)person;</div><div class="line"></div><div class="line">///id类型</div><div class="line">// + (id)person;</div><div class="line"></div><div class="line">/// Person类型</div><div class="line">// + (Person * )person;</div><div class="line"></div><div class="line">// __kindof Person *:表示可以是Person类或者它的子类</div><div class="line">+ (__kindof Person *)person;</div><div class="line"></div><div class="line">// 仅仅表示只能是Person类</div><div class="line">+ (Person *)person1;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p><strong>Person.m</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#import &quot;Person.h&quot;</div><div class="line"></div><div class="line">@implementation Person</div><div class="line">// id坏处: 1.不能在编译的时候检查真实类型</div><div class="line">//        2.返回值,没有提示</div><div class="line">+ (id)person</div><div class="line">&#123;</div><div class="line">    return [[self alloc] init];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>下面进行操作演示：</p>
+<ul>
+<li>当Person.h里面的是</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">///id类型</div><div class="line">// + (id)person;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// id坏处: 1.不能在编译的时候检查真实类型</div><div class="line">//        2.返回值,没有提示</div><div class="line">NSString *p = [SonPerson person];//此时就什么类型都可以指向</div><div class="line">[SonPerson person];//调用的方法返回的是id类型，没有提示，不知道是什么</div></pre></td></tr></table></figure>
+<ul>
+<li>当Person.h里面的是</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">///Person类型</div><div class="line">// 仅仅表示只能是Person类</div><div class="line">// + (Person * )person;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SonPerson *p = [SonPerson person];//会报警告，说类型不匹配</div></pre></td></tr></table></figure>
+<ul>
+<li>当Person.h里面的是</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">// 会自动识别当前对象的类</div><div class="line">// SonPerson</div><div class="line">+ (instancetype)person;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SonPerson *p = [SonPerson person];//不会报警告</div><div class="line">[SonPerson person];//这个时候也不会有提示告诉你person返回的是哪种类型</div></pre></td></tr></table></figure>
+<ul>
+<li>当Person.h里面的是</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// __kindof Person *:表示可以是Person类或者它的子类</div><div class="line">+ (__kindof Person *)person;</div></pre></td></tr></table></figure>
+<p><strong>结果：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[SonPerson person];//这个时候会提示是返回的Person类</div><div class="line">NSString *p = [SonPerson person];//此时就会报警告。说类型不匹配</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/20/JavaScript运动事件-中级篇/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1709,162 +1937,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/07/JavaScript基础学习（二）/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Feyddy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="清风明心">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/07/JavaScript基础学习（二）/" itemprop="url">
-                  JavaScript基础学习（二）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-07T20:39:46+08:00">
-                2017-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/03/07/JavaScript基础学习（二）/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/07/JavaScript基础学习（二）/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/03/07/JavaScript基础学习（二）/" class="leancloud_visitors" data-flag-title="JavaScript基础学习（二）">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="JavaScript基础知识点（二）"><a href="#JavaScript基础知识点（二）" class="headerlink" title="JavaScript基础知识点（二）"></a>JavaScript基础知识点（二）</h1><p>本文主要学习函数和数组两个。知识点见下图：</p>
-<p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fde9kt7wpnj30w00dgac2.jpg" alt=""></p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/07/JavaScript基础学习（二）/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1909,7 +1981,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">77</span>
+              <span class="site-state-item-count">78</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1926,7 +1998,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">292</span>
+                <span class="site-state-item-count">298</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
