@@ -107,7 +107,7 @@ nullable书写规范:123456// 方式一:@property (nonatomic, stron">
 nullable作用:表示可以为空
 nullable书写规范:123456// 方式一:@property (nonatomic, stron">
 <meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fdu7n559ycj30m801u0su.jpg">
-<meta property="og:updated_time" content="2017-03-21T13:02:42.000Z">
+<meta property="og:updated_time" content="2017-03-21T13:12:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS9新特性回顾">
 <meta name="twitter:description" content="iOS9新特性常见关键字iOS9新出的关键字:用来修饰属性,或者方法的参数,方法的返回值。
@@ -465,6 +465,7 @@ nullable书写规范:123456// 方式一:@property (nonatomic, stron">
 <p><strong>注意:iOS9新出关键字<code>nonnull</code>,<code>nullable</code>只能修饰对象,不能修饰基本数据类型</strong></p>
 <h3 id="nullable"><a href="#nullable" class="headerlink" title="nullable"></a>nullable</h3><p>作用:表示可以为空</p>
 <p>nullable书写规范:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 方式一:</div><div class="line">@property (nonatomic, strong, nullable) NSString *name;</div><div class="line">// 方式二:</div><div class="line">@property (nonatomic, strong) NSString *_Nullable name;</div><div class="line">// 方式三:</div><div class="line">@property (nonatomic, strong) NSString *__nullable name;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <h3 id="nonnull"><a href="#nonnull" class="headerlink" title="nonnull"></a>nonnull</h3><p>non:非 null:空</p>
 <p>书写格式:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong, nonnull) NSString *icon;</div><div class="line"></div><div class="line">@property (nonatomic, strong) NSString * _Nonnull icon;</div><div class="line"></div><div class="line">@property (nonatomic, strong) NSString * __nonnull icon;</div></pre></td></tr></table></figure>
