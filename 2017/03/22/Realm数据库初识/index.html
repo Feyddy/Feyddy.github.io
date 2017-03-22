@@ -1,0 +1,1127 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Realm," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Realm数据库Realm是一款针对移动设备设计的数据库，已经涵盖所有主流开发平台，并且全部代码开源，地址如下：地址
+Realm特性
+移动设备支持：Realm是第一个针对手机平板和可穿戴设备设计的数据库，基本全平台支持。
+简单：Realm的安装和接入简易，不同于Core Data,不需要开发者配置模型层结构，从开始接触到上手使用，只需要短短几分钟时间。
+现代：关系型数据库，支持泛型。
+快速：官方称">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Realm数据库初识">
+<meta property="og:url" content="http://yoursite.com/2017/03/22/Realm数据库初识/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="Realm数据库Realm是一款针对移动设备设计的数据库，已经涵盖所有主流开发平台，并且全部代码开源，地址如下：地址
+Realm特性
+移动设备支持：Realm是第一个针对手机平板和可穿戴设备设计的数据库，基本全平台支持。
+简单：Realm的安装和接入简易，不同于Core Data,不需要开发者配置模型层结构，从开始接触到上手使用，只需要短短几分钟时间。
+现代：关系型数据库，支持泛型。
+快速：官方称">
+<meta property="og:updated_time" content="2017-03-22T12:46:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Realm数据库初识">
+<meta name="twitter:description" content="Realm数据库Realm是一款针对移动设备设计的数据库，已经涵盖所有主流开发平台，并且全部代码开源，地址如下：地址
+Realm特性
+移动设备支持：Realm是第一个针对手机平板和可穿戴设备设计的数据库，基本全平台支持。
+简单：Realm的安装和接入简易，不同于Core Data,不需要开发者配置模型层结构，从开始接触到上手使用，只需要短短几分钟时间。
+现代：关系型数据库，支持泛型。
+快速：官方称">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '5BTIUCSDVY',
+      apiKey: '1a9aadc2a805dcd3529b21c3d224af27',
+      indexName: 'blog_Feyddy',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+</script>
+
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/22/Realm数据库初识/"/>
+
+
+
+
+
+  <title> Realm数据库初识 | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/22/Realm数据库初识/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Realm数据库初识
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-22T20:45:27+08:00">
+                2017-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/22/Realm数据库初识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/22/Realm数据库初识/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/22/Realm数据库初识/" class="leancloud_visitors" data-flag-title="Realm数据库初识">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Realm数据库"><a href="#Realm数据库" class="headerlink" title="Realm数据库"></a>Realm数据库</h1><p>Realm是一款针对移动设备设计的数据库，已经涵盖所有主流开发平台，并且全部代码开源，地址如下：<br><a href="https://github.com/realm/realm-cocoa" target="_blank" rel="external">地址</a></p>
+<h1 id="Realm特性"><a href="#Realm特性" class="headerlink" title="Realm特性"></a>Realm特性</h1><ul>
+<li>移动设备支持：Realm是第一个针对手机平板和可穿戴设备设计的数据库，基本全平台支持。</li>
+<li>简单：Realm的安装和接入简易，不同于Core Data,不需要开发者配置模型层结构，从开始接触到上手使用，只需要短短几分钟时间。</li>
+<li>现代：关系型数据库，支持泛型。</li>
+<li>快速：官方称比SQLite的常规操作要快速。</li>
+</ul>
+<h1 id="Realm学习资源"><a href="#Realm学习资源" class="headerlink" title="Realm学习资源"></a>Realm学习资源</h1><p>官方文档:<a href="https://realm.io/cn/docs/objc/latest/" target="_blank" rel="external">中文文档</a></p>
+<p>Realm Browser:一款MAC平台的工具</p>
+<p>Xcode插件（详情看官方文档里面有介绍）</p>
+<!--more>
+
+# Realm入门小案例
+
+需求说明：
+
+- 创建一个数据模型，记录宠物狗的名字和年龄；
+- 创建一个数据模型，记录主人的名字和主任持有的宠物狗对象；
+- 查询年龄大于2岁的宠物狗；
+
+首先创建一个宠物狗模型：需要继承`RLMObject`
+
+Dog.h
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#import &lt;Realm/Realm.h&gt;</div><div class="line"></div><div class="line">@interface Dog : RLMObject</div><div class="line"></div><div class="line">//Realm官网不是建议我们对属性进行相关的限制说明,如;@property (nonatomic, copy)</div><div class="line"></div><div class="line">@property NSString * name;</div><div class="line"></div><div class="line">@property NSInteger age;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>Dog.m没有特殊情况不需要操作</p>
+<p>其次创建一个主人的模型：需要继承<code>RLMObject</code></p>
+<p>Master.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#import &lt;Realm/Realm.h&gt;</div><div class="line">#import &quot;Dog.h&quot;</div><div class="line"></div><div class="line">//注意：这里的必须写上你需要类型Dog</div><div class="line">RLM_ARRAY_TYPE(Dog);</div><div class="line"></div><div class="line">@interface Master : RLMObject</div><div class="line">@property NSString *name;</div><div class="line">@property RLMArray&lt;Dog*&gt;&lt;Dog&gt; *dogs;//数组里面的对象也要详细写明类型&lt;Dog*&gt;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>Master.m没有特殊情况不需要操作</p>
+<p>主控制器中实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &lt;Realm.h&gt;</div><div class="line">#import &quot;Dog.h&quot;</div><div class="line">#import &quot;Master.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    //创建一个数据库，记录宠物的姓名和年龄</div><div class="line">    Dog * dog = [[Dog alloc] init];</div><div class="line">    dog.name = @&quot;haohao&quot;;</div><div class="line">    dog.age = 24;</div><div class="line"></div><div class="line"></div><div class="line">    //添加一个主人的记录</div><div class="line">    Master * master = [[Master alloc] init];</div><div class="line">    master.name = @&quot;Feyddy&quot;;</div><div class="line">    [master.dogs addObject:dog];</div><div class="line">    NSLog(@&quot;The info of master = %@&quot;,master);</div><div class="line">    NSLog(@&quot;%@ has a dog called %@&quot;,master.name,dog.name);</div><div class="line"></div><div class="line"></div><div class="line">    //查询年龄小于4的宠物名字</div><div class="line">    RLMResults * results = [Dog objectsWhere:@&quot;age &gt;4&quot;];</div><div class="line">    NSLog(@&quot;%@&quot;,results);//此时查不到数据，因为还没有将数据添加到数据库中</div><div class="line"></div><div class="line">    //将宠物添加到数据库</div><div class="line">    RLMRealm * r = [RLMRealm defaultRealm];</div><div class="line"></div><div class="line">    ///方法一：在block里面进行数据库的读写操作</div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        [r addObject:dog];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    //Reaml的查询是动态的，只要你的数据库里面的数据发生改变，就会被通知到修改,所以此时不需要再进行查询的操作了。里面的数据会直接变化。</div><div class="line">    NSLog(@&quot;%@&quot;,results);</div><div class="line"></div><div class="line">//    ///方法二：在两个方法之间：beginWriteTransaction和commitWriteTransaction</div><div class="line">//    [r beginWriteTransaction];</div><div class="line">//    </div><div class="line">//    [r commitWriteTransaction];</div><div class="line"></div><div class="line">    //线程辅助</div><div class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">        RLMRealm * r = [RLMRealm defaultRealm];</div><div class="line">        [r beginWriteTransaction];</div><div class="line"></div><div class="line">        [r commitWriteTransaction];</div><div class="line">    &#125;);  </div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<h1 id="Realm数据模型"><a href="#Realm数据模型" class="headerlink" title="Realm数据模型"></a>Realm数据模型</h1><p>Realm如何实现数据库的基本功能</p>
+<p>数据模型类：<code>RLMObject</code>。它和<code>NSManagedObject</code>的共同点，都是不能重写属性的setter和getter方法的。</p>
+<p><code>RLMObject</code> - 支持忽略属性；</p>
+<p><code>NSManagedObject</code> - 如果需要直接通过属性来调用数据的话，需要@dynamic关键词修饰属性；</p>
+<h2 id="论坛帖子属性案例"><a href="#论坛帖子属性案例" class="headerlink" title="论坛帖子属性案例"></a>论坛帖子属性案例</h2><p>论坛帖子属性：标题，作者，时间，内容，浏览量，回帖，置顶。</p>
+<p>首先创建一个帖子类:Post</p>
+<p>Post.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">#import &lt;Realm/Realm.h&gt;</div><div class="line"></div><div class="line">@class User;//避免循环引用</div><div class="line"></div><div class="line">RLM_ARRAY_TYPE(Post);</div><div class="line"></div><div class="line">@interface Post : RLMObject</div><div class="line"></div><div class="line">//id主键设置,主键一旦设置是不可以更改的</div><div class="line">@property NSString *indentifier;</div><div class="line"></div><div class="line">//title 标题</div><div class="line">@property NSString *title;</div><div class="line"></div><div class="line">//author 作为rlm对象 一对一，一对多</div><div class="line">//@property (readonly) RLMLinkingObjects *author;//此时返回的是一个集合</div><div class="line">@property User *author;</div><div class="line"></div><div class="line">//time 时间戳</div><div class="line">@property NSDate *timestamp;</div><div class="line"></div><div class="line">//content 内容</div><div class="line">@property NSData *content;</div><div class="line"></div><div class="line"></div><div class="line">/// 注意常量在realm中是不能为空的所以改成NSNumber &lt;RLMInt&gt;*，而不用NSInteger</div><div class="line"></div><div class="line">//look 浏览量</div><div class="line">@property NSNumber &lt;RLMInt&gt;* look;</div><div class="line"></div><div class="line">//置顶</div><div class="line">@property NSNumber &lt;RLMBool&gt;* isTop;</div><div class="line"></div><div class="line">//comments 回帖</div><div class="line">@property RLMArray&lt;Post *&gt;&lt;Post&gt; * comments;</div><div class="line"></div><div class="line">//不支持CGFloat，请使用float或者double</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>Post.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">#import &quot;Post.h&quot;</div><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@implementation Post</div><div class="line"></div><div class="line">//对属性的存在进行一些相关的设置</div><div class="line"></div><div class="line">///1.可空属性的设置，决定属性是否可以为nil</div><div class="line"></div><div class="line">+ (NSArray&lt;NSString *&gt; *)requiredProperties</div><div class="line">&#123;</div><div class="line">    //在里面设置的就是必须不能为空的属性</div><div class="line">    return @[@&quot;title&quot;];</div><div class="line">&#125;</div><div class="line"></div><div class="line">///2.忽略属性</div><div class="line">+ (NSArray&lt;NSString *&gt; *)ignoredProperties</div><div class="line">&#123;</div><div class="line">    //在里面设置的就是不写入数据库的属性，它将作为对象的属性进行操作。</div><div class="line">    return @[];</div><div class="line">&#125;</div><div class="line"></div><div class="line">/////3.属性的反向关系，例如帖子的作者和作者的帖子</div><div class="line">//+ (NSDictionary&lt;NSString *,RLMPropertyDescriptor *&gt; *)linkingObjectsProperties</div><div class="line">//&#123;</div><div class="line">//    </div><div class="line">//    return @&#123;</div><div class="line">//             @&quot;author&quot;:[RLMPropertyDescriptor descriptorWithClass:User.class propertyName:@&quot;posts&quot;]</div><div class="line">//             &#125;;//此时必须将author属性类型改成RLMLinkingObjects,而且必须改成readonly，否则会有异常</div><div class="line">//    </div><div class="line">//&#125;</div><div class="line"></div><div class="line">///4.默认值</div><div class="line"></div><div class="line">+ (NSDictionary *)defaultPropertyValues</div><div class="line">&#123;</div><div class="line">    return @&#123;</div><div class="line">             @&quot;look&quot;: @12</div><div class="line">             &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">///5.索引属性  支持NSString，NSNumber(包括常量)，NSDate</div><div class="line">+ (NSArray&lt;NSString *&gt; *)indexedProperties</div><div class="line">&#123;</div><div class="line">    return @[@&quot;title&quot;,@&quot;timestamp&quot;];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">///6.主键的设置</div><div class="line"></div><div class="line">+ (NSString *)primaryKey</div><div class="line">&#123;</div><div class="line">    return @&quot;indentifier&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p><em>然后创建一个User作者类</em></p>
+<p>User.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#import &lt;Realm/Realm.h&gt;</div><div class="line">#import &quot;Post.h&quot;</div><div class="line"></div><div class="line">@interface User : RLMObject</div><div class="line"></div><div class="line">@property NSString *nickName;</div><div class="line"></div><div class="line">////一对多需要使用RLMArray</div><div class="line">//@property RLMArray&lt;Post *&gt;&lt;Post&gt; *posts;</div><div class="line"></div><div class="line">//反向关系</div><div class="line">@property (readonly) RLMLinkingObjects *posts;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>User.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@implementation User</div><div class="line">///3.属性的反向关系，例如帖子的作者和作者的帖子</div><div class="line">+ (NSDictionary&lt;NSString *,RLMPropertyDescriptor *&gt; *)linkingObjectsProperties</div><div class="line">&#123;</div><div class="line">    return @&#123;</div><div class="line">             @&quot;posts&quot;:[RLMPropertyDescriptor descriptorWithClass:Post.class propertyName:@&quot;author&quot;]</div><div class="line">             &#125;;//此时必须将posts属性类型改成RLMLinkingObjects,而且必须改成readonly，否则会有异常</div><div class="line"></div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p><strong>注意：反向关系设置一个就可以了。</strong></p>
+<p>主控制器实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &lt;Realm.h&gt;</div><div class="line">#import &quot;Post.h&quot;</div><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    //因为设置了标题为非空属性，所以我们可以用下面的方法设置一下</div><div class="line"></div><div class="line">    Post *post = [[Post alloc] initWithValue:@&#123;@&quot;title&quot;:@&quot;untitled&quot;&#125;];</div><div class="line"></div><div class="line"></div><div class="line">    User *user = [[User alloc] init];</div><div class="line">    user.nickName = @&quot;Feyddy&quot;;</div><div class="line"></div><div class="line">    post.author = user;//因为User设置了反向关系，所以user的post属性也会指向post的author属性</div><div class="line"></div><div class="line">    //数据库的读写</div><div class="line">    RLMRealm *r = [RLMRealm defaultRealm];</div><div class="line"></div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line"></div><div class="line">        [r addObject:post];</div><div class="line">        [r addObject:user];</div><div class="line"></div><div class="line">        NSLog(@&quot;%@&quot;,user.posts);</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">2017-03-22 15:49:34.384 Realm[12929:245389] RLMResults &lt;0x7f975b60fb00&gt; (</div><div class="line">	[0] Post &#123;</div><div class="line">		indentifier = (null);</div><div class="line">		title = untitled;</div><div class="line">		author = User &#123;</div><div class="line">			nickName = Feyddy;</div><div class="line">		&#125;;</div><div class="line">		timestamp = (null);</div><div class="line">		content = &lt;(null) — 0 total bytes&gt;;</div><div class="line">		look = 12;</div><div class="line">		isTop = (null);</div><div class="line">		comments = RLMArray &lt;0x6000002e2600&gt; (</div><div class="line"></div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>可以看出，user与post反向关联了，因为里面出现了<code>look = 12;</code>。这个我只是在post里面设置了，但是打印user的时候，他出来了。</p>
+<h1 id="Realm数据库的增删改查"><a href="#Realm数据库的增删改查" class="headerlink" title="Realm数据库的增删改查"></a>Realm数据库的增删改查</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &lt;Realm.h&gt;</div><div class="line">#import &quot;Post.h&quot;</div><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];    </div><div class="line"></div><div class="line">    Post *post = [[Post alloc] initWithValue:@&#123;@&quot;title&quot;:@&quot;untitled&quot;&#125;];</div><div class="line">    post.indentifier = [[NSDate date] description];//防止每次创建的时候用的都是同一个主键名，但是主键是不能一样的。</div><div class="line">    RLMRealm *r = [RLMRealm defaultRealm];</div><div class="line"></div><div class="line">    //写入数据库</div><div class="line">    //以后的增删查改必须在transactionWithBlock里面进行</div><div class="line"></div><div class="line">    //增</div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        [r addObject:post];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    //删</div><div class="line">//    [r transactionWithBlock:^&#123;</div><div class="line">//        [r deleteObject:post];</div><div class="line">//        [r deleteAllObjects];//清空数据库，但是realm数据库文件并不会减小，为了给以后添加数据预留空间</div><div class="line">//    &#125;];</div><div class="line"></div><div class="line"></div><div class="line">    //改</div><div class="line">    ///1.直接更改</div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        post.timestamp = [NSDate date];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    ///2.通过主键更改</div><div class="line">    Post *postNew = [[Post alloc] init];</div><div class="line">    postNew.title = @&quot;newTitle&quot;;</div><div class="line">    postNew.indentifier = @&quot;1000&quot;;//修改主键为2017-03-22 08:54:30 +0000的</div><div class="line">    postNew.timestamp = [NSDate date];</div><div class="line"></div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        [r addOrUpdateObject:postNew];//这个方法就是，如果上面你写的主键名如果数据库中存在的话，那么就修改它；如果不存在就直接将这条数据添加进数据库</div><div class="line">    &#125;];</div><div class="line"></div><div class="line"></div><div class="line">    ///3.批量修改</div><div class="line">    RLMResults *allPostResults = [Post allObjects];</div><div class="line"></div><div class="line">    for (int  i =0;  i &lt; 20; i++) &#123;</div><div class="line">        Post *loopPost = [[Post alloc] initWithValue:@&#123;@&quot;title&quot;:@&quot;aaa&quot;&#125;];</div><div class="line">        loopPost.indentifier = [NSString stringWithFormat:@&quot;%d&quot;,i+100000];</div><div class="line"></div><div class="line">        [r transactionWithBlock:^&#123;</div><div class="line">            [post.comments addObject:loopPost];</div><div class="line">        &#125;];</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        [allPostResults setValue:@10000 forKey:@&quot;look&quot;];</div><div class="line">        [allPostResults setValue:[NSDate date] forKey:@&quot;timestamp&quot;];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //查</div><div class="line">    RLMResults *results = [Post objectsWhere:@&quot;indentifier == %@&quot;,@&quot;1000&quot;];</div><div class="line">    Post *postResult = [results firstObject];</div><div class="line"></div><div class="line">    NSLog(@&quot;before cahnge postResult.title = %@ &quot;,postResult.title);</div><div class="line"></div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        post.title = @&quot;Test for change&quot;;//这个时候查询的结果也会随之修改</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    NSLog(@&quot;after search postResult.title = %@&quot;,postResult.title);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //综合查询</div><div class="line"></div><div class="line">    ///1.检索所有浏览量大于100的帖子</div><div class="line"></div><div class="line">    RLMResults *postThatViewBiggerThan100 = [Post objectsWhere:@&quot;look &gt; 100&quot;];</div><div class="line"></div><div class="line"></div><div class="line">    ///2.检索浏览量介于10到100的帖子</div><div class="line"></div><div class="line">    RLMResults *postThatViewBetween10And100 = [Post objectsWhere:@&quot;look &gt; 10 AND look &lt; 100&quot;];</div><div class="line"></div><div class="line">    RLMResults *postThatViewBetween10And100_2 = [Post objectsWhere:@&quot;look BETWEEN &#123;10,100&#125;&quot;];</div><div class="line"></div><div class="line">    ///3.检索标题中含有“Test”的帖子,[C]表示不区分大小写</div><div class="line"></div><div class="line">    RLMResults *postThatTitleContainsTest = [Post objectsWhere:@&quot;title CONTAINS[C] &apos;Test&apos;&quot;];</div><div class="line"></div><div class="line"></div><div class="line">    ///4.检索评论量大于10且浏览量大于100的帖子</div><div class="line">    RLMResults *commentsResult = [Post objectsWhere:@&quot;comments.@count &gt;10&quot;];</div><div class="line"></div><div class="line">    RLMResults *finalResult = [commentsResult objectsWhere:@&quot;look &gt; 100&quot;];</div><div class="line"></div><div class="line"></div><div class="line">    //查询结果的排序</div><div class="line">    //按时间排序</div><div class="line">    [finalResult sortedResultsUsingKeyPath:@&quot;timestamp&quot; ascending:NO];</div><div class="line"></div><div class="line">    NSLog(@&quot;fina = %@&quot;,finalResult);</div><div class="line"></div><div class="line">    //分页</div><div class="line">    //Realm没有分页功能</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p><em>注意：Realm没有分页功能</em></p>
+<h1 id="Realm的配置"><a href="#Realm的配置" class="headerlink" title="Realm的配置"></a>Realm的配置</h1><p>Realm其实就是默认的一个数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &lt;Realm.h&gt;</div><div class="line">#import &quot;Post.h&quot;</div><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line">@property (nonatomic,strong) RLMRealm *realm;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    //RLMRealm：创建的其实是一个默认的数据库</div><div class="line">    RLMRealm *r = [RLMRealm defaultRealm];</div><div class="line"></div><div class="line">    [Post allObjects];</div><div class="line">    ///等价于</div><div class="line">    [Post allObjectsInRealm:r];</div><div class="line"></div><div class="line"></div><div class="line">    //多个数据库并存</div><div class="line">    ///配置对象</div><div class="line">    ///创建数据库主要设置RLMRealmConfiguration，设置数据库名字和存储地方。把路径以及数据库名字拼接好字符串，赋值给fileURL即可。</div><div class="line">    NSArray *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);</div><div class="line">    NSString *path = [docPath objectAtIndex:0];</div><div class="line">    NSString *filePath = [path stringByAppendingPathComponent:@&quot;&quot;];</div><div class="line">    NSLog(@&quot;数据库目录 = %@&quot;,filePath);</div><div class="line"></div><div class="line">    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">    config.fileURL = [NSURL URLWithString:filePath];</div><div class="line"></div><div class="line">    /**</div><div class="line">     objectClasses这个属性是用来控制对哪个类能够存储在指定 Realm 数据库中做出限制。例如，如果有两个团队分别负责开发您应用中的不同部分，并且同时在应用内部使用了 Realm 数据库，那么您肯定不希望为它们协调进行数据迁移您可以通过设置RLMRealmConfiguration的 objectClasses属性来对类做出限制。objectClasses一般可以不用设置。</div><div class="line">     */</div><div class="line">    //config.objectClasses = @[MyClass.class, MyOtherClass.class];</div><div class="line">    config.readOnly = NO;</div><div class="line">    int currentVersion = 1.0;</div><div class="line">    config.schemaVersion = currentVersion;</div><div class="line">    config.migrationBlock = ^(RLMMigration *migration , uint64_t oldSchemaVersion) &#123;</div><div class="line">        // 这里是设置数据迁移的block</div><div class="line">        if (oldSchemaVersion &lt; currentVersion) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    ///设置默认的数据库是自己刚刚创建的数据库</div><div class="line">    [RLMRealmConfiguration setDefaultConfiguration:config];</div><div class="line">    self.realm = [RLMRealm realmWithConfiguration:config error:nil];</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //内存数据库</div><div class="line">    /**</div><div class="line">     通常情况下，Realm 数据库是存储在硬盘中的，但是您能够通过设置inMemoryIdentifier而不是设置RLMRealmConfiguration中的 fileURL属性，以创建一个完全在内存中运行的数据库。内存数据库在每次程序运行期间都不会保存数据。但是，这不会妨碍到 Realm 的其他功能，包括查询、关系以及线程安全。如果需要一种灵活的数据读写但又不想储存数据的方式的话，那么可以选择用内存数据库</div><div class="line"></div><div class="line">     使用内存数据库需要注意的是：</div><div class="line"></div><div class="line">     内存数据库会在临时文件夹中创建多个文件，用来协调处理诸如跨进程通知之类的事务。 实际上没有任何的数据会被写入到这些文件当中，除非操作系统由于内存过满需要清除磁盘上的多余空间。</div><div class="line"></div><div class="line">     如果某个内存 Realm 数据库实例没有被引用，那么所有的数据就会被释放。所以必须要在应用的生命周期内保持对Realm内存数据库的强引用，以避免数据丢失。</div><div class="line">     */</div><div class="line">    RLMRealmConfiguration *config2 = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">    config2.inMemoryIdentifier = @&quot;MyInMemoryRealm&quot;;</div><div class="line">    self.realm = [RLMRealm realmWithConfiguration:config2 error:nil];//必须是强引用，否则释放点数据就没了。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //数据库写入通知</div><div class="line">    /// 获取 Realm 通知</div><div class="line">    RLMNotificationToken *token = [self.realm addNotificationBlock:^(NSString *notification, RLMRealm * realm) &#123;</div><div class="line">        //[myViewController updateUI];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line"></div><div class="line">    ///Realm 实例将会在每次写入事务提交后，给其他线程上的 Realm 实例发送通知。一般控制器如果想一直持有这个通知，就需要申请一个属性，strong持有这个通知。</div><div class="line"></div><div class="line"></div><div class="line">    /// 观察 RLMResults 通知</div><div class="line">    //__weak typeof(self) weakSelf = self;</div><div class="line">    RLMNotificationToken * notificationToken = [[Post objectsWhere:@&quot;age &gt; 5&quot;] addNotificationBlock:^(RLMResults&lt;Post *&gt; *results, RLMCollectionChange *change, NSError *error) &#123;</div><div class="line">        if (error) &#123;</div><div class="line">            NSLog(@&quot;Failed to open Realm on background worker: %@&quot;, error);</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //UITableView *tableView = weakSelf.tableView;</div><div class="line">        // 对于变化信息来说，检索的初次运行将会传递 nil</div><div class="line">        if (!change) &#123;</div><div class="line">            //[tableView reloadData];</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 检索结果被改变，因此将它们应用到 UITableView 当中</div><div class="line">        /*</div><div class="line">        [tableView beginUpdates];</div><div class="line">        [tableView deleteRowsAtIndexPaths:[changes deletionsInSection:0]</div><div class="line">                         withRowAnimation:UITableViewRowAnimationAutomatic];</div><div class="line">        [tableView insertRowsAtIndexPaths:[changes insertionsInSection:0]</div><div class="line">                         withRowAnimation:UITableViewRowAnimationAutomatic];</div><div class="line">        [tableView reloadRowsAtIndexPaths:[changes modificationsInSection:0]</div><div class="line">                         withRowAnimation:UITableViewRowAnimationAutomatic];</div><div class="line">        [tableView endUpdates];</div><div class="line">         */</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    /*</div><div class="line">     我们还能进行更加细粒度的通知，用集合通知就可以做到。</div><div class="line"></div><div class="line">     集合通知是异步触发的，首先它会在初始结果出现的时候触发，随后当某个写入事务改变了集合中的所有或者某个对象的时候，通知都会再次触发。这些变化可以通过传递到通知闭包当的 RLMCollectionChange参数访问到。这个对象当中包含了受 deletions、insertions和 modifications 状态所影响的索引信息。</div><div class="line"></div><div class="line">     集合通知对于 RLMResults、RLMArray、RLMLinkingObjects 以及 RLMResults 这些衍生出来的集合来说，当关系中的对象被添加或者删除的时候，一样也会触发这个状态变化。</div><div class="line">     */</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //数据库加密</div><div class="line">    /**</div><div class="line">     Realm 支持在创建 Realm 数据库时采用64位的密钥对数据库文件进行 AES-256+SHA2 加密。这样硬盘上的数据都能都采用AES-256来进行加密和解密，并用 SHA-2 HMAC 来进行验证。每次您要获取一个 Realm 实例时，您都需要提供一次相同的密钥。</div><div class="line">     */</div><div class="line"></div><div class="line">    /// 产生随机密钥</div><div class="line">    NSMutableData *key = [NSMutableData dataWithLength:64];</div><div class="line">    SecRandomCopyBytes(kSecRandomDefault, key.length, (uint8_t *)key.mutableBytes);</div><div class="line"></div><div class="line">    /// 打开加密文件</div><div class="line">    RLMRealmConfiguration *configs = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">    configs.encryptionKey = key;</div><div class="line">    NSError *error = nil;</div><div class="line">    RLMRealm *realm = [RLMRealm realmWithConfiguration:config error:&amp;error];</div><div class="line">    if (!realm) &#123;</div><div class="line">        // 如果密钥错误，`error` 会提示数据库不可访问</div><div class="line">        NSLog(@&quot;Error opening realm: %@&quot;, error);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //数据模型迁移</div><div class="line">    /**</div><div class="line">     数据库存储方面的增删改查应该都没有什么大问题，比较蛋疼的应该就是数据迁移了。在版本迭代过程中，很可能会发生表的新增，删除，或者表结构的变化，如果新版本中不做数据迁移，用户升级到新版，很可能就直接crash了。对比Core Data的数据迁移比较复杂，Realm的迁移实在太简单了.</div><div class="line"></div><div class="line">     新增删除表，Realm不需要做迁移</div><div class="line">     增删除字段，Realm不需要做迁移。Realm 会自行检测新增和需要移除的属性，然后自动更新硬盘上的数据库架构。</div><div class="line">     */</div><div class="line"></div><div class="line">    RLMRealmConfiguration *config4 = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">    config4.schemaVersion = 2;</div><div class="line">    config4.migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion)</div><div class="line">    &#123;</div><div class="line">        // enumerateObjects:block: 遍历了存储在 Realm 文件中的每一个“Person”对象</div><div class="line">        [migration enumerateObjects:Post.className block:^(RLMObject *oldObject, RLMObject *newObject) &#123;</div><div class="line">            // 只有当 Realm 数据库的架构版本为 0 的时候，才添加 “fullName” 属性</div><div class="line">            if (oldSchemaVersion &lt; 1) &#123;</div><div class="line">                newObject[@&quot;fullName&quot;] = [NSString stringWithFormat:@&quot;%@ %@&quot;, oldObject[@&quot;firstName&quot;], oldObject[@&quot;lastName&quot;]];</div><div class="line">            &#125;</div><div class="line">            // 只有当 Realm 数据库的架构版本为 0 或者 1 的时候，才添加“email”属性</div><div class="line">            if (oldSchemaVersion &lt; 2) &#123;</div><div class="line">                newObject[@&quot;email&quot;] = @&quot;&quot;;</div><div class="line">            &#125;</div><div class="line">            // 替换属性名</div><div class="line">            if (oldSchemaVersion &lt; 3) &#123; // 重命名操作应该在调用 `enumerateObjects:` 之外完成</div><div class="line">                [migration renamePropertyForClass:Post.className oldName:@&quot;yearsSinceBirth&quot; newName:@&quot;age&quot;]; &#125;</div><div class="line">        &#125;];</div><div class="line">    &#125;;</div><div class="line">    [RLMRealmConfiguration setDefaultConfiguration:config];</div><div class="line">    // 现在我们已经成功更新了架构版本并且提供了迁移闭包，打开旧有的 Realm 数据库会自动执行此数据迁移，然后成功进行访问</div><div class="line">    [RLMRealm defaultRealm];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+-->
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Realm/" rel="tag"># Realm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/21/Runtime常用方法总结/" rel="next" title="Runtime常用方法总结">
+                <i class="fa fa-chevron-left"></i> Runtime常用方法总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       <section id="comments">
+   <!-- 多说评论框 start -->
+<div id="ds-thread" class="ds-thread" data-thread-key="2017/03/22/Realm数据库初识/" data-title="Realm数据库初识" data-url="http://yoursite.com/2017/03/22/Realm数据库初识/" }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feyddy"};
+  (function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">80</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">300</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Realm数据库"><span class="nav-number">1.</span> <span class="nav-text">Realm数据库</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Realm特性"><span class="nav-number">2.</span> <span class="nav-text">Realm特性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Realm学习资源"><span class="nav-number">3.</span> <span class="nav-text">Realm学习资源</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feyddy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
