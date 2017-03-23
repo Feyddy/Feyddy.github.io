@@ -1,0 +1,1202 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python新手入门," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="基础知识数字和表达式的注意点整数除法(/)1/2 结果是0。这个其实是类似与OC语的取整运算。那么怎么才能算出小数呢？
+有两种方法：
+
+运用实数（包含小数点的十进制数，如：10.0）而不是整数进行运算。实数在Python中被称为浮点数，两者相除，如果有一个浮点数，结果就是浮点数，如：1.0/2、1 / 2.0、1/2.，结果都是0.5；
+让python改变除法的执行方式。可以通过在运行除法之前，添">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记（一）">
+<meta property="og:url" content="http://yoursite.com/2017/03/23/Python学习笔记（一）/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="基础知识数字和表达式的注意点整数除法(/)1/2 结果是0。这个其实是类似与OC语的取整运算。那么怎么才能算出小数呢？
+有两种方法：
+
+运用实数（包含小数点的十进制数，如：10.0）而不是整数进行运算。实数在Python中被称为浮点数，两者相除，如果有一个浮点数，结果就是浮点数，如：1.0/2、1 / 2.0、1/2.，结果都是0.5；
+让python改变除法的执行方式。可以通过在运行除法之前，添">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1fdwvvecctqj30gb041q3c.jpg">
+<meta property="og:image" content="https://ww1.sinaimg.cn/large/006tNc79gy1fdx6ag5ejej30hb0czjuq.jpg">
+<meta property="og:updated_time" content="2017-03-23T15:12:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记（一）">
+<meta name="twitter:description" content="基础知识数字和表达式的注意点整数除法(/)1/2 结果是0。这个其实是类似与OC语的取整运算。那么怎么才能算出小数呢？
+有两种方法：
+
+运用实数（包含小数点的十进制数，如：10.0）而不是整数进行运算。实数在Python中被称为浮点数，两者相除，如果有一个浮点数，结果就是浮点数，如：1.0/2、1 / 2.0、1/2.，结果都是0.5；
+让python改变除法的执行方式。可以通过在运行除法之前，添">
+<meta name="twitter:image" content="https://ww2.sinaimg.cn/large/006tKfTcly1fdwvvecctqj30gb041q3c.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '5BTIUCSDVY',
+      apiKey: '1a9aadc2a805dcd3529b21c3d224af27',
+      indexName: 'blog_Feyddy',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+</script>
+
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/23/Python学习笔记（一）/"/>
+
+
+
+
+
+  <title> Python学习笔记（一） | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/23/Python学习笔记（一）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python学习笔记（一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-23T23:11:52+08:00">
+                2017-03-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/23/Python学习笔记（一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/23/Python学习笔记（一）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/23/Python学习笔记（一）/" class="leancloud_visitors" data-flag-title="Python学习笔记（一）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="数字和表达式的注意点"><a href="#数字和表达式的注意点" class="headerlink" title="数字和表达式的注意点"></a>数字和表达式的注意点</h2><h3 id="整数除法"><a href="#整数除法" class="headerlink" title="整数除法(/)"></a>整数除法(/)</h3><p><code>1/2</code> 结果是0。这个其实是类似与OC语的取整运算。那么怎么才能算出小数呢？</p>
+<p>有两种方法：</p>
+<ol>
+<li>运用实数（包含小数点的十进制数，如：10.0）而不是整数进行运算。实数在Python中被称为浮点数，两者相除，如果有一个浮点数，结果就是浮点数，如：<code>1.0/2</code>、<code>1 / 2.0</code>、<code>1/2.</code>，结果都是0.5；</li>
+<li>让python改变除法的执行方式。可以通过在运行除法之前，添加使用<code>from __future__ import division</code>。来告诉Python只执行普通的除法。这个时候<code>1/2</code>结果就是<code>0.5</code>。</li>
+<li>通过命令行运行Python,可以使用命令开关-<code>Qnew</code>。(这里就不介绍了)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from __future__ import division</div><div class="line">&gt;&gt;&gt; 1/2</div><div class="line">0.5</div></pre></td></tr></table></figure>
+<p>通过上面的第二种方法已经将取整运算的<code>/</code>方法变成了普通的除法运算，而不是取整运算，那么怎么才能继续使用取整运算呢？<code>//</code>使用两个就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from __future__ import division</div><div class="line">&gt;&gt;&gt; 1/2</div><div class="line">0.5</div><div class="line">&gt;&gt;&gt; 1//2</div><div class="line">0</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="取余-模除"><a href="#取余-模除" class="headerlink" title="取余(模除%)"></a>取余(模除%)</h3><p>对浮点数也同样适用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 10%3</div><div class="line">1</div><div class="line">&gt;&gt;&gt; 2.75%0.5</div><div class="line">0.25</div></pre></td></tr></table></figure>
+<h3 id="幂运算（乘方-）"><a href="#幂运算（乘方-）" class="headerlink" title="幂运算（乘方**）"></a>幂运算（乘方**）</h3><p><strong>注意</strong>：幂运算符的优先级比取反(<code>-</code>)的要高。也就是<code>-3**2</code>等价于<code>-(3**2)</code>,但是不等价于<code>(-3)**2</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 3**2</div><div class="line">9</div><div class="line">&gt;&gt;&gt; -3**3</div><div class="line">-27</div><div class="line">&gt;&gt;&gt; -(3**3)</div><div class="line">-27</div><div class="line">&gt;&gt;&gt; (-3)**2</div><div class="line">9</div></pre></td></tr></table></figure>
+<h3 id="长整型"><a href="#长整型" class="headerlink" title="长整型"></a>长整型</h3><p>长整型和普通整型一样，但是后面有一个<code>L</code>。但是可以混合使用。除非需要检验类型，否则不用担心两者的区别。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 123123123123123123123L + 123123123123123123123L +23</div><div class="line">246246246246246246269L</div></pre></td></tr></table></figure>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>代表（或者引用）某值得名字。如下：<code>x=3</code>,可以称作是赋值操作，也可以称作是将变量<code>x</code>绑定了值3。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = 3</div><div class="line">&gt;&gt;&gt; x * 3</div><div class="line">9</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 在使用变量的时候必须先给变量赋值，否则会报错。</p>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><p>语句（做某事）和表达式（某事）之间的区别在赋值时会表现得更加明显一些。因为语句不是表达式，所以没有值可供交互式解释器打印出来：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print &quot;表达式&quot;</div><div class="line">表达式</div><div class="line">&gt;&gt;&gt; x=3</div><div class="line">&gt;&gt;&gt;</div><div class="line">&gt;&gt;&gt; print &quot;语句&quot;</div><div class="line">语句</div><div class="line">&gt;&gt;&gt; print &quot;我是print语句执行出来的&quot;</div><div class="line">我是print语句执行出来的</div></pre></td></tr></table></figure>
+<h2 id="获取用户输入-input函数"><a href="#获取用户输入-input函数" class="headerlink" title="获取用户输入-input函数"></a>获取用户输入-input函数</h2><p>下面的10和30都是用户自己手动输入的。input函数完成了用户与计算机的交互。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = input(&quot;x:&quot;)</div><div class="line">x:10</div><div class="line">&gt;&gt;&gt; y = input(&quot;y:&quot;)</div><div class="line">y:30</div><div class="line">&gt;&gt;&gt; print(x*y)</div><div class="line">300</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>例如上面讲的乘方（ ** ）。事实上可以使用一个函数来代替：pow。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; pow(3,4)</div><div class="line">81</div></pre></td></tr></table></figure>
+<p>这就是3的4次方的结果。</p>
+<p>函数就像是一个实现特定功能的小程序。通常把pow等标准函数称为內建函数。</p>
+<p>很多內建函数也可以用于数值表达式：`abs函数未获取绝对值``</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 10 + pow(3,4)</div><div class="line">91</div><div class="line">&gt;&gt;&gt; 10 + abs(-100)</div><div class="line">110</div></pre></td></tr></table></figure>
+<p>下面介绍与整数除法相关的两个有意思的函数：</p>
+<p>round函数：将结果四舍五入为最接近的整数；<br>floor函数：将给定的数值向下取整为某个特定的整数；<br>ceil函数：将给定的数值向上取整为某个特定的整数；</p>
+<blockquote>
+<p>注意：floor函数和ceil函数是需要引入math模块才可以使用的。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; round(10/3.0)</div><div class="line">3.0</div><div class="line">&gt;&gt;&gt; round(29.9/5)</div><div class="line">6.0</div><div class="line">&gt;&gt;&gt; round(-10/3.0)</div><div class="line">-3.0</div><div class="line">&gt;&gt;&gt; round(-29.9/5)</div><div class="line">-6.0</div><div class="line">&gt;&gt;&gt; import math</div><div class="line">&gt;&gt;&gt; math.floor(10/3.0)</div><div class="line">3.0</div><div class="line">&gt;&gt;&gt; math.floor(29.9/5)</div><div class="line">5.0</div><div class="line">&gt;&gt;&gt; math.floor(-10/3.0)</div><div class="line">-4.0</div><div class="line">&gt;&gt;&gt; math.floor(-29.9/5)</div><div class="line">-6.0</div><div class="line">&gt;&gt;&gt; math.ceil(10/3.0)</div><div class="line">4.0</div><div class="line">&gt;&gt;&gt; math.ceil(29.9/5)</div><div class="line">6.0</div><div class="line">&gt;&gt;&gt; math.ceil(-10/3.0)</div><div class="line">-3.0</div><div class="line">&gt;&gt;&gt; math.ceil(-29.9/5)</div><div class="line">-5.0</div></pre></td></tr></table></figure>
+<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>模块就是导入Python来增强其功能的扩展。需要用<code>import</code>来导入。如上面的math。</p>
+<p>它的所用方式：“模块.函数”-&gt;<code>math.floor</code>。</p>
+<p>如果你不想每次调用函数的时候都加上模块的话，可以使用<code>from 模块 import 函数</code>，这样的写法。但是这个一定要在你确定自己不会导入多个同名函数（从不同的模块导入）的情况下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; from math import sqrt</div><div class="line">&gt;&gt;&gt; sqrt(9)</div><div class="line">3.0</div></pre></td></tr></table></figure>
+<p>我们还有一种方式可以来引用函数，那就是使用变量来引用函数（或者Python之中大多数的对象）：<code>sq = math.sqrt</code>，然后可以直接通过<code>sq</code>来操作函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import math</div><div class="line">&gt;&gt;&gt; sq = math.sqrt</div><div class="line">&gt;&gt;&gt; sq(9)</div><div class="line">3.0</div></pre></td></tr></table></figure>
+<h3 id="cmath和复数"><a href="#cmath和复数" class="headerlink" title="cmath和复数"></a>cmath和复数</h3><p>sqrt函数用来计算一个数的平方根，如果此时给他的是一个负数的话，他就没办法运行了。但是作为数学系的，我告诉你，按道理他是有值的，就是虚数。</p>
+<p>所以下面我们介绍一个复数模块cmath。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; import cmath</div><div class="line">&gt;&gt;&gt; cmath.sqrt(-1)</div><div class="line">1j</div></pre></td></tr></table></figure>
+<p>这个<code>1j</code>就是结果，而<code>j</code>就代表这是虚数。下面我们举一个更加复杂的复数的例子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; (-1 + 3j)*(12 + 12j)</div><div class="line">(-48+24j)</div></pre></td></tr></table></figure>
+<p>这就说明了，python是可以计算复数的。当然了，Python里面是没有虚数这个概念的，虚数就是实数部分为0的复数。</p>
+<h2 id="保存并执行程序"><a href="#保存并执行程序" class="headerlink" title="保存并执行程序"></a>保存并执行程序</h2><p>我们创建一个python文件，里面写上”Hello Feyddy!”。然后保存为<code>.py</code>格式。当然，这个保存的路径你一定要知道。（最好是通过下载的python的IDLE上面的<code>File</code>-&gt;<code>New File</code>创建文件。）</p>
+<p>此时不要关闭，如果关闭了，再重新打开。试着按<code>F5</code>可以直接运行文件。</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tKfTcly1fdwvvecctqj30gb041q3c.jpg" alt=""></p>
+<p>接下来我们对上面的脚本进行扩展。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">name = input(&quot;What is your name? &quot;)</div><div class="line">print(&quot;Hello&quot; + name + &quot;!&quot;)</div></pre></td></tr></table></figure>
+<p>然后按<code>F5</code>执行后，出现<code>What is your name?</code>。之后你再输入<code>Feyddy</code>，会弹出<code>HelloFeyddy!</code>。</p>
+<h3 id="通过命令提示符运行Python脚本"><a href="#通过命令提示符运行Python脚本" class="headerlink" title="通过命令提示符运行Python脚本"></a>通过命令提示符运行Python脚本</h3><p>打开电脑终端，进入有Python执行文件的目录下。以为我的<code>Feyddy.py</code>文件是放在桌面上的。所以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xuzhonglindeMac-mini:~ t3$ cd ~/desktop</div></pre></td></tr></table></figure>
+<p>然后通过：<code>python 文件名</code>来运行文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xuzhonglindeMac-mini:desktop t3$ python Feyddy.py</div><div class="line">What is your name?</div></pre></td></tr></table></figure>
+<p>此时你如果输入Feyddy的话，会出现一个错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;Feyddy.py&quot;, line 1, in &lt;module&gt;</div><div class="line">    name = input(&quot;What is your name? &quot;)</div><div class="line">  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">NameError: name &apos;Feyddy&apos; is not defined</div></pre></td></tr></table></figure>
+<p>这个时候就需要将<code>input</code>改成<code>raw_input</code>。（两者的区别后面讲）</p>
+<p>改完之后，你再次运行操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xuzhonglindeMac-mini:desktop t3$ python Feyddy.py</div><div class="line">What is your name? Feyddy</div><div class="line">HelloFeyddy!</div></pre></td></tr></table></figure>
+<h3 id="让脚本像普通程序一样运行-暂时没搞懂怎么操作，当然也没有搞懂的必要"><a href="#让脚本像普通程序一样运行-暂时没搞懂怎么操作，当然也没有搞懂的必要" class="headerlink" title="让脚本像普通程序一样运行(暂时没搞懂怎么操作，当然也没有搞懂的必要)"></a>让脚本像普通程序一样运行(暂时没搞懂怎么操作，当然也没有搞懂的必要)</h3><p>我们可能会发现一个问题，当程序运行完成后，就关闭了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">What is your name? Feyddy</div><div class="line">HelloFeyddy!</div><div class="line">Exit status: 0</div><div class="line">logout</div><div class="line">Saving session...</div><div class="line">...copying shared history...</div><div class="line">...saving history...truncating history files...</div><div class="line">...completed.</div><div class="line"></div><div class="line">[进程已完成]</div></pre></td></tr></table></figure>
+<p>当我们输入<code>Feyddy</code>的之后，回车下面的就会自动执行完成。</p>
+<p>此时如果我们在文件中的最后加上<code>raw_input(&quot;Press &lt;enter&gt;&quot;)</code>之后，就会发现，按了回车之后不会自动结束进程，而是弹出<code>Press &lt;enter&gt;</code>这个之后需要再一次回车才能结束进程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">What is your name? Feyddy</div><div class="line">HelloFeyddy!</div><div class="line">Press &lt;enter&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">What is your name? Feyddy</div><div class="line">HelloFeyddy!</div><div class="line">Press &lt;enter&gt;</div><div class="line">Exit status: 0</div><div class="line">logout</div><div class="line">Saving session...</div><div class="line">...copying shared history...</div><div class="line">...saving history...truncating history files...</div><div class="line">...completed.</div><div class="line"></div><div class="line">[进程已完成]</div></pre></td></tr></table></figure>
+<h3 id="注释只能使用"><a href="#注释只能使用" class="headerlink" title="注释只能使用(#)"></a>注释只能使用(#)</h3><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="单引号字符串和转义引号"><a href="#单引号字符串和转义引号" class="headerlink" title="单引号字符串和转义引号"></a>单引号字符串和转义引号</h3><p>事实上单引号和双引号没有什么区别，但是在有些场景下，这两者还是很有必要分开的。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &apos;let&apos;s go!&apos;</div><div class="line">SyntaxError: invalid syntax</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p>这个时候错误会指向<code>s</code>。因为程序会首先判断前面两个单引号是一组，但是<code>s</code>后面的就没办法识别了。此时就需要外面用双引号，里面的用单引号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;let&apos;s go!&quot;</div><div class="line">&quot;let&apos;s go!&quot;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果里面出现的是双引号，那么外面就用单引号进行封闭。</p>
+</blockquote>
+<p>当然，也可以不用这么分开， 直接使用转义符号<code>\</code>转义就行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;Hello Feyddy! \&quot;,my blog site is www.feyddy.com&quot;</div><div class="line">&apos;Hello Feyddy! &quot;,my blog site is www.feyddy.com&apos;</div></pre></td></tr></table></figure>
+<h3 id="拼接字符串"><a href="#拼接字符串" class="headerlink" title="拼接字符串"></a>拼接字符串</h3><p>当我们连续写了两个字符串的时候，Python会自动将两个字符串拼接起来。当然这个只限于连续写了两个字符串。可以说是书写字符串的一种特殊方法，并不是拼接字符串的一般方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;My name is Feyddy,&quot; &quot;my blog site is www.feyddy.com&quot;</div><div class="line">&apos;My name is Feyddy,my blog site is www.feyddy.com&apos;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<p>拼接字符串，使用<code>+</code>就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;Hello ,guys!&quot; + &quot;Welcome to my blog!&quot;</div><div class="line">&apos;Hello ,guys!Welcome to my blog!&apos;</div><div class="line">&gt;&gt;&gt; x = &quot;My name is Feyddy ,&quot;</div><div class="line">&gt;&gt;&gt; y = &quot;my blog site is www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; x+y</div><div class="line">&apos;My name is Feyddy ,my blog site is www.feyddy.com&apos;</div></pre></td></tr></table></figure>
+<h3 id="字符串表示，str和repr"><a href="#字符串表示，str和repr" class="headerlink" title="字符串表示，str和repr"></a>字符串表示，str和repr</h3><p>通过之前的几个例子，我们可以发现这样一个规律：所有通过Python打印的字符都是带有引号的，或者是代码中原有的状态，如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;hello feyddy&quot;</div><div class="line">&apos;hello feyddy&apos;</div><div class="line">&gt;&gt;&gt; 1000000L</div><div class="line">1000000L</div></pre></td></tr></table></figure>
+<p>也就是说，你代码中是什么格式的，打印出来的就是什么样子的。<br>但是如果使用print打印就不一样了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print 10000l</div><div class="line">10000</div><div class="line">&gt;&gt;&gt; print &quot;Hello Feyddy&quot;</div><div class="line">Hello Feyddy</div></pre></td></tr></table></figure>
+<p>这个其实就是值被转换为字符串的两种机制。一种是通过str函数，它会把值转换成合理形式的字符串，以便用户可以理解；而repr会创建一个字符串，它以合法的Python表达形式来表示值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print repr(&quot;Hello Feyddy&quot;)</div><div class="line">&apos;Hello Feyddy&apos;</div><div class="line">&gt;&gt;&gt; print str(&quot;Hello Feyddy&quot;)</div><div class="line">Hello Feyddy</div><div class="line">&gt;&gt;&gt; print str(100000L)</div><div class="line">100000</div></pre></td></tr></table></figure>
+<p>当然repr(x)的功能也可以用<code>x</code>实现( 注意：` 是反引号，而不是单引号 )。如果希望打印一个包含数字的句子，那么反引号就很有用。(在Python3.0中，已经不再使用反引号，因此，即使在旧的代码中看到了反引号，你也应该坚持使用repr。)如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; temp = 100</div><div class="line">&gt;&gt;&gt; print &quot;The temperature is &quot; + temp</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">TypeError: cannot concatenate &apos;str&apos; and &apos;int&apos; objects</div><div class="line">&gt;&gt;&gt; print &quot;The temperature is &quot; + `temp`</div><div class="line">The temperature is 100</div></pre></td></tr></table></figure>
+<p>上面第一个print语句并不能工作，那是因为不可以将字符串和数字进行相加。第二个可以是因为，我已经将temp用反引号将其转换成字符串。</p>
+<blockquote>
+<p>总结：简而言之，str、repr和反引号都是将Python值转换成字符串的3种方法。函数str让字符串更容易阅读，而repr(和反引号)则把结果字符串转换成合法的Python表达式。</p>
+</blockquote>
+<h3 id="input和raw-input的比较"><a href="#input和raw-input的比较" class="headerlink" title="input和raw_input的比较"></a>input和raw_input的比较</h3><p>还记得上面那个脚本中使用<code>print</code>然后输入<code>Feyddy</code>之后运行报错的例子吗？，然后换成用<code>raw_input</code>之后就不报错了。原因是，<code>input</code>函数会假设用户输入的是合法的Python表达式(或多或少有些与repr函数相反的意思)。如果以字符串作为输入的名字，程序是没问题的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xuzhonglindeMacBook-Air-2:Python Feyddy$ python Feyddy.py</div><div class="line">What is your name? &quot;Feyddy&quot;            </div><div class="line">HelloFeyddy!</div></pre></td></tr></table></figure>
+<p>但是要求用户输入的时候带上引号，是不是有点过分。因此，这就需要使用<code>raw_input</code>函数，它会把所有的输入当作原始数据(raw data),然后将其放入字符串中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; input(&quot;Enter a number:&quot;)</div><div class="line">Enter a number:23</div><div class="line">23</div><div class="line">&gt;&gt;&gt; raw_input(&quot;Enter a number:&quot;)</div><div class="line">Enter a number:23</div><div class="line">&apos;23&apos;</div></pre></td></tr></table></figure>
+<p>除非对<code>input</code>有特别的需要，否则应该尽可能使用<code>raw_input</code>函数。</p>
+<h3 id="长字符串、原始字符串和Unicode"><a href="#长字符串、原始字符串和Unicode" class="headerlink" title="长字符串、原始字符串和Unicode"></a>长字符串、原始字符串和Unicode</h3><p>在需要长达多行的字符串或者包含多种特殊字符的字符串的时候，这些候选的字符串语法就会非常有用。</p>
+<ol>
+<li>长字符串</li>
+</ol>
+<p>如果需要写一个非常长的字符串，需要跨多行，可以使用三个引号(双引号和单引号都行)代替普通引号。注意，此时是三个引号，因此，在三个引号中间的字符串中可以随便使用双引号或者单引号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print &apos;&apos;&apos;My name is Feyddy,</div><div class="line">... I am a iOS developer.</div><div class="line">... My blog site is www.feyddy.com.</div><div class="line">... Welcome to my blog.&apos;&apos;&apos;</div><div class="line">My name is Feyddy,</div><div class="line">I am a iOS developer.</div><div class="line">My blog site is www.feyddy.com.</div><div class="line">Welcome to my blog.</div></pre></td></tr></table></figure>
+<p>当然，普通的字符串也是可以换行的，只需要一行的最后一个字符是反斜线：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print &quot;Welcome to \</div><div class="line">... my blog&quot;</div><div class="line">Welcome to my blog</div></pre></td></tr></table></figure>
+<p>当然，这也是和表达式和语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 1+ 2 \</div><div class="line">... + 3+4</div><div class="line">10</div><div class="line">&gt;&gt;&gt; print \</div><div class="line">... &quot;Welcome&quot; \</div><div class="line">... &quot;Guys&quot;</div><div class="line">WelcomeGuys</div></pre></td></tr></table></figure>
+<p>但是输出的结果还是单行的。</p>
+<ol>
+<li>原始字符串</li>
+</ol>
+<p>原始的字符串对于反斜线的使用并不会过分挑剔。在某些情况下，这个特性就能派上用场了。在普通字符串里，反斜线有特殊的作用，会转义，可以再字符串中加入通常情况下不能直接加入的内容。如换行<code>\n</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print &quot;Hello \nGuys&quot;</div><div class="line">Hello</div><div class="line">Guys</div></pre></td></tr></table></figure>
+<p>但是，有的时候我们的字符串里面就需要包含<code>\</code>这下怎么办，虽然可以使用两个<code>\</code>进行转义，但是如果想一个链接一样有很多个怎么办。这下我们的原始字符串就有用了。</p>
+<p>原始字符串不会把反斜线当做是特殊的字符。我们只需要在字符串的前面加上<code>r</code>就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print r&quot;https://www.baidu.com/username=Feyddy/passWorld=Welcome&quot;</div><div class="line">https://www.baidu.com/username=Feyddy/passWorld=Welcome</div></pre></td></tr></table></figure>
+<p>但是，一旦使用了原始字符串。如果里面使用<code>\</code>进行转义的话，是可以转义的，但是<code>\</code>也会被打印出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print r&quot;I\&apos;am a boy&quot;</div><div class="line">I\&apos;am a boy</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 千万不能让原始字符串的最后一个字符是<code>\</code>。如果最后一个字符是反斜线，Python就不清楚是否应该结束字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print r&quot;This is illegal\&quot;</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1</div><div class="line">    print r&quot;This is illegal\&quot;</div><div class="line">                            ^</div><div class="line">SyntaxError: EOL while scanning string literal</div></pre></td></tr></table></figure>
+<p>但是如果我们非要让<code>\</code>作为原始字符串的结尾的话，我们可以用字符串拼接的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; print r&quot;This is right&quot; + &quot;\\&quot;</div><div class="line">This is right\</div></pre></td></tr></table></figure>
+<p><strong>注意：</strong> 在原始字符串中你可以同时使用单双引号，即使三引号字符串也可以充当原始字符串。</p>
+<ol>
+<li>Unicode字符串</li>
+</ol>
+<p>字符串常量的最后一种类型就是Unicode字符串（或称是Unicode对象—-与字符串并不是同一个类型）。</p>
+<p>Python中的普通字符串在内部是以8位的ASCII码形式存储的，而Unicode字符串则存储为16位Unicode字符，这样就能表示更多的字符集。这个不多说，下面举个小例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; u&quot;Hello Feyddy&quot;</div><div class="line">u&apos;Hello Feyddy&apos;</div></pre></td></tr></table></figure>
+<p><img src="https://ww1.sinaimg.cn/large/006tNc79gy1fdx6ag5ejej30hb0czjuq.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python新手入门/" rel="tag"># Python新手入门</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/22/Realm数据库初识/" rel="next" title="Realm数据库初识">
+                <i class="fa fa-chevron-left"></i> Realm数据库初识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       <section id="comments">
+   <!-- 多说评论框 start -->
+<div id="ds-thread" class="ds-thread" data-thread-key="2017/03/23/Python学习笔记（一）/" data-title="Python学习笔记（一）" data-url="http://yoursite.com/2017/03/23/Python学习笔记（一）/" }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feyddy"};
+  (function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">302</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础知识"><span class="nav-number">1.</span> <span class="nav-text">基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数字和表达式的注意点"><span class="nav-number">1.1.</span> <span class="nav-text">数字和表达式的注意点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整数除法"><span class="nav-number">1.1.1.</span> <span class="nav-text">整数除法(/)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取余-模除"><span class="nav-number">1.1.2.</span> <span class="nav-text">取余(模除%)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#幂运算（乘方-）"><span class="nav-number">1.1.3.</span> <span class="nav-text">幂运算（乘方**）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长整型"><span class="nav-number">1.1.4.</span> <span class="nav-text">长整型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#语句"><span class="nav-number">1.3.</span> <span class="nav-text">语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取用户输入-input函数"><span class="nav-number">1.4.</span> <span class="nav-text">获取用户输入-input函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.5.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块"><span class="nav-number">1.6.</span> <span class="nav-text">模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cmath和复数"><span class="nav-number">1.6.1.</span> <span class="nav-text">cmath和复数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保存并执行程序"><span class="nav-number">1.7.</span> <span class="nav-text">保存并执行程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通过命令提示符运行Python脚本"><span class="nav-number">1.7.1.</span> <span class="nav-text">通过命令提示符运行Python脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#让脚本像普通程序一样运行-暂时没搞懂怎么操作，当然也没有搞懂的必要"><span class="nav-number">1.7.2.</span> <span class="nav-text">让脚本像普通程序一样运行(暂时没搞懂怎么操作，当然也没有搞懂的必要)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释只能使用"><span class="nav-number">1.7.3.</span> <span class="nav-text">注释只能使用(#)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.8.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单引号字符串和转义引号"><span class="nav-number">1.8.1.</span> <span class="nav-text">单引号字符串和转义引号</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拼接字符串"><span class="nav-number">1.8.2.</span> <span class="nav-text">拼接字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串表示，str和repr"><span class="nav-number">1.8.3.</span> <span class="nav-text">字符串表示，str和repr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#input和raw-input的比较"><span class="nav-number">1.8.4.</span> <span class="nav-text">input和raw_input的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长字符串、原始字符串和Unicode"><span class="nav-number">1.8.5.</span> <span class="nav-text">长字符串、原始字符串和Unicode</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feyddy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
