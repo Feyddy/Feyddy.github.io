@@ -1,0 +1,1266 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Python新手入门," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="列表和元组首先介绍一下数据结构这个概念。数据结构是通过某种方式组织在一起的数据元素的集合，这些数据元素可以是数字或者字符，甚至可以是其他数据结构。在Python中最基本的数据结构是序列(sequence)。序列中的每一个元素被分配一个序列号—即元素的位置，也称为索引。第一个索引是0，第二个是1，以此类推。
+序列概览Python中有6种內建的序列。列表、元组、字符串、Unicode字符串、buffe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记（二）">
+<meta property="og:url" content="http://yoursite.com/2017/03/24/Python学习笔记（二）/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="列表和元组首先介绍一下数据结构这个概念。数据结构是通过某种方式组织在一起的数据元素的集合，这些数据元素可以是数字或者字符，甚至可以是其他数据结构。在Python中最基本的数据结构是序列(sequence)。序列中的每一个元素被分配一个序列号—即元素的位置，也称为索引。第一个索引是0，第二个是1，以此类推。
+序列概览Python中有6种內建的序列。列表、元组、字符串、Unicode字符串、buffe">
+<meta property="og:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fdy0vpp62hj30h906m75n.jpg">
+<meta property="og:updated_time" content="2017-03-24T11:33:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记（二）">
+<meta name="twitter:description" content="列表和元组首先介绍一下数据结构这个概念。数据结构是通过某种方式组织在一起的数据元素的集合，这些数据元素可以是数字或者字符，甚至可以是其他数据结构。在Python中最基本的数据结构是序列(sequence)。序列中的每一个元素被分配一个序列号—即元素的位置，也称为索引。第一个索引是0，第二个是1，以此类推。
+序列概览Python中有6种內建的序列。列表、元组、字符串、Unicode字符串、buffe">
+<meta name="twitter:image" content="https://ww3.sinaimg.cn/large/006tNbRwly1fdy0vpp62hj30h906m75n.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '5BTIUCSDVY',
+      apiKey: '1a9aadc2a805dcd3529b21c3d224af27',
+      indexName: 'blog_Feyddy',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+</script>
+
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/24/Python学习笔记（二）/"/>
+
+
+
+
+
+  <title> Python学习笔记（二） | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/24/Python学习笔记（二）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python学习笔记（二）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-24T19:32:03+08:00">
+                2017-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/24/Python学习笔记（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/24/Python学习笔记（二）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/24/Python学习笔记（二）/" class="leancloud_visitors" data-flag-title="Python学习笔记（二）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="列表和元组"><a href="#列表和元组" class="headerlink" title="列表和元组"></a>列表和元组</h1><p>首先介绍一下数据结构这个概念。数据结构是通过某种方式组织在一起的数据元素的集合，这些数据元素可以是数字或者字符，甚至可以是其他数据结构。在Python中最基本的数据结构是序列(sequence)。序列中的每一个元素被分配一个序列号—即元素的位置，也称为索引。第一个索引是0，第二个是1，以此类推。</p>
+<h2 id="序列概览"><a href="#序列概览" class="headerlink" title="序列概览"></a>序列概览</h2><p>Python中有6种內建的序列。列表、元组、字符串、Unicode字符串、buffer对象和xrange对象。这里我们先主要介绍列表和元组。</p>
+<p>列表和元组的主要区别：列表可以修改，但是元组不能。一般情况下列表都可以代替元组。（但是元组作为字典的键，因为键不能修改，所以不能使用列表）。</p>
+<p>列表在操作一组数值的时候很好用。而且一个序列也可以包含其他的序列。（列表的各个元素使用逗号分开）如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; myInfo = [&quot;Feyddy&quot;,25]</div><div class="line">&gt;&gt;&gt; blog = [&quot;iOS developer&quot;,&quot;www.feyddy.com&quot;]</div><div class="line">&gt;&gt;&gt; allInfo = [myInfo,blog]</div><div class="line">&gt;&gt;&gt; allInfo</div><div class="line">[[&apos;Feyddy&apos;, 25], [&apos;iOS developer&apos;, &apos;www.feyddy.com&apos;]]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：Python中还有一种名为容器(container)的数据结构。容器基本上是包含其他对象的任意对象。序列（元组和列表）和映射（字典）是两类主要的容器。还有一个既不是序列也不是映射的容器类型，那就是集合（set）。</p>
+</blockquote>
+<h2 id="通用序列操作"><a href="#通用序列操作" class="headerlink" title="通用序列操作"></a>通用序列操作</h2><p>所有的序列类型都可以进行某些特的操作。如：索引（indexing）、分片（sliceing）、加（adding）、乘（multiplying）以及检查某个元素是否属于序列的成员（成员资格）。除此以外python还有计算长度、找出最大元素和最小元素的內建函数。</p>
+<blockquote>
+<p>迭代（iteration）。依次对序列中的每个元素重复执行某些操作。</p>
+</blockquote>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>序列中的所有元素都是有编号的—–从0开始。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[2]</div><div class="line">&apos;w&apos;</div><div class="line">&gt;&gt;&gt; blogSite[3]</div><div class="line">&apos;.&apos;</div></pre></td></tr></table></figure>
+<p>因为字符串是有字符组的序列，所以可以直接通过索引获取对应位置的字符。</p>
+<p>如果使用负数索引值的话，会从右边开始计数，但是最右边的元素的位置的编号是<code>-1</code>，而不是<code>-0</code>。这是因为如果是<code>-0</code>，就会和第一个元素重合,都是<code>0</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[-0]</div><div class="line">&apos;w&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-1]</div><div class="line">&apos;m&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-2]</div><div class="line">&apos;o&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-3]</div><div class="line">&apos;c&apos;</div></pre></td></tr></table></figure>
+<p>当然，一个字符串的字面值可以直接使用索引，而不需要创建一个变量来接受，然后使用索引。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;www.feyddy.com&quot;[4]</div><div class="line">&apos;f&apos;</div><div class="line">&gt;&gt;&gt; &quot;www.feyddy.com&quot;[-1]</div><div class="line">&apos;m&apos;</div></pre></td></tr></table></figure>
+<p>如果一个函数有返回值，而且是一个序列类型的返回值。可以直接对返回的结果进行索引操作。如下：我只获取用户输入的第四个元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; fourthValue = raw_input(&quot;Year:&quot;)[3]</div><div class="line">Year:2017</div><div class="line">&gt;&gt;&gt; fourthValue</div><div class="line">&apos;7&apos;</div></pre></td></tr></table></figure>
+<h3 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h3><p>可以使用索引值来访问一个元素，也可以使用分片来访问一个范围内的所有的元素。分片通过冒号相隔两个索引来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[2:4]</div><div class="line">&apos;w.&apos;</div><div class="line">&gt;&gt;&gt; blogSite[2:-1]</div><div class="line">&apos;w.feyddy.co&apos;</div></pre></td></tr></table></figure>
+<p>可以看出第一个索引是你提取的部分的索引，最后一个索引是你要截止的那部分的编号，但是此编号的数值不会截取出来。</p>
+<p>总的来说，分片是需要两个索引值作为边界使用的。第一个索引值包含在里面，第二个则不包含在里面。</p>
+<ol>
+<li>优雅的捷径</li>
+</ol>
+<p>现在如果我想取某个索引值一直到最后的所有的元素的话,用下面的方法肯定没问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[6:14]</div><div class="line">&apos;yddy.com&apos;</div></pre></td></tr></table></figure>
+<p>但是如果我用负数从后面开始取的话怎么办呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[-8:-1]</div><div class="line">&apos;yddy.co&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-8:0]</div><div class="line">&apos;&apos;</div></pre></td></tr></table></figure>
+<p>要么永远取不了<code>-1</code>位置的数，如果使用<code>-0</code>，直接为空了。</p>
+<p>因此我们可以使用便捷的方式，那就是置空后面一个索引值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[6:]</div><div class="line">&apos;yddy.com&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-8:]</div><div class="line">&apos;yddy.com&apos;</div></pre></td></tr></table></figure>
+<p>当然同样适用于开始的元素索引位置：(获取某个索引值前面所有的元素)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[:-1]</div><div class="line">&apos;www.feyddy.co&apos;</div><div class="line">&gt;&gt;&gt; blogSite[:14]</div><div class="line">&apos;www.feyddy.com&apos;</div><div class="line">&gt;&gt;&gt; blogSite[:13]</div><div class="line">&apos;www.feyddy.co&apos;</div></pre></td></tr></table></figure>
+<p>如果需要获取整个序列的元素的话，只需要将两个索引都置为空就可以了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite[:]</div><div class="line">&apos;www.feyddy.com&apos;</div></pre></td></tr></table></figure>
+<ol>
+<li>更大的步长</li>
+</ol>
+<p>分片可以设置开始与结束位置。但是还有一个隐式的参数步长，默认是1。就是从开始的索引位置每隔一个步长获取该位置的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[0:14:3]</div><div class="line">&apos;w.yyo&apos;</div></pre></td></tr></table></figure>
+<p>上面的意思就是从0索引值开始，每隔2个元素获取一个元素，一直到索引值为14的位置。其基本格式为<code>[索引开始位置:索引结束为止:步长]</code>。</p>
+<p>这个也可以结合前面的捷径方式来使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[4::3]</div><div class="line">&apos;fd.m&apos;</div><div class="line">&gt;&gt;&gt; blogSite[:12:3]</div><div class="line">&apos;w.yy&apos;</div><div class="line">&gt;&gt;&gt; blogSite[::3]</div><div class="line">&apos;w.yyo&apos;</div><div class="line">&gt;&gt;&gt; blogSite[::-2]</div><div class="line">&apos;mcyde.w&apos;</div><div class="line">&gt;&gt;&gt; blogSite[:-4:-2]</div><div class="line">&apos;mc&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-10::-2]</div><div class="line">&apos;fww&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-10::0]</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">ValueError: slice step cannot be zero</div></pre></td></tr></table></figure>
+<p>从上面的例子可以看出来，步长可以为负数，那就是从右往左开始数。但是步长不能为0，否则报错。</p>
+<p>这里关于分片的使用最需要注意的就是索引问题。尤其是后面的索引取不到，这个就需要浩浩动些脑经了。</p>
+<h3 id="序列相加"><a href="#序列相加" class="headerlink" title="序列相加"></a>序列相加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [1,2,3]+[4,5,6,7]</div><div class="line">[1, 2, 3, 4, 5, 6, 7]</div><div class="line">&gt;&gt;&gt; &quot;Hello guys, &quot; + &quot;welcome to my blog&quot;</div><div class="line">&apos;Hello guys, welcome to my blog&apos;</div><div class="line">&gt;&gt;&gt; [1,2,3] + &quot;Hello&quot;</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">TypeError: can only concatenate list (not &quot;str&quot;) to list</div></pre></td></tr></table></figure>
+<p>从上面的例子可以看出来，序列相加就是直接拼接两个序列里面的内容，进行合并。但是前提是两者必须是相同的类型。</p>
+<h3 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h3><p>如果用数字n乘以一个序列的话，会生成一个新的序列，在新的序列中，原序列被执行n次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [1,2,3]*3</div><div class="line">[1, 2, 3, 1, 2, 3, 1, 2, 3]</div><div class="line">&gt;&gt;&gt; &quot;Feyddy&quot; *3</div><div class="line">&apos;FeyddyFeyddyFeyddy&apos;</div></pre></td></tr></table></figure>
+<p><strong>none、空列表和初始化</strong></p>
+<p>空列表可以简单的通过<code>[]</code>来表示，但是里面什么都没有。如果想创建一个占10个元素的空间，却不包含任何元素的时候，可以使用<code>None</code>。<code>None</code>是Python的內建值。它的确切含义是“这里什么都没有”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; sequence = [None] * 10</div><div class="line">&gt;&gt;&gt; sequence</div><div class="line">[None, None, None, None, None, None, None, None, None, None]</div></pre></td></tr></table></figure>
+<h3 id="成员资格"><a href="#成员资格" class="headerlink" title="成员资格"></a>成员资格</h3><p>检验一个值是否在序列中，可以使用<code>in</code>运算符。返回<code>True</code>或者<code>False</code>。这个就是布尔值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogType = [&quot;Python&quot;,&quot;iOS&quot;,&quot;Swift&quot;,&quot;JavaScript&quot;]</div><div class="line">&gt;&gt;&gt; &quot;Python&quot; in blogType</div><div class="line">True</div><div class="line">&gt;&gt;&gt; &quot;HTML&quot; in blogType</div><div class="line">False</div><div class="line">&gt;&gt;&gt; raw_input(&quot;Which language do you want to learn from blogType?&quot;) in blogType</div><div class="line">Which language do you want to learn from blogType?Python</div><div class="line">True</div><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; &quot;feyddy&quot; in blogSite</div><div class="line">True</div></pre></td></tr></table></figure>
+<p>这里最后一个例子<code>&quot;feyddy&quot; in blogSite</code>有些不同。一般来说<code>in</code><br>运算符会检查一个对象是否为某个序列的成员，然而，字符串唯一的成员或者元素就是它的字符，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;f&quot; in &quot;feyddy&quot;</div><div class="line">True</div></pre></td></tr></table></figure>
+<p>在早期的Python版本中，<code>in</code>是唯一能用于字符串成员资格检查的方法，也就是检查某个字符是否存在于一个字符中。如果尝试去检查一个较长的子字符串的话会报错。但是从Python2.3以后，<code>in</code>也可以用来实现这个功能了。</p>
+<p>下面实现一个小例子:</p>
+<p>检查用户名和PIN密码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">dateBase = [</div><div class="line">[<span class="string">"Feyddy"</span>,<span class="string">"1234"</span>],[<span class="string">"haohao"</span>,<span class="string">"12345"</span>],[<span class="string">"crice"</span>,<span class="string">"123456"</span>]</div><div class="line">]</div><div class="line">userName = raw_input(<span class="string">"Please enter your userName:"</span>)</div><div class="line">pin_code = raw_input(<span class="string">"please enter your pinCode:"</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> [userName,pin_code] <span class="keyword">in</span> dateBase:</div><div class="line">    print(<span class="string">"Welcome"</span>)</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">xuzhonglindeMac-mini:Pyhton学习笔记(二) t3$ python in.py</div><div class="line">Please enter your userName:Feyddy</div><div class="line">please enter your pinCode:1234</div><div class="line">Welcome</div><div class="line">xuzhonglindeMac-mini:Pyhton学习笔记(二) t3$ python in.py</div><div class="line">Please enter your userName:qweqw</div><div class="line">please enter your pinCode:123456</div></pre></td></tr></table></figure>
+<h3 id="长度、最小值和最大值"><a href="#长度、最小值和最大值" class="headerlink" title="长度、最小值和最大值"></a>长度、最小值和最大值</h3><p>內建函数len、min和max非常有用。len函数返回序列中所包含的元素的数量。min函数和max函数则分别返回序列中最大和最小的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; numbers = [100,34,78]</div><div class="line">&gt;&gt;&gt; len(numbers)</div><div class="line">3</div><div class="line">&gt;&gt;&gt; min(numbers)</div><div class="line">34</div><div class="line">&gt;&gt;&gt; max(numbers)</div><div class="line">100</div><div class="line">&gt;&gt;&gt; max(2,3,476,45,89,100)</div><div class="line">476</div></pre></td></tr></table></figure>
+<p>上面最后一个例子，max函数的参数并不是一个序列，而是多个数字直接作为参数。</p>
+<h2 id="列表：Python的“苦力”"><a href="#列表：Python的“苦力”" class="headerlink" title="列表：Python的“苦力”"></a>列表：Python的“苦力”</h2><p>列表不同于元组和字符串的地方在于：列表是可变的（mutable）—-可以改变列表的内容，并且列表有很多有用的、专门的方法。</p>
+<h3 id="list函数"><a href="#list函数" class="headerlink" title="list函数"></a>list函数</h3><p>因为字符串不能被修改，所以有时候根据字符串创建列表会很有用。这个时候用list函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; list(&quot;Feyddy&quot;)</div><div class="line">[&apos;F&apos;, &apos;e&apos;, &apos;y&apos;, &apos;d&apos;, &apos;d&apos;, &apos;y&apos;]</div><div class="line">&gt;&gt;&gt; list([1,2,3,4,4])</div><div class="line">[1, 2, 3, 4, 4]</div></pre></td></tr></table></figure>
+<p>list函数适用于所有类型的序列，而不只是字符串。</p>
+<blockquote>
+<p>可以用<code>&#39;&#39;.join(somelist)</code>。将一个由字符组成的列表转换为字符串；</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = list(&quot;Feyddy&quot;)</div><div class="line">&gt;&gt;&gt; &apos;&apos;.join(a)</div><div class="line">&apos;Feyddy&apos;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="基本的列表操作"><a href="#基本的列表操作" class="headerlink" title="基本的列表操作"></a>基本的列表操作</h3><p>列表适用于所有的序列的标准操作。但是它是可以被改变的。下面介绍元素的赋值，元素的删除，分片赋值以及列表方法。（<strong>注意：不是所有的列表方法都真正地改变列表</strong>）</p>
+<ol>
+<li>改变列表：元素赋值</li>
+</ol>
+<p>我们限定某个索引的元素进行修改赋值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3]</div><div class="line">&gt;&gt;&gt; x[1] = &quot;Feyddy&quot;</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, &apos;Feyddy&apos;, 3]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>不能为一个位置不存在的元素进行赋值。也就是说如果列表的长度为2，就不能为索引值为100的元素进行赋值，必须创建一个长度为101的列表。</p>
+</blockquote>
+<ol>
+<li>删除元素</li>
+</ol>
+<p>使用<code>del</code>语句实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x=[1,2,3,4,5,5]</div><div class="line">&gt;&gt;&gt; del x[2]</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 4, 5, 5]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>del语句还可以用于字典元素的删除等。后面介绍。</p>
+</blockquote>
+<ol>
+<li>分片赋值</li>
+</ol>
+<p>程序可以一次为多个元素赋值，而且还有个特性：可以使用与原序列不等长的序列将分片替换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; name = list(&quot;Feyddy&quot;)</div><div class="line">&gt;&gt;&gt; name[1:] = list(&quot;Welcome to my blog&quot;)</div><div class="line">&gt;&gt;&gt; name</div><div class="line">[&apos;F&apos;, &apos;W&apos;, &apos;e&apos;, &apos;l&apos;, &apos;c&apos;, &apos;o&apos;, &apos;m&apos;, &apos;e&apos;, &apos; &apos;, &apos;t&apos;, &apos;o&apos;, &apos; &apos;, &apos;m&apos;, &apos;y&apos;, &apos; &apos;, &apos;b&apos;, &apos;l&apos;, &apos;o&apos;, &apos;g&apos;]</div></pre></td></tr></table></figure>
+<p>分片还可以在不替换任何元素的情况下，插入新的元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; numbers=[1,2,3,4,5]</div><div class="line">&gt;&gt;&gt; numbers[2:2]=[10,9,8,7]</div><div class="line">&gt;&gt;&gt; numbers</div><div class="line">[1, 2, 10, 9, 8, 7, 3, 4, 5]</div></pre></td></tr></table></figure>
+<p>上面的<code>2:2</code>就是替换了一个空的分片，因此实际的操作就是插入了一个序列。以此类推通过分片删除也是可以的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; numbers=[1,2,3,4,5]</div><div class="line">&gt;&gt;&gt; numbers[1:3] = []</div><div class="line">&gt;&gt;&gt; numbers</div><div class="line">[1, 4, 5]</div></pre></td></tr></table></figure>
+<h3 id="列表方法"><a href="#列表方法" class="headerlink" title="列表方法"></a>列表方法</h3><p>方法是一个与某些对象有紧密联系的函数，对象可能是列表和数字，也可能是字符串或者其他类型的对象，一般来说，方法可以这样进行调用：<code>对象.方法(参数)</code>。</p>
+<ol>
+<li>append</li>
+</ol>
+<p>在列表末尾追加新的对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; lis=[1,2,3]</div><div class="line">&gt;&gt;&gt; lis.append([4,5,6])</div><div class="line">&gt;&gt;&gt; lis</div><div class="line">[1, 2, 3, [4, 5, 6]]</div><div class="line">&gt;&gt;&gt; lis.append(4)</div><div class="line">&gt;&gt;&gt; lis</div><div class="line">[1, 2, 3, [4, 5, 6], 4]</div></pre></td></tr></table></figure>
+<p><strong>注意：append不是简单的返回一个修改过的新的列表—-而是直接修改原来的列表。</strong></p>
+<ol>
+<li>count</li>
+</ol>
+<p>计算某个元素在列表中出现的次数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [1,2,3,4,5,4,3,4,3,2,1,6,789].count(1)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; [1,2,3,4,5,4,3,4,3,2,1,6,789].count(2)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; [1,2,3,4,5,4,3,4,3,2,1,6,789].count(3)</div><div class="line">3</div><div class="line">&gt;&gt;&gt; x=[[1,2],3,4,[1,2],4]</div><div class="line">&gt;&gt;&gt; x.count(4)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; x.count([1,2])</div><div class="line">2</div></pre></td></tr></table></figure>
+<ol>
+<li>extend</li>
+</ol>
+<p>可以在列表的末尾一次性追加另一个序列中的多个值。换句话说，可以用新列表扩展原有的列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; origin_list = [1,2,3]</div><div class="line">&gt;&gt;&gt; extend_list = [4,5,6]</div><div class="line">&gt;&gt;&gt; origin_list.extend(extend_list)</div><div class="line">&gt;&gt;&gt; origin_list</div><div class="line">[1, 2, 3, 4, 5, 6]</div></pre></td></tr></table></figure>
+<p>这儿看上去像是连接操作，但是<code>extend</code>是修改了原来的序列，但是连接操作是返回一个新的列表，原来的都没有修改过：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = [1,2,3]</div><div class="line">&gt;&gt;&gt; b = [4,5,6]</div><div class="line">&gt;&gt;&gt; a+b</div><div class="line">[1, 2, 3, 4, 5, 6]</div><div class="line">&gt;&gt;&gt; a</div><div class="line">[1, 2, 3]</div><div class="line">&gt;&gt;&gt; x = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]</div><div class="line">&gt;&gt;&gt; y = [&apos;d&apos;,&apos;e&apos;,&apos;f&apos;]</div><div class="line">&gt;&gt;&gt; x.extend(y)</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;]</div></pre></td></tr></table></figure>
+<ol>
+<li>index</li>
+</ol>
+<p>用于从列表中找出某个值第一个匹配项的索引位置，即使列表里面有多个同样的值，但是只会返回搜索到的第一个匹配的索引值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,4,3]</div><div class="line">&gt;&gt;&gt; x.index(3)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; x.index(5)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">ValueError: 5 is not in list</div></pre></td></tr></table></figure>
+<ol>
+<li>insert</li>
+</ol>
+<p>用于将对象插入列表中：<code>insert(索引值,元素)</code>。注意，元素是插在索引值前面的位置上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; names = [&quot;Feyddy&quot;,&quot;haohao&quot;,&quot;crice&quot;,&quot;Tony&quot;]</div><div class="line">&gt;&gt;&gt; names.insert(1,&quot;Donggua&quot;)</div><div class="line">&gt;&gt;&gt; names</div><div class="line">[&apos;Feyddy&apos;, &apos;Donggua&apos;, &apos;haohao&apos;, &apos;crice&apos;, &apos;Tony&apos;]</div></pre></td></tr></table></figure>
+<p>还有可以使用分片的方法插入，但是不推荐：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; names = [&quot;Feyddy&quot;,&quot;haohao&quot;,&quot;crice&quot;,&quot;Tony&quot;]</div><div class="line">&gt;&gt;&gt; names[1:1] = [&quot;Donggua&quot;]</div><div class="line">&gt;&gt;&gt; names</div><div class="line">[&apos;Feyddy&apos;, &apos;Donggua&apos;, &apos;haohao&apos;, &apos;crice&apos;, &apos;Tony&apos;]</div></pre></td></tr></table></figure>
+<ol>
+<li>pop</li>
+</ol>
+<p>移除列表中的一个元素（默认是最后一个），并且返回该元素的值：<code>pop(索引值)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3]</div><div class="line">&gt;&gt;&gt; x.pop()</div><div class="line">3</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2]</div><div class="line">&gt;&gt;&gt; x.pop(1)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1]</div></pre></td></tr></table></figure>
+<p><strong>注意：pop方法是唯一一个既能修改列表又返回元素值（除了None）的列表方法</strong></p>
+<p>使用pop方法可以实现一种常见的数据结构—-栈。栈的原理就像是堆放盘子。只能从顶部放盘子和拿盘子。即后进先出原则。也就是入栈（push）和出栈（pop）。当然，Python没有入栈，但是可以把append方法当做是入栈方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3]</div><div class="line">&gt;&gt;&gt; x.append(x.pop())</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 3]</div></pre></td></tr></table></figure>
+<p>先出的是3后进的是3。</p>
+<blockquote>
+<p>如果需要实现一个先进先出的队列，那么可以使用insert(0,_ )来代替append方法，或者也可以继续使用append方法，但是必须用pop(0)来代替pop()。更好的是使用collection模块中的deque对象。后面讲解。</p>
+</blockquote>
+<ol>
+<li>remove</li>
+</ol>
+<p>移除列表中某个值的第一匹配项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; x.remove(3)</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 42, 34, 4, 3, 2]</div><div class="line">&gt;&gt;&gt; x.remove(222)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">ValueError: list.remove(x): x not in list</div></pre></td></tr></table></figure>
+<p><strong>注意：remove是一个没有返回值的，它改变了列表，但是没有返回值，与pop相反</strong></p>
+<ol>
+<li>reverse</li>
+</ol>
+<p>将列表中的元素反向存放：（该方法也改变了列表，但是没有返回值）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; x.reverse()</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[2, 3, 4, 34, 42, 3, 2, 1]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果需要对一个序列进行反向迭代，可以使用reversed函数。这个函数并不是返回一个列表，而是一个迭代器。但是可以使用list将其转换成列表;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; reversed(x)</div><div class="line">&lt;listreverseiterator object at 0x109b90a10&gt;</div><div class="line">&gt;&gt;&gt; list(reversed(x))</div><div class="line">[2, 3, 4, 34, 42, 3, 2, 1]</div></pre></td></tr></table></figure>
+<ol>
+<li>sort</li>
+</ol>
+<p>用于在原位置对列表进行排序。“在原位置”意味着改变原来的列表，而不是简单返回一个已排序的列表副本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; x.sort()</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div></pre></td></tr></table></figure>
+<p>由此可以看出sort是在原来的列表上改变的。</p>
+<p>但是如果想要一个排好序的列表副本，同时又保留原有的列表不变的时候，就出现问题了。很多人会想到用下面的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; y = x.sort()</div><div class="line">&gt;&gt;&gt; print y</div><div class="line">None</div></pre></td></tr></table></figure>
+<p>可以看出返回的是一个空的。所以这是错误的。</p>
+<p>正确的方法应该是先把x的副本赋值非y，然后对y进行排序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; y = x[:]</div><div class="line">&gt;&gt;&gt; y.sort()</div><div class="line">&gt;&gt;&gt; y</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 3, 42, 34, 4, 3, 2]</div></pre></td></tr></table></figure>
+<p>这里使用x[:]，是为了得到包含了x的所有元素的分片。</p>
+<p><strong>注意：不能单纯地<code>y=x</code>，因为这样做就让x和y都指向同一个列表</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; y = x</div><div class="line">&gt;&gt;&gt; y.sort()</div><div class="line">&gt;&gt;&gt; y</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div></pre></td></tr></table></figure>
+<p>另一种获取已排序的列表副本的方法是：sorted函数—可以用于任何序列，总是会返回一个副本列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; y = sorted(x)</div><div class="line">&gt;&gt;&gt; y</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 3, 42, 34, 4, 3, 2]</div></pre></td></tr></table></figure>
+<p>如果想按照相反的顺序排列，可以先使用sort(或者sorted函数),然后再使用reverse函数。</p>
+<ol>
+<li>高级排序</li>
+</ol>
+<p>如果希望元素能按照特定的方式进行排序（而不是sort函数默认的方式，即默认的升序排列方式），可以通过compare(x,y)的形式自定义比较函数。compare(x,y)函数会在x<y时返回负数，会在x>y时返回正数，如果x = y则返回0（根据你的定义）。定义好函数之后，就可以提供给sort方法作为参数。內建函数cmp函数提供了比较函数的默认实现方式：</y时返回负数，会在x></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cmp(42,23)</div><div class="line">1</div><div class="line">&gt;&gt;&gt; cmp(23,42)</div><div class="line">-1</div><div class="line">&gt;&gt;&gt; cmp(10,10)</div><div class="line">0</div><div class="line">&gt;&gt;&gt; cmp(&quot;Feyddy&quot;,&quot;as&quot;)</div><div class="line">-1</div><div class="line">&gt;&gt;&gt; cmp(&quot;Feyddy&quot;,&quot;Feyddy&quot;)</div><div class="line">0</div><div class="line">&gt;&gt;&gt; number = [1,3,6,2,3,1,56,24]</div><div class="line">&gt;&gt;&gt; number.sort(cmp)</div><div class="line">&gt;&gt;&gt; number</div><div class="line">[1, 1, 2, 3, 3, 6, 24, 56]</div></pre></td></tr></table></figure>
+<p>sort方法有另外两个可选的参数—-key和reverse。如果要使用它们，那么就要通过名字来指定。参数key与参数cmp类似—-必须提供一个在排序过程中使用的函数。然而该函数不是直接用来确定对象的大小，而是为每一个元素创建一个键，然后所有元素根据键来排序。因此，如果要根据元素的长度进行排序，那么可以使用len作为键函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [&quot;Feyddy&quot;,&quot;sccf&quot;,&quot;crice&quot;,&quot;donggua&quot;]</div><div class="line">&gt;&gt;&gt; x.sort(key=len)</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[&apos;sccf&apos;, &apos;crice&apos;, &apos;Feyddy&apos;, &apos;donggua&apos;]</div></pre></td></tr></table></figure>
+<p>另一个关键字参数是reverse是简单的布尔值(True或False)，用来指明列表是否进行反向排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,4,2,6,3,7,4]</div><div class="line">&gt;&gt;&gt; x.sort(reverse=True)</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[7, 6, 4, 4, 3, 2, 1]</div></pre></td></tr></table></figure>
+<p>cmp、key、reverse参数都可以用于sorted函数。在多数情况下，为cmp或key提供自定义函数是非常有用的。</p>
+<h2 id="元组：不可变序列"><a href="#元组：不可变序列" class="headerlink" title="元组：不可变序列"></a>元组：不可变序列</h2><p>元组与列表一样，也是一种序列，唯一不同的是元组不能修改。（字符串也是不能修改的）。创建方法很简单，只需要用逗号分割一些数值就行。元组大部分时候都是通过圆括号括起来的；空元组就用没有内容的两个圆括号表示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 1,2,3</div><div class="line">(1, 2, 3)</div><div class="line">&gt;&gt;&gt; (4,5,6)</div><div class="line">(4, 5, 6)</div><div class="line">&gt;&gt;&gt; ()</div><div class="line">()</div></pre></td></tr></table></figure>
+<p>那么如何实现包括一个值的元组呢？实现方法比较奇特—-必须加一个逗号，即使只有一个值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; (&quot;Feyddy&quot;,)</div><div class="line">(&apos;Feyddy&apos;,)</div><div class="line">&gt;&gt;&gt; &quot;Feyddy&quot;,</div><div class="line">(&apos;Feyddy&apos;,)</div><div class="line">&gt;&gt;&gt; (&quot;Feyddy&quot;)</div><div class="line">&apos;Feyddy&apos;</div></pre></td></tr></table></figure>
+<p>如果不加逗号就会显示为字符串。所以说逗号在元组里面是很重要的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 3*(40+2)</div><div class="line">126</div><div class="line">&gt;&gt;&gt; 3*(40+2,)</div><div class="line">(42, 42, 42)</div></pre></td></tr></table></figure>
+<h3 id="tuple函数"><a href="#tuple函数" class="headerlink" title="tuple函数"></a>tuple函数</h3><p>功能与list函数基本上一样：以一个序列作为参数并把它转换为元组。如果参数是元组，那么该参数就会被原样返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tuple([1,2,3])</div><div class="line">(1, 2, 3)</div><div class="line">&gt;&gt;&gt; tuple((1,2,3))</div><div class="line">(1, 2, 3)</div><div class="line">&gt;&gt;&gt; tuple(&apos;abc&apos;)</div><div class="line">(&apos;a&apos;, &apos;b&apos;, &apos;c&apos;)</div><div class="line">&gt;&gt;&gt; tuple(&apos;a,b,c&apos;)</div><div class="line">(&apos;a&apos;, &apos;,&apos;, &apos;b&apos;, &apos;,&apos;, &apos;c&apos;)</div></pre></td></tr></table></figure>
+<h3 id="基本元组操作"><a href="#基本元组操作" class="headerlink" title="基本元组操作"></a>基本元组操作</h3><p>元组其实并不复杂—-除了创建元组和访问元组元素之外，也没有太多其他操作。可以参照其他类型的序列来实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = 1,2,3</div><div class="line">&gt;&gt;&gt; x[1]</div><div class="line">2</div><div class="line">&gt;&gt;&gt; x[2]</div><div class="line">3</div><div class="line">&gt;&gt;&gt; x[3]</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">IndexError: tuple index out of range</div><div class="line">&gt;&gt;&gt; x[0:11]</div><div class="line">(1, 2, 3)</div><div class="line">&gt;&gt;&gt; x[0:1]</div><div class="line">(1,)</div><div class="line">&gt;&gt;&gt; x[0:2]</div><div class="line">(1, 2)</div></pre></td></tr></table></figure>
+<p>元组的分片还是元组，列表的分片还是列表。</p>
+<h3 id="元组的意义"><a href="#元组的意义" class="headerlink" title="元组的意义"></a>元组的意义</h3><p>由于列表的可变性，元组的不可变有必要吗？下面介绍元组不可替代的两个重要原因：</p>
+<ul>
+<li>元组可以再映射（和集合的成员）中当做键使用—-而列表则不行。</li>
+<li>元组作为很多內建函数和方法的返回值存在，也就是说你必须对元组进行处理。只要不尝试修改元组，那么，处理元组在绝大多数情况下就是把它们当做列表来进行操作（除非需要使用一些元组没有的方法，例如index和count）。</li>
+</ul>
+<p>一般来说，列表可能更能满足对序列的所有需求。</p>
+<h1 id="函数总结："><a href="#函数总结：" class="headerlink" title="函数总结："></a>函数总结：</h1><p><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fdy0vpp62hj30h906m75n.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python新手入门/" rel="tag"># Python新手入门</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/23/Python学习笔记（一）/" rel="next" title="Python学习笔记（一）">
+                <i class="fa fa-chevron-left"></i> Python学习笔记（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       <section id="comments">
+   <!-- 多说评论框 start -->
+<div id="ds-thread" class="ds-thread" data-thread-key="2017/03/24/Python学习笔记（二）/" data-title="Python学习笔记（二）" data-url="http://yoursite.com/2017/03/24/Python学习笔记（二）/" }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feyddy"};
+  (function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">82</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">302</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#列表和元组"><span class="nav-number">1.</span> <span class="nav-text">列表和元组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#序列概览"><span class="nav-number">1.1.</span> <span class="nav-text">序列概览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通用序列操作"><span class="nav-number">1.2.</span> <span class="nav-text">通用序列操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#索引"><span class="nav-number">1.2.1.</span> <span class="nav-text">索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分片"><span class="nav-number">1.2.2.</span> <span class="nav-text">分片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列相加"><span class="nav-number">1.2.3.</span> <span class="nav-text">序列相加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乘法"><span class="nav-number">1.2.4.</span> <span class="nav-text">乘法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#成员资格"><span class="nav-number">1.2.5.</span> <span class="nav-text">成员资格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#长度、最小值和最大值"><span class="nav-number">1.2.6.</span> <span class="nav-text">长度、最小值和最大值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表：Python的“苦力”"><span class="nav-number">1.3.</span> <span class="nav-text">列表：Python的“苦力”</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#list函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">list函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本的列表操作"><span class="nav-number">1.3.2.</span> <span class="nav-text">基本的列表操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表方法"><span class="nav-number">1.3.3.</span> <span class="nav-text">列表方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元组：不可变序列"><span class="nav-number">1.4.</span> <span class="nav-text">元组：不可变序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tuple函数"><span class="nav-number">1.4.1.</span> <span class="nav-text">tuple函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本元组操作"><span class="nav-number">1.4.2.</span> <span class="nav-text">基本元组操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#元组的意义"><span class="nav-number">1.4.3.</span> <span class="nav-text">元组的意义</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数总结："><span class="nav-number">2.</span> <span class="nav-text">函数总结：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feyddy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>

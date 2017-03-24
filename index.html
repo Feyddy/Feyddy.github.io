@@ -319,6 +319,362 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/24/Python学习笔记（二）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/24/Python学习笔记（二）/" itemprop="url">
+                  Python学习笔记（二）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-24T19:32:03+08:00">
+                2017-03-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/24/Python学习笔记（二）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/24/Python学习笔记（二）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/24/Python学习笔记（二）/" class="leancloud_visitors" data-flag-title="Python学习笔记（二）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="列表和元组"><a href="#列表和元组" class="headerlink" title="列表和元组"></a>列表和元组</h1><p>首先介绍一下数据结构这个概念。数据结构是通过某种方式组织在一起的数据元素的集合，这些数据元素可以是数字或者字符，甚至可以是其他数据结构。在Python中最基本的数据结构是序列(sequence)。序列中的每一个元素被分配一个序列号—即元素的位置，也称为索引。第一个索引是0，第二个是1，以此类推。</p>
+<h2 id="序列概览"><a href="#序列概览" class="headerlink" title="序列概览"></a>序列概览</h2><p>Python中有6种內建的序列。列表、元组、字符串、Unicode字符串、buffer对象和xrange对象。这里我们先主要介绍列表和元组。</p>
+<p>列表和元组的主要区别：列表可以修改，但是元组不能。一般情况下列表都可以代替元组。（但是元组作为字典的键，因为键不能修改，所以不能使用列表）。</p>
+<p>列表在操作一组数值的时候很好用。而且一个序列也可以包含其他的序列。（列表的各个元素使用逗号分开）如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; myInfo = [&quot;Feyddy&quot;,25]</div><div class="line">&gt;&gt;&gt; blog = [&quot;iOS developer&quot;,&quot;www.feyddy.com&quot;]</div><div class="line">&gt;&gt;&gt; allInfo = [myInfo,blog]</div><div class="line">&gt;&gt;&gt; allInfo</div><div class="line">[[&apos;Feyddy&apos;, 25], [&apos;iOS developer&apos;, &apos;www.feyddy.com&apos;]]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：Python中还有一种名为容器(container)的数据结构。容器基本上是包含其他对象的任意对象。序列（元组和列表）和映射（字典）是两类主要的容器。还有一个既不是序列也不是映射的容器类型，那就是集合（set）。</p>
+</blockquote>
+<h2 id="通用序列操作"><a href="#通用序列操作" class="headerlink" title="通用序列操作"></a>通用序列操作</h2><p>所有的序列类型都可以进行某些特的操作。如：索引（indexing）、分片（sliceing）、加（adding）、乘（multiplying）以及检查某个元素是否属于序列的成员（成员资格）。除此以外python还有计算长度、找出最大元素和最小元素的內建函数。</p>
+<blockquote>
+<p>迭代（iteration）。依次对序列中的每个元素重复执行某些操作。</p>
+</blockquote>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>序列中的所有元素都是有编号的—–从0开始。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[2]</div><div class="line">&apos;w&apos;</div><div class="line">&gt;&gt;&gt; blogSite[3]</div><div class="line">&apos;.&apos;</div></pre></td></tr></table></figure>
+<p>因为字符串是有字符组的序列，所以可以直接通过索引获取对应位置的字符。</p>
+<p>如果使用负数索引值的话，会从右边开始计数，但是最右边的元素的位置的编号是<code>-1</code>，而不是<code>-0</code>。这是因为如果是<code>-0</code>，就会和第一个元素重合,都是<code>0</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[-0]</div><div class="line">&apos;w&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-1]</div><div class="line">&apos;m&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-2]</div><div class="line">&apos;o&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-3]</div><div class="line">&apos;c&apos;</div></pre></td></tr></table></figure>
+<p>当然，一个字符串的字面值可以直接使用索引，而不需要创建一个变量来接受，然后使用索引。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;www.feyddy.com&quot;[4]</div><div class="line">&apos;f&apos;</div><div class="line">&gt;&gt;&gt; &quot;www.feyddy.com&quot;[-1]</div><div class="line">&apos;m&apos;</div></pre></td></tr></table></figure>
+<p>如果一个函数有返回值，而且是一个序列类型的返回值。可以直接对返回的结果进行索引操作。如下：我只获取用户输入的第四个元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; fourthValue = raw_input(&quot;Year:&quot;)[3]</div><div class="line">Year:2017</div><div class="line">&gt;&gt;&gt; fourthValue</div><div class="line">&apos;7&apos;</div></pre></td></tr></table></figure>
+<h3 id="分片"><a href="#分片" class="headerlink" title="分片"></a>分片</h3><p>可以使用索引值来访问一个元素，也可以使用分片来访问一个范围内的所有的元素。分片通过冒号相隔两个索引来实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[2:4]</div><div class="line">&apos;w.&apos;</div><div class="line">&gt;&gt;&gt; blogSite[2:-1]</div><div class="line">&apos;w.feyddy.co&apos;</div></pre></td></tr></table></figure>
+<p>可以看出第一个索引是你提取的部分的索引，最后一个索引是你要截止的那部分的编号，但是此编号的数值不会截取出来。</p>
+<p>总的来说，分片是需要两个索引值作为边界使用的。第一个索引值包含在里面，第二个则不包含在里面。</p>
+<ol>
+<li>优雅的捷径</li>
+</ol>
+<p>现在如果我想取某个索引值一直到最后的所有的元素的话,用下面的方法肯定没问题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[6:14]</div><div class="line">&apos;yddy.com&apos;</div></pre></td></tr></table></figure>
+<p>但是如果我用负数从后面开始取的话怎么办呢？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[-8:-1]</div><div class="line">&apos;yddy.co&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-8:0]</div><div class="line">&apos;&apos;</div></pre></td></tr></table></figure>
+<p>要么永远取不了<code>-1</code>位置的数，如果使用<code>-0</code>，直接为空了。</p>
+<p>因此我们可以使用便捷的方式，那就是置空后面一个索引值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[6:]</div><div class="line">&apos;yddy.com&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-8:]</div><div class="line">&apos;yddy.com&apos;</div></pre></td></tr></table></figure>
+<p>当然同样适用于开始的元素索引位置：(获取某个索引值前面所有的元素)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[:-1]</div><div class="line">&apos;www.feyddy.co&apos;</div><div class="line">&gt;&gt;&gt; blogSite[:14]</div><div class="line">&apos;www.feyddy.com&apos;</div><div class="line">&gt;&gt;&gt; blogSite[:13]</div><div class="line">&apos;www.feyddy.co&apos;</div></pre></td></tr></table></figure>
+<p>如果需要获取整个序列的元素的话，只需要将两个索引都置为空就可以了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite[:]</div><div class="line">&apos;www.feyddy.com&apos;</div></pre></td></tr></table></figure>
+<ol>
+<li>更大的步长</li>
+</ol>
+<p>分片可以设置开始与结束位置。但是还有一个隐式的参数步长，默认是1。就是从开始的索引位置每隔一个步长获取该位置的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[0:14:3]</div><div class="line">&apos;w.yyo&apos;</div></pre></td></tr></table></figure>
+<p>上面的意思就是从0索引值开始，每隔2个元素获取一个元素，一直到索引值为14的位置。其基本格式为<code>[索引开始位置:索引结束为止:步长]</code>。</p>
+<p>这个也可以结合前面的捷径方式来使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; blogSite[4::3]</div><div class="line">&apos;fd.m&apos;</div><div class="line">&gt;&gt;&gt; blogSite[:12:3]</div><div class="line">&apos;w.yy&apos;</div><div class="line">&gt;&gt;&gt; blogSite[::3]</div><div class="line">&apos;w.yyo&apos;</div><div class="line">&gt;&gt;&gt; blogSite[::-2]</div><div class="line">&apos;mcyde.w&apos;</div><div class="line">&gt;&gt;&gt; blogSite[:-4:-2]</div><div class="line">&apos;mc&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-10::-2]</div><div class="line">&apos;fww&apos;</div><div class="line">&gt;&gt;&gt; blogSite[-10::0]</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">ValueError: slice step cannot be zero</div></pre></td></tr></table></figure>
+<p>从上面的例子可以看出来，步长可以为负数，那就是从右往左开始数。但是步长不能为0，否则报错。</p>
+<p>这里关于分片的使用最需要注意的就是索引问题。尤其是后面的索引取不到，这个就需要浩浩动些脑经了。</p>
+<h3 id="序列相加"><a href="#序列相加" class="headerlink" title="序列相加"></a>序列相加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [1,2,3]+[4,5,6,7]</div><div class="line">[1, 2, 3, 4, 5, 6, 7]</div><div class="line">&gt;&gt;&gt; &quot;Hello guys, &quot; + &quot;welcome to my blog&quot;</div><div class="line">&apos;Hello guys, welcome to my blog&apos;</div><div class="line">&gt;&gt;&gt; [1,2,3] + &quot;Hello&quot;</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">TypeError: can only concatenate list (not &quot;str&quot;) to list</div></pre></td></tr></table></figure>
+<p>从上面的例子可以看出来，序列相加就是直接拼接两个序列里面的内容，进行合并。但是前提是两者必须是相同的类型。</p>
+<h3 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h3><p>如果用数字n乘以一个序列的话，会生成一个新的序列，在新的序列中，原序列被执行n次：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [1,2,3]*3</div><div class="line">[1, 2, 3, 1, 2, 3, 1, 2, 3]</div><div class="line">&gt;&gt;&gt; &quot;Feyddy&quot; *3</div><div class="line">&apos;FeyddyFeyddyFeyddy&apos;</div></pre></td></tr></table></figure>
+<p><strong>none、空列表和初始化</strong></p>
+<p>空列表可以简单的通过<code>[]</code>来表示，但是里面什么都没有。如果想创建一个占10个元素的空间，却不包含任何元素的时候，可以使用<code>None</code>。<code>None</code>是Python的內建值。它的确切含义是“这里什么都没有”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; sequence = [None] * 10</div><div class="line">&gt;&gt;&gt; sequence</div><div class="line">[None, None, None, None, None, None, None, None, None, None]</div></pre></td></tr></table></figure>
+<h3 id="成员资格"><a href="#成员资格" class="headerlink" title="成员资格"></a>成员资格</h3><p>检验一个值是否在序列中，可以使用<code>in</code>运算符。返回<code>True</code>或者<code>False</code>。这个就是布尔值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; blogType = [&quot;Python&quot;,&quot;iOS&quot;,&quot;Swift&quot;,&quot;JavaScript&quot;]</div><div class="line">&gt;&gt;&gt; &quot;Python&quot; in blogType</div><div class="line">True</div><div class="line">&gt;&gt;&gt; &quot;HTML&quot; in blogType</div><div class="line">False</div><div class="line">&gt;&gt;&gt; raw_input(&quot;Which language do you want to learn from blogType?&quot;) in blogType</div><div class="line">Which language do you want to learn from blogType?Python</div><div class="line">True</div><div class="line">&gt;&gt;&gt; blogSite = &quot;www.feyddy.com&quot;</div><div class="line">&gt;&gt;&gt; &quot;feyddy&quot; in blogSite</div><div class="line">True</div></pre></td></tr></table></figure>
+<p>这里最后一个例子<code>&quot;feyddy&quot; in blogSite</code>有些不同。一般来说<code>in</code><br>运算符会检查一个对象是否为某个序列的成员，然而，字符串唯一的成员或者元素就是它的字符，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;f&quot; in &quot;feyddy&quot;</div><div class="line">True</div></pre></td></tr></table></figure>
+<p>在早期的Python版本中，<code>in</code>是唯一能用于字符串成员资格检查的方法，也就是检查某个字符是否存在于一个字符中。如果尝试去检查一个较长的子字符串的话会报错。但是从Python2.3以后，<code>in</code>也可以用来实现这个功能了。</p>
+<p>下面实现一个小例子:</p>
+<p>检查用户名和PIN密码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">dateBase = [</div><div class="line">[<span class="string">"Feyddy"</span>,<span class="string">"1234"</span>],[<span class="string">"haohao"</span>,<span class="string">"12345"</span>],[<span class="string">"crice"</span>,<span class="string">"123456"</span>]</div><div class="line">]</div><div class="line">userName = raw_input(<span class="string">"Please enter your userName:"</span>)</div><div class="line">pin_code = raw_input(<span class="string">"please enter your pinCode:"</span>)</div><div class="line"></div><div class="line"><span class="keyword">if</span> [userName,pin_code] <span class="keyword">in</span> dateBase:</div><div class="line">    print(<span class="string">"Welcome"</span>)</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">xuzhonglindeMac-mini:Pyhton学习笔记(二) t3$ python in.py</div><div class="line">Please enter your userName:Feyddy</div><div class="line">please enter your pinCode:1234</div><div class="line">Welcome</div><div class="line">xuzhonglindeMac-mini:Pyhton学习笔记(二) t3$ python in.py</div><div class="line">Please enter your userName:qweqw</div><div class="line">please enter your pinCode:123456</div></pre></td></tr></table></figure>
+<h3 id="长度、最小值和最大值"><a href="#长度、最小值和最大值" class="headerlink" title="长度、最小值和最大值"></a>长度、最小值和最大值</h3><p>內建函数len、min和max非常有用。len函数返回序列中所包含的元素的数量。min函数和max函数则分别返回序列中最大和最小的元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; numbers = [100,34,78]</div><div class="line">&gt;&gt;&gt; len(numbers)</div><div class="line">3</div><div class="line">&gt;&gt;&gt; min(numbers)</div><div class="line">34</div><div class="line">&gt;&gt;&gt; max(numbers)</div><div class="line">100</div><div class="line">&gt;&gt;&gt; max(2,3,476,45,89,100)</div><div class="line">476</div></pre></td></tr></table></figure>
+<p>上面最后一个例子，max函数的参数并不是一个序列，而是多个数字直接作为参数。</p>
+<h2 id="列表：Python的“苦力”"><a href="#列表：Python的“苦力”" class="headerlink" title="列表：Python的“苦力”"></a>列表：Python的“苦力”</h2><p>列表不同于元组和字符串的地方在于：列表是可变的（mutable）—-可以改变列表的内容，并且列表有很多有用的、专门的方法。</p>
+<h3 id="list函数"><a href="#list函数" class="headerlink" title="list函数"></a>list函数</h3><p>因为字符串不能被修改，所以有时候根据字符串创建列表会很有用。这个时候用list函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; list(&quot;Feyddy&quot;)</div><div class="line">[&apos;F&apos;, &apos;e&apos;, &apos;y&apos;, &apos;d&apos;, &apos;d&apos;, &apos;y&apos;]</div><div class="line">&gt;&gt;&gt; list([1,2,3,4,4])</div><div class="line">[1, 2, 3, 4, 4]</div></pre></td></tr></table></figure>
+<p>list函数适用于所有类型的序列，而不只是字符串。</p>
+<blockquote>
+<p>可以用<code>&#39;&#39;.join(somelist)</code>。将一个由字符组成的列表转换为字符串；</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = list(&quot;Feyddy&quot;)</div><div class="line">&gt;&gt;&gt; &apos;&apos;.join(a)</div><div class="line">&apos;Feyddy&apos;</div></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="基本的列表操作"><a href="#基本的列表操作" class="headerlink" title="基本的列表操作"></a>基本的列表操作</h3><p>列表适用于所有的序列的标准操作。但是它是可以被改变的。下面介绍元素的赋值，元素的删除，分片赋值以及列表方法。（<strong>注意：不是所有的列表方法都真正地改变列表</strong>）</p>
+<ol>
+<li>改变列表：元素赋值</li>
+</ol>
+<p>我们限定某个索引的元素进行修改赋值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3]</div><div class="line">&gt;&gt;&gt; x[1] = &quot;Feyddy&quot;</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, &apos;Feyddy&apos;, 3]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>不能为一个位置不存在的元素进行赋值。也就是说如果列表的长度为2，就不能为索引值为100的元素进行赋值，必须创建一个长度为101的列表。</p>
+</blockquote>
+<ol>
+<li>删除元素</li>
+</ol>
+<p>使用<code>del</code>语句实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x=[1,2,3,4,5,5]</div><div class="line">&gt;&gt;&gt; del x[2]</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 4, 5, 5]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>del语句还可以用于字典元素的删除等。后面介绍。</p>
+</blockquote>
+<ol>
+<li>分片赋值</li>
+</ol>
+<p>程序可以一次为多个元素赋值，而且还有个特性：可以使用与原序列不等长的序列将分片替换：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; name = list(&quot;Feyddy&quot;)</div><div class="line">&gt;&gt;&gt; name[1:] = list(&quot;Welcome to my blog&quot;)</div><div class="line">&gt;&gt;&gt; name</div><div class="line">[&apos;F&apos;, &apos;W&apos;, &apos;e&apos;, &apos;l&apos;, &apos;c&apos;, &apos;o&apos;, &apos;m&apos;, &apos;e&apos;, &apos; &apos;, &apos;t&apos;, &apos;o&apos;, &apos; &apos;, &apos;m&apos;, &apos;y&apos;, &apos; &apos;, &apos;b&apos;, &apos;l&apos;, &apos;o&apos;, &apos;g&apos;]</div></pre></td></tr></table></figure>
+<p>分片还可以在不替换任何元素的情况下，插入新的元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; numbers=[1,2,3,4,5]</div><div class="line">&gt;&gt;&gt; numbers[2:2]=[10,9,8,7]</div><div class="line">&gt;&gt;&gt; numbers</div><div class="line">[1, 2, 10, 9, 8, 7, 3, 4, 5]</div></pre></td></tr></table></figure>
+<p>上面的<code>2:2</code>就是替换了一个空的分片，因此实际的操作就是插入了一个序列。以此类推通过分片删除也是可以的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; numbers=[1,2,3,4,5]</div><div class="line">&gt;&gt;&gt; numbers[1:3] = []</div><div class="line">&gt;&gt;&gt; numbers</div><div class="line">[1, 4, 5]</div></pre></td></tr></table></figure>
+<h3 id="列表方法"><a href="#列表方法" class="headerlink" title="列表方法"></a>列表方法</h3><p>方法是一个与某些对象有紧密联系的函数，对象可能是列表和数字，也可能是字符串或者其他类型的对象，一般来说，方法可以这样进行调用：<code>对象.方法(参数)</code>。</p>
+<ol>
+<li>append</li>
+</ol>
+<p>在列表末尾追加新的对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; lis=[1,2,3]</div><div class="line">&gt;&gt;&gt; lis.append([4,5,6])</div><div class="line">&gt;&gt;&gt; lis</div><div class="line">[1, 2, 3, [4, 5, 6]]</div><div class="line">&gt;&gt;&gt; lis.append(4)</div><div class="line">&gt;&gt;&gt; lis</div><div class="line">[1, 2, 3, [4, 5, 6], 4]</div></pre></td></tr></table></figure>
+<p><strong>注意：append不是简单的返回一个修改过的新的列表—-而是直接修改原来的列表。</strong></p>
+<ol>
+<li>count</li>
+</ol>
+<p>计算某个元素在列表中出现的次数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; [1,2,3,4,5,4,3,4,3,2,1,6,789].count(1)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; [1,2,3,4,5,4,3,4,3,2,1,6,789].count(2)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; [1,2,3,4,5,4,3,4,3,2,1,6,789].count(3)</div><div class="line">3</div><div class="line">&gt;&gt;&gt; x=[[1,2],3,4,[1,2],4]</div><div class="line">&gt;&gt;&gt; x.count(4)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; x.count([1,2])</div><div class="line">2</div></pre></td></tr></table></figure>
+<ol>
+<li>extend</li>
+</ol>
+<p>可以在列表的末尾一次性追加另一个序列中的多个值。换句话说，可以用新列表扩展原有的列表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; origin_list = [1,2,3]</div><div class="line">&gt;&gt;&gt; extend_list = [4,5,6]</div><div class="line">&gt;&gt;&gt; origin_list.extend(extend_list)</div><div class="line">&gt;&gt;&gt; origin_list</div><div class="line">[1, 2, 3, 4, 5, 6]</div></pre></td></tr></table></figure>
+<p>这儿看上去像是连接操作，但是<code>extend</code>是修改了原来的序列，但是连接操作是返回一个新的列表，原来的都没有修改过：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; a = [1,2,3]</div><div class="line">&gt;&gt;&gt; b = [4,5,6]</div><div class="line">&gt;&gt;&gt; a+b</div><div class="line">[1, 2, 3, 4, 5, 6]</div><div class="line">&gt;&gt;&gt; a</div><div class="line">[1, 2, 3]</div><div class="line">&gt;&gt;&gt; x = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;]</div><div class="line">&gt;&gt;&gt; y = [&apos;d&apos;,&apos;e&apos;,&apos;f&apos;]</div><div class="line">&gt;&gt;&gt; x.extend(y)</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[&apos;a&apos;, &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos;, &apos;f&apos;]</div></pre></td></tr></table></figure>
+<ol>
+<li>index</li>
+</ol>
+<p>用于从列表中找出某个值第一个匹配项的索引位置，即使列表里面有多个同样的值，但是只会返回搜索到的第一个匹配的索引值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,4,3]</div><div class="line">&gt;&gt;&gt; x.index(3)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; x.index(5)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">ValueError: 5 is not in list</div></pre></td></tr></table></figure>
+<ol>
+<li>insert</li>
+</ol>
+<p>用于将对象插入列表中：<code>insert(索引值,元素)</code>。注意，元素是插在索引值前面的位置上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; names = [&quot;Feyddy&quot;,&quot;haohao&quot;,&quot;crice&quot;,&quot;Tony&quot;]</div><div class="line">&gt;&gt;&gt; names.insert(1,&quot;Donggua&quot;)</div><div class="line">&gt;&gt;&gt; names</div><div class="line">[&apos;Feyddy&apos;, &apos;Donggua&apos;, &apos;haohao&apos;, &apos;crice&apos;, &apos;Tony&apos;]</div></pre></td></tr></table></figure>
+<p>还有可以使用分片的方法插入，但是不推荐：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; names = [&quot;Feyddy&quot;,&quot;haohao&quot;,&quot;crice&quot;,&quot;Tony&quot;]</div><div class="line">&gt;&gt;&gt; names[1:1] = [&quot;Donggua&quot;]</div><div class="line">&gt;&gt;&gt; names</div><div class="line">[&apos;Feyddy&apos;, &apos;Donggua&apos;, &apos;haohao&apos;, &apos;crice&apos;, &apos;Tony&apos;]</div></pre></td></tr></table></figure>
+<ol>
+<li>pop</li>
+</ol>
+<p>移除列表中的一个元素（默认是最后一个），并且返回该元素的值：<code>pop(索引值)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3]</div><div class="line">&gt;&gt;&gt; x.pop()</div><div class="line">3</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2]</div><div class="line">&gt;&gt;&gt; x.pop(1)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1]</div></pre></td></tr></table></figure>
+<p><strong>注意：pop方法是唯一一个既能修改列表又返回元素值（除了None）的列表方法</strong></p>
+<p>使用pop方法可以实现一种常见的数据结构—-栈。栈的原理就像是堆放盘子。只能从顶部放盘子和拿盘子。即后进先出原则。也就是入栈（push）和出栈（pop）。当然，Python没有入栈，但是可以把append方法当做是入栈方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3]</div><div class="line">&gt;&gt;&gt; x.append(x.pop())</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 3]</div></pre></td></tr></table></figure>
+<p>先出的是3后进的是3。</p>
+<blockquote>
+<p>如果需要实现一个先进先出的队列，那么可以使用insert(0,_ )来代替append方法，或者也可以继续使用append方法，但是必须用pop(0)来代替pop()。更好的是使用collection模块中的deque对象。后面讲解。</p>
+</blockquote>
+<ol>
+<li>remove</li>
+</ol>
+<p>移除列表中某个值的第一匹配项：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; x.remove(3)</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 42, 34, 4, 3, 2]</div><div class="line">&gt;&gt;&gt; x.remove(222)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">ValueError: list.remove(x): x not in list</div></pre></td></tr></table></figure>
+<p><strong>注意：remove是一个没有返回值的，它改变了列表，但是没有返回值，与pop相反</strong></p>
+<ol>
+<li>reverse</li>
+</ol>
+<p>将列表中的元素反向存放：（该方法也改变了列表，但是没有返回值）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; x.reverse()</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[2, 3, 4, 34, 42, 3, 2, 1]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果需要对一个序列进行反向迭代，可以使用reversed函数。这个函数并不是返回一个列表，而是一个迭代器。但是可以使用list将其转换成列表;</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; reversed(x)</div><div class="line">&lt;listreverseiterator object at 0x109b90a10&gt;</div><div class="line">&gt;&gt;&gt; list(reversed(x))</div><div class="line">[2, 3, 4, 34, 42, 3, 2, 1]</div></pre></td></tr></table></figure>
+<ol>
+<li>sort</li>
+</ol>
+<p>用于在原位置对列表进行排序。“在原位置”意味着改变原来的列表，而不是简单返回一个已排序的列表副本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; x.sort()</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div></pre></td></tr></table></figure>
+<p>由此可以看出sort是在原来的列表上改变的。</p>
+<p>但是如果想要一个排好序的列表副本，同时又保留原有的列表不变的时候，就出现问题了。很多人会想到用下面的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; y = x.sort()</div><div class="line">&gt;&gt;&gt; print y</div><div class="line">None</div></pre></td></tr></table></figure>
+<p>可以看出返回的是一个空的。所以这是错误的。</p>
+<p>正确的方法应该是先把x的副本赋值非y，然后对y进行排序：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; y = x[:]</div><div class="line">&gt;&gt;&gt; y.sort()</div><div class="line">&gt;&gt;&gt; y</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 3, 42, 34, 4, 3, 2]</div></pre></td></tr></table></figure>
+<p>这里使用x[:]，是为了得到包含了x的所有元素的分片。</p>
+<p><strong>注意：不能单纯地<code>y=x</code>，因为这样做就让x和y都指向同一个列表</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; y = x</div><div class="line">&gt;&gt;&gt; y.sort()</div><div class="line">&gt;&gt;&gt; y</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div></pre></td></tr></table></figure>
+<p>另一种获取已排序的列表副本的方法是：sorted函数—可以用于任何序列，总是会返回一个副本列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,2,3,42,34,4,3,2]</div><div class="line">&gt;&gt;&gt; y = sorted(x)</div><div class="line">&gt;&gt;&gt; y</div><div class="line">[1, 2, 2, 3, 3, 4, 34, 42]</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[1, 2, 3, 42, 34, 4, 3, 2]</div></pre></td></tr></table></figure>
+<p>如果想按照相反的顺序排列，可以先使用sort(或者sorted函数),然后再使用reverse函数。</p>
+<ol>
+<li>高级排序</li>
+</ol>
+<p>如果希望元素能按照特定的方式进行排序（而不是sort函数默认的方式，即默认的升序排列方式），可以通过compare(x,y)的形式自定义比较函数。compare(x,y)函数会在x<y时返回负数，会在x>y时返回正数，如果x = y则返回0（根据你的定义）。定义好函数之后，就可以提供给sort方法作为参数。內建函数cmp函数提供了比较函数的默认实现方式：</y时返回负数，会在x></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; cmp(42,23)</div><div class="line">1</div><div class="line">&gt;&gt;&gt; cmp(23,42)</div><div class="line">-1</div><div class="line">&gt;&gt;&gt; cmp(10,10)</div><div class="line">0</div><div class="line">&gt;&gt;&gt; cmp(&quot;Feyddy&quot;,&quot;as&quot;)</div><div class="line">-1</div><div class="line">&gt;&gt;&gt; cmp(&quot;Feyddy&quot;,&quot;Feyddy&quot;)</div><div class="line">0</div><div class="line">&gt;&gt;&gt; number = [1,3,6,2,3,1,56,24]</div><div class="line">&gt;&gt;&gt; number.sort(cmp)</div><div class="line">&gt;&gt;&gt; number</div><div class="line">[1, 1, 2, 3, 3, 6, 24, 56]</div></pre></td></tr></table></figure>
+<p>sort方法有另外两个可选的参数—-key和reverse。如果要使用它们，那么就要通过名字来指定。参数key与参数cmp类似—-必须提供一个在排序过程中使用的函数。然而该函数不是直接用来确定对象的大小，而是为每一个元素创建一个键，然后所有元素根据键来排序。因此，如果要根据元素的长度进行排序，那么可以使用len作为键函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [&quot;Feyddy&quot;,&quot;sccf&quot;,&quot;crice&quot;,&quot;donggua&quot;]</div><div class="line">&gt;&gt;&gt; x.sort(key=len)</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[&apos;sccf&apos;, &apos;crice&apos;, &apos;Feyddy&apos;, &apos;donggua&apos;]</div></pre></td></tr></table></figure>
+<p>另一个关键字参数是reverse是简单的布尔值(True或False)，用来指明列表是否进行反向排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = [1,4,2,6,3,7,4]</div><div class="line">&gt;&gt;&gt; x.sort(reverse=True)</div><div class="line">&gt;&gt;&gt; x</div><div class="line">[7, 6, 4, 4, 3, 2, 1]</div></pre></td></tr></table></figure>
+<p>cmp、key、reverse参数都可以用于sorted函数。在多数情况下，为cmp或key提供自定义函数是非常有用的。</p>
+<h2 id="元组：不可变序列"><a href="#元组：不可变序列" class="headerlink" title="元组：不可变序列"></a>元组：不可变序列</h2><p>元组与列表一样，也是一种序列，唯一不同的是元组不能修改。（字符串也是不能修改的）。创建方法很简单，只需要用逗号分割一些数值就行。元组大部分时候都是通过圆括号括起来的；空元组就用没有内容的两个圆括号表示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 1,2,3</div><div class="line">(1, 2, 3)</div><div class="line">&gt;&gt;&gt; (4,5,6)</div><div class="line">(4, 5, 6)</div><div class="line">&gt;&gt;&gt; ()</div><div class="line">()</div></pre></td></tr></table></figure>
+<p>那么如何实现包括一个值的元组呢？实现方法比较奇特—-必须加一个逗号，即使只有一个值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; (&quot;Feyddy&quot;,)</div><div class="line">(&apos;Feyddy&apos;,)</div><div class="line">&gt;&gt;&gt; &quot;Feyddy&quot;,</div><div class="line">(&apos;Feyddy&apos;,)</div><div class="line">&gt;&gt;&gt; (&quot;Feyddy&quot;)</div><div class="line">&apos;Feyddy&apos;</div></pre></td></tr></table></figure>
+<p>如果不加逗号就会显示为字符串。所以说逗号在元组里面是很重要的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 3*(40+2)</div><div class="line">126</div><div class="line">&gt;&gt;&gt; 3*(40+2,)</div><div class="line">(42, 42, 42)</div></pre></td></tr></table></figure>
+<h3 id="tuple函数"><a href="#tuple函数" class="headerlink" title="tuple函数"></a>tuple函数</h3><p>功能与list函数基本上一样：以一个序列作为参数并把它转换为元组。如果参数是元组，那么该参数就会被原样返回：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; tuple([1,2,3])</div><div class="line">(1, 2, 3)</div><div class="line">&gt;&gt;&gt; tuple((1,2,3))</div><div class="line">(1, 2, 3)</div><div class="line">&gt;&gt;&gt; tuple(&apos;abc&apos;)</div><div class="line">(&apos;a&apos;, &apos;b&apos;, &apos;c&apos;)</div><div class="line">&gt;&gt;&gt; tuple(&apos;a,b,c&apos;)</div><div class="line">(&apos;a&apos;, &apos;,&apos;, &apos;b&apos;, &apos;,&apos;, &apos;c&apos;)</div></pre></td></tr></table></figure>
+<h3 id="基本元组操作"><a href="#基本元组操作" class="headerlink" title="基本元组操作"></a>基本元组操作</h3><p>元组其实并不复杂—-除了创建元组和访问元组元素之外，也没有太多其他操作。可以参照其他类型的序列来实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; x = 1,2,3</div><div class="line">&gt;&gt;&gt; x[1]</div><div class="line">2</div><div class="line">&gt;&gt;&gt; x[2]</div><div class="line">3</div><div class="line">&gt;&gt;&gt; x[3]</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">IndexError: tuple index out of range</div><div class="line">&gt;&gt;&gt; x[0:11]</div><div class="line">(1, 2, 3)</div><div class="line">&gt;&gt;&gt; x[0:1]</div><div class="line">(1,)</div><div class="line">&gt;&gt;&gt; x[0:2]</div><div class="line">(1, 2)</div></pre></td></tr></table></figure>
+<p>元组的分片还是元组，列表的分片还是列表。</p>
+<h3 id="元组的意义"><a href="#元组的意义" class="headerlink" title="元组的意义"></a>元组的意义</h3><p>由于列表的可变性，元组的不可变有必要吗？下面介绍元组不可替代的两个重要原因：</p>
+<ul>
+<li>元组可以再映射（和集合的成员）中当做键使用—-而列表则不行。</li>
+<li>元组作为很多內建函数和方法的返回值存在，也就是说你必须对元组进行处理。只要不尝试修改元组，那么，处理元组在绝大多数情况下就是把它们当做列表来进行操作（除非需要使用一些元组没有的方法，例如index和count）。</li>
+</ul>
+<p>一般来说，列表可能更能满足对序列的所有需求。</p>
+<h1 id="函数总结："><a href="#函数总结：" class="headerlink" title="函数总结："></a>函数总结：</h1><p><img src="https://ww3.sinaimg.cn/large/006tNbRwly1fdy0vpp62hj30h906m75n.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/23/Python学习笔记（一）/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -594,66 +950,23 @@
 
       
         
-          
-            <h1 id="Realm数据库"><a href="#Realm数据库" class="headerlink" title="Realm数据库"></a>Realm数据库</h1><p>Realm是一款针对移动设备设计的数据库，已经涵盖所有主流开发平台，并且全部代码开源，地址如下：<br><a href="https://github.com/realm/realm-cocoa" target="_blank" rel="external">地址</a></p>
+          <h1 id="Realm数据库"><a href="#Realm数据库" class="headerlink" title="Realm数据库"></a>Realm数据库</h1><p>Realm是一款针对移动设备设计的数据库，已经涵盖所有主流开发平台，并且全部代码开源，地址如下：<br><a href="https://github.com/realm/realm-cocoa">地址</a></p>
 <h1 id="Realm特性"><a href="#Realm特性" class="headerlink" title="Realm特性"></a>Realm特性</h1><ul>
 <li>移动设备支持：Realm是第一个针对手机平板和可穿戴设备设计的数据库，基本全平台支持。</li>
 <li>简单：Realm的安装和接入简易，不同于Core Data,不需要开发者配置模型层结构，从开始接触到上手使用，只需要短短几分钟时间。</li>
 <li>现代：关系型数据库，支持泛型。</li>
 <li>快速：官方称比SQLite的常规操作要快速。</li>
 </ul>
-<h1 id="Realm学习资源"><a href="#Realm学习资源" class="headerlink" title="Realm学习资源"></a>Realm学习资源</h1><p>官方文档:<a href="https://realm.io/cn/docs/objc/latest/" target="_blank" rel="external">中文文档</a></p>
+<h1 id="Realm学习资源"><a href="#Realm学习资源" class="headerlink" title="Realm学习资源"></a>Realm学习资源</h1><p>官方文档:<a href="https://realm.io/cn/docs/objc/latest/">中文文档</a></p>
 <p>Realm Browser:一款MAC平台的工具</p>
 <p>Xcode插件（详情看官方文档里面有介绍）</p>
-<!--more>
-
-# Realm入门小案例
-
-需求说明：
-
-- 创建一个数据模型，记录宠物狗的名字和年龄；
-- 创建一个数据模型，记录主人的名字和主任持有的宠物狗对象；
-- 查询年龄大于2岁的宠物狗；
-
-首先创建一个宠物狗模型：需要继承`RLMObject`
-
-Dog.h
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">#import &lt;Realm/Realm.h&gt;</div><div class="line"></div><div class="line">@interface Dog : RLMObject</div><div class="line"></div><div class="line">//Realm官网不是建议我们对属性进行相关的限制说明,如;@property (nonatomic, copy)</div><div class="line"></div><div class="line">@property NSString * name;</div><div class="line"></div><div class="line">@property NSInteger age;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>Dog.m没有特殊情况不需要操作</p>
-<p>其次创建一个主人的模型：需要继承<code>RLMObject</code></p>
-<p>Master.h</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#import &lt;Realm/Realm.h&gt;</div><div class="line">#import &quot;Dog.h&quot;</div><div class="line"></div><div class="line">//注意：这里的必须写上你需要类型Dog</div><div class="line">RLM_ARRAY_TYPE(Dog);</div><div class="line"></div><div class="line">@interface Master : RLMObject</div><div class="line">@property NSString *name;</div><div class="line">@property RLMArray&lt;Dog*&gt;&lt;Dog&gt; *dogs;//数组里面的对象也要详细写明类型&lt;Dog*&gt;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>Master.m没有特殊情况不需要操作</p>
-<p>主控制器中实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &lt;Realm.h&gt;</div><div class="line">#import &quot;Dog.h&quot;</div><div class="line">#import &quot;Master.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    //创建一个数据库，记录宠物的姓名和年龄</div><div class="line">    Dog * dog = [[Dog alloc] init];</div><div class="line">    dog.name = @&quot;haohao&quot;;</div><div class="line">    dog.age = 24;</div><div class="line"></div><div class="line"></div><div class="line">    //添加一个主人的记录</div><div class="line">    Master * master = [[Master alloc] init];</div><div class="line">    master.name = @&quot;Feyddy&quot;;</div><div class="line">    [master.dogs addObject:dog];</div><div class="line">    NSLog(@&quot;The info of master = %@&quot;,master);</div><div class="line">    NSLog(@&quot;%@ has a dog called %@&quot;,master.name,dog.name);</div><div class="line"></div><div class="line"></div><div class="line">    //查询年龄小于4的宠物名字</div><div class="line">    RLMResults * results = [Dog objectsWhere:@&quot;age &gt;4&quot;];</div><div class="line">    NSLog(@&quot;%@&quot;,results);//此时查不到数据，因为还没有将数据添加到数据库中</div><div class="line"></div><div class="line">    //将宠物添加到数据库</div><div class="line">    RLMRealm * r = [RLMRealm defaultRealm];</div><div class="line"></div><div class="line">    ///方法一：在block里面进行数据库的读写操作</div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        [r addObject:dog];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    //Reaml的查询是动态的，只要你的数据库里面的数据发生改变，就会被通知到修改,所以此时不需要再进行查询的操作了。里面的数据会直接变化。</div><div class="line">    NSLog(@&quot;%@&quot;,results);</div><div class="line"></div><div class="line">//    ///方法二：在两个方法之间：beginWriteTransaction和commitWriteTransaction</div><div class="line">//    [r beginWriteTransaction];</div><div class="line">//    </div><div class="line">//    [r commitWriteTransaction];</div><div class="line"></div><div class="line">    //线程辅助</div><div class="line">    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^&#123;</div><div class="line">        RLMRealm * r = [RLMRealm defaultRealm];</div><div class="line">        [r beginWriteTransaction];</div><div class="line"></div><div class="line">        [r commitWriteTransaction];</div><div class="line">    &#125;);  </div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<h1 id="Realm数据模型"><a href="#Realm数据模型" class="headerlink" title="Realm数据模型"></a>Realm数据模型</h1><p>Realm如何实现数据库的基本功能</p>
-<p>数据模型类：<code>RLMObject</code>。它和<code>NSManagedObject</code>的共同点，都是不能重写属性的setter和getter方法的。</p>
-<p><code>RLMObject</code> - 支持忽略属性；</p>
-<p><code>NSManagedObject</code> - 如果需要直接通过属性来调用数据的话，需要@dynamic关键词修饰属性；</p>
-<h2 id="论坛帖子属性案例"><a href="#论坛帖子属性案例" class="headerlink" title="论坛帖子属性案例"></a>论坛帖子属性案例</h2><p>论坛帖子属性：标题，作者，时间，内容，浏览量，回帖，置顶。</p>
-<p>首先创建一个帖子类:Post</p>
-<p>Post.h</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">#import &lt;Realm/Realm.h&gt;</div><div class="line"></div><div class="line">@class User;//避免循环引用</div><div class="line"></div><div class="line">RLM_ARRAY_TYPE(Post);</div><div class="line"></div><div class="line">@interface Post : RLMObject</div><div class="line"></div><div class="line">//id主键设置,主键一旦设置是不可以更改的</div><div class="line">@property NSString *indentifier;</div><div class="line"></div><div class="line">//title 标题</div><div class="line">@property NSString *title;</div><div class="line"></div><div class="line">//author 作为rlm对象 一对一，一对多</div><div class="line">//@property (readonly) RLMLinkingObjects *author;//此时返回的是一个集合</div><div class="line">@property User *author;</div><div class="line"></div><div class="line">//time 时间戳</div><div class="line">@property NSDate *timestamp;</div><div class="line"></div><div class="line">//content 内容</div><div class="line">@property NSData *content;</div><div class="line"></div><div class="line"></div><div class="line">/// 注意常量在realm中是不能为空的所以改成NSNumber &lt;RLMInt&gt;*，而不用NSInteger</div><div class="line"></div><div class="line">//look 浏览量</div><div class="line">@property NSNumber &lt;RLMInt&gt;* look;</div><div class="line"></div><div class="line">//置顶</div><div class="line">@property NSNumber &lt;RLMBool&gt;* isTop;</div><div class="line"></div><div class="line">//comments 回帖</div><div class="line">@property RLMArray&lt;Post *&gt;&lt;Post&gt; * comments;</div><div class="line"></div><div class="line">//不支持CGFloat，请使用float或者double</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>Post.m</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">#import &quot;Post.h&quot;</div><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@implementation Post</div><div class="line"></div><div class="line">//对属性的存在进行一些相关的设置</div><div class="line"></div><div class="line">///1.可空属性的设置，决定属性是否可以为nil</div><div class="line"></div><div class="line">+ (NSArray&lt;NSString *&gt; *)requiredProperties</div><div class="line">&#123;</div><div class="line">    //在里面设置的就是必须不能为空的属性</div><div class="line">    return @[@&quot;title&quot;];</div><div class="line">&#125;</div><div class="line"></div><div class="line">///2.忽略属性</div><div class="line">+ (NSArray&lt;NSString *&gt; *)ignoredProperties</div><div class="line">&#123;</div><div class="line">    //在里面设置的就是不写入数据库的属性，它将作为对象的属性进行操作。</div><div class="line">    return @[];</div><div class="line">&#125;</div><div class="line"></div><div class="line">/////3.属性的反向关系，例如帖子的作者和作者的帖子</div><div class="line">//+ (NSDictionary&lt;NSString *,RLMPropertyDescriptor *&gt; *)linkingObjectsProperties</div><div class="line">//&#123;</div><div class="line">//    </div><div class="line">//    return @&#123;</div><div class="line">//             @&quot;author&quot;:[RLMPropertyDescriptor descriptorWithClass:User.class propertyName:@&quot;posts&quot;]</div><div class="line">//             &#125;;//此时必须将author属性类型改成RLMLinkingObjects,而且必须改成readonly，否则会有异常</div><div class="line">//    </div><div class="line">//&#125;</div><div class="line"></div><div class="line">///4.默认值</div><div class="line"></div><div class="line">+ (NSDictionary *)defaultPropertyValues</div><div class="line">&#123;</div><div class="line">    return @&#123;</div><div class="line">             @&quot;look&quot;: @12</div><div class="line">             &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">///5.索引属性  支持NSString，NSNumber(包括常量)，NSDate</div><div class="line">+ (NSArray&lt;NSString *&gt; *)indexedProperties</div><div class="line">&#123;</div><div class="line">    return @[@&quot;title&quot;,@&quot;timestamp&quot;];</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">///6.主键的设置</div><div class="line"></div><div class="line">+ (NSString *)primaryKey</div><div class="line">&#123;</div><div class="line">    return @&quot;indentifier&quot;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<p><em>然后创建一个User作者类</em></p>
-<p>User.h</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#import &lt;Realm/Realm.h&gt;</div><div class="line">#import &quot;Post.h&quot;</div><div class="line"></div><div class="line">@interface User : RLMObject</div><div class="line"></div><div class="line">@property NSString *nickName;</div><div class="line"></div><div class="line">////一对多需要使用RLMArray</div><div class="line">//@property RLMArray&lt;Post *&gt;&lt;Post&gt; *posts;</div><div class="line"></div><div class="line">//反向关系</div><div class="line">@property (readonly) RLMLinkingObjects *posts;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<p>User.m</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@implementation User</div><div class="line">///3.属性的反向关系，例如帖子的作者和作者的帖子</div><div class="line">+ (NSDictionary&lt;NSString *,RLMPropertyDescriptor *&gt; *)linkingObjectsProperties</div><div class="line">&#123;</div><div class="line">    return @&#123;</div><div class="line">             @&quot;posts&quot;:[RLMPropertyDescriptor descriptorWithClass:Post.class propertyName:@&quot;author&quot;]</div><div class="line">             &#125;;//此时必须将posts属性类型改成RLMLinkingObjects,而且必须改成readonly，否则会有异常</div><div class="line"></div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
-<p><strong>注意：反向关系设置一个就可以了。</strong></p>
-<p>主控制器实现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &lt;Realm.h&gt;</div><div class="line">#import &quot;Post.h&quot;</div><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    //因为设置了标题为非空属性，所以我们可以用下面的方法设置一下</div><div class="line"></div><div class="line">    Post *post = [[Post alloc] initWithValue:@&#123;@&quot;title&quot;:@&quot;untitled&quot;&#125;];</div><div class="line"></div><div class="line"></div><div class="line">    User *user = [[User alloc] init];</div><div class="line">    user.nickName = @&quot;Feyddy&quot;;</div><div class="line"></div><div class="line">    post.author = user;//因为User设置了反向关系，所以user的post属性也会指向post的author属性</div><div class="line"></div><div class="line">    //数据库的读写</div><div class="line">    RLMRealm *r = [RLMRealm defaultRealm];</div><div class="line"></div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line"></div><div class="line">        [r addObject:post];</div><div class="line">        [r addObject:user];</div><div class="line"></div><div class="line">        NSLog(@&quot;%@&quot;,user.posts);</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<p><strong>运行结果：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">2017-03-22 15:49:34.384 Realm[12929:245389] RLMResults &lt;0x7f975b60fb00&gt; (</div><div class="line">	[0] Post &#123;</div><div class="line">		indentifier = (null);</div><div class="line">		title = untitled;</div><div class="line">		author = User &#123;</div><div class="line">			nickName = Feyddy;</div><div class="line">		&#125;;</div><div class="line">		timestamp = (null);</div><div class="line">		content = &lt;(null) — 0 total bytes&gt;;</div><div class="line">		look = 12;</div><div class="line">		isTop = (null);</div><div class="line">		comments = RLMArray &lt;0x6000002e2600&gt; (</div><div class="line"></div><div class="line">		);</div><div class="line">	&#125;</div><div class="line">)</div></pre></td></tr></table></figure>
-<p>可以看出，user与post反向关联了，因为里面出现了<code>look = 12;</code>。这个我只是在post里面设置了，但是打印user的时候，他出来了。</p>
-<h1 id="Realm数据库的增删改查"><a href="#Realm数据库的增删改查" class="headerlink" title="Realm数据库的增删改查"></a>Realm数据库的增删改查</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &lt;Realm.h&gt;</div><div class="line">#import &quot;Post.h&quot;</div><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];    </div><div class="line"></div><div class="line">    Post *post = [[Post alloc] initWithValue:@&#123;@&quot;title&quot;:@&quot;untitled&quot;&#125;];</div><div class="line">    post.indentifier = [[NSDate date] description];//防止每次创建的时候用的都是同一个主键名，但是主键是不能一样的。</div><div class="line">    RLMRealm *r = [RLMRealm defaultRealm];</div><div class="line"></div><div class="line">    //写入数据库</div><div class="line">    //以后的增删查改必须在transactionWithBlock里面进行</div><div class="line"></div><div class="line">    //增</div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        [r addObject:post];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    //删</div><div class="line">//    [r transactionWithBlock:^&#123;</div><div class="line">//        [r deleteObject:post];</div><div class="line">//        [r deleteAllObjects];//清空数据库，但是realm数据库文件并不会减小，为了给以后添加数据预留空间</div><div class="line">//    &#125;];</div><div class="line"></div><div class="line"></div><div class="line">    //改</div><div class="line">    ///1.直接更改</div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        post.timestamp = [NSDate date];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    ///2.通过主键更改</div><div class="line">    Post *postNew = [[Post alloc] init];</div><div class="line">    postNew.title = @&quot;newTitle&quot;;</div><div class="line">    postNew.indentifier = @&quot;1000&quot;;//修改主键为2017-03-22 08:54:30 +0000的</div><div class="line">    postNew.timestamp = [NSDate date];</div><div class="line"></div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        [r addOrUpdateObject:postNew];//这个方法就是，如果上面你写的主键名如果数据库中存在的话，那么就修改它；如果不存在就直接将这条数据添加进数据库</div><div class="line">    &#125;];</div><div class="line"></div><div class="line"></div><div class="line">    ///3.批量修改</div><div class="line">    RLMResults *allPostResults = [Post allObjects];</div><div class="line"></div><div class="line">    for (int  i =0;  i &lt; 20; i++) &#123;</div><div class="line">        Post *loopPost = [[Post alloc] initWithValue:@&#123;@&quot;title&quot;:@&quot;aaa&quot;&#125;];</div><div class="line">        loopPost.indentifier = [NSString stringWithFormat:@&quot;%d&quot;,i+100000];</div><div class="line"></div><div class="line">        [r transactionWithBlock:^&#123;</div><div class="line">            [post.comments addObject:loopPost];</div><div class="line">        &#125;];</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        [allPostResults setValue:@10000 forKey:@&quot;look&quot;];</div><div class="line">        [allPostResults setValue:[NSDate date] forKey:@&quot;timestamp&quot;];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //查</div><div class="line">    RLMResults *results = [Post objectsWhere:@&quot;indentifier == %@&quot;,@&quot;1000&quot;];</div><div class="line">    Post *postResult = [results firstObject];</div><div class="line"></div><div class="line">    NSLog(@&quot;before cahnge postResult.title = %@ &quot;,postResult.title);</div><div class="line"></div><div class="line">    [r transactionWithBlock:^&#123;</div><div class="line">        post.title = @&quot;Test for change&quot;;//这个时候查询的结果也会随之修改</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    NSLog(@&quot;after search postResult.title = %@&quot;,postResult.title);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //综合查询</div><div class="line"></div><div class="line">    ///1.检索所有浏览量大于100的帖子</div><div class="line"></div><div class="line">    RLMResults *postThatViewBiggerThan100 = [Post objectsWhere:@&quot;look &gt; 100&quot;];</div><div class="line"></div><div class="line"></div><div class="line">    ///2.检索浏览量介于10到100的帖子</div><div class="line"></div><div class="line">    RLMResults *postThatViewBetween10And100 = [Post objectsWhere:@&quot;look &gt; 10 AND look &lt; 100&quot;];</div><div class="line"></div><div class="line">    RLMResults *postThatViewBetween10And100_2 = [Post objectsWhere:@&quot;look BETWEEN &#123;10,100&#125;&quot;];</div><div class="line"></div><div class="line">    ///3.检索标题中含有“Test”的帖子,[C]表示不区分大小写</div><div class="line"></div><div class="line">    RLMResults *postThatTitleContainsTest = [Post objectsWhere:@&quot;title CONTAINS[C] &apos;Test&apos;&quot;];</div><div class="line"></div><div class="line"></div><div class="line">    ///4.检索评论量大于10且浏览量大于100的帖子</div><div class="line">    RLMResults *commentsResult = [Post objectsWhere:@&quot;comments.@count &gt;10&quot;];</div><div class="line"></div><div class="line">    RLMResults *finalResult = [commentsResult objectsWhere:@&quot;look &gt; 100&quot;];</div><div class="line"></div><div class="line"></div><div class="line">    //查询结果的排序</div><div class="line">    //按时间排序</div><div class="line">    [finalResult sortedResultsUsingKeyPath:@&quot;timestamp&quot; ascending:NO];</div><div class="line"></div><div class="line">    NSLog(@&quot;fina = %@&quot;,finalResult);</div><div class="line"></div><div class="line">    //分页</div><div class="line">    //Realm没有分页功能</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
-<p><em>注意：Realm没有分页功能</em></p>
-<h1 id="Realm的配置"><a href="#Realm的配置" class="headerlink" title="Realm的配置"></a>Realm的配置</h1><p>Realm其实就是默认的一个数据库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &lt;Realm.h&gt;</div><div class="line">#import &quot;Post.h&quot;</div><div class="line">#import &quot;User.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line">@property (nonatomic,strong) RLMRealm *realm;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    //RLMRealm：创建的其实是一个默认的数据库</div><div class="line">    RLMRealm *r = [RLMRealm defaultRealm];</div><div class="line"></div><div class="line">    [Post allObjects];</div><div class="line">    ///等价于</div><div class="line">    [Post allObjectsInRealm:r];</div><div class="line"></div><div class="line"></div><div class="line">    //多个数据库并存</div><div class="line">    ///配置对象</div><div class="line">    ///创建数据库主要设置RLMRealmConfiguration，设置数据库名字和存储地方。把路径以及数据库名字拼接好字符串，赋值给fileURL即可。</div><div class="line">    NSArray *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);</div><div class="line">    NSString *path = [docPath objectAtIndex:0];</div><div class="line">    NSString *filePath = [path stringByAppendingPathComponent:@&quot;&quot;];</div><div class="line">    NSLog(@&quot;数据库目录 = %@&quot;,filePath);</div><div class="line"></div><div class="line">    RLMRealmConfiguration *config = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">    config.fileURL = [NSURL URLWithString:filePath];</div><div class="line"></div><div class="line">    /**</div><div class="line">     objectClasses这个属性是用来控制对哪个类能够存储在指定 Realm 数据库中做出限制。例如，如果有两个团队分别负责开发您应用中的不同部分，并且同时在应用内部使用了 Realm 数据库，那么您肯定不希望为它们协调进行数据迁移您可以通过设置RLMRealmConfiguration的 objectClasses属性来对类做出限制。objectClasses一般可以不用设置。</div><div class="line">     */</div><div class="line">    //config.objectClasses = @[MyClass.class, MyOtherClass.class];</div><div class="line">    config.readOnly = NO;</div><div class="line">    int currentVersion = 1.0;</div><div class="line">    config.schemaVersion = currentVersion;</div><div class="line">    config.migrationBlock = ^(RLMMigration *migration , uint64_t oldSchemaVersion) &#123;</div><div class="line">        // 这里是设置数据迁移的block</div><div class="line">        if (oldSchemaVersion &lt; currentVersion) &#123;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    ///设置默认的数据库是自己刚刚创建的数据库</div><div class="line">    [RLMRealmConfiguration setDefaultConfiguration:config];</div><div class="line">    self.realm = [RLMRealm realmWithConfiguration:config error:nil];</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //内存数据库</div><div class="line">    /**</div><div class="line">     通常情况下，Realm 数据库是存储在硬盘中的，但是您能够通过设置inMemoryIdentifier而不是设置RLMRealmConfiguration中的 fileURL属性，以创建一个完全在内存中运行的数据库。内存数据库在每次程序运行期间都不会保存数据。但是，这不会妨碍到 Realm 的其他功能，包括查询、关系以及线程安全。如果需要一种灵活的数据读写但又不想储存数据的方式的话，那么可以选择用内存数据库</div><div class="line"></div><div class="line">     使用内存数据库需要注意的是：</div><div class="line"></div><div class="line">     内存数据库会在临时文件夹中创建多个文件，用来协调处理诸如跨进程通知之类的事务。 实际上没有任何的数据会被写入到这些文件当中，除非操作系统由于内存过满需要清除磁盘上的多余空间。</div><div class="line"></div><div class="line">     如果某个内存 Realm 数据库实例没有被引用，那么所有的数据就会被释放。所以必须要在应用的生命周期内保持对Realm内存数据库的强引用，以避免数据丢失。</div><div class="line">     */</div><div class="line">    RLMRealmConfiguration *config2 = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">    config2.inMemoryIdentifier = @&quot;MyInMemoryRealm&quot;;</div><div class="line">    self.realm = [RLMRealm realmWithConfiguration:config2 error:nil];//必须是强引用，否则释放点数据就没了。</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //数据库写入通知</div><div class="line">    /// 获取 Realm 通知</div><div class="line">    RLMNotificationToken *token = [self.realm addNotificationBlock:^(NSString *notification, RLMRealm * realm) &#123;</div><div class="line">        //[myViewController updateUI];</div><div class="line">    &#125;];</div><div class="line"></div><div class="line"></div><div class="line">    ///Realm 实例将会在每次写入事务提交后，给其他线程上的 Realm 实例发送通知。一般控制器如果想一直持有这个通知，就需要申请一个属性，strong持有这个通知。</div><div class="line"></div><div class="line"></div><div class="line">    /// 观察 RLMResults 通知</div><div class="line">    //__weak typeof(self) weakSelf = self;</div><div class="line">    RLMNotificationToken * notificationToken = [[Post objectsWhere:@&quot;age &gt; 5&quot;] addNotificationBlock:^(RLMResults&lt;Post *&gt; *results, RLMCollectionChange *change, NSError *error) &#123;</div><div class="line">        if (error) &#123;</div><div class="line">            NSLog(@&quot;Failed to open Realm on background worker: %@&quot;, error);</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        //UITableView *tableView = weakSelf.tableView;</div><div class="line">        // 对于变化信息来说，检索的初次运行将会传递 nil</div><div class="line">        if (!change) &#123;</div><div class="line">            //[tableView reloadData];</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 检索结果被改变，因此将它们应用到 UITableView 当中</div><div class="line">        /*</div><div class="line">        [tableView beginUpdates];</div><div class="line">        [tableView deleteRowsAtIndexPaths:[changes deletionsInSection:0]</div><div class="line">                         withRowAnimation:UITableViewRowAnimationAutomatic];</div><div class="line">        [tableView insertRowsAtIndexPaths:[changes insertionsInSection:0]</div><div class="line">                         withRowAnimation:UITableViewRowAnimationAutomatic];</div><div class="line">        [tableView reloadRowsAtIndexPaths:[changes modificationsInSection:0]</div><div class="line">                         withRowAnimation:UITableViewRowAnimationAutomatic];</div><div class="line">        [tableView endUpdates];</div><div class="line">         */</div><div class="line">    &#125;];</div><div class="line"></div><div class="line">    /*</div><div class="line">     我们还能进行更加细粒度的通知，用集合通知就可以做到。</div><div class="line"></div><div class="line">     集合通知是异步触发的，首先它会在初始结果出现的时候触发，随后当某个写入事务改变了集合中的所有或者某个对象的时候，通知都会再次触发。这些变化可以通过传递到通知闭包当的 RLMCollectionChange参数访问到。这个对象当中包含了受 deletions、insertions和 modifications 状态所影响的索引信息。</div><div class="line"></div><div class="line">     集合通知对于 RLMResults、RLMArray、RLMLinkingObjects 以及 RLMResults 这些衍生出来的集合来说，当关系中的对象被添加或者删除的时候，一样也会触发这个状态变化。</div><div class="line">     */</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //数据库加密</div><div class="line">    /**</div><div class="line">     Realm 支持在创建 Realm 数据库时采用64位的密钥对数据库文件进行 AES-256+SHA2 加密。这样硬盘上的数据都能都采用AES-256来进行加密和解密，并用 SHA-2 HMAC 来进行验证。每次您要获取一个 Realm 实例时，您都需要提供一次相同的密钥。</div><div class="line">     */</div><div class="line"></div><div class="line">    /// 产生随机密钥</div><div class="line">    NSMutableData *key = [NSMutableData dataWithLength:64];</div><div class="line">    SecRandomCopyBytes(kSecRandomDefault, key.length, (uint8_t *)key.mutableBytes);</div><div class="line"></div><div class="line">    /// 打开加密文件</div><div class="line">    RLMRealmConfiguration *configs = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">    configs.encryptionKey = key;</div><div class="line">    NSError *error = nil;</div><div class="line">    RLMRealm *realm = [RLMRealm realmWithConfiguration:config error:&amp;error];</div><div class="line">    if (!realm) &#123;</div><div class="line">        // 如果密钥错误，`error` 会提示数据库不可访问</div><div class="line">        NSLog(@&quot;Error opening realm: %@&quot;, error);</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">    //数据模型迁移</div><div class="line">    /**</div><div class="line">     数据库存储方面的增删改查应该都没有什么大问题，比较蛋疼的应该就是数据迁移了。在版本迭代过程中，很可能会发生表的新增，删除，或者表结构的变化，如果新版本中不做数据迁移，用户升级到新版，很可能就直接crash了。对比Core Data的数据迁移比较复杂，Realm的迁移实在太简单了.</div><div class="line"></div><div class="line">     新增删除表，Realm不需要做迁移</div><div class="line">     增删除字段，Realm不需要做迁移。Realm 会自行检测新增和需要移除的属性，然后自动更新硬盘上的数据库架构。</div><div class="line">     */</div><div class="line"></div><div class="line">    RLMRealmConfiguration *config4 = [RLMRealmConfiguration defaultConfiguration];</div><div class="line">    config4.schemaVersion = 2;</div><div class="line">    config4.migrationBlock = ^(RLMMigration *migration, uint64_t oldSchemaVersion)</div><div class="line">    &#123;</div><div class="line">        // enumerateObjects:block: 遍历了存储在 Realm 文件中的每一个“Person”对象</div><div class="line">        [migration enumerateObjects:Post.className block:^(RLMObject *oldObject, RLMObject *newObject) &#123;</div><div class="line">            // 只有当 Realm 数据库的架构版本为 0 的时候，才添加 “fullName” 属性</div><div class="line">            if (oldSchemaVersion &lt; 1) &#123;</div><div class="line">                newObject[@&quot;fullName&quot;] = [NSString stringWithFormat:@&quot;%@ %@&quot;, oldObject[@&quot;firstName&quot;], oldObject[@&quot;lastName&quot;]];</div><div class="line">            &#125;</div><div class="line">            // 只有当 Realm 数据库的架构版本为 0 或者 1 的时候，才添加“email”属性</div><div class="line">            if (oldSchemaVersion &lt; 2) &#123;</div><div class="line">                newObject[@&quot;email&quot;] = @&quot;&quot;;</div><div class="line">            &#125;</div><div class="line">            // 替换属性名</div><div class="line">            if (oldSchemaVersion &lt; 3) &#123; // 重命名操作应该在调用 `enumerateObjects:` 之外完成</div><div class="line">                [migration renamePropertyForClass:Post.className oldName:@&quot;yearsSinceBirth&quot; newName:@&quot;age&quot;]; &#125;</div><div class="line">        &#125;];</div><div class="line">    &#125;;</div><div class="line">    [RLMRealmConfiguration setDefaultConfiguration:config];</div><div class="line">    // 现在我们已经成功更新了架构版本并且提供了迁移闭包，打开旧有的 Realm 数据库会自动执行此数据迁移，然后成功进行访问</div><div class="line">    [RLMRealm defaultRealm];</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
--->
-          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/22/Realm数据库初识/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1807,162 +2120,6 @@ Dog.h
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/14/JavaScript事件详解-进阶篇/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Feyddy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="清风明心">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/14/JavaScript事件详解-进阶篇/" itemprop="url">
-                  JavaScript事件详解(进阶篇)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-14T22:26:36+08:00">
-                2017-03-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/03/14/JavaScript事件详解-进阶篇/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/14/JavaScript事件详解-进阶篇/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/03/14/JavaScript事件详解-进阶篇/" class="leancloud_visitors" data-flag-title="JavaScript事件详解(进阶篇)">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="JavaScript基础-进阶篇"><a href="#JavaScript基础-进阶篇" class="headerlink" title="JavaScript基础(进阶篇)"></a>JavaScript基础(进阶篇)</h1><h1 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h1><p>首先我们来进行知识点的预览：</p>
-<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fdm6inqdvfj30uw0fwq4w.jpg" alt=""></p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/14/JavaScript事件详解-进阶篇/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2007,7 +2164,7 @@ Dog.h
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-count">82</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
