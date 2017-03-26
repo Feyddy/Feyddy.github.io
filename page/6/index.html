@@ -319,6 +319,167 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/12/触摸与手势/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/12/触摸与手势/" itemprop="url">
+                  触摸与手势
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-12T14:58:01+08:00">
+                2017-01-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
+                    <span itemprop="name">Objective-C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/01/12/触摸与手势/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/12/触摸与手势/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/01/12/触摸与手势/" class="leancloud_visitors" data-flag-title="触摸与手势">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <ul>
+<li><p>UITouch</p>
+<p>触摸实现的方法很简单，只需要在视图中重写以下的方法就行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">// 当有一个或者多个手指 开始触摸屏幕时调用</div><div class="line">- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;开始了一次触摸&quot;);</div><div class="line">    </div><div class="line">    //---------------------UITouch---------------------</div><div class="line">    // 从NSSet从 取出一个触摸对象</div><div class="line">    UITouch *touch = [touches anyObject];</div><div class="line"></div><div class="line">    // 获取触摸所在的window</div><div class="line">    //NSLog(@&quot;触摸所在的window %@&quot;, touch.window);</div><div class="line">    //NSLog(@&quot;当前视图所在的window%@&quot;, self.window);</div><div class="line">    </div><div class="line">    // 获取触摸所在的View</div><div class="line">//    NSLog(@&quot;触摸所在的View:%@, self = %@&quot;, touch.view, self);</div><div class="line">    </div><div class="line">    // 触摸的位置 相对于某个视图的坐标点</div><div class="line">    CGPoint point = [touch locationInView:self.superview];</div><div class="line">    </div><div class="line">    NSLog(@&quot;point x = %f, y = %f&quot;, point.x, point.y);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;触摸结束&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;移动触摸点&quot;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event</div><div class="line">&#123;</div><div class="line">    NSLog(@&quot;触摸取消&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注：</strong>如果是在封装的控件中（如：UIView）实现UITouch的方法，那么只有点击这个View的时候才会触发这些方法。</p>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/12/触摸与手势/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/11/单元格UITableViewCell的基本使用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1741,175 +1902,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/07/分类的使用的注意点/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Feyddy">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="清风明心">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/07/分类的使用的注意点/" itemprop="url">
-                  分类的使用的注意点
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-07T21:56:03+08:00">
-                2017-01-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Objective-C/" itemprop="url" rel="index">
-                    <span itemprop="name">Objective-C</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <a href="/2017/01/07/分类的使用的注意点/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/07/分类的使用的注意点/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/01/07/分类的使用的注意点/" class="leancloud_visitors" data-flag-title="分类的使用的注意点">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <ul>
-<li><p>分类</p>
-<ul>
-<li><p>分类的作用：</p>
-<p>在不修改原始类模型的基础上，给某个类扩充方法。分类提供简单的方式将类的定义模块化到相应的分类中，不需要创建子类就可以扩充方法。</p>
-</li>
-<li><p>分类的语法：</p>
-<p>分类的声明</p>
-<p> @interface 原始类名 (分类名)</p>
-<p> //扩充方法的声明</p>
-<p> @end</p>
-<p> 分类的实现</p>
-<p> @implenmentation 原始类名（分类名）</p>
-<p> //扩充方法的实现</p>
-<p> @end</p>
-          <!--noindex-->
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/07/分类的使用的注意点/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1954,7 +1946,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">82</span>
+              <span class="site-state-item-count">83</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1971,7 +1963,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">302</span>
+                <span class="site-state-item-count">303</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
