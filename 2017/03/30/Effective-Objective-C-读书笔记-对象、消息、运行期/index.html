@@ -1,0 +1,1321 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Objective-C规范," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="“对象”就是“基本构造单元”，开发者可以通过对象来存储并传递数据。在对象之间传递数据并执行任务的过程就叫做“消息传递”。
+当应用程序运行起来以后，为其提供相关支持的代码叫做“Objective-C运行期环境”，他提供一些使得对象之间能够传递消息的重要函数，并且包含创建类实例所用的全部逻辑。
+理解“属性”这一概念“属性”是Objective-C的一项特性，用于封装对象中的数据。Objective-C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective-Objective-C-读书笔记--对象、消息、运行期">
+<meta property="og:url" content="http://yoursite.com/2017/03/30/Effective-Objective-C-读书笔记-对象、消息、运行期/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="“对象”就是“基本构造单元”，开发者可以通过对象来存储并传递数据。在对象之间传递数据并执行任务的过程就叫做“消息传递”。
+当应用程序运行起来以后，为其提供相关支持的代码叫做“Objective-C运行期环境”，他提供一些使得对象之间能够传递消息的重要函数，并且包含创建类实例所用的全部逻辑。
+理解“属性”这一概念“属性”是Objective-C的一项特性，用于封装对象中的数据。Objective-C">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fe4vgm0xosj30ph0c9tb2.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fe4xkctayjj30fw06owfl.jpg">
+<meta property="og:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fe4xl4q25vj30fz07s0u1.jpg">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tNc79ly1fe4zo1cyucj30jv0700u3.jpg">
+<meta property="og:updated_time" content="2017-03-30T12:28:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Effective-Objective-C-读书笔记--对象、消息、运行期">
+<meta name="twitter:description" content="“对象”就是“基本构造单元”，开发者可以通过对象来存储并传递数据。在对象之间传递数据并执行任务的过程就叫做“消息传递”。
+当应用程序运行起来以后，为其提供相关支持的代码叫做“Objective-C运行期环境”，他提供一些使得对象之间能够传递消息的重要函数，并且包含创建类实例所用的全部逻辑。
+理解“属性”这一概念“属性”是Objective-C的一项特性，用于封装对象中的数据。Objective-C">
+<meta name="twitter:image" content="https://ww2.sinaimg.cn/large/006tNc79ly1fe4vgm0xosj30ph0c9tb2.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '5BTIUCSDVY',
+      apiKey: '1a9aadc2a805dcd3529b21c3d224af27',
+      indexName: 'blog_Feyddy',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+</script>
+
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/30/Effective-Objective-C-读书笔记-对象、消息、运行期/"/>
+
+
+
+
+
+  <title> Effective-Objective-C-读书笔记--对象、消息、运行期 | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/30/Effective-Objective-C-读书笔记-对象、消息、运行期/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Effective-Objective-C-读书笔记--对象、消息、运行期
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-30T20:26:58+08:00">
+                2017-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/03/30/Effective-Objective-C-读书笔记-对象、消息、运行期/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/30/Effective-Objective-C-读书笔记-对象、消息、运行期/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/03/30/Effective-Objective-C-读书笔记-对象、消息、运行期/" class="leancloud_visitors" data-flag-title="Effective-Objective-C-读书笔记--对象、消息、运行期">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>“对象”就是“基本构造单元”，开发者可以通过对象来存储并传递数据。在对象之间传递数据并执行任务的过程就叫做“消息传递”。</p>
+<p>当应用程序运行起来以后，为其提供相关支持的代码叫做“Objective-C运行期环境”，他提供一些使得对象之间能够传递消息的重要函数，并且包含创建类实例所用的全部逻辑。</p>
+<h2 id="理解“属性”这一概念"><a href="#理解“属性”这一概念" class="headerlink" title="理解“属性”这一概念"></a>理解“属性”这一概念</h2><p>“属性”是Objective-C的一项特性，用于封装对象中的数据。Objective-C对象通常会把其所需要的数据保存为各种实例变量。实例变量一般通过“存取方法”来访问。其中，“获取方法”（getter）用于读取变量值，而“设置方法”（setter）用于写入变量值。</p>
+<p>在对象接口的定义中，可以使用属性，这是一种标准的写法，能够访问封装在对象里的数据。因此也可以把属性当做是一种简称，其意思为：编译器会自动写出一套存取方法，用以访问给定类型中具有给定名称的变量。</p>
+<p>要访问属性，可以使用点语法。编译器会把“点语法”转换为对存取方法的调用，使用“点语法”的效果与直接调用存取方法相同。因此，使用“点语法”和直接调用存取方法之间没有丝毫差别。</p>
+<p>属性还是有更多的优势的。如果使用了属性，那么编译器就会自动编写这些属性所需要的方法，此过程叫做“自动合成”。需要强调的是，这个过程由编译器在编译期执行，所以编辑器里看不到这些“合成方法”的源代码。除了生成方法代码之外，编译器还要自动向类中添加适当类型的实例变量，并且在属性名前面加上下划线，以此作为实例变量的名字。如果想自己制定实例变量的名字可以使用<code>@synthesize</code>。如<code>@synthesize firstName = _myFirsetName;</code>，一般不推荐修改，使用编译器的名字足够了。</p>
+<p>若不想令编译器自动合成存取方法，则可以自己实现。如果你只实现了其中一个存取方法，那么另一个还是会由编辑器来合成。还有一种方法可以阻止编译器自动合成存取方法，<code>@dynamic</code>关键字，它会告诉编译器：不要自动创建实现属性所用的实例变量，也不要为其创建存取方法。而且，在编译访问属性的代码时，即使编译器发现没有定义存取方法，也不会报错，它相信这些方法能在运行期找到。比方说，如果从CoreData框架中的NSManagedObject类里继承了一个子类，那么就需要在运行期动态创建存取方法。继承NSManagedObject类时之所以要这么做，是因为子类的某些属性不是实例变量，其数据来自后端。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@interface FDPerson : NSManagedObject</div><div class="line">@property NSString * firstName;</div><div class="line">@property NSString * lastName;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation FDPerson</div><div class="line"></div><div class="line">@dynamic firstName,lastName;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>编译器不会为上面这个类自动合成存取方法或实例变量。如果用代码访问其中的属性，编译器也不会发出警示信息。</p>
+<a id="more"></a>
+<h4 id="属性特质"><a href="#属性特质" class="headerlink" title="属性特质"></a>属性特质</h4><p>属性的特质设定会影响编译器生成的存取方式。</p>
+<p>属性可以拥有的特质分为四类：</p>
+<h5 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h5><p>在并发编程中，如果某操作具备整体性，也就是说，系统其他部分无法观察到其中间步骤所生成的临时结果，而只能看到操作前与后的结果，那么该操作就是“原子的”，或者说该操作具备“原子性”。</p>
+<p>默认情况下，编译器所合成的方法会通过锁定机制确保其原子性。如果属性具备nonatomic特质，则不使用同步锁。</p>
+<h5 id="读-写权限"><a href="#读-写权限" class="headerlink" title="读/写权限"></a>读/写权限</h5><ul>
+<li>具备readwrite(读写)特性的属性拥有“获取方法”（getter）与“设置方法”（setter）。若该属性由<code>@synthesize</code>实现，则编译器会自动生成这两个方法。</li>
+<li>具备readonly（只读）特质的属性仅拥有获取方法，只有当该属性由<code>@synthesize</code>实现时，编译器才会为其合成获取方法。可以用此特性把某个属性对外公开为只读属性，然后再实现分类中将其重新定义为读写属性。</li>
+</ul>
+<h5 id="内存管理语义"><a href="#内存管理语义" class="headerlink" title="内存管理语义"></a>内存管理语义</h5><p>属性用于封装数据，而数据则要有“具体的所有权语义”。下面这一组特质仅会影响“设置方法”。例如，用“设置方法”设定一个新值时，它是应该”保留”（retain）此值呢，还是只将其赋给底层实例变量就好？编译器在合成存取方式时，要根据此特质来决定所生成的代码。如果自己编写存取方法，那么就必须同有关属性所具备的特质相符。</p>
+<ul>
+<li>assign：“设置方法”只会执行针对“纯量类型”（如CGFloat或者NSInteger）的简单赋值操作。</li>
+<li>strong：此特质表明该属性定义了一种“拥有关系”。为这种属性设置新值时，设置方法会先保留新值，并释放旧值，然后再将新值设置上去。</li>
+<li>weak：此特质表明该属性定义了一种“拥有关系”。为这中属性设置新值时，设置方法既不保留新值，也不释放旧值。和assign类似，然而在属性所指的对象遭到摧毁时，属性值也会清空。</li>
+<li>unsafe_unretained：此特质的语义和assign相同，但是它适用于“对象类型”，该特质表达一种“非拥有关系”，当目标对象遭到摧毁时，属性值不会自动清空，这一点与weak有区别</li>
+<li>copy：此特质所表达的所属关系与strong类似。然而设置方法并不保留新值，而是将其“拷贝”。当属性类型为NSString时，经常用此特质来保护其封装性，因为传递给设置方法的新值有可能指向一个NSMutableString类的实例。这个类是NSString的子类，表示一种可以修改其值的字符串，此时若是不拷贝字符串，那么设置完属性之后，字符串的值就可能会在对象不知情的情况下遭人更改。所以，这时就要拷贝一份“不可变”的字符串，确保对象中的字符串值不会无意间变动。只要实现属性所用的对象是“可变的”，就应该在设置新属性值时拷贝一份。</li>
+</ul>
+<h5 id="方法名"><a href="#方法名" class="headerlink" title="方法名"></a>方法名</h5><p>可通过如下特质来指定存取方法的方法名：</p>
+<ul>
+<li>getter=<name> 指定“获取方法”的方法名。如果某属性是Boolean型，而你想为其获取方法加上“is”前缀，那么就可以用这个办法来指定：</name></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic,getter=isOn) Bool on;</div></pre></td></tr></table></figure>
+<ul>
+<li>setter=<name> 指定“设置方法”的方法名。这个不太常见</name></li>
+</ul>
+<p>注意：若是自己来实现这些存取方法，那么应该保证其具备相关属性所声明的特质。如，如果将某个属性声明为copy，那么就应该在“设置方法”中拷贝相关对象，否则会误导该属性的使用者，而且，若是不遵从这一约定，还会令程序产生bug。</p>
+<p>如果想在其他方法里设置属性值，那么同样要遵守属性定义中所宣称的语义。如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">@interface FDPerson : NSManagedObject</div><div class="line">@property NSString * firstName;</div><div class="line">@property NSString * lastName;</div><div class="line"></div><div class="line">- (id)initWithFirstName:(NSString * )firstName lastName:(NSString * )lastName;</div><div class="line">@end</div><div class="line"></div><div class="line">@implementation FDPerson</div><div class="line"></div><div class="line">- (id)initWithFirstName:(NSString * )firstName lastName:(NSString * )lastName&#123;</div><div class="line">  if((self = [super init]))&#123;</div><div class="line">    _firstName = [firstName copy];</div><div class="line">    _lastName = [lastName copy];</div><div class="line">  &#125;</div><div class="line">  return self;</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>你也许会问：为什么不调用属性所对应的“<em>设置方法</em>”？这个在下面会讲到为什么绝不应该在init（或dealloc）方法中调用存取方法。</p>
+<p>尽量使用不可变的对象，如果将这套运用到<code>FDPerson</code>上的话，那就等于将两个属性设置为只读属性。用初始化方法设置好属性值之后，就不能再改变了。在本例中仍需声明属性的“内存管理语义”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">@property (copy , readonly) NSString * firstName;</div><div class="line">@property (copy , readonly) NSString * lastName;</div></pre></td></tr></table></figure>
+<p>因为是只读属性，所以编译器不会为其创建对应的“设置方法”，即便如此，我们还是要写上这些属性的语义，以此表明初始化方法在设置这些属性值时所用的方式。</p>
+<h5 id="atomic与nonatomic的区别是什么？"><a href="#atomic与nonatomic的区别是什么？" class="headerlink" title="atomic与nonatomic的区别是什么？"></a>atomic与nonatomic的区别是什么？</h5><p>具备atomic特质的获取方法会通过锁定机制来确保其操作的原子性。也就是说，如果两个线程读写同一个属性，那么不论何时，总能看到有效的属性值。若不加锁的话，即使用nonatomic的话，那么当其中一个线程正在改写某属性值，另一个线程也许会突然闯入，把尚未修改好的属性值读取出来。这样的话，线程读取的属性值可能不对。</p>
+<p>如果在ios开发过程中，你会发现，其中所有的属性声明为nonatomic。这样做的历史原因：ios中使用同步所得开销较大，这回带来性能问题。但是在开发Mac OSX程序的时候，使用atomic属性通常都不会有性能瓶颈。</p>
+<h2 id="在对象内部尽量直接访问实例变量"><a href="#在对象内部尽量直接访问实例变量" class="headerlink" title="在对象内部尽量直接访问实例变量"></a>在对象内部尽量直接访问实例变量</h2><p>建议大家在读取实例变量的时候采用直接访问(_firstName)的形式，而在设置实例变量的时候通过属性(<em>self.firstName</em>)来做。</p>
+<p>直接访问和通过点语法的属性访问有几个区别：</p>
+<ul>
+<li>由于不经过Objective-C的“方法派发”步骤，所以直接访问实例变量的速度当然比较快。在这种情况下，编译器所生成的代码会直接访问保存对象的实例变量的那块内存。</li>
+<li>直接访问实例变量不会调用其“设置方法”。这就绕开了相关属性所定义的“内存管理语义”。例如，直接访问一个copy的属性，不会拷贝该属性，只会保留新值并释放旧值。</li>
+<li>直接访问实例变量，那么不会除法“键值观测”（KVO）通知。</li>
+<li>通过属性来访问有助于排查与之相关的错误，因为可以给“获取方法”和“设置方法”中新增“断点”，监控该属性的调用者及其访问时机。</li>
+</ul>
+<p>有一种合理的这折中方案：在写入实例变量时，使用“设置方法”来做，读取实例变量时，则直接访问。</p>
+<p>第一个要注意的地方就是，在初始化方法中应该如何设置属性值。这种情况下总是应该直接访问实例变量，因为子类可能会覆写设置方法，如果<code>FDPerson</code>有一个子类<code>FDXUPerson</code>专门表示那些姓”XU”的人，该子类可能会覆写lastName<br>属性对应的设置方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (void)setLastName:(NSString * )lastName &#123;</div><div class="line">  if(![lastName isEqualToString:@&quot;XU&quot;]) &#123;</div><div class="line">    [NSException raise:NSInvalidArgumentException format:@&quot;Last name must be XU&quot;];</div><div class="line">  &#125;</div><div class="line">  self.lastName = lastName;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是在基类<code>FDPerson</code>的默认初始化方法中，可能会将姓氏设置为空字符串。此时若通过“设置方法”来做，那么调用的将会是子类的设置方法，从而抛出异常。但是，某些情况下却又必须在初始化方法中调用设置方法：如果待初始化的实例变量声明在超类中，而我们又无法在子类中直接访问此实例变量的话，那么就需要调用“设置方法”了。</p>
+<p>另一个要注意的问题就是“惰性初始化”。在这种情况下，必须通过“获取方法”来访问属性，否则，实例变量就会永远不会初始化。比方说，FDPerson类也许会用一个属性来表示人脑中的信息，这个属性所指代的对象相当复杂。由于此属性不常用，而且创建该属性的成本较高，所以，我们可能会在“获取方法”中对其执行惰性初始化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (FDBrain *)brain &#123;</div><div class="line">  if(!_brain) &#123;</div><div class="line">    _brain = [Brain new];</div><div class="line">  &#125;</div><div class="line">  return _brain;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>若没有调用“获取方法”就直接访问实例变量，则会看到尚未设置好的brain，所以说，如果使用了“惰性初始化”技术，必须通过存取方法来访问brain属性。也就是<code>self.brain</code>。</p>
+<h2 id="理解“对象等同性”这一概念"><a href="#理解“对象等同性”这一概念" class="headerlink" title="理解“对象等同性”这一概念"></a>理解“对象等同性”这一概念</h2><p>“等同性”来比较对象是一个非常有用的功能。不过<code>==</code>比较的是两个指针本身，而不是其所对应的对象。应该使用<code>isEqual:</code>方法来判断两个对象的等同性。</p>
+<p>NSString类实现了自己的一个独特的等同性判断方法,<code>isEqualToString</code>。这个方法执行的比<code>isEqual</code>快，因为前者知道类型，而后者需要进一步判断类型。</p>
+<p>NSObject协议中有两个判断等同性的关键方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">- (Bool)isEqual:(id)object;</div><div class="line">- (NSUInteger)hash;</div></pre></td></tr></table></figure>
+<p>NSObject对这两个方法的默认实现是：当且仅当其“指针值”完全相等时，这两个对象才相等。若想在自定义的对象中正确覆写这些方法，就必须先理解其约定。如果“isEqual”方法判定两个对象相等，那么hash方法也必须返回同一个值。但是，如果两个对象的hash方法返回同一个值，那么“isEqual”方法未必会认为两者相等。</p>
+<p>如果有两个<code>FDPerson</code>的所有字段均相等，那么这两个对象相等。于是<code>isEqual</code>可以写成如此下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">- (BOOL)isEqual:(id)object</div><div class="line">&#123;</div><div class="line">    if (self == object) &#123;</div><div class="line">        return YES;</div><div class="line">    &#125;</div><div class="line">    if ([self class] != [object class]) &#123;</div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    FDPerson * otherPerson = (FDPerson * )object;</div><div class="line"></div><div class="line">    if (![_firstName isEqualToString:otherPerson.firstName]) &#123;</div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line">    if (![_lastName isEqualToString:otherPerson.lastName]) &#123;</div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line">    return YES;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>先直接判断两个<em>指针是否相等</em>。若相等，对象必定相等。接下来比较对象所属的类，若不属于同一类，当然不相等。但是，有时我们可能认为：一个<code>FDPerson</code>实例可以与其子类实例相等。在继承体系中判断等同性时，需要考虑。最后，检测每个属性是否相等。</p>
+<p>接下来实现hash方法。根据等同性的约定：两个对象相等，哈希码也相等。但是哈希码相等的两个对象未必相等。这是能否正确覆写“isEqual”方法的关键。下面的方法完全可行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">- (NSUInteger)hash</div><div class="line">&#123;</div><div class="line">    return 1000;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是这样写会出现性能问题。因为collection(包含Array、NSDictionary、set等数据结构的总称)在检索哈希表时，会用对象的哈希码做索引。如果用set实现，在向set中添加新对象的时候，会遍历一次哈希码，来找出那个元素，看是否已经有了该对象。每次都会将全部的对象遍历一次。</p>
+<p>可以这样来实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">- (NSUInteger)hash</div><div class="line">&#123;</div><div class="line">    NSString * stringToHash = [NSString stringWithFormat:@&quot;%@:%@&quot;,_firstName,_lastName];</div><div class="line">    return [stringToHash hash];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这次所用的办法是将<em>NSString</em>对象中的属性都塞入另一个字符串中，然后令hash方法返回该字符串的哈希码。但是这样做还是需要负担创建字符串的开销，所以比返回单一值要慢。</p>
+<p>再来看最后一种计算哈希码的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">- (NSUInteger)hash</div><div class="line">&#123;</div><div class="line">    NSUInteger firstNameHash = [_firstName hash];</div><div class="line">    NSUInteger lastNameHash = [_lastName hash];</div><div class="line"></div><div class="line">    return firstNameHash^lastNameHash;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这么做既高效又能使生成的哈希码至少位于一定范围，不会频繁的重复。<br>__</p>
+<h5 id="特定类所具有的等同性判断方法"><a href="#特定类所具有的等同性判断方法" class="headerlink" title="特定类所具有的等同性判断方法"></a>特定类所具有的等同性判断方法</h5><p>NSArray和NSDictionary类也有特定的等同性判断方法<code>isEqualToArray</code>和<code>isEqualToDictionary</code>。但是传入的比较对象必须是对应的类型，否则抛出异常。</p>
+<p>我们可以自己写一个判定方法，不用检查两个受测对象的类型。在写判定方法时，也应一并覆写“isEqual”方法。常见实现方式：如果受测的参数与接收该消息的对象都属于同一类，那么就调用自己编写的判定方法，否则就交由超类来判断。例如，在<code>FDPerson</code>类中可以实现如下两个方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">- (BOOL)isEqualToPerson:(FDPerson *)otherPerson &#123;</div><div class="line">    if (self == otherPerson) &#123;</div><div class="line">        return YES;</div><div class="line">    &#125;</div><div class="line">    if (![_firstName isEqualToString:otherPerson.firstName]) &#123;</div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line">    if (![_lastName isEqualToString:otherPerson.lastName]) &#123;</div><div class="line">        return NO;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return YES;</div><div class="line">&#125;</div><div class="line"></div><div class="line">- (BOOL)isEqual:(id)object</div><div class="line">&#123;</div><div class="line">    if ([self class] == [object class]) &#123;</div><div class="line">        return [self isEqualToPerson:(FDPerson *)object];</div><div class="line">    &#125; else</div><div class="line">    &#123;</div><div class="line">        return [super isEqual:object];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>__</p>
+<h5 id="等同性判断的执行深度"><a href="#等同性判断的执行深度" class="headerlink" title="等同性判断的执行深度"></a>等同性判断的执行深度</h5><p>创建等同性判定方法时，需要决定是根据整个对象来判断等同性，还是仅根据其中几个字段来判断，NSArray的检测方式为先看两个数组所含对象个数是否相同，若相同，则在每个对应位置的两个对象身上调用其“isEqual”方法。如果对应位置上的对象均相等，那么这两个数组就相等，这叫做“深度等同性判定”。但是有时候我们可以通过唯一的标识符来判断。就不需要判断所有的对象了。例如，我在<code>FDPerson</code>类中添加一个主键属性，如果两个主键一样，那么说明两个对象时同一个数据源所创建的。</p>
+<h5 id="容器中可变类的等同性"><a href="#容器中可变类的等同性" class="headerlink" title="容器中可变类的等同性"></a>容器中可变类的等同性</h5><p>这种情况一定要注意，就是在容器中放入可变类对象的时候。把某个对象放入collection之后，就不应该再改变其哈希码。collection会把各个对象按照其哈希码分装到不同的“箱子数组”中。如果某对象在放入“箱子”之后，哈希码又改变了，那么其现在处的这个箱子对他来说就是“错误”。所以，需要保证哈希码不是根据对象的“可变部分”计算出来的，或是保证放入collection之后就不再改变对象的内容。</p>
+<p>用一个NSMutableSet与几个NSMutableArray对象测试一下，就能发现这个问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line">//首先把一个数组加入set</div><div class="line">    NSMutableSet *set = [NSMutableSet new];</div><div class="line"></div><div class="line">    NSMutableArray *array1 = [@[@1,@2,@3] mutableCopy];</div><div class="line">    [set addObject:array1];</div><div class="line"></div><div class="line">    NSLog(@&quot;set = %@&quot;,set);</div><div class="line"></div><div class="line">    /**</div><div class="line">     运行结果：</div><div class="line">     2017-03-29 15:45:25.617 testibfg[7647:149208] set = &#123;(</div><div class="line">     (</div><div class="line">     1,</div><div class="line">     2,</div><div class="line">     3</div><div class="line">     )</div><div class="line">     )&#125;</div><div class="line">     */</div><div class="line"></div><div class="line"></div><div class="line">    //此时的set里面含有一个数组对象，数组中含有三个对象。下面再向set中加入一个数组，此时数组与前一个数组所含的对象相同，顺序也相同。</div><div class="line">    NSMutableArray *array2 = [@[@1,@2,@3] mutableCopy];</div><div class="line">    [set addObject:array2];</div><div class="line"></div><div class="line">    NSLog(@&quot;set = %@&quot;,set);</div><div class="line"></div><div class="line">    /**</div><div class="line">     运行结果：</div><div class="line">     2017-03-29 15:46:37.053 testibfg[7692:151110] set = &#123;(</div><div class="line">     (</div><div class="line">     1,</div><div class="line">     2,</div><div class="line">     3</div><div class="line">     )</div><div class="line">     )&#125;</div><div class="line">     */</div><div class="line"></div><div class="line">    //可以发现set中还是只有一个数组对象：因为刚才要加入的那个数组对象和set中已经存在的数组对象相等，所以set不会改变。下面添加一个不相等的数组对象。</div><div class="line"></div><div class="line">    NSMutableArray *array3 = [@[@1,@2] mutableCopy];</div><div class="line">    [set addObject:array3];</div><div class="line"></div><div class="line">    NSLog(@&quot;set = %@&quot;,set);</div><div class="line"></div><div class="line">    /**</div><div class="line">     运行结果：</div><div class="line">     2017-03-29 15:47:28.881 testibfg[7721:151947] set = &#123;(</div><div class="line">     (</div><div class="line">     1,</div><div class="line">     2,</div><div class="line">     3</div><div class="line">     ),</div><div class="line">     (</div><div class="line">     1,</div><div class="line">     2</div><div class="line">     )</div><div class="line">     )&#125;</div><div class="line">     */</div><div class="line"></div><div class="line">    //这下可以发现set里面有两个数组对象，接下来我们改变array3的内容，使得和array1内容一样</div><div class="line">    [array3 addObject:@3];</div><div class="line">    NSLog(@&quot;set = %@&quot;,set);</div><div class="line"></div><div class="line">    /**</div><div class="line">     运行结果：</div><div class="line">     2017-03-29 15:49:34.392 testibfg[7769:153786] set = &#123;(</div><div class="line">     (</div><div class="line">     1,</div><div class="line">     2,</div><div class="line">     3</div><div class="line">     ),</div><div class="line">     (</div><div class="line">     1,</div><div class="line">     2,</div><div class="line">     3</div><div class="line">     )</div><div class="line">     )&#125;</div><div class="line">     */</div><div class="line"></div><div class="line"></div><div class="line">    //这下，set里面居然有两个一样的数组对象了，这在set语法中是不允许的。因为我们徐改了set中已有的对象。若是拷贝set，那就更糟糕了：</div><div class="line"></div><div class="line">    NSSet *set2 = [set copy];</div><div class="line">    NSLog(@&quot;set2 = %@&quot;,set2);</div><div class="line"></div><div class="line">    /**</div><div class="line">     运行结果：</div><div class="line">     2017-03-29 15:52:14.642 testibfg[7818:155971] set2 = &#123;(</div><div class="line">     (</div><div class="line">     1,</div><div class="line">     2,</div><div class="line">     3</div><div class="line">     )</div><div class="line">     )&#125;</div><div class="line">     */</div><div class="line"></div><div class="line">    //复制过的set2中又只剩一个对象，看上去set2好像是由一个空的set开始、通过逐个向其中添加新对象而创建的。所以如果把某个对象放入set之后又修改其内容，那么后面的行为将很难预料。</div></pre></td></tr></table></figure>
+<h2 id="以“类族模式”隐藏实现细节"><a href="#以“类族模式”隐藏实现细节" class="headerlink" title="以“类族模式”隐藏实现细节"></a>以“类族模式”隐藏实现细节</h2><p>类族是一种很有用的模式，可以隐藏“抽象基类”背后的实现细节。比如<code>UIButton</code>类，想创建按钮，需要调用下面这个“类方法”:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (instancetype)buttonWithType:(UIButtonType)buttonType;</div></pre></td></tr></table></figure>
+<p>该方法返回的对象，其类型取决于传入的按钮类型。然后，不管返回什么类型对象，他们都继承同一个基类：UIButton。意义在于：UIButton类的使用者无需关心创建出来的按钮具体属于哪个子类，也不用考虑按钮绘制的细节。</p>
+<p>类族模式可以灵活应对多个类，将它们的实现细节隐藏在抽象基类后面，以保持接口简洁。用户无需自己创建子类，只需调用基类方法创建即可。</p>
+<h4 id="创建类族"><a href="#创建类族" class="headerlink" title="创建类族"></a>创建类族</h4><p>举个小例子。假设有一个处理雇员的类，每个雇员都有名字和薪水这两个属性，管理者可以命令其执行日常工作。但是，各种雇员的工作内容却不同。经理在带领雇员做项目时，无需关心每个人如何完成其工作，仅指示其开工。</p>
+<p>先定义抽象基类：<br>FDEmployee.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">typedef NS_ENUM(NSInteger, FDEmployeeType) &#123;</div><div class="line">    FDEmployeeTypeDeveloper,</div><div class="line">    FDEmployeeTypeDesigner,</div><div class="line">    FDEmployeeTypeFinance,</div><div class="line">&#125;;</div><div class="line"></div><div class="line">@interface FDEmployee : NSObject</div><div class="line">@property (nonatomic, copy) NSString *name;</div><div class="line">@property NSUInteger salary;</div><div class="line"></div><div class="line">+ (FDEmployee*)employeeWithType:(FDEmployeeType)type;</div><div class="line"></div><div class="line">- (void)doADaysWork;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>FDEmployee.m<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">#import &quot;FDEmployee.h&quot;</div><div class="line">#import &quot;FDEmployeeDeveloper.h&quot;</div><div class="line">#import &quot;FDEmployeeFinance.h&quot;</div><div class="line">#import &quot;FDEmployeeDesigner.h&quot;</div><div class="line"></div><div class="line">@implementation FDEmployee</div><div class="line"></div><div class="line">+ (FDEmployee * )employeeWithType:(FDEmployeeType)type</div><div class="line">&#123;</div><div class="line">    switch (type) &#123;</div><div class="line">        case FDEmployeeTypeDeveloper:</div><div class="line">            return [FDEmployeeDeveloper new];//FDEmployeeDeveloper等实体子类都是从基类继承而来的。</div><div class="line">            break;</div><div class="line">        case FDEmployeeTypeDesigner:</div><div class="line">            return [FDEmployeeDesigner new];</div><div class="line">            break;</div><div class="line">        case FDEmployeeTypeFinance:</div><div class="line">            return [FDEmployeeFinance new];</div><div class="line">            break;</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure></p>
+<p>创建三个实体子类:<code>FDEmployeeDeveloper</code>、<code>FDEmployeeDesigner</code>、<code>FDEmployeeFinance</code>。都继承<code>FDEmployee</code>。</p>
+<p>每个字类中都实现一下各自的<code>- (void)doADaysWork</code>方法，如下格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">- (void)doADaysWork &#123;</div><div class="line">    NSLog(@&quot;write code&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后我们根据不同类型创建三个对象看看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &quot;FDEmployee.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    FDEmployee * employee1 = [FDEmployee employeeWithType:FDEmployeeTypeDeveloper];</div><div class="line">    [employee1 doADaysWork];</div><div class="line"></div><div class="line">    FDEmployee * employee2 = [FDEmployee employeeWithType:FDEmployeeTypeDesigner];</div><div class="line">    [employee2 doADaysWork];</div><div class="line"></div><div class="line">    FDEmployee * employee3 = [FDEmployee employeeWithType:FDEmployeeTypeFinance];</div><div class="line">    [employee3 doADaysWork];</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">2017-03-29 16:25:55.512 testibfg[8351:172344] write code</div><div class="line">2017-03-29 16:25:55.512 testibfg[8351:172344] Designer code</div><div class="line">2017-03-29 16:25:55.513 testibfg[8351:172344] Finance code</div></pre></td></tr></table></figure>
+<p>该方法根据待创建的雇员类别分配好对应的雇员类实例。这种“工厂模式”是创建类族的办法之一。</p>
+<p>可惜Objective-C这门语言没办法指明某个基类是“抽象的”。于是，开发者通常会在文档中写明类的用法。这种情况下，基类接口一般都没有名为init的成员方法，这暗示该类的实例也许不应该由用户直接创建。还有一种办法可以确保用户不会使用基类实例，那就是在基类的doADaysWork方法中抛出异常。然而这种做法相当极端，很少有人用。</p>
+<p>如果对象所属的类位于某个类族中，那么在查询其类型信息时就要当心了。可能觉得自己创建了某个类的实例，然而实际上创建的却是其子类的实例。在FDEmployee这个例子中，[employee isMemberOfClass:[FDEmployee class]]似乎会返回YES，但实际上返回的却是NO，因为employee并非Employee类的实例，而是其某个子类的实例。</p>
+<h4 id="Cocoa里的类族"><a href="#Cocoa里的类族" class="headerlink" title="Cocoa里的类族"></a>Cocoa里的类族</h4><p>系统框架中有许多类族。大部分collection类都是类族，例如NSArray与其可变版本NSMutableArray。这样看来，实际上有两个抽象基类，一个用于不可变数组，另一个用于可变数组。但是仍然可以合起来算作一个类族。不可变的类定义了对所有数组都通用的方法，而可变的类则定义了那些只适用于可变数组的方法。两个类共属同一类族，这就意味着二者在实现各自类型的数组时可以共用实现代码，此外，还能把可变数组复制为不可变数组，反之亦然。</p>
+<p>在使用NSArray的alloc方法来获取实例时，该方法首先会分配一个属于某类的实例，此实例充当“占位数组”。该数组稍后会转为另一个类的实例，而那个类则是NSArray的实体子类。这个过程稍显复杂，其完整的解释已经超出本书范围。</p>
+<p>像NSArray这样的类的背后其实是个类族（对于大部分collection类而言都是这样），明白这一点很重要，否则就可能会写出下面这种代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">id maybeAnArray = /*...*/</div><div class="line">if([maybeAnArray class] == [NSArray class])&#123;</div><div class="line">  //will never be hit</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你要知道NSArray是个类族，那就会明白上述代码错在哪里：其中的if语句永远不可能为真。因为[maybeAnArray class]返回的类型永远不可能是NSArray类本身，它其实是隐藏在类族公共接口后面的某个内部类型。</p>
+<p>不过，仍然有办法可以判断出某个实例所属的类是否位于类族之中。我们不用刚才那种写法，而是改用类型信息查询方法。若想判断某对象是否位于类族中，不要直接检测两个“对象”是否等同，而应该采用下列代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">id maybeAnArray = /*...*/</div><div class="line">if([maybeAnArray isKindOfClass:[NSArray class]])&#123;</div><div class="line">  //will never be hit</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们经常需要向类族中新增实体子类，不过这么做的时候得留心。在FDEmployee这个例子中，若是没有“工厂方法”的源代码，那就无法向其新增雇员类别了。然而对于Cocoa中NSArray这样的类族来说，还是有办法新增子类的，但是需要遵守几条规则：</p>
+<ul>
+<li>子类应该继承自类族中的抽象基类。<ul>
+<li>若要编写NSArray类族的子类，则需令其继承自不可变数组的基类或可变数组的基类。</li>
+</ul>
+</li>
+<li><p>子类应该定义自己的数据存储方式。</p>
+<ul>
+<li>开发者编写NSArray子类时，经常在这个问题上受阻。子类必须用一个实例变量来存放数组中的对象，这似乎与大家预想的不同，我们以为NSArray自己肯定会保存那些对象，所以在子类中就无须再存一份了。但是NSArray本身只不过是包在其他隐藏对象外面的壳，它仅仅定义了所有数组都具备的一些接口。对于这个自定义的数组子类来说，可以用NSArray来保存实例。</li>
+</ul>
+</li>
+<li><p>子类应当覆写超类文档中指明需要覆写的方法。</p>
+<ul>
+<li>比如NSArray的子类，就需要实现count及“objectAtIndex”方法。像lastObject这种方法则无需实现，因为基类可以根据前两个方法实现出这个方法。</li>
+</ul>
+</li>
+</ul>
+<p><strong>注意：从类族的公共抽象类中继承子类时要当心，若有开发文档，则应首先阅读。</strong></p>
+<h2 id="在既有类中使用关联对象存放自定义数据"><a href="#在既有类中使用关联对象存放自定义数据" class="headerlink" title="在既有类中使用关联对象存放自定义数据"></a>在既有类中使用关联对象存放自定义数据</h2><p>有时需要在对象中存放相关信息。这时我们通常会从对象所属的类中继承一个子类，然后改用这个子类对象。OC中有一个强大的特性，就是“关联对象”。</p>
+<p>可以给某对象关联许多其他对象，这些对象通过“键”来区分。存储对象值的时候，可以指明“存储策略”，用以维护相应的“内存管理语义”。存储策略由名为<code>objc_AssociationPolicy</code>的枚举所定义。下面列举一下枚举的取值以及与之等效的<code>@property</code>属性：假如关联对象成了属性，那么它就会具备对应的语义。</p>
+<table>
+<thead>
+<tr>
+<th>关联类型</th>
+<th>等效<code>@property</code>属性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OBJC_ASSOCIATION_ASSIGN</td>
+<td>assign</td>
+</tr>
+<tr>
+<td>OBJC_ASSOCIATION_RETAIN_NONATOMIC</td>
+<td>nonatomic,retain</td>
+</tr>
+<tr>
+<td>OBJC_ASSOCIATION_COPY_NONATOMIC</td>
+<td>nonatomic,copy</td>
+</tr>
+<tr>
+<td>OBJC_ASSOCIATION_RETAIN</td>
+<td>retain</td>
+</tr>
+<tr>
+<td>OBJC_ASSOCIATION_COPY</td>
+<td>copy</td>
+</tr>
+</tbody>
+</table>
+<p>下列方法可以管理关联对象：</p>
+<ul>
+<li>void objc_AssociationObject(id object, void * key,id value, objc_AssociationPolicy policy)<br>此方法以给定的键和策略为某对象设置关联对象值。</li>
+<li>id objc_getAssociatedObject(id object,void * key)<br>此方法根据给定的键从某对象中获取相应的关联对象值。</li>
+<li>void objc_removeAssociatedObjects(id object)<br>此方法移除指定对象的全部关联对象。</li>
+</ul>
+<p>我们可以把某对象想象成NSDictionary，把关联到对象的值理解为字典中的条目，存取关联对象就像是字典的存取方法一样。然而两者之间的重要差异：设置关联对象时用的键(key)是个“不透明的指针”。如果在两个键上调用<code>isEqual</code>方法的返回值是YES，那么NSDictionary就认为二者相等；然而在设置关联对象值时，若想令两个键匹配到同一个值，则二者必须是完全相同的指针才行。鉴于此，在设置关联对象值时，通常使用静态全局变量做键。</p>
+<p>下面举个例子：我们都知道原始的<code>UIAlertView</code>是创建和代理实现两个部分组成，代码写的比较分散。不容易寻找阅读。此时就可以使用关联对象，将创建和方法的实现写在一起。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &quot;FDEmployee.h&quot;</div><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line"></div><div class="line">@interface ViewController ()&lt;UIAlertViewDelegate&gt;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">static void *FDAlertViewKey = @&quot;FDAlertViewKey&quot;;</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@&quot;Question&quot; message:@&quot;what do you want to do?&quot; delegate:self cancelButtonTitle:@&quot;cancel&quot; otherButtonTitles:@&quot;continue&quot;, nil];</div><div class="line"></div><div class="line">    //关联的“块（block）”</div><div class="line"></div><div class="line">    void (^block)(NSInteger)=^(NSInteger buttonIndex) &#123;</div><div class="line">        if (buttonIndex == 0) &#123;</div><div class="line">            NSLog(@&quot;cancel&quot;);</div><div class="line">        &#125;else</div><div class="line">        &#123;</div><div class="line">            NSLog(@&quot;continue&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    // 设置关联的对象</div><div class="line">    objc_setAssociatedObject(alert, FDAlertViewKey, block, OBJC_ASSOCIATION_COPY);</div><div class="line"></div><div class="line">    [alert show];</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">- (void)alertView:(UIAlertView * )alertView clickedButtonAtIndex:(NSInteger)buttonIndex</div><div class="line">&#123;</div><div class="line">  //获取关联的对象</div><div class="line">    void (^block)(NSInteger) = objc_getAssociatedObject(alertView, FDAlertViewKey);</div><div class="line">    block(buttonIndex);</div><div class="line">&#125;</div><div class="line">@end</div></pre></td></tr></table></figure>
+<p><strong>注意：块可能要捕获某些变量，这也许会造成“保留环”。所以不要滥用这种方法</strong><br>想创建这种UIAlertView还有个办法，那就是从中继承子类，把块保存为子类中的属性。</p>
+<h2 id="理解objc-msgSend的作用"><a href="#理解objc-msgSend的作用" class="headerlink" title="理解objc_msgSend的作用"></a>理解objc_msgSend的作用</h2><p>在OC中如果向某对象传递消息，那就会使用动态绑定机制来决定需要调用的方法。在底层，所有方法都是普通的C语言函数，然而对象收到消息之后，究竟该调用哪个方法则完全于运行期决定，甚至可以再程序运行时改变，这些特性使得OC成为一门真正的动态语言。所以，给对象发送消息可以这样来写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id returnValue = [someObject messageName:parameter];</div></pre></td></tr></table></figure>
+<p><code>someObject</code>叫做接受者，<code>messageName</code>叫做“选择子”（selector）。选择子与参数合起来成为“消息”。编译器看到此消息后，将其转换为一条标准的C语言函数调用，所调用的函数是消息传递机制中的核心函数，叫做objc_msgSend。<br><code>void objc_msgSend(id self, SEL cmd, ...)</code></p>
+<p>这是个“参数可变的函数”，能接受两个或两个以上的参数。第一个参数代表接受者，第二个参数代表选择子，后续的参数就是消息中的那些参数，其顺序不变。选择子就是方法名。</p>
+<p>编译器会将刚才那个例子中的消息转换为如下函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id returnValue = objc_msgSend(someObject,@selector(messageName:),parameter);</div></pre></td></tr></table></figure>
+<p>其中objc_msgSend会根据接受者和选择子的类型来调用适当的方法。它会在接受真所属的类中搜寻其“方法列表”，如果能找到与选择子名称相符合的方法，就跳转实现代码，若是找不到，就沿着继承体制继续向上找，找到为止。如果最终都找不到，就执行“消息转发”操作。这个在下面会讲到。</p>
+<p>objc_msgSend会将匹配结果缓存在“快速映射表”里面，每个类都有这样一块缓存，若是稍后还向该类发送与选择子相同的消息，那么执行起来就很快。</p>
+<p>下面介绍一些“边界情况”，需要交由OC运行环境中的另一些函数来处理：</p>
+<ul>
+<li>objc_msgSend_stret。如果待发送消息要返回结构体，当然必须是CPU的寄存器能够容得下消息返回类型。</li>
+<li>objc_msgSend_fpret。如果消息返回的是浮点数。处理的是X86等架构CPU中令人稍觉惊讶的奇怪状况。</li>
+<li>objc_msgSendSuper。给超类发送消息，如<code>[super message:parameter]</code>。</li>
+</ul>
+<blockquote>
+<p>“尾调用技术”,只有当某函数的最后一个操作仅仅是调用其他函数而不会将其返回值另作他用时，才能执行“尾调用优化”。</p>
+</blockquote>
+<h2 id="理解消息转发机制"><a href="#理解消息转发机制" class="headerlink" title="理解消息转发机制"></a>理解消息转发机制</h2><p>当对象接受到无法解读的消息后，就会启动“消息转发”机制。程序员可经由此过程告诉对象应该如何处理未知消息。</p>
+<p>消息转发分为两大阶段。第一阶段先征询接受者，所属的类，看起能否动态添加方法，以处理当前这个“未知的选择器”，这就叫做“动态方法解析”。第二阶段涉及“完整的消息转发机制”。如果运行系统已经把第一阶段执行完了，那么接受者自己就无法再以动态新增方法的手段来响应包含该选择子的消息。此时，运行期系统会请求接受者以其他手段来处理与消息相关的方法调用。这又分为两步，先请接受者看看有没有其他的对象能处理，如果有就转发给那个对象，消息转发过程结束。若没有，运行期系统会把与消息有关的全部细节封装到NSInvocation对象中，再给接受者最后一次机会，让其想办法解决当前还未处理的这条消息。</p>
+<h4 id="动态方法解析"><a href="#动态方法解析" class="headerlink" title="动态方法解析"></a>动态方法解析</h4><p>对象在收到无法解读的消息之后，首先将调用其所属类的下列类方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">+ (Bool)resolveInstanceMethod:(SEL)selector;</div></pre></td></tr></table></figure>
+<p>这里的<code>selector</code>就是那个位置的选择子，其返回值为Boolean类型，表示这个类是否能新增一个实例方法用以处理此选择子。再继续往下执行转发机制之前，本类有机会新增一个处理此选择子的方法。如果尚未实现的方法不是实例方法而是类方法，就用<code>resolveClassMethod</code>。</p>
+<p>使用这种办法的前提是：相关方法的实现代码已经写好了，只等着运行的时候动态插在类里面。此方案常用来实现<code>@dynamic</code>属性，比如说，要访问CoreData框架中NSManagedObjects对象的属性时就可以这么做，因为实现这些属性所需要的存取方法在编译期就能确定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">id autoDictinaryGetter(id self,SEL _cmd);</div><div class="line">void autoDictionarySetter(id self, SEL _cmd, id value);</div><div class="line"></div><div class="line">+ (BOOL)resolveInstanceMethod:(SEL)sel</div><div class="line">&#123;</div><div class="line">    NSString *selectorString = NSStringFromSelector(sel);</div><div class="line">    if (/*selector is from a @dynamic property*/) &#123;</div><div class="line">        if ([selectorString hasPrefix:@&quot;set&quot;]) &#123;</div><div class="line">            class_addMethod(self, sel, (IMP)autoDictionarySetter, &quot;v@:@&quot;);</div><div class="line">        &#125;else</div><div class="line">        &#123;</div><div class="line">            class_addMethod(self, sel, (IMP)autoDictinaryGetter, &quot;@@:&quot;);</div><div class="line">        &#125;</div><div class="line">        return YES;</div><div class="line">    &#125;</div><div class="line">    return [super resolveInstanceMethod:sel];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>__</p>
+<h4 id="备援接受者"><a href="#备援接受者" class="headerlink" title="备援接受者"></a>备援接受者</h4><p>当前接受者还有第二次机会能处理未知的选择子，这一步中运行期系统会问它：能不能把这条消息转给其他接受者来处理：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (id)forwardingTargetForSelector:(SEL)aSelector;</div></pre></td></tr></table></figure>
+<p>方法参数代表未知的选择子，若当前接受者能找到备援对象，则将其返回，若找不到，就返回nil。通过此方案，我们可以用“组合”来模拟出“多重继承”的某些特性。在一个对象内部，可能还有一系列其他对象，该对象可经由此方法将能够处理某选择子的相关内部对象返回，这样的话，在外界看来，好像是该对象亲自处理了这些消息似的。</p>
+<p>请注意，我们无法操作经由这一步所转发的消息。若是想在发送给备援接受者之前先修改消息内容，那就得通过完整的消息转发机制来做了。</p>
+<h4 id="完整的消息转发机制"><a href="#完整的消息转发机制" class="headerlink" title="完整的消息转发机制"></a>完整的消息转发机制</h4><p>首先创建NSInvocation对象，把与尚未处理的那条信息有关的全部细节都封于其中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">- (void)forwardInvocation:(NSInvocation *)anInvocation</div></pre></td></tr></table></figure>
+<p>这个方法可以实现的很简单：只需要调用目标，使消息在新目标上得以调用即可。然而这样子实现出来的方法与“备援接受者”方案所实现的方法等效。比较有用的实现方式为：在触发消息前，先以某种方式改变消息内容，比如追加另一个参数，或是改换选择子，等等。</p>
+<p>实现此方法时，若发现某调用操作不应由本类处理，则需调用超类的同名方法。这样的话，系统中的每个类都有机会处理此调用请求，直至NSObject。如果最后调用了NSObject类的方法，那么该方法还会继而调用<code>- (void)doesNotRecognizeSelector:(SEL)aSelector</code>方法，以抛出异常，此异常表明选择子最终未能得到处理。</p>
+<h4 id="消息转发全流程"><a href="#消息转发全流程" class="headerlink" title="消息转发全流程"></a>消息转发全流程</h4><p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fe4vgm0xosj30ph0c9tb2.jpg" alt=""><br>接受者在每一步中均有机会处理消息。步骤越往后，处理消息的代价就越大。最好能在第一步就处理完，这样的话，运行期间系统就可以将此方法缓存起来了。如果这个类的实例稍后还收到同名选择子，那么根本无须启动消息转发流程。若想在第三步里把消息转给备援的接受者，那还不如把转发操作提前到第二步。因为第三步只是修改了调用目标，这项改动放在第二步执行会更为简单，不然的话，还得创建并处理完整的NSInvocation。</p>
+<h4 id="以完整的例子演示动态方法解析"><a href="#以完整的例子演示动态方法解析" class="headerlink" title="以完整的例子演示动态方法解析"></a>以完整的例子演示动态方法解析</h4><p>假设编写一个类似于“字典”的对象，它里面可以容纳其他对象，只不过开发者要直接通过属性来存取其中的数据。这个类的设计思路：有开发者来添加属性定义，并将其声明为<code>@dynamic</code>，而类则会自动处理相关属性值的存放于获取操作。</p>
+<p>FDAutoDictionary.h</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@interface FDAutoDictionary : NSObject</div><div class="line">@property (nonatomic, strong) NSString * string;</div><div class="line">@property (nonatomic, strong) NSNumber * number;</div><div class="line">@property (nonatomic, strong) NSDate * date;</div><div class="line">@property (nonatomic, strong) id object;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>FDAutoDictionary.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">#import &quot;FDAutoDictionary.h&quot;</div><div class="line">#import &lt;objc/runtime.h&gt;</div><div class="line"></div><div class="line">@interface FDAutoDictionary()</div><div class="line">@property (nonatomic,strong)NSMutableDictionary * backingStore;</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation FDAutoDictionary</div><div class="line"></div><div class="line">@dynamic string,number,date,object;</div><div class="line"></div><div class="line">- (instancetype)init &#123;</div><div class="line">    if (self = [super init]) &#123;</div><div class="line">        _backingStore = [NSMutableDictionary new];</div><div class="line">    &#125;</div><div class="line">    return self;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">+ (BOOL)resolveInstanceMethod:(SEL)sel &#123;</div><div class="line">    NSString *selectorString = NSStringFromSelector(sel);</div><div class="line">    if ([selectorString hasPrefix:@&quot;set&quot;]) &#123;</div><div class="line">        class_addMethod(self, sel, (IMP)autoDictionarySetter, &quot;v@:@&quot;);</div><div class="line">    &#125;else</div><div class="line">    &#123;</div><div class="line">        class_addMethod(self, sel, (IMP)autoDictinaryGetter, &quot;@@:&quot;);</div><div class="line">    &#125;</div><div class="line">    return YES;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">id autoDictinaryGetter(id self,SEL _cmd) &#123;</div><div class="line">    FDAutoDictionary *typeSelf = (FDAutoDictionary*)self;</div><div class="line">    NSMutableDictionary *backingStroe = typeSelf.backingStore;</div><div class="line"></div><div class="line">    NSString *key = NSStringFromSelector(_cmd);</div><div class="line"></div><div class="line">    return [backingStroe objectForKey:key];</div><div class="line">&#125;</div><div class="line">void autoDictionarySetter(id self, SEL _cmd, id value) &#123;</div><div class="line">    FDAutoDictionary *typeSelf = (FDAutoDictionary*)self;</div><div class="line">    NSMutableDictionary *backingStroe = typeSelf.backingStore;</div><div class="line"></div><div class="line">    NSString *selectorString = NSStringFromSelector(_cmd);</div><div class="line">    NSMutableString *key = [selectorString mutableCopy];</div><div class="line"></div><div class="line">    //去除最后的&quot;:&quot;</div><div class="line">    [key deleteCharactersInRange:NSMakeRange(key.length - 1, 1)];</div><div class="line"></div><div class="line">    //去除&quot;set&quot;</div><div class="line">    [key deleteCharactersInRange:NSMakeRange(0, 3)];</div><div class="line"></div><div class="line">    //将首字母小写</div><div class="line">    NSString *lowercaseFirstChar = [[key substringToIndex:1] lowercaseString];</div><div class="line"></div><div class="line">    [key replaceCharactersInRange:NSMakeRange(0, 1) withString:lowercaseFirstChar];</div><div class="line"></div><div class="line">    if (value) &#123;</div><div class="line">        [backingStroe setObject:value forKey:key];</div><div class="line">    &#125; else</div><div class="line">    &#123;</div><div class="line">        [backingStroe removeObjectForKey:key];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>__<br>使用方法也很简单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#import &quot;ViewController.h&quot;</div><div class="line">#import &quot;FDAutoDictionary.h&quot;</div><div class="line"></div><div class="line">@interface ViewController ()</div><div class="line"></div><div class="line">@end</div><div class="line"></div><div class="line">@implementation ViewController</div><div class="line"></div><div class="line">- (void)viewDidLoad &#123;</div><div class="line">    [super viewDidLoad];</div><div class="line"></div><div class="line">    FDAutoDictionary * dict = [FDAutoDictionary new];</div><div class="line">    dict.date = [NSDate dateWithTimeIntervalSince1970:475372800];</div><div class="line">    NSLog(@&quot;dict.date = %@&quot;,dict.date);</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2017-03-30 15:31:30.668 testibfg[7118:153902] dict.date = 1985-01-24 00:00:00 +0000</div></pre></td></tr></table></figure>
+<p>其他属性的访问方式与date类似，要想添加新属性，只需要用<code>@property</code>来定义，并将其声明为<code>@dynamic</code>即可。iOS的CoreAnimation框架中，CALayer类就用了与本例相似的实现方式，这使得CALayer成为“兼容于键值编码的”容器类，也就是能够向里面随意添加属性，然后以键值对的形式来访问。于是，开发者就可以向其中新增自定义的属性了，这些属性值的存储工作由基类直接负责，我们只需在CALayer的子类中定义新属性即可。</p>
+<h2 id="用“方法调配技术”调试“黑盒方法”"><a href="#用“方法调配技术”调试“黑盒方法”" class="headerlink" title="用“方法调配技术”调试“黑盒方法”"></a>用“方法调配技术”调试“黑盒方法”</h2><p>我们既不需要源代码，也不需要通过继承子类来覆写方法就能改变这个类本身的功能。这样新功能将在本类的所有实例中生效，而不仅限与覆写相关方法的那些子类实例。这种方案经常称为“方法调配”。<br>类的方法列表会把选择子的名称映射到相关的方法实现之上，使得“动态消息派发系统”能够据此找到应该调用的方法。这些方法均以函数指针的形式来表示，这种指针叫做IMP。原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id (*IMP)(id,SEL,...)</div></pre></td></tr></table></figure>
+<p>NSString类可以响应<code>lowercaseString</code>、<code>uppercaseString</code>、<code>capitalizedString</code>等选择子。下图中每个选择子都映射在不同的IMP上：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fe4xkctayjj30fw06owfl.jpg" alt=""></p>
+<p>还可以操作这张表里的选择子：</p>
+<p><img src="https://ww2.sinaimg.cn/large/006tNc79ly1fe4xl4q25vj30fz07s0u1.jpg" alt=""></p>
+<p>可以发现，新增了一个<code>newSelector</code>的选择子，<code>capitalizedString</code>的实现也变了，<code>lowercaseString</code>和<code>uppercaseString</code>的实现则互换了。但是这些修改都不需要编写代码，只需要修改“方法表”的布局。</p>
+<p>下面介绍如何互换两个方法的实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">method_exchangeImplementations(Method m1, Method m2)</div></pre></td></tr></table></figure>
+<p>方法的实现可以使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class_getInstanceMethod(Class cls, SEL name)</div></pre></td></tr></table></figure>
+<p>根据给定的选择从类中取出与之相关的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Method originalMethod = class_getInstanceMethod([NSString class], @selector(lowercaseString));</div><div class="line"></div><div class="line">Method swappedMethod = class_getInstanceMethod([NSString class], @selector(uppercaseString));</div><div class="line"></div><div class="line">method_exchangeImplementations(originalMethod, swappedMethod);</div><div class="line"></div><div class="line">NSString *string = @&quot;This Is My Blogsite&quot;;</div><div class="line"></div><div class="line">NSString *lowerString = [string lowercaseString];</div><div class="line">NSLog(@&quot;lowerString = %@&quot;,lowerString);</div><div class="line"></div><div class="line">NSString *upperString = [string uppercaseString];</div><div class="line">NSLog(@&quot;upperString = %@&quot;,upperString);</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">2017-03-30 16:25:09.277 testibfg[8116:177641] lowerString = THIS IS MY BLOGSITE</div><div class="line">2017-03-30 16:25:09.278 testibfg[8116:177641] upperString = this is my blogsite</div></pre></td></tr></table></figure>
+<p>实际开发中，直接交换连个方法并没什么意义，但是可以为已有的方法增加新功能。比如在调用<code>lowercaseString</code>时记录一些信息。这个时候就有用了。</p>
+<p>新方法可以添加到NSString的一个“分类中”：</p>
+<p>NSObject+FDNSStringLowercaseString.h<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#import &lt;Foundation/Foundation.h&gt;</div><div class="line"></div><div class="line">@interface NSObject (FDNSStringLowercaseString)</div><div class="line">- (NSString * )console_fdLowercaseString;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure></p>
+<p>将上述方法与原有的lowercaseString方法交换。</p>
+<p>NSObject+FDNSStringLowercaseString.m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#import &quot;NSObject+FDNSStringLowercaseString.h&quot;</div><div class="line"></div><div class="line">@implementation NSObject (FDNSStringLowercaseString)</div><div class="line"></div><div class="line">- (NSString * )console_fdLowercaseString &#123;</div><div class="line">    NSString * lowercase = [self console_fdLowercaseString];</div><div class="line"></div><div class="line">    NSLog(@&quot;%@ -&gt; %@&quot;,self,lowercase);</div><div class="line">    return lowercase;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@end</div></pre></td></tr></table></figure>
+<p>这里看上去会进入死循环，但是要记住，此方法是准备和lowercaseString方法互换的。所以，在运行期，<code>console_fdLowercaseString</code>选择子实际上对应于原有的<code>lowercaseString</code>方法实现。最后，通过下列代码来交换这两个方法实现：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Method originalMethod = class_getInstanceMethod([NSString class], @selector(lowercaseString));</div><div class="line"></div><div class="line">Method swappedMethod = class_getInstanceMethod([NSString class], @selector(console_fdLowercaseString));</div><div class="line"></div><div class="line">method_exchangeImplementations(originalMethod, swappedMethod);</div><div class="line"></div><div class="line">NSString *string = @&quot;This Is My Blogsite&quot;;</div><div class="line">NSString *lowerString = [string lowercaseString];</div></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2017-03-30 16:42:02.299 testibfg[8643:189822] This Is My Blogsite -&gt; this is my blogsite</div></pre></td></tr></table></figure>
+<p>但是此方法一般在测试的时候使用，一般情况不会使用。</p>
+<h2 id="理解“类对象”的用意"><a href="#理解“类对象”的用意" class="headerlink" title="理解“类对象”的用意"></a>理解“类对象”的用意</h2><p>每个OC对象实例都是指向某块内存数据的指针。，所以在声明变量时，类型后面要跟一个<code>*</code>字符:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">NSString *pointerVariable = @&quot;Some string&quot;;</div></pre></td></tr></table></figure></p>
+<p>对于通用的对象类型id，由于其本身已经是指针了，所以我们能够这样写：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">id genericTypeString = @&quot;Some string&quot;;</div></pre></td></tr></table></figure>
+<p>下面是描述OC对象所用的数据结构，id类型本身也定义在这里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_object &#123;</div><div class="line">  Class isa;</div><div class="line">&#125; *id;</div></pre></td></tr></table></figure>
+<p>可见每个结构体的首个成员是Class类的变量。该变量定义了对象所属的类，通常称为“isa”指针。例如，刚才的例子中所用的对象“是一个”(isa)NSString，所以其”isa”指针就指向NSString。Class对象也定义在运行期程序库的头文件中；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">typedef struct objc_class *Class;</div><div class="line"></div><div class="line">struct objc_class &#123;</div><div class="line">    Class isa  OBJC_ISA_AVAILABILITY;</div><div class="line">    Class super_class;                                        </div><div class="line">    const char * name;                                         </div><div class="line">    long version     ;                                        </div><div class="line">    long info       ;                                         </div><div class="line">    long instance_size    ;                                   </div><div class="line">    struct objc_ivar_list * ivars      ;                       </div><div class="line">    struct objc_method_list ** methodLists ;                   </div><div class="line">    struct objc_cache * cache          ;                       </div><div class="line">    struct objc_protocol_list * protocols   ;                  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此结构体存放类的”元数据”。它首个变量也是isa指针，这说明Class本身亦为OC对象。还有一个super_class，它定义了本类的超类。类对象所属的类型（isa指针指向的类型）是另一个类，叫做“元类”，用来表达类对象本身所具备的元数据。“类方法”，就定义于此处。每个类仅有一个“类对象”，每个类对象仅有一个与之相关的“元类”。</p>
+<p>假设有个名为SomeClass的子类从NSObject中继承而来，其继承体系如下：</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tNc79ly1fe4zo1cyucj30jv0700u3.jpg" alt=""></p>
+<p>super_class确立了继承关系，而isa指针描述了实例所属的类。这张布局关系就可以执行“类型信息查询”。</p>
+<h4 id="在类继承体系中查询类型信息"><a href="#在类继承体系中查询类型信息" class="headerlink" title="在类继承体系中查询类型信息"></a>在类继承体系中查询类型信息</h4><p><code>isMemberOfClass:</code>能够判断出对象是否为某个特定类的实例；<br><code>isKindOfClass:</code>能够判断出对象是否为某类或其派生类的实例;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">NSMutableArray *array = [NSMutableArray new];</div><div class="line"></div><div class="line">[array isMemberOfClass:[NSArray class]];//NO</div><div class="line">[array isMemberOfClass:[NSMutableArray class]];//NO</div><div class="line"></div><div class="line">[array isKindOfClass:[NSArray class]];//YES</div><div class="line">[array isKindOfClass:[NSMutableArray class]];//YES</div><div class="line">[array isKindOfClass:[NSDictionary class]];//NO</div></pre></td></tr></table></figure>
+<p>由于OC使用“动态类型系统”，所以用于查询对象所属类的类型信息查询功能非常有用。从collection中获取对象时，通常会查询类型信息，这些对象不是“强类型的”，把它们从collection中取出来时，其类型通常是id。如果想知道具体类型，那就可以使用类型信息查询方法。例如，想根据数组中存储的对象生成以逗号分隔的字符串，并将其存至文本文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">- (NSString *)commaSeparatedStringFromObjects:(NSArray *)array &#123;</div><div class="line">    NSMutableString * string = [NSMutableString new];</div><div class="line">    for (id object in array) &#123;</div><div class="line">        if ([object isKindOfClass:[NSString class]]) &#123;</div><div class="line">            [string appendFormat:@&quot;%@,&quot;,object];</div><div class="line">        &#125; else if ([object isKindOfClass:[NSNumber class]])</div><div class="line">        &#123;</div><div class="line">            [string appendFormat:@&quot;%d,&quot;,[object intValue]];</div><div class="line">        &#125;else if ([object isKindOfClass:[NSData class]])&#123;</div><div class="line">            NSString * base64Encode = /*base64 encode data*/;</div><div class="line">            [string appendFormat:@&quot;%@,&quot;,base64Encode];</div><div class="line">        &#125;else &#123;</div><div class="line">            //type not support</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>也可以用比较类对象是否等同的办法来做。若是如此，那就要使用==操作符，而不要使用”isEqual”方法。因为类对象是“单例”，在应用程序范围内，每个class仅有一个实例。下面可以精准判断出对象是否为某类实例的办法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">id object = /**/;</div><div class="line">if ([object class] == [FDEmployee class]) &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是不推崇这么写，应该尽量使用类型信息查询方法。因为某些对象可能实现了消息转发功能，叫做“代理”。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Objective-C规范/" rel="tag"># Objective-C规范</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/28/Effective-Objective-C-读书笔记-熟悉Objective-C/" rel="next" title="Effective Objective-C 读书笔记--熟悉Objective-C">
+                <i class="fa fa-chevron-left"></i> Effective Objective-C 读书笔记--熟悉Objective-C
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       <section id="comments">
+   <!-- 多说评论框 start -->
+<div id="ds-thread" class="ds-thread" data-thread-key="2017/03/30/Effective-Objective-C-读书笔记-对象、消息、运行期/" data-title="Effective-Objective-C-读书笔记--对象、消息、运行期" data-url="http://yoursite.com/2017/03/30/Effective-Objective-C-读书笔记-对象、消息、运行期/" }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feyddy"};
+  (function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">85</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">304</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解“属性”这一概念"><span class="nav-number">1.</span> <span class="nav-text">理解“属性”这一概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#属性特质"><span class="nav-number">1.0.1.</span> <span class="nav-text">属性特质</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#原子性"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">原子性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#读-写权限"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">读/写权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#内存管理语义"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">内存管理语义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方法名"><span class="nav-number">1.0.1.4.</span> <span class="nav-text">方法名</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#atomic与nonatomic的区别是什么？"><span class="nav-number">1.0.1.5.</span> <span class="nav-text">atomic与nonatomic的区别是什么？</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在对象内部尽量直接访问实例变量"><span class="nav-number">2.</span> <span class="nav-text">在对象内部尽量直接访问实例变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解“对象等同性”这一概念"><span class="nav-number">3.</span> <span class="nav-text">理解“对象等同性”这一概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#特定类所具有的等同性判断方法"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">特定类所具有的等同性判断方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#等同性判断的执行深度"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">等同性判断的执行深度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器中可变类的等同性"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">容器中可变类的等同性</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#以“类族模式”隐藏实现细节"><span class="nav-number">4.</span> <span class="nav-text">以“类族模式”隐藏实现细节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建类族"><span class="nav-number">4.0.1.</span> <span class="nav-text">创建类族</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cocoa里的类族"><span class="nav-number">4.0.2.</span> <span class="nav-text">Cocoa里的类族</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在既有类中使用关联对象存放自定义数据"><span class="nav-number">5.</span> <span class="nav-text">在既有类中使用关联对象存放自定义数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解objc-msgSend的作用"><span class="nav-number">6.</span> <span class="nav-text">理解objc_msgSend的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解消息转发机制"><span class="nav-number">7.</span> <span class="nav-text">理解消息转发机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动态方法解析"><span class="nav-number">7.0.1.</span> <span class="nav-text">动态方法解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#备援接受者"><span class="nav-number">7.0.2.</span> <span class="nav-text">备援接受者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完整的消息转发机制"><span class="nav-number">7.0.3.</span> <span class="nav-text">完整的消息转发机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#消息转发全流程"><span class="nav-number">7.0.4.</span> <span class="nav-text">消息转发全流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#以完整的例子演示动态方法解析"><span class="nav-number">7.0.5.</span> <span class="nav-text">以完整的例子演示动态方法解析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用“方法调配技术”调试“黑盒方法”"><span class="nav-number">8.</span> <span class="nav-text">用“方法调配技术”调试“黑盒方法”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理解“类对象”的用意"><span class="nav-number">9.</span> <span class="nav-text">理解“类对象”的用意</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在类继承体系中查询类型信息"><span class="nav-number">9.0.1.</span> <span class="nav-text">在类继承体系中查询类型信息</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feyddy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
