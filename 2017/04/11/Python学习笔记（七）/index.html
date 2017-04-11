@@ -1,0 +1,1230 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="对象," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="对象的特性对象最重要的优点包括以下几方面：
+
+多态：意味着可以对不同类的对象使用同样的操作。
+封装：对外部世界隐藏对象的工作细节。
+继承：以普通的类为基础建立专门的类对象。
+
+
+isinstance进行类型/类检查是为了说明一点—-类型检查一般说来并不是什么好方法，能不用则不用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python学习笔记（七）">
+<meta property="og:url" content="http://yoursite.com/2017/04/11/Python学习笔记（七）/index.html">
+<meta property="og:site_name" content="清风明心">
+<meta property="og:description" content="对象的特性对象最重要的优点包括以下几方面：
+
+多态：意味着可以对不同类的对象使用同样的操作。
+封装：对外部世界隐藏对象的工作细节。
+继承：以普通的类为基础建立专门的类对象。
+
+
+isinstance进行类型/类检查是为了说明一点—-类型检查一般说来并不是什么好方法，能不用则不用。">
+<meta property="og:updated_time" content="2017-04-11T15:26:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python学习笔记（七）">
+<meta name="twitter:description" content="对象的特性对象最重要的优点包括以下几方面：
+
+多态：意味着可以对不同类的对象使用同样的操作。
+封装：对外部世界隐藏对象的工作细节。
+继承：以普通的类为基础建立专门的类对象。
+
+
+isinstance进行类型/类检查是为了说明一点—-类型检查一般说来并不是什么好方法，能不用则不用。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"right","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'undefined',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '5BTIUCSDVY',
+      apiKey: '1a9aadc2a805dcd3529b21c3d224af27',
+      indexName: 'blog_Feyddy',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"搜索...","hits_empty":"未发现与 「${query}」相关的内容","hits_stats":"${hits} 条相关条目，使用了 ${time} 毫秒"}
+        }
+  };
+</script>
+
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/11/Python学习笔记（七）/"/>
+
+
+
+
+
+  <title> Python学习笔记（七） | 清风明心 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_Hans/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">清风明心</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/11/Python学习笔记（七）/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Feyddy">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="清风明心">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="清风明心" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python学习笔记（七）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-11T23:26:01+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <a href="/2017/04/11/Python学习笔记（七）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/11/Python学习笔记（七）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/04/11/Python学习笔记（七）/" class="leancloud_visitors" data-flag-title="Python学习笔记（七）">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="对象的特性"><a href="#对象的特性" class="headerlink" title="对象的特性"></a>对象的特性</h1><p>对象最重要的优点包括以下几方面：</p>
+<ul>
+<li>多态：意味着可以对不同类的对象使用同样的操作。</li>
+<li>封装：对外部世界隐藏对象的工作细节。</li>
+<li>继承：以普通的类为基础建立专门的类对象。</li>
+</ul>
+<blockquote>
+<p>isinstance进行类型/类检查是为了说明一点—-类型检查一般说来并不是什么好方法，能不用则不用。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态意味着就算不知道变量所引用的对象类型是什么，还是能对它进行操作，而它也会根据对象（或类）类型的不同而表现出不同的行为。</p>
+<ol>
+<li>多态和方法</li>
+</ol>
+<p>绑定到对象特性上面的函数称为方法。之前其实已经有多态出现过：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; &quot;Feyddy&quot;.count(&quot;d&quot;)</div><div class="line">2</div><div class="line">&gt;&gt;&gt; [1,2,&quot;a&quot;,&quot;a&quot;].count(&quot;a&quot;)</div><div class="line">2</div></pre></td></tr></table></figure>
+<p>不用管对象是字符串还是列表，都可以直接调用它的count方法。</p>
+<ol>
+<li>多态的多种形式</li>
+</ol>
+<p>任何不知道对象的类型，但是又要对对象“做点什么”的时候，都会用到多态。不仅仅是方法，很多內建运算符和函数都有多态性质。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; 1+2</div><div class="line">3</div><div class="line">&gt;&gt;&gt; &quot;Feyddy&apos;s blogSite is&quot;+&quot; www.feyddy.com&quot;</div><div class="line">&quot;Feyddy&apos;s blogSite is www.feyddy.com&quot;</div></pre></td></tr></table></figure>
+<p>针对<code>+</code>这个运算符，我们就可以建立一个拥有多态性质的函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; def add(x,y):</div><div class="line">...     return x+y</div><div class="line">...</div><div class="line">&gt;&gt;&gt; print add(2,3)</div><div class="line">5</div><div class="line">&gt;&gt;&gt; print add(&quot;Feyddy&apos;s blogSite is&quot;,&quot; www.feyddy.com&quot;)</div><div class="line">Feyddy&apos;s blogSite is www.feyddy.com</div></pre></td></tr></table></figure>
+<p>这里的关键在于参数是可以是任何支持加法的对象。下面编写打印对象的长度的方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; def print_length(objc):</div><div class="line">...     print &quot;The length of &quot;,repr(objc),&quot; is&quot; ,len(objc)</div><div class="line">...</div><div class="line">&gt;&gt;&gt; print_length(&quot;Feyddy&quot;)</div><div class="line">The length of  &apos;Feyddy&apos;  is 6</div><div class="line">&gt;&gt;&gt; print_length([1,2,3,4,5])</div><div class="line">The length of  [1, 2, 3, 4, 5]  is 5</div><div class="line">&gt;&gt;&gt; print_length((12,34,123))</div><div class="line">The length of  (12, 34, 123)  is 3</div></pre></td></tr></table></figure>
+<p>其中的repr函数是多态特性的代表之一——可以对任何东西使用。它返回的以该对象类型的形式返回该对象。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>是对全局作用域中其他区域隐藏多余信息的原则。封装是可以不用关心对象是如何构建的而直接进行使用。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>如果已经有一个类，而又想建立一个非常类似的，新的类可能只是添加几个方法。这个时候可以让新的类继承原来的类。</p>
+<h1 id="类和类型"><a href="#类和类型" class="headerlink" title="类和类型"></a>类和类型</h1><h2 id="类是什么"><a href="#类是什么" class="headerlink" title="类是什么"></a>类是什么</h2><p>所有的对象都属于一个类，称为类的实例。当一个对象所属的类是另一个对象所属的子集时，前者就被称为后者的子类，后者为前者的超类。</p>
+<h2 id="创建自己的类"><a href="#创建自己的类" class="headerlink" title="创建自己的类"></a>创建自己的类</h2><p>下面先创建一个简单的类：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*-coding:utf-8-*-</span></div><div class="line">__metaclass__ = type <span class="comment">#确定使用新式类</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">setName</span><span class="params">(self,name)</span>:</span></div><div class="line">        self.name = name</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getName</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.name</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">greet</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"Welcome to %s's blog"</span> % self.name</div></pre></td></tr></table></figure>
+<p>使用方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; foo = Person()</div><div class="line">&gt;&gt;&gt; bar = Person()</div><div class="line">&gt;&gt;&gt; foo.setName(&quot;Feyddy&quot;)</div><div class="line">&gt;&gt;&gt; bar.setName(&quot;Crice&quot;)</div><div class="line">&gt;&gt;&gt; foo.greet()</div><div class="line">Welcome to Feyddy&apos;s blog</div><div class="line">&gt;&gt;&gt; bar.greet()</div><div class="line">Welcome to Crice&apos;s blog</div></pre></td></tr></table></figure>
+<blockquote>
+<p>所谓的旧式类和新式类之间是有区别的。新式类的语法中需要在模块或者脚本开始的地方放置赋值语句<code>__metaclass__ = type</code>（并不会在每个例子中显示地包含这行语句）</p>
+<p>上面的self参数是对对象自身的引用，例如上面的<code>foo.setName(&quot;Feyddy&quot;)</code>其实就是在foo调用的时候，将自己<code>foo</code>自动传进去为self，然后Feyddy为name的值。其实就是<code>Person.setName(foo,&quot;Feyddy&quot;)</code>的简写。</p>
+<p>self的用处和存在的必要性，就是如果没有它的话，成员方法就没法访问他们要对其特性进行操作的对象本身了：</p>
+</blockquote>
+<p>特性是可以在外部访问的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; foo.name</div><div class="line">&apos;Feyddy&apos;</div><div class="line">&gt;&gt;&gt; bar.name = &quot;Feyddy&quot;</div><div class="line">&gt;&gt;&gt; bar.name</div><div class="line">&apos;Feyddy&apos;</div></pre></td></tr></table></figure>
+<h2 id="特性、函数和方法"><a href="#特性、函数和方法" class="headerlink" title="特性、函数和方法"></a>特性、函数和方法</h2><p>self参数事实上正是方法和函数的区别。方法将它们的第一个参数绑定到所属的实例上，因此这个参数可以不必提供。所以可以将特性绑定到一个普通函数上，这样就不会有特殊的self参数了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; class Class:</div><div class="line">...     def method(self):</div><div class="line">...             print &quot;I have a self!&quot;</div><div class="line">...</div><div class="line">&gt;&gt;&gt; def function():</div><div class="line">...     print &quot;I don&apos;t have a self&quot;</div><div class="line">...</div><div class="line">&gt;&gt;&gt; instance = Class()</div><div class="line">&gt;&gt;&gt; instance.method()</div><div class="line">I have a self!</div><div class="line">&gt;&gt;&gt; instance.method=function</div><div class="line">&gt;&gt;&gt; instance.method()</div><div class="line">I don&apos;t have a self</div></pre></td></tr></table></figure>
+<p><strong>注意：self参数并不会取决于调用方法的方式，目前使用的是实例调用方法，可以随意使用引用同一个方法的其他变量：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; class Bird:</div><div class="line">...     song=&quot;Feyddy&quot;</div><div class="line">...     def sing(self):</div><div class="line">...             print self.song</div><div class="line">...</div><div class="line">&gt;&gt;&gt; bird = Bird()</div><div class="line">&gt;&gt;&gt; bird.song = &quot;f&quot;</div><div class="line">&gt;&gt;&gt; bird.sing()</div><div class="line">f</div><div class="line">&gt;&gt;&gt; bird.sing()</div><div class="line">f</div><div class="line">&gt;&gt;&gt; birdsong = bird.sing</div><div class="line">&gt;&gt;&gt; birdsong()</div><div class="line">f</div></pre></td></tr></table></figure>
+<p>这里的最后的方法调用看起来十分像函数调用，但是变量birdsong引用绑定方法bird.sing()上，也就意味着这还是对self参数的访问。</p>
+<h4 id="再论私有化"><a href="#再论私有化" class="headerlink" title="再论私有化"></a>再论私有化</h4><p>程序可以从外部访问一个对象的特性。再次使用前面讨论过的有关封装的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; #-*-coding:utf-8-*-</div><div class="line">... __metaclass__ = type #确定使用新式类</div><div class="line">&gt;&gt;&gt; class Person:</div><div class="line">...     def setName(self,name):</div><div class="line">...         self.name = name</div><div class="line">...     def getName(self):</div><div class="line">...         return self.name</div><div class="line">...     def greet(self):</div><div class="line">...         print &quot;Welcome to %s&apos;s blog&quot; % self.name</div><div class="line">...</div><div class="line">&gt;&gt;&gt; foo = Person()</div><div class="line">&gt;&gt;&gt; foo.setName(&quot;Feyddy&quot;)</div><div class="line">&gt;&gt;&gt; foo.name</div><div class="line">&apos;Feyddy&apos;</div><div class="line">&gt;&gt;&gt; foo.name = &quot;XUZHONGLIN&quot;</div><div class="line">&gt;&gt;&gt; foo.getName()</div><div class="line">&apos;XUZHONGLIN&apos;</div></pre></td></tr></table></figure>
+<p>如果能直接使用Person的name特性的话就不用使用setNmae和getName方法了。关键在于其他程序员可能不知道你的对象内部的具体操作。例如，Person可能会在其他对象更改自己的名字的时候，给一些管理员发送邮件消息。这应该是setName方法的一部分。但是如果直接用foo.name设定名字会发生什么？什么都没发生，Email也没发出去。为了避免这类事件的发生，应该使用私有特性，这是外部无法访问，但getName和setName等访问器能够访问的特性。</p>
+<p>python并不支持私有方式，而要靠程序员自己把握在外部进行特性修改的时机。但是有个小技巧可以达到私有的效果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; class Secretive:</div><div class="line">...     def __inaccessible(self):</div><div class="line">...         print &quot;Bet you can&apos;t see me...&quot;</div><div class="line">...     def accessible(self):</div><div class="line">...         print &quot;The secret message is:&quot;</div><div class="line">...         self.__inaccessible()</div><div class="line">...</div><div class="line">&gt;&gt;&gt; s = Secretive()</div><div class="line">&gt;&gt;&gt; s.__inaccessible()</div><div class="line">Traceback (most recent call last):</div><div class="line">  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</div><div class="line">AttributeError: &apos;Secretive&apos; object has no attribute &apos;__inaccessible&apos;</div><div class="line">&gt;&gt;&gt; s.accessible()</div><div class="line">The secret message is:</div><div class="line">Bet you can&apos;t see me...</div></pre></td></tr></table></figure>
+<p>双下划线看上去像是其他语言中标准的私有方法。但是真正发生的事情才是不标准的。类的内部定义中，所有以双下划线开始的名字都被“翻译”成前面加上单下划线和类名的形式。<code>_Secretive__inaccessible</code>。</p>
+<p>因此实际上还是能在类外面访问这些私有方法，尽管不应该这么做：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s._Secretive__inaccessible()</div><div class="line">Bet you can&apos;t see me...</div></pre></td></tr></table></figure>
+<p>简而言之，确保其他人不会访问对象的方法和特性是不可能的，但是这类“名称变化术”就是他们不应该访问这些函数或者特性的强有力信号。</p>
+<p>如果不需要使用这种方法但是又想让其他对象不要访问内部数据，那么可以使用单下划线。</p>
+<h2 id="类的命名空间"><a href="#类的命名空间" class="headerlink" title="类的命名空间"></a>类的命名空间</h2><p>所有位于class语句中的代码都在特殊的命名空间中执行—-类命名空间。并不是所有程序员都知道类的定义其实是执行代码块，比如在类的定义区并不只限使用def语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; class MemberCounter:</div><div class="line">...     members = 0</div><div class="line">...     def init(self):</div><div class="line">...         MemberCounter.members += 1</div><div class="line">...</div><div class="line">&gt;&gt;&gt; m1 = MemberCounter()</div><div class="line">&gt;&gt;&gt; m1.init()</div><div class="line">&gt;&gt;&gt; MemberCounter.members</div><div class="line">1</div><div class="line">&gt;&gt;&gt; m2 = MemberCounter()</div><div class="line">&gt;&gt;&gt; m2.init()</div><div class="line">&gt;&gt;&gt; MemberCounter.members</div><div class="line">2</div></pre></td></tr></table></figure>
+<p>在类作用域内定义了一个可供所有成员（实例）访问的变量，用来计算类的成员数量。注意init用来初始化所有实例。</p>
+<p>就像方法一样，类作用域内的变量也可以被所有实例访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; m1.members</div><div class="line">2</div><div class="line">&gt;&gt;&gt; m2.members</div><div class="line">2</div></pre></td></tr></table></figure>
+<p>在实例中重绑定members特性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; m1.members = &quot;Feyddy&quot;</div><div class="line">&gt;&gt;&gt; m1.members</div><div class="line">&apos;Feyddy&apos;</div><div class="line">&gt;&gt;&gt; m2.members</div><div class="line">2</div></pre></td></tr></table></figure>
+<p>新numbers值被写到m1的特性中，屏蔽了类范围内的变量。这跟函数内的局部和全局变量的行为十分类似。</p>
+<h2 id="指定超类"><a href="#指定超类" class="headerlink" title="指定超类"></a>指定超类</h2><p>子类可以扩展超类的定义，只需要在子类后面的括号中填写超类的名字。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; class Filter:</div><div class="line">...     def init(self):</div><div class="line">...         self.blocked = []</div><div class="line">...     def filter(self, sequence):</div><div class="line">...         return [x for x in sequence if x not in self.blocked]</div><div class="line">...</div><div class="line">&gt;&gt;&gt; class SPAMFilter(Filter):</div><div class="line">...     def init(self): #重写Filter超类中的init方法</div><div class="line">...         self.blocked = [&quot;SPAM&quot;]</div><div class="line">...</div><div class="line">&gt;&gt;&gt; f = Filter()</div><div class="line">&gt;&gt;&gt; f.init()</div><div class="line">&gt;&gt;&gt; f.filter([1,2,3])</div><div class="line">[1, 2, 3]</div><div class="line">&gt;&gt;&gt; s = SPAMFilter()</div><div class="line">&gt;&gt;&gt; s.init()</div><div class="line">&gt;&gt;&gt; s.filter([&quot;SPAM&quot;,&quot;SPAM&quot;,&quot;SPAM&quot;,&quot;FEYDDY&quot;,&quot;XUZHONGLIN&quot;])</div><div class="line">[&apos;FEYDDY&apos;, &apos;XUZHONGLIN&apos;]</div></pre></td></tr></table></figure>
+<p>Filter类的用处在于它可以用作其他类的=基类（超类），比如SPAMFilter类，可以将序列中的“SPAM”过滤出去。</p>
+<p>注意SPAMFilter定义的两个要点：</p>
+<ul>
+<li>这里用提供的新定义的方式重写了Fileter的init定义；</li>
+<li>filter方法的定义是从Filter类中拿过来（继承）的，所以不用重写它的定义；这一点就是继承的用处：可以写一大堆不同的过滤类，全都从Filter继承，每一个我都可以使用已经实现的filter方法。</li>
+</ul>
+<h2 id="调查继承"><a href="#调查继承" class="headerlink" title="调查继承"></a>调查继承</h2><p>查看一个类是否是另一个的子类，可以使用內建的issubclass函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; issubclass(SPAMFilter,Filter)</div><div class="line">True</div><div class="line">&gt;&gt;&gt; issubclass(Filter,SPAMFilter)</div><div class="line">False</div></pre></td></tr></table></figure>
+<p>如果想要知道已知类的基类（们）。可以直接使用它的特殊特性<code>__bases__</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; SPAMFilter.__bases__</div><div class="line">(&lt;class &apos;__main__.Filter&apos;&gt;,)</div><div class="line">&gt;&gt;&gt; Filter.__bases__</div><div class="line">(&lt;type &apos;object&apos;&gt;,)</div></pre></td></tr></table></figure>
+<p>同样还可以使用isinstance方法检查一个对象是否是一个类的实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s = SPAMFilter()</div><div class="line">&gt;&gt;&gt; isinstance(s,SPAMFilter)</div><div class="line">True</div><div class="line">&gt;&gt;&gt; isinstance(s,Filter)</div><div class="line">True</div><div class="line">&gt;&gt;&gt; isinstance(s,str)</div><div class="line">False</div></pre></td></tr></table></figure>
+<p>但是，使用isinstance不是一个好习惯，使用多态会更好一些。一个对象既属于他的类，也属于该类的超类。</p>
+<p>如果只想知道一个对象属于哪个类的话，可以使用<strong>class</strong>特性：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; s.__class__</div><div class="line">&lt;class &apos;__main__.SPAMFilter&apos;&gt;</div><div class="line">&gt;&gt;&gt; type(s)</div><div class="line">&lt;class &apos;__main__.SPAMFilter&apos;&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>type(s)这个方法只能是新式类才能使用。</p>
+</blockquote>
+<h2 id="多个超类"><a href="#多个超类" class="headerlink" title="多个超类"></a>多个超类</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Calculator</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">calculate</span><span class="params">(self,expression)</span>:</span></div><div class="line">        self.value = eval(expression)</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Talker</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">talk</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">print</span> <span class="string">"Hi , my value is "</span>,self.value</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TalkingCalculator</span><span class="params">(Calculator,Talker)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<p>其中子类TalkingCalculator不用做任何事，它从自己的超类继承所有的行为。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; class Calculator:</div><div class="line">...     def calculate(self,expression):</div><div class="line">...         self.value = eval(expression)</div><div class="line">...</div><div class="line">&gt;&gt;&gt; class Talker:</div><div class="line">...     def talk(self):</div><div class="line">...         print &quot;Hi , my value is &quot;,self.value</div><div class="line">...</div><div class="line">&gt;&gt;&gt; class TalkingCalculator(Calculator,Talker):</div><div class="line">...     pass</div><div class="line">...</div><div class="line">&gt;&gt;&gt; tc = TalkingCalculator()</div><div class="line">&gt;&gt;&gt; tc.calculate(&quot;1+2+3+4&quot;)</div><div class="line">&gt;&gt;&gt; tc.talk()</div><div class="line">Hi , my value is  10</div></pre></td></tr></table></figure>
+<p>这就叫做多重继承。但是慎用，一般应该尽量避免使用。用的时候有个需要注意的地方。如果一个方法从多个超类继承（也就是说你有两个具有相同名字的不同方法），那么必须要注意一下超类的顺序（在class语句中）：先继承的类中的方法会重写后继承的类中的方法。所以如果上面的Calculator类中也有叫做talk的方法的话，那么他就会重写Talker类中的talk方法（使其不可访问）。如果将它们的顺序调过来如下，就可以访问Talker类中的talk方法了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TalkingCalculator</span><span class="params">(Talker,Calculator)</span>:</span></div><div class="line">    <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<h2 id="接口和内省"><a href="#接口和内省" class="headerlink" title="接口和内省"></a>接口和内省</h2><p>“接口”的概念与多态有关。在处理多态对象时，只要关心它的接口（或称“协议”）即可——也就是公开的方法和特性。在python中不用显示地指定对象必须包含哪些方法才能作为参数接收。一般来说只需要让对象符合当前的接口（换句话说就是实现当前方法），但是还可以更灵活一些。除了调用方法，然后期待一切顺利之外，还可以检查所需方法是否已经存在—-如果不存在，就需要做些其他事情：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; hasattr(tc,&quot;talk&quot;)</div><div class="line">True</div><div class="line">&gt;&gt;&gt; hasattr(tc,&quot;fnord&quot;)</div><div class="line">False</div></pre></td></tr></table></figure>
+<p>下面可以检查talk的特性是否调用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; callable(getattr(tc,&quot;talk&quot;,None))</div><div class="line">True</div><div class="line">&gt;&gt;&gt; callable(getattr(tc,&quot;fnord&quot;,None))</div><div class="line">False</div></pre></td></tr></table></figure>
+<p>getattr函数允许提供默认值（本例中为None），以便特性不存在时使用，然后对返回的对象使用callable函数。</p>
+<blockquote>
+<p>与getattr函数对应的是setattr函数，可以用来设置对象的特性：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt; setattr(tc,&quot;name&quot;,&quot;Feyddy&quot;)</div><div class="line">&gt;&gt;&gt; tc.name</div><div class="line">&apos;Feyddy&apos;</div></pre></td></tr></table></figure>
+<h1 id="一些关于面向对象设计的思考"><a href="#一些关于面向对象设计的思考" class="headerlink" title="一些关于面向对象设计的思考"></a>一些关于面向对象设计的思考</h1><ul>
+<li>将属于一类的对象放在一起。如果一个函数操纵一个全局变量，那么两者最好都在类内作为特性和方法出现；</li>
+<li>不要让对象过于亲密。方法应该只关心自己实例的特性。让其他实例管理自己的状态；</li>
+<li>要小心继承，尤其是多重继承。</li>
+<li>简单就好。让你的方法小巧。</li>
+</ul>
+<p>当考虑需要什么类以及类要有什么方法时，应该尝试下面的方法：</p>
+<ol>
+<li>写下问题的描述（程序要做什么），把所有名词、动词和形容词加下划线</li>
+<li>对于所有名词，用作可能的类</li>
+<li>对于所有动词，用作可能的方法</li>
+<li>对于所有形容词，用作可能的特性</li>
+<li>把所有方法和特性分配到类</li>
+</ol>
+<h1 id="涉及函数"><a href="#涉及函数" class="headerlink" title="涉及函数"></a>涉及函数</h1><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>callable(object)</td>
+<td>确定对象是否可调用(比如函数或者方法)</td>
+</tr>
+<tr>
+<td>getattr(object,name[,default])</td>
+<td>确定特性值，可选择提供默认值</td>
+</tr>
+<tr>
+<td>hasattr(object,name)</td>
+<td>确定对象是否有给定的特性</td>
+</tr>
+<tr>
+<td>isinstance(object,class)</td>
+<td>确定对象是否是类的实例</td>
+</tr>
+<tr>
+<td>issubclass(A,B)</td>
+<td>确定A是否是B的子类</td>
+</tr>
+<tr>
+<td>random.choice(sequence)</td>
+<td>从非空序列中随机选择元素</td>
+</tr>
+<tr>
+<td>setattr(object,name,value)</td>
+<td>设定对象的给定特性为value</td>
+</tr>
+<tr>
+<td>type(object)</td>
+<td>返回对象的类型</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/对象/" rel="tag"># 对象</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/10/Python学习笔记（六）/" rel="next" title="Python学习笔记（六）">
+                <i class="fa fa-chevron-left"></i> Python学习笔记（六）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+       <section id="comments">
+   <!-- 多说评论框 start -->
+<div id="ds-thread" class="ds-thread" data-thread-key="2017/04/11/Python学习笔记（七）/" data-title="Python学习笔记（七）" data-url="http://yoursite.com/2017/04/11/Python学习笔记（七）/" }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"feyddy"};
+  (function() {
+var ds = document.createElement('script');
+ds.type = 'text/javascript';ds.async = true;
+ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+ds.charset = 'UTF-8';
+(document.getElementsByTagName('head')[0] 
+ || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+    
+  </div>
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/large/e3aca1a1jw1fahfwp4p04j207307mwf6.jpg"
+               alt="Feyddy" />
+          <p class="site-author-name" itemprop="name">Feyddy</p>
+          <p class="site-description motion-element" itemprop="description">不积跬步，无以至千里；不积小流，无以成江海。(本人博客都是自己的一些学习笔记，积少成多！)</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">90</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">307</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/Feyddy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/新Feyddy" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#对象的特性"><span class="nav-number">1.</span> <span class="nav-text">对象的特性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">1.1.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装"><span class="nav-number">1.2.</span> <span class="nav-text">封装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">1.3.</span> <span class="nav-text">继承</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类和类型"><span class="nav-number">2.</span> <span class="nav-text">类和类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类是什么"><span class="nav-number">2.1.</span> <span class="nav-text">类是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建自己的类"><span class="nav-number">2.2.</span> <span class="nav-text">创建自己的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特性、函数和方法"><span class="nav-number">2.3.</span> <span class="nav-text">特性、函数和方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#再论私有化"><span class="nav-number">2.3.0.1.</span> <span class="nav-text">再论私有化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类的命名空间"><span class="nav-number">2.4.</span> <span class="nav-text">类的命名空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指定超类"><span class="nav-number">2.5.</span> <span class="nav-text">指定超类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调查继承"><span class="nav-number">2.6.</span> <span class="nav-text">调查继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多个超类"><span class="nav-number">2.7.</span> <span class="nav-text">多个超类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口和内省"><span class="nav-number">2.8.</span> <span class="nav-text">接口和内省</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些关于面向对象设计的思考"><span class="nav-number">3.</span> <span class="nav-text">一些关于面向对象设计的思考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#涉及函数"><span class="nav-number">4.</span> <span class="nav-text">涉及函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Feyddy</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"feyddy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("", "");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.0"></script>
+
+
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
