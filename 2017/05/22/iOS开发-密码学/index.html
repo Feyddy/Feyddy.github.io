@@ -88,10 +88,7 @@
 在网络上“不允许”传输用户隐私的明文；
 在本地上“不允许”保存用户隐私数据的明文；
 
-base64加密
-base64 编码
-
-可以将任意的二进制数据进行编码，只有65个字符：0-9,a-z,A-Z,+,/,=；例如：我们下面通过终端将一张图片转换为一个base64编码：base64 picture.png -o picture.text ；如果想将一个base64编码的文件解">
+base64加密base64 编码可以将任意的二进制数据进行编码，只有65个字符：0-9,a-z,A-Z,+,/,=；例如：我们下面通过终端将一张图片转换为一个base64编码：base64 picture.png -o picture.text ；如果想将一个base64编码的文件解码显示">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS开发-密码学">
 <meta property="og:url" content="http://yoursite.com/2017/05/22/iOS开发-密码学/index.html">
@@ -100,23 +97,17 @@ base64 编码
 在网络上“不允许”传输用户隐私的明文；
 在本地上“不允许”保存用户隐私数据的明文；
 
-base64加密
-base64 编码
-
-可以将任意的二进制数据进行编码，只有65个字符：0-9,a-z,A-Z,+,/,=；例如：我们下面通过终端将一张图片转换为一个base64编码：base64 picture.png -o picture.text ；如果想将一个base64编码的文件解">
+base64加密base64 编码可以将任意的二进制数据进行编码，只有65个字符：0-9,a-z,A-Z,+,/,=；例如：我们下面通过终端将一张图片转换为一个base64编码：base64 picture.png -o picture.text ；如果想将一个base64编码的文件解码显示">
 <meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fftwh4b3fxj30a602n0tq.jpg">
 <meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNbRwly1ffu5jmjveuj30qr0f23zx.jpg">
-<meta property="og:updated_time" content="2017-05-22T11:39:20.000Z">
+<meta property="og:updated_time" content="2017-05-22T11:43:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS开发-密码学">
 <meta name="twitter:description" content="网络应用数据的规则：
 在网络上“不允许”传输用户隐私的明文；
 在本地上“不允许”保存用户隐私数据的明文；
 
-base64加密
-base64 编码
-
-可以将任意的二进制数据进行编码，只有65个字符：0-9,a-z,A-Z,+,/,=；例如：我们下面通过终端将一张图片转换为一个base64编码：base64 picture.png -o picture.text ；如果想将一个base64编码的文件解">
+base64加密base64 编码可以将任意的二进制数据进行编码，只有65个字符：0-9,a-z,A-Z,+,/,=；例如：我们下面通过终端将一张图片转换为一个base64编码：base64 picture.png -o picture.text ；如果想将一个base64编码的文件解码显示">
 <meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fftwh4b3fxj30a602n0tq.jpg">
 
 
@@ -458,18 +449,14 @@ base64 编码
 <li>在网络上“不允许”传输用户隐私的明文；</li>
 <li>在本地上“不允许”保存用户隐私数据的明文；</li>
 </ul>
-<h1 id="base64加密"><a href="#base64加密" class="headerlink" title="base64加密"></a>base64加密</h1><ol>
-<li>base64 编码</li>
-</ol>
-<p>可以将任意的二进制数据进行编码，只有65个字符：0-9,a-z,A-Z,+,/,=；<br>例如：我们下面通过终端将一张图片转换为一个base64编码：<br><code>base64 picture.png -o picture.text</code> ；如果想将一个base64编码的文件解码显示。<code>base64 pictue.text -o pictue.png -D</code>。最后的<code>-D</code>是解码的意思。</p>
+<h1 id="base64加密"><a href="#base64加密" class="headerlink" title="base64加密"></a>base64加密</h1><h4 id="base64-编码"><a href="#base64-编码" class="headerlink" title="base64 编码"></a>base64 编码</h4><p>可以将任意的二进制数据进行编码，只有65个字符：0-9,a-z,A-Z,+,/,=；<br>例如：我们下面通过终端将一张图片转换为一个base64编码：<br><code>base64 picture.png -o picture.text</code> ；如果想将一个base64编码的文件解码显示。<code>base64 pictue.text -o pictue.png -D</code>。最后的<code>-D</code>是解码的意思。</p>
 <blockquote>
 <p>如果想直接在终端中对一个字符串进行base64编码,<code>echo -n Feyddy | base64</code>。结果为<code>RmV5ZGR5</code>。</p>
 </blockquote>
 <p>base64编码的原理如下图：<br><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fftwh4b3fxj30a602n0tq.jpg" alt=""></p>
 <p>首先将三个字母进行ASCII码的的解析，然后转成对应的二进制数据。将原来的二进制数据的每8位一组合变成每6位一组合，然后在转成对应的二进制数据的ASCII码，最后转成对应的字符。如果后面6位都为0，用<code>=</code>补上。简称“拆”-&gt;“重组”。</p>
-<ol>
-<li>base64 编码的数据变化<br>对一个二进制数据进行编码，会变成源数据大小的4/3，会大1/3。</li>
-</ol>
+<h4 id="base64-编码的数据变化"><a href="#base64-编码的数据变化" class="headerlink" title="base64 编码的数据变化"></a>base64 编码的数据变化</h4><p>对一个二进制数据进行编码，会变成源数据大小的4/3，会大1/3。</p>
+<a id="more"></a>
 <h3 id="小例子"><a href="#小例子" class="headerlink" title="小例子"></a>小例子</h3><p>iOS7.0以后，苹果开始提供base64的编码和解码支持。</p>
 <p>考虑用户登录的逻辑;</p>
 <ol>
@@ -749,7 +736,7 @@ ds.charset = 'UTF-8';
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络应用数据的规则："><span class="nav-number">1.</span> <span class="nav-text">网络应用数据的规则：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#base64加密"><span class="nav-number">2.</span> <span class="nav-text">base64加密</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小例子"><span class="nav-number">2.0.1.</span> <span class="nav-text">小例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遗留问题"><span class="nav-number">3.</span> <span class="nav-text">遗留问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅谈密码学"><span class="nav-number">3.0.1.</span> <span class="nav-text">浅谈密码学</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MD5加密"><span class="nav-number">4.</span> <span class="nav-text">MD5加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MD5的其他用途"><span class="nav-number">4.1.</span> <span class="nav-text">MD5的其他用途</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HMAC-最近国内开始慢慢变多"><span class="nav-number">5.</span> <span class="nav-text">HMAC,最近国内开始慢慢变多!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#钥匙串"><span class="nav-number">6.</span> <span class="nav-text">钥匙串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知识扩展-指纹识别"><span class="nav-number">7.</span> <span class="nav-text">知识扩展-指纹识别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#网络应用数据的规则："><span class="nav-number">1.</span> <span class="nav-text">网络应用数据的规则：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#base64加密"><span class="nav-number">2.</span> <span class="nav-text">base64加密</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#base64-编码"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">base64 编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#base64-编码的数据变化"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">base64 编码的数据变化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小例子"><span class="nav-number">2.0.1.</span> <span class="nav-text">小例子</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#遗留问题"><span class="nav-number">3.</span> <span class="nav-text">遗留问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浅谈密码学"><span class="nav-number">3.0.1.</span> <span class="nav-text">浅谈密码学</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MD5加密"><span class="nav-number">4.</span> <span class="nav-text">MD5加密</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MD5的其他用途"><span class="nav-number">4.1.</span> <span class="nav-text">MD5的其他用途</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HMAC-最近国内开始慢慢变多"><span class="nav-number">5.</span> <span class="nav-text">HMAC,最近国内开始慢慢变多!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#钥匙串"><span class="nav-number">6.</span> <span class="nav-text">钥匙串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#知识扩展-指纹识别"><span class="nav-number">7.</span> <span class="nav-text">知识扩展-指纹识别</span></a></li></ol></div>
             
 
           </div>
